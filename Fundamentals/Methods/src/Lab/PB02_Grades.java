@@ -1,5 +1,7 @@
 package Lab;
 
+import java.util.Scanner;
+
 public class PB02_Grades { public static void main(String[] args) {
     getNumberAsText();
 }
