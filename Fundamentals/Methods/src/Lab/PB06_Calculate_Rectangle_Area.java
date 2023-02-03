@@ -15,7 +15,4 @@ public class PB06_Calculate_Rectangle_Area {
         double triangleArea = sideASize * sideBSize;
         return triangleArea;
     }
-
-
-
 }
