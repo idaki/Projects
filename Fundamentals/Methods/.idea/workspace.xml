@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ecb11d0-bb81-4c6c-b980-834992f2306a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Lab/PB04_Calculation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab/PB05_Orders.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +35,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.PB04_Calculation">
+  <component name="RunManager" selected="Application.PB05_Orders">
     <configuration name="PB01_Sign_of_Integer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Lab.PB01_Sign_of_Integer" />
       <module name="Methods" />
@@ -75,8 +75,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PB05_Orders" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab.PB05_Orders" />
+      <module name="Methods" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Lab.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PB05_Orders" />
         <item itemvalue="Application.PB04_Calculation" />
         <item itemvalue="Application.PB03_Printing_Triangle" />
         <item itemvalue="Application.PB01_Sign_of_Integer" />
