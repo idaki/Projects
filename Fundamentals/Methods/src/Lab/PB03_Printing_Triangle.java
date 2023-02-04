@@ -1,6 +1,6 @@
 package Lab;
 
-import java.util.Scanner;
+        import java.util.Scanner;
 
 public class PB03_Printing_Triangle {
     public static void main(String[] args) {
@@ -18,7 +18,7 @@ public class PB03_Printing_Triangle {
             System.out.println();
         }
     }
-    
+
     public static void printDecliningSideOfTriangle(int endNumber){
         for (int i = endNumber; i >0 ; i--) {
             for (int j = 1; j < i ; j++) {
