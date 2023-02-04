@@ -33,20 +33,7 @@
     "last_opened_file_path": "C:/Users/Idaki/Documents/GitHub/Softuni-/Fundamentals/Methods"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.PB07_Repeat_String">
-    <configuration name="PB04_Calculation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB04_Calculation" />
-      <module name="Methods" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Lab.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.PB08_Math_Power">
     <configuration name="PB05_Orders" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Lab.PB05_Orders" />
       <module name="Methods" />
@@ -86,6 +73,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PB08_Math_Power" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab.PB08_Math_Power" />
+      <module name="Methods" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Lab.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Lab.test" />
       <module name="Methods" />
@@ -101,11 +101,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PB08_Math_Power" />
         <item itemvalue="Application.PB07_Repeat_String" />
         <item itemvalue="Application.test" />
         <item itemvalue="Application.PB06_Calculate_Rectangle_Area" />
         <item itemvalue="Application.PB05_Orders" />
-        <item itemvalue="Application.PB04_Calculation" />
       </list>
     </recent_temporary>
   </component>
