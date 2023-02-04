@@ -26,26 +26,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Idaki/Documents/GitHub/Softuni-/Fundamentals/Methods"
   }
-}</component>
-  <component name="RunManager" selected="Application.test">
-    <configuration name="PB03_Printing_Triangle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB03_Printing_Triangle" />
-      <module name="Methods" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Lab.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+}]]></component>
+  <component name="RunManager" selected="Application.PB07_Repeat_String">
     <configuration name="PB04_Calculation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Lab.PB04_Calculation" />
       <module name="Methods" />
@@ -85,6 +73,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PB07_Repeat_String" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab.PB07_Repeat_String" />
+      <module name="Methods" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Lab.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Lab.test" />
       <module name="Methods" />
@@ -100,11 +101,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PB07_Repeat_String" />
         <item itemvalue="Application.test" />
         <item itemvalue="Application.PB06_Calculate_Rectangle_Area" />
         <item itemvalue="Application.PB05_Orders" />
         <item itemvalue="Application.PB04_Calculation" />
-        <item itemvalue="Application.PB03_Printing_Triangle" />
       </list>
     </recent_temporary>
   </component>
