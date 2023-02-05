@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="868c0303-83a6-4233-8ae0-364860b8c2af" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Docs/03. Java-Fundamentals-Arrays-Exercise.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Docs/03. Java-Fundamentals-Arrays-Lab.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Docs/03. Java-Fundamentals-Arrays.pptx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithms/Decrease_Array_First_Index.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithms/Decrease_Array_Last_Index.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithms/Increase_Arrat_Last_Index.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithms/Increase_Array_Index_0.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithms/Move_to_Left_1_Element.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithms/Move_to_Right_1_Element.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercises/PB01.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercises/PB02.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercises/PB03.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercises/PB04.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercises/PB05.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercises/PB06.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercises/PB07.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercises/PB08.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercises/PB09.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercises/PB10.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab/PB01.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab/PB02.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab/PB03.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab/PB04.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab/PB05.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab/PB06.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab/PB07.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab/PB08.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab/PB09.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab/PB10.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LK8dx3kaEu8g5cZT2nQ8yNqiIH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/idaki/Documents/GitHub/Softuni-/Fundamentals/Arrays/src"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Lab" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="868c0303-83a6-4233-8ae0-364860b8c2af" name="Changes" comment="" />
+      <created>1675608507117</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675608507117</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
