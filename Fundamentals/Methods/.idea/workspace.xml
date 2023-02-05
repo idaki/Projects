@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ecb11d0-bb81-4c6c-b980-834992f2306a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Exercises/PB10_Top_Number.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exercises/PB04_Password_Validator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Methods/Exercises/PB10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exercises/PB09.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exercises/PB10.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Methods/Exercises/PB04.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exercises/PB04.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,9 +45,9 @@
       <recent name="Exercises" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PB10_Top_Number">
-    <configuration name="PB06_Middle_Characters" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Exercises.PB06_Middle_Characters" />
+  <component name="RunManager" selected="Application.PB04_Password_Validator">
+    <configuration name="PB04_Password_Validator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.PB04_Password_Validator" />
       <module name="Methods" />
       <extension name="coverage">
         <pattern>
@@ -114,11 +113,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PB04_Password_Validator" />
         <item itemvalue="Application.PB10_Top_Number" />
         <item itemvalue="Application.TopNumber" />
         <item itemvalue="Application.PB08_Factorial_Division" />
         <item itemvalue="Application.PB07_NxN_Matrix" />
-        <item itemvalue="Application.PB06_Middle_Characters" />
       </list>
     </recent_temporary>
   </component>
@@ -156,6 +155,20 @@
           <url>file://$PROJECT_DIR$/src/Exercises/PB08_Factorial_Division.java</url>
           <line>10</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/PB04_Password_Validator.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Exercises/PB04_Password_Validator.java</url>
+          <line>45</line>
+          <properties class="Exercises.PB04_Password_Validator" method="confirmDigitNumberCount">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
