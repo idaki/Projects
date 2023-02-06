@@ -2,22 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd50a077-8f1f-490d-868f-7964c86ba018" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Lab/PB02_Print_Numbers_in_Reverse_Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Arrays/Lab/PB02.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Arrays/Lab/PB03.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Arrays/Lab/PB04.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Arrays/Lab/PB05.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Arrays/Lab/PB05.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Arrays/Lab/PB06.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Arrays/Lab/PB06.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Arrays/Lab/PB07.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Arrays/Lab/PB07.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Arrays/Lab/PB08.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Arrays/Lab/PB08.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab/PB02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab/PB04_Reverse_an_Array_of_Strings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab/PB03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab/PB03_Sum_Even_Numbers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab/PB04.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab/PB05.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab/PB05.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab/PB06.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab/PB06.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab/PB07.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab/PB07.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab/PB08.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab/PB08.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Arrays/Lab/PB05.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Arrays/Lab/PB06.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Arrays/Lab/PB07.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab/PB05.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab/PB06_Equal_Arrays.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab/PB06.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab/PB05_Even_and_Odd_Subtraction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab/PB07.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab/PB07_Condense_Array_to_Number.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,33 +50,7 @@
       <recent name="Lab" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PB04_Reverse_an_Array_of_Strings">
-    <configuration name="PB01_Day_of_Week" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB01_Day_of_Week" />
-      <module name="Arrays" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Lab.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PB02_Print_Numbers_in_Reverse_Order" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB02_Print_Numbers_in_Reverse_Order" />
-      <module name="Arrays" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Lab.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.PB07_Condense_Array_to_Number">
     <configuration name="PB03_Sum_Even_Numbers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Lab.PB03_Sum_Even_Numbers" />
       <module name="Arrays" />
@@ -112,12 +77,52 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PB05_Even_and_Odd_Subtraction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab.PB05_Even_and_Odd_Subtraction" />
+      <module name="Arrays" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Lab.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PB06_Equal_Arrays" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab.PB06_Equal_Arrays" />
+      <module name="Arrays" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Lab.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PB07_Condense_Array_to_Number" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab.PB07_Condense_Array_to_Number" />
+      <module name="Arrays" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Lab.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PB07_Condense_Array_to_Number" />
+        <item itemvalue="Application.PB06_Equal_Arrays" />
+        <item itemvalue="Application.PB05_Even_and_Odd_Subtraction" />
         <item itemvalue="Application.PB04_Reverse_an_Array_of_Strings" />
         <item itemvalue="Application.PB03_Sum_Even_Numbers" />
-        <item itemvalue="Application.PB02_Print_Numbers_in_Reverse_Order" />
-        <item itemvalue="Application.PB01_Day_of_Week" />
       </list>
     </recent_temporary>
   </component>
@@ -155,6 +160,16 @@
           <url>file://$PROJECT_DIR$/src/Lab/PB04_Reverse_an_Array_of_Strings.java</url>
           <line>11</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Lab/PB05_Even_and_Odd_Subtraction.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Lab/PB07_Condense_Array_to_Number.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
