@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd50a077-8f1f-490d-868f-7964c86ba018" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Arrays/Lab/PB05.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Arrays/Lab/PB06.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Arrays/Lab/PB07.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab/PB05.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab/PB06_Equal_Arrays.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab/PB06.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab/PB05_Even_and_Odd_Subtraction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab/PB07.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab/PB07_Condense_Array_to_Number.java" afterDir="false" />
-    </list>
+    <list default="true" id="fd50a077-8f1f-490d-868f-7964c86ba018" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
