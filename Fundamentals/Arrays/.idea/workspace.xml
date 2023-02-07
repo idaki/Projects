@@ -26,29 +26,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/idaki/Documents/GitHub/Softuni-/Fundamentals/Arrays/src/Exercises&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/idaki.VENLO/Documents/GitHub/Softuni-/Fundamentals/Arrays"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Exercises" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Exercises" />
       <recent name="Lab" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PB07_Condense_Array_to_Number">
-    <configuration name="PB03_Sum_Even_Numbers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB03_Sum_Even_Numbers" />
+  <component name="RunManager" selected="Application.PB05_Top_Integers">
+    <configuration name="PB01_Train" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.PB01_Train" />
       <module name="Arrays" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -56,12 +57,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PB04_Reverse_an_Array_of_Strings" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB04_Reverse_an_Array_of_Strings" />
+    <configuration name="PB02Common_Elements" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.PB02Common_Elements" />
       <module name="Arrays" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -69,12 +70,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PB05_Even_and_Odd_Subtraction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB05_Even_and_Odd_Subtraction" />
+    <configuration name="PB03_Zig_Zag_Arrays" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.PB03_Zig_Zag_Arrays" />
       <module name="Arrays" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -82,12 +83,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PB06_Equal_Arrays" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB06_Equal_Arrays" />
+    <configuration name="PB04_Array_Rotation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.PB04_Array_Rotation" />
       <module name="Arrays" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -95,12 +96,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PB07_Condense_Array_to_Number" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB07_Condense_Array_to_Number" />
+    <configuration name="PB05_Top_Integers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.PB05_Top_Integers" />
       <module name="Arrays" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -110,11 +111,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PB07_Condense_Array_to_Number" />
-        <item itemvalue="Application.PB06_Equal_Arrays" />
-        <item itemvalue="Application.PB05_Even_and_Odd_Subtraction" />
-        <item itemvalue="Application.PB04_Reverse_an_Array_of_Strings" />
-        <item itemvalue="Application.PB03_Sum_Even_Numbers" />
+        <item itemvalue="Application.PB05_Top_Integers" />
+        <item itemvalue="Application.PB04_Array_Rotation" />
+        <item itemvalue="Application.PB03_Zig_Zag_Arrays" />
+        <item itemvalue="Application.PB02Common_Elements" />
+        <item itemvalue="Application.PB01_Train" />
       </list>
     </recent_temporary>
   </component>
@@ -162,6 +163,21 @@
           <url>file://$PROJECT_DIR$/src/Lab/PB07_Condense_Array_to_Number.java</url>
           <line>13</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/PB01_Train.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/PB04_Array_Rotation.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/PB05_Top_Integers.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
