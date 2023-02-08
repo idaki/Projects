@@ -86,8 +86,9 @@ public class PB10_Treasure_Hunt {
         for (String element : chestInventory) {
             sumLength += element.length();
         }
-
+       if (stolenItemsPrint.length()>0){
         System.out.println(stolenItemsPrint);
+       }
 
         if (chestInventory.length > 0) {
             double averageTreasureGain = sumLength * 1.0 / chestInventory.length;
