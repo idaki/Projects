@@ -44,13 +44,13 @@
       <recent name="Lab" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PB05">
-    <configuration name="PB02_Gaus_trick" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB02_Gaus_trick" />
+  <component name="RunManager" selected="Application.PB05_Bomb_Numbers">
+    <configuration name="PB01_Train" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.PB01_Train" />
       <module name="Lists" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -58,12 +58,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PB03_Merge_Strings" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB03_Merge_Strings" />
+    <configuration name="PB02_Change_List" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.PB02_Change_List" />
       <module name="Lists" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -71,12 +71,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PB03_Merging_Lists" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB03_Merging_Lists" />
+    <configuration name="PB03_House_Party" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.PB03_House_Party" />
       <module name="Lists" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -84,12 +84,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PB04_List_Manipulation_Basics" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB04_List_Manipulation_Basics" />
+    <configuration name="PB04_List_Operations" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.PB04_List_Operations" />
       <module name="Lists" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -97,12 +97,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PB05" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB05" />
+    <configuration name="PB05_Bomb_Numbers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.PB05_Bomb_Numbers" />
       <module name="Lists" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -112,11 +112,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PB05" />
-        <item itemvalue="Application.PB04_List_Manipulation_Basics" />
-        <item itemvalue="Application.PB03_Merge_Strings" />
-        <item itemvalue="Application.PB02_Gaus_trick" />
-        <item itemvalue="Application.PB03_Merging_Lists" />
+        <item itemvalue="Application.PB05_Bomb_Numbers" />
+        <item itemvalue="Application.PB04_List_Operations" />
+        <item itemvalue="Application.PB03_House_Party" />
+        <item itemvalue="Application.PB02_Change_List" />
+        <item itemvalue="Application.PB01_Train" />
       </list>
     </recent_temporary>
   </component>
@@ -198,6 +198,41 @@
           <url>file://$PROJECT_DIR$/src/Lab/PB05.java</url>
           <line>54</line>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Lab/PB06.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Lab/PB07.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/PB02_Change_List.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/PB02_Change_List.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/PB03_House_Party.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/PB04_List_Operations.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/PB05_Bomb_Numbers.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
