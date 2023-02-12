@@ -21,14 +21,14 @@ public class PB04_List_Operations {
             } else if (command.contains("Insert")) {
                 int element = Integer.parseInt(command.split("\\s+")[1]);
                 int index = Integer.parseInt(command.split("\\s+")[2]);
-                if (index >= nums.size()) {
+                if (index > nums.size()-1 || index < 0 ) {
                     System.out.println("Invalid index");
                     continue;
                 }
                 nums.add(index, element);
             } else if (command.contains("Remove")) {
                 int element = Integer.parseInt(command.split("\\s+")[1]);
-                if (element > nums.size()) {
+                if (element > nums.size()-1 || element<0) {
                     System.out.println("Invalid index");
                     continue;
                 }
@@ -42,7 +42,7 @@ public class PB04_List_Operations {
             } else if (command.contains("Shift right")) {
                 int count = Integer.parseInt(command.split("\\s+")[2]);
                 for (int i = 0; i < count; i++) {
-                    nums.add(0, nums.size() - 1);
+                    nums.add(0, nums.get(nums.size() - 1));
                     nums.remove(nums.size() - 1);
                 }
             }

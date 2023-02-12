@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd50a077-8f1f-490d-868f-7964c86ba018" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exercises/PB10_Treasure_Hunt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/PB10_Treasure_Hunt.java" afterDir="false" />
-    </list>
+    <list default="true" id="fd50a077-8f1f-490d-868f-7964c86ba018" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +31,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/idaki/Documents/GitHub/Softuni-/Fundamentals/Arrays"
+    "last_opened_file_path": "C:/Users/idaki.VENLO/Documents/GitHub/Softuni-/Fundamentals/Lists"
   }
 }]]></component>
   <component name="RecentsManager">
