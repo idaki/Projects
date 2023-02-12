@@ -44,20 +44,7 @@
       <recent name="Lab" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PB05_Bomb_Numbers">
-    <configuration name="PB02_Change_List" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Exercises.PB02_Change_List" />
-      <module name="Lists" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Exercises.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.PB07_Append_Arrays">
     <configuration name="PB03_House_Party" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Exercises.PB03_House_Party" />
       <module name="Lists" />
@@ -110,13 +97,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PB07_Append_Arrays" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.PB07_Append_Arrays" />
+      <module name="Lists" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Exercises.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PB07_Append_Arrays" />
         <item itemvalue="Application.PB05_Bomb_Numbers" />
         <item itemvalue="Application.PB04_List_Operations" />
         <item itemvalue="Application.PB06_Cards_Game" />
         <item itemvalue="Application.PB03_House_Party" />
-        <item itemvalue="Application.PB02_Change_List" />
       </list>
     </recent_temporary>
   </component>
@@ -238,6 +238,11 @@
           <url>file://$PROJECT_DIR$/src/Exercises/PB04_List_Operations.java</url>
           <line>15</line>
           <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/PB07_Append_Arrays.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
