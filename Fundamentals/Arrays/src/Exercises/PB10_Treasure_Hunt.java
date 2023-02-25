@@ -11,6 +11,9 @@ public class PB10_Treasure_Hunt {
 
         while (!"Yohoho!".equals(commandString = scanner.nextLine())) {
             String[] commandArray = commandString.split(" ");
+
+
+
             switch (commandArray[0]) {
                 case "Loot":
                     for (int i = 1; i <= commandArray.length - 1; i++) {
@@ -37,20 +40,21 @@ public class PB10_Treasure_Hunt {
                 case "Drop":
 
                     int actionNumber = Integer.parseInt(commandArray[1]);
-                    if (actionNumber < 0 || actionNumber> chestInventory.length) {
-                        continue;
-                    }
+                    if (actionNumber >= 0 && actionNumber<= chestInventory.length-1) {
 
-                    String tempElementToMove = chestInventory[actionNumber];
-                    for (int index = actionNumber; index < chestInventory.length - 1; index++) {
-                        chestInventory[index] = chestInventory[index + 1];
-                    }
-                    chestInventory[chestInventory.length - 1] = tempElementToMove;
 
+                        String tempElementToMove = chestInventory[actionNumber];
+                        for (int index = actionNumber; index < chestInventory.length - 1; index++) {
+                            chestInventory[index] = chestInventory[index + 1];
+                        }
+                        chestInventory[chestInventory.length - 1] = tempElementToMove;
+                    }
                     break;
                 case "Steal":
                     int stolenItemsNumber = Integer.parseInt(commandArray[1]);
-
+                    if (stolenItemsNumber <0){
+                        continue;
+                    }
                     if (stolenItemsNumber > chestInventory.length){
                         stolenItemsNumber = chestInventory.length;
                     }
@@ -90,7 +94,7 @@ public class PB10_Treasure_Hunt {
         System.out.println(stolenItemsPrint);
        }
 
-        if (chestInventory.length > 0) {
+        if (chestInventory.length > 0&& sumLength>0) {
             double averageTreasureGain = sumLength * 1.0 / chestInventory.length;
             System.out.printf("Average treasure gain: %.2f pirate credits.", averageTreasureGain);
         } else  {

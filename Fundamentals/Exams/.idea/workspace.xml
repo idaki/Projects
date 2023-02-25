@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a5112c86-9f39-4e5b-be43-682b0d074efc" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LggpDU19C6kVNWMd7FiWJotcO5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/idaki.VENLO/Documents/GitHub/Softuni-/Fundamentals/Exams",
+    "settings.editor.selected.configurable": "editing.templates"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="E05_Programming_Fundamentals_Mid_Exam" />
+      <recent name="E03_Programming_Fundamentals_Mid_Exam_Retake" />
+      <recent name="E04_Programming_Fundamentals_Mid_Exam" />
+      <recent name="E01Programming_Fundamentals_Mid_Exam_Retake" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.E01Programming_Fundamentals_Mid_Exam_Retake.PB02">
+    <configuration name="E01Programming_Fundamentals_Mid_Exam_Retake.PB02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E01Programming_Fundamentals_Mid_Exam_Retake.PB02" />
+      <module name="Exams" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="E01Programming_Fundamentals_Mid_Exam_Retake.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="E03_Programming_Fundamentals_Mid_Exam_Retake.PB03" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E03_Programming_Fundamentals_Mid_Exam_Retake.PB03" />
+      <module name="Exams" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="E03_Programming_Fundamentals_Mid_Exam_Retake.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PB02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E05_Programming_Fundamentals_Mid_Exam.PB02" />
+      <module name="Exams" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="E05_Programming_Fundamentals_Mid_Exam.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PB03" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E05_Programming_Fundamentals_Mid_Exam.PB03" />
+      <module name="Exams" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="E05_Programming_Fundamentals_Mid_Exam.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test" />
+      <module name="Exams" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.E01Programming_Fundamentals_Mid_Exam_Retake.PB02" />
+        <item itemvalue="Application.PB03" />
+        <item itemvalue="Application.PB02" />
+        <item itemvalue="Application.E03_Programming_Fundamentals_Mid_Exam_Retake.PB03" />
+        <item itemvalue="Application.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a5112c86-9f39-4e5b-be43-682b0d074efc" name="Changes" comment="" />
+      <created>1676298322312</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676298322312</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/E01Programming_Fundamentals_Mid_Exam_Retake/PB03_Memory_game.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/E05_Programming_Fundamentals_Mid_Exam/PB03.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
