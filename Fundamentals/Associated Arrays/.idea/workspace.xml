@@ -43,46 +43,7 @@
       <recent name="Lab" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.p05_Courses">
-    <configuration name="p01_CountCharsinaString" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Exercises.p01_CountCharsinaString" />
-      <module name="Associated Arrays" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Exercises.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="p02AMinerTask" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Exercises.p02AMinerTask" />
-      <module name="Associated Arrays" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Exercises.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="p03" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Exercises.p03" />
-      <module name="Associated Arrays" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Exercises.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.p08CompanyUsers">
     <configuration name="p04_SoftUniParking" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Exercises.p04_SoftUniParking" />
       <module name="Associated Arrays" />
@@ -109,12 +70,52 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="p06StudentAcademy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.p06StudentAcademy" />
+      <module name="Associated Arrays" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Exercises.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="p07LegendaryFarming" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.p07LegendaryFarming" />
+      <module name="Associated Arrays" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Exercises.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="p08CompanyUsers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.p08CompanyUsers" />
+      <module name="Associated Arrays" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Exercises.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.p08CompanyUsers" />
+        <item itemvalue="Application.p07LegendaryFarming" />
+        <item itemvalue="Application.p06StudentAcademy" />
         <item itemvalue="Application.p05_Courses" />
         <item itemvalue="Application.p04_SoftUniParking" />
-        <item itemvalue="Application.p02AMinerTask" />
-        <item itemvalue="Application.p01_CountCharsinaString" />
       </list>
     </recent_temporary>
   </component>
@@ -177,6 +178,29 @@
           <url>file://$PROJECT_DIR$/src/Exercises/p05_Courses.java</url>
           <line>10</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/p06StudentAcademy.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/p07LegendaryFarming.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/p08CompanyUsers.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/p08CompanyUsers.java</url>
+          <line>32</line>
+          <properties>
+            <option name="lambda-ordinal" value="1" />
+          </properties>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
