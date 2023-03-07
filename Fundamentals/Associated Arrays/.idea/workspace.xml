@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4640cac5-c706-4ee1-b11d-2a72ff06b34c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Associated Arrays/Exercises/p05.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exercises/p05.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/p05_Courses.java" afterDir="false" />
-    </list>
+    <list default="true" id="4640cac5-c706-4ee1-b11d-2a72ff06b34c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
