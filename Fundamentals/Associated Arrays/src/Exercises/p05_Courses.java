@@ -20,9 +20,9 @@ public class p05_Courses {
         coursesMap.get(courseName).add(studentName);
         }
         coursesMap.entrySet()
-        .forEach(entry-> {
-                    System.out.println(entry.getKey()+ ": " + entry.getValue().size());
-                    entry.getValue().forEach(studentName -> System.out.println("--"+studentName));
+        .forEach(company-> {
+                    System.out.println(company.getKey()+ ": " + company.getValue().size());
+                    company.getValue().forEach(studentName -> System.out.println("-- "+studentName));
                 } );
 
 
