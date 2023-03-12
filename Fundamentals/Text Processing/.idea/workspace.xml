@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b40d8564-9666-4f5f-8c0f-b1d5709dc295" name="Changes" comment="" />
+    <list default="true" id="b40d8564-9666-4f5f-8c0f-b1d5709dc295" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Exercises/MultiplyBigNumbers_05.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exercises/p01_ValidUsernames.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exercises/p02Character_Multiplier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exercises/p03_ExtractFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exercises/p04_CaesarCipher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exercises/p05_MultiplyBigNumber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exercises/p06_ReplaceRepeatingChars.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exercises/p07.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Associated Arrays/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Associated Arrays/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Associated Arrays/out/production/Associated Arrays/Exercises/p09_ForceBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Associated Arrays/out/production/Associated Arrays/Exercises/p09_ForceBook.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Associated Arrays/src/Exercises/p09_ForceBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Associated Arrays/src/Exercises/p09_ForceBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Text Processing/Lab/P05DigitsLettersAndOther.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Text Processing/Lab/P05DigitsLettersAndOther.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,30 +36,34 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2MmJZAxuhdBLeZDPKVTnlh41e6X" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "settings.editor.selected.configurable": "configurable.group.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/idaki/Documents/GitHub/Softuni-/Fundamentals/Text Processing&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Exercises" />
       <recent name="Lab" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.P05DigitsLettersAndOther">
-    <configuration name="P01ReverseStrings" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.P01ReverseStrings" />
+  <component name="RunManager" selected="Application.p05_MultiplyBigNumber">
+    <configuration name="MultiplyBigNumbers_05" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.MultiplyBigNumbers_05" />
       <module name="Text Processing" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -52,12 +71,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="P02_RepeatStrings" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.P02_RepeatStrings" />
+    <configuration name="p04_CaesarCipher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.p04_CaesarCipher" />
       <module name="Text Processing" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -65,12 +84,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="P03_Substring" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.P03_Substring" />
+    <configuration name="p05_MultiplyBigNumber" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.p05_MultiplyBigNumber" />
       <module name="Text Processing" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -78,12 +97,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="P04_TextFilter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.P04_TextFilter" />
+    <configuration name="p06_ReplaceRepeatingChars" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.p06_ReplaceRepeatingChars" />
       <module name="Text Processing" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -91,12 +110,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="P05DigitsLettersAndOther" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.P05DigitsLettersAndOther" />
+    <configuration name="p07" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.p07" />
       <module name="Text Processing" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -106,11 +125,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.P05DigitsLettersAndOther" />
-        <item itemvalue="Application.P04_TextFilter" />
-        <item itemvalue="Application.P03_Substring" />
-        <item itemvalue="Application.P02_RepeatStrings" />
-        <item itemvalue="Application.P01ReverseStrings" />
+        <item itemvalue="Application.p05_MultiplyBigNumber" />
+        <item itemvalue="Application.MultiplyBigNumbers_05" />
+        <item itemvalue="Application.p07" />
+        <item itemvalue="Application.p06_ReplaceRepeatingChars" />
+        <item itemvalue="Application.p04_CaesarCipher" />
       </list>
     </recent_temporary>
   </component>
@@ -159,14 +178,34 @@
           <line>8</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/p02Character_Multiplier.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/p03_ExtractFile.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/p05_MultiplyBigNumber.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/p07.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Text_Processing$P04.ic" NAME="P04 Coverage Results" MODIFIED="1678373871367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Text_Processing$P01ReverseStrings.ic" NAME="P01ReverseStrings Coverage Results" MODIFIED="1678368526889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Lab.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Text_Processing$P01ReverseStrings.ic" NAME="P01ReverseStrings Coverage Results" MODIFIED="1678368526889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Text_Processing$P04.ic" NAME="P04 Coverage Results" MODIFIED="1678373871367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Lab.*</FILTER>
     </SUITE>
   </component>

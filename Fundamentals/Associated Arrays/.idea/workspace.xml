@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4640cac5-c706-4ee1-b11d-2a72ff06b34c" name="Changes" comment="" />
+    <list default="true" id="4640cac5-c706-4ee1-b11d-2a72ff06b34c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Text Processing/src/Exercises/p01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Text Processing/src/Exercises/p02.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Text Processing/src/Exercises/p03.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Text Processing/src/Exercises/p04.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Text Processing/src/Exercises/p05.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Text Processing/src/Exercises/p06.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Associated Arrays/Exercises/p09_ForceBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Associated Arrays/Exercises/p09_ForceBook.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exercises/p09_ForceBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/p09_ForceBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Text Processing/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Text Processing/.idea/misc.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -204,13 +215,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Exercises/p09_ForceBook.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Exercises/p09_ForceBook.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="18" />
+          <line>10</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
