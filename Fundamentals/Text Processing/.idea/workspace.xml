@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b40d8564-9666-4f5f-8c0f-b1d5709dc295" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Exercises/MultiplyBigNumbers_05.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Exercises/p01_ValidUsernames.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Exercises/p02Character_Multiplier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Exercises/p03_ExtractFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Exercises/p04_CaesarCipher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Exercises/p05_MultiplyBigNumber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Exercises/p06_ReplaceRepeatingChars.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Exercises/p07.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Associated Arrays/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Associated Arrays/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Associated Arrays/out/production/Associated Arrays/Exercises/p09_ForceBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Associated Arrays/out/production/Associated Arrays/Exercises/p09_ForceBook.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Associated Arrays/src/Exercises/p09_ForceBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Associated Arrays/src/Exercises/p09_ForceBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Text Processing/Lab/P05DigitsLettersAndOther.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Text Processing/Lab/P05DigitsLettersAndOther.class" afterDir="false" />
-    </list>
+    <list default="true" id="b40d8564-9666-4f5f-8c0f-b1d5709dc295" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,22 +42,9 @@
       <recent name="Lab" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.p05_MultiplyBigNumber">
+  <component name="RunManager" selected="Application.p08">
     <configuration name="MultiplyBigNumbers_05" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Exercises.MultiplyBigNumbers_05" />
-      <module name="Text Processing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Exercises.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="p04_CaesarCipher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Exercises.p04_CaesarCipher" />
       <module name="Text Processing" />
       <extension name="coverage">
         <pattern>
@@ -123,13 +95,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="p08" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.p08" />
+      <module name="Text Processing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Exercises.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.p08" />
         <item itemvalue="Application.p05_MultiplyBigNumber" />
         <item itemvalue="Application.MultiplyBigNumbers_05" />
         <item itemvalue="Application.p07" />
         <item itemvalue="Application.p06_ReplaceRepeatingChars" />
-        <item itemvalue="Application.p04_CaesarCipher" />
       </list>
     </recent_temporary>
   </component>
@@ -198,14 +183,19 @@
           <line>10</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/p08.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Text_Processing$P01ReverseStrings.ic" NAME="P01ReverseStrings Coverage Results" MODIFIED="1678368526889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Text_Processing$P04.ic" NAME="P04 Coverage Results" MODIFIED="1678373871367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Lab.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Text_Processing$P04.ic" NAME="P04 Coverage Results" MODIFIED="1678373871367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Text_Processing$P01ReverseStrings.ic" NAME="P01ReverseStrings Coverage Results" MODIFIED="1678368526889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Lab.*</FILTER>
     </SUITE>
   </component>
