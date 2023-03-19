@@ -192,10 +192,10 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Text_Processing$P04.ic" NAME="P04 Coverage Results" MODIFIED="1678373871367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Text_Processing$P01ReverseStrings.ic" NAME="P01ReverseStrings Coverage Results" MODIFIED="1678368526889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Lab.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Text_Processing$P01ReverseStrings.ic" NAME="P01ReverseStrings Coverage Results" MODIFIED="1678368526889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Text_Processing$P04.ic" NAME="P04 Coverage Results" MODIFIED="1678373871367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Lab.*</FILTER>
     </SUITE>
   </component>
