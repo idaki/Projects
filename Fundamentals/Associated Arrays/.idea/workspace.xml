@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4640cac5-c706-4ee1-b11d-2a72ff06b34c" name="Changes" comment="" />
+    <list default="true" id="4640cac5-c706-4ee1-b11d-2a72ff06b34c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/MoreExercises/p01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MoreExercises/p02.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MoreExercises/p03.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MoreExercises/p04.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MoreExercises/p05.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lists/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lists/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,17 +47,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="MoreExercises" />
       <recent name="Exercises" />
       <recent name="Lab" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.p09_ForceBook">
-    <configuration name="p05_Courses" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Exercises.p05_Courses" />
+  <component name="RunManager" selected="Application.p01">
+    <configuration name="p01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MoreExercises.p01" />
       <module name="Associated Arrays" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Exercises.*" />
+          <option name="PATTERN" value="MoreExercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -111,11 +120,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.p01" />
         <item itemvalue="Application.p09_ForceBook" />
         <item itemvalue="Application.p08CompanyUsers" />
         <item itemvalue="Application.p07LegendaryFarming" />
         <item itemvalue="Application.p06StudentAcademy" />
-        <item itemvalue="Application.p05_Courses" />
       </list>
     </recent_temporary>
   </component>
@@ -206,6 +215,11 @@
           <url>file://$PROJECT_DIR$/src/Exercises/p09_ForceBook.java</url>
           <line>10</line>
           <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MoreExercises/p01.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
