@@ -46,9 +46,22 @@
       <recent name="E01_Programming_Fundamentals_Final_Exam_Retake" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.p01">
-    <configuration name="E02_Programming_Fundamentals_Final_Exam.p01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="E02_Programming_Fundamentals_Final_Exam.p01" />
+  <component name="RunManager" selected="Application.E02_Programming_Fundamentals_Final_Exam.p03">
+    <configuration name="E02_Programming_Fundamentals_Final_Exam.p02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E02_Programming_Fundamentals_Final_Exam.p02" />
+      <module name="ExampsPrep" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="E02_Programming_Fundamentals_Final_Exam.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="E02_Programming_Fundamentals_Final_Exam.p03" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E02_Programming_Fundamentals_Final_Exam.p03" />
       <module name="ExampsPrep" />
       <extension name="coverage">
         <pattern>
@@ -73,10 +86,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="p02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E01_Programming_Fundamentals_Final_Exam_Retake.p02" />
+      <module name="ExampsPrep" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="E01_Programming_Fundamentals_Final_Exam_Retake.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="p03" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E01_Programming_Fundamentals_Final_Exam_Retake.p03" />
+      <module name="ExampsPrep" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="E01_Programming_Fundamentals_Final_Exam_Retake.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.E02_Programming_Fundamentals_Final_Exam.p03" />
+        <item itemvalue="Application.E02_Programming_Fundamentals_Final_Exam.p02" />
+        <item itemvalue="Application.p03" />
+        <item itemvalue="Application.p02" />
         <item itemvalue="Application.p01" />
-        <item itemvalue="Application.E02_Programming_Fundamentals_Final_Exam.p01" />
       </list>
     </recent_temporary>
   </component>
@@ -115,7 +157,34 @@
           <line>26</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/E01_Programming_Fundamentals_Final_Exam_Retake/p02.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/E01_Programming_Fundamentals_Final_Exam_Retake/p03.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/E02_Programming_Fundamentals_Final_Exam/p02.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="plantRarityMap" />
+        <watch expression="((LinkedHashMap)plantRarityMap).entrySet().toArray()[1]" custom="java.util.LinkedHashMap" />
+        <watch expression="plantRatingMap" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ExampsPrep$E02_Programming_Fundamentals_Final_Exam_p03.ic" NAME="E02_Programming_Fundamentals_Final_Exam.p03 Coverage Results" MODIFIED="1679671236369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>E02_Programming_Fundamentals_Final_Exam.*</FILTER>
+    </SUITE>
   </component>
 </project>
