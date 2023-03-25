@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5112c86-9f39-4e5b-be43-682b0d074efc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../ExampsPrep/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ExampsPrep/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ExampsPrep/out/production/ExampsPrep/E03/p01.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ExampsPrep/out/production/ExampsPrep/E03/p01.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ExampsPrep/src/E03/p01.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ExampsPrep/src/E03/p01.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exams/E03_Programming_Fundamentals_Mid_Exam_Retake/PB02.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exams/E03_Programming_Fundamentals_Mid_Exam_Retake/PB02.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/E03_Programming_Fundamentals_Mid_Exam_Retake/PB02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/E03_Programming_Fundamentals_Mid_Exam_Retake/PB02.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
