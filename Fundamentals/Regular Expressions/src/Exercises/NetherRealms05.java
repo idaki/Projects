@@ -8,8 +8,12 @@ public class NetherRealms05 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+<<<<<<< HEAD
         String regexSpit = ", ";
         String [] input = scanner.nextLine().split(regexSpit);
+=======
+        String [] input = scanner.nextLine().split(",\\s+");
+>>>>>>> 651155ccf0b4a6d50cdd406ab87140f9f3a4035f
 
         int health = 0;
         int numMultiplications = 0;

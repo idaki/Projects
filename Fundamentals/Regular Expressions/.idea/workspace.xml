@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="ecef870d-0b3b-4a66-8c67-3dfaa52277cd" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/Exercises/NetherRealms05.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -9,6 +10,9 @@
       <change beforePath="$PROJECT_DIR$/src/Exercises/p04.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/p04.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Exercises/p05.java" beforeDir="false" />
     </list>
+=======
+    <list default="true" id="ecef870d-0b3b-4a66-8c67-3dfaa52277cd" name="Changes" comment="" />
+>>>>>>> 651155ccf0b4a6d50cdd406ab87140f9f3a4035f
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,12 +39,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/idaki/Documents/GitHub/Softuni-/Fundamentals/Regular Expressions&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/idaki.VENLO/Documents/GitHub/Softuni-/Fundamentals/Regular Expressions",
+    "settings.editor.selected.configurable": "configurable.group.appearance"
+>>>>>>> 651155ccf0b4a6d50cdd406ab87140f9f3a4035f
   }
 }</component>
   <component name="RecentsManager">
@@ -50,6 +63,35 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.NetherRealms05">
+<<<<<<< HEAD
+=======
+    <configuration name="Exercises.p01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.p01" />
+      <module name="Regular Expressions" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Exercises.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Exercises.p02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.p02" />
+      <module name="Regular Expressions" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Exercises.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+>>>>>>> 651155ccf0b4a6d50cdd406ab87140f9f3a4035f
     <configuration name="Exercises.p03" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Exercises.p03" />
       <module name="Regular Expressions" />
@@ -63,12 +105,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="Furniture" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="RegularExpressionsExercise.Furniture" />
       <module name="Regular Expressions" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="RegularExpressionsExercise.*" />
+=======
+    <configuration name="NetherRealms05" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ProgrammingFundamentals.Regex.Exercise.NetherRealms05" />
+      <module name="Regular Expressions" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ProgrammingFundamentals.Regex.Exercise.*" />
+>>>>>>> 651155ccf0b4a6d50cdd406ab87140f9f3a4035f
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -118,10 +169,17 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.NetherRealms05" />
+<<<<<<< HEAD
         <item itemvalue="Application.test" />
         <item itemvalue="Application.Furniture" />
         <item itemvalue="Application.p04" />
         <item itemvalue="Application.Exercises.p03" />
+=======
+        <item itemvalue="Application.Exercises.p03" />
+        <item itemvalue="Application.Exercises.p02" />
+        <item itemvalue="Application.Exercises.p01" />
+        <item itemvalue="Application.p03" />
+>>>>>>> 651155ccf0b4a6d50cdd406ab87140f9f3a4035f
       </list>
     </recent_temporary>
   </component>
