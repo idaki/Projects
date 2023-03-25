@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4374081-07f7-41d4-b39b-6689442f2964" name="Changes" comment="" />
+    <list default="true" id="b4374081-07f7-41d4-b39b-6689442f2964" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/E03/p01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/E03/p01.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +33,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/idaki.VENLO/Documents/GitHub/Softuni-/Fundamentals/ExampsPrep/src/E05&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/idaki/Documents/GitHub/Softuni-/Fundamentals/ExampsPrep&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   }
 }</component>
@@ -46,7 +49,7 @@
       <recent name="E01_Programming_Fundamentals_Final_Exam_Retake" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.E02_Programming_Fundamentals_Final_Exam.p03">
+  <component name="RunManager" selected="Application.E03.p01">
     <configuration name="E02_Programming_Fundamentals_Final_Exam.p02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="E02_Programming_Fundamentals_Final_Exam.p02" />
       <module name="ExampsPrep" />
@@ -73,12 +76,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="p01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="E01_Programming_Fundamentals_Final_Exam_Retake.p01" />
+    <configuration name="E03.p01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E03.p01" />
       <module name="ExampsPrep" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="E01_Programming_Fundamentals_Final_Exam_Retake.*" />
+          <option name="PATTERN" value="E03.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -114,11 +117,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.E03.p01" />
         <item itemvalue="Application.E02_Programming_Fundamentals_Final_Exam.p03" />
         <item itemvalue="Application.E02_Programming_Fundamentals_Final_Exam.p02" />
         <item itemvalue="Application.p03" />
         <item itemvalue="Application.p02" />
-        <item itemvalue="Application.p01" />
       </list>
     </recent_temporary>
   </component>
@@ -171,6 +174,11 @@
           <url>file://$PROJECT_DIR$/src/E02_Programming_Fundamentals_Final_Exam/p02.java</url>
           <line>18</line>
           <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/E03/p01.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
