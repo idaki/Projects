@@ -177,8 +177,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/E03/p01.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="25" />
+          <line>12</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
