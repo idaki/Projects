@@ -1,80 +1,90 @@
 package E03_Programming_Fundamentals_Mid_Exam_Retake;
 
-import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class PB03 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        List<Integer> targets = Arrays.stream(scanner.nextLine().split("\\s+"))
-                .map(Integer::parseInt).collect(Collectors.toList());
-        String command = "";
-        while (!"End".equals(command = scanner.nextLine())) {
-            List<String> commandList = Arrays.stream(command.split(" "))
-                    .collect(Collectors.toList());
-            if (commandList.contains("Shoot")) {
+        int n = Integer.parseInt(scanner.nextLine());
+        Map<String, Integer> mileageMap = new LinkedHashMap<>();
+        Map<String, Integer> fuelMap = new LinkedHashMap<>();
+        for (int i = 0; i < n; i++) {
+            String[] input = scanner.nextLine().split("\\|");
+            String car = input[0];
+            int mileage = Integer.parseInt(input[1]);
+            int fuel = Integer.parseInt(input[2]);
 
-                int index = Integer.parseInt(commandList.get(1));
-                int power = Integer.parseInt(commandList.get(2));
+            if (!mileageMap.containsKey(car)) {
+                mileageMap.put(car, mileage);
+            }
+            if (!fuelMap.containsKey(car)) {
+                fuelMap.put(car, fuel);
+            }
+        }
 
-                if (index < 0 || index > targets.size() - 1) {
-                    continue;
-                }
-                int newValue = targets.get(index) - power;
-                targets.set(index, newValue);
+        String commands = "";
 
-                if (newValue <= 0) {
-                    targets.remove(index);
-                }
+        while (!"Stop".equals(commands = scanner.nextLine())) {
+            String[] commandsArr = commands.split(" : ");
+            String car = commandsArr[1];
+            int availableFuel = fuelMap.get(car);
+            int mileage = mileageMap.get(car);
 
-            } else if (commandList.contains("Add")) {
-                int index = Integer.parseInt(commandList.get(1));
-                int value = Integer.parseInt(commandList.get(2));
-                if (index < 0 || index > targets.size() - 1) {
-                    System.out.println("Invalid placement!");
-                    continue;
-                }
-                targets.add(index, value);
+            if (commands.contains("Drive")) {
+                int distance = Integer.parseInt(commandsArr[2]);
+                int fuelRequired = Integer.parseInt(commandsArr[3]);
+                if (availableFuel >= fuelRequired) {
+                    availableFuel -= fuelRequired;
+                    fuelMap.replace(car, availableFuel);
+                    mileage += distance;
+                    mileageMap.replace(car,mileage);
+                    System.out.printf("%s driven for %d kilometers. %d liters of fuel consumed.%n"
+                            , car, distance, fuelRequired);
 
-            } else {
-                int index = Integer.parseInt(commandList.get(1));
-                int radius = Integer.parseInt(commandList.get(2));
-                int counter = 0;
-                if (index - radius < 0 || index+radius > targets.size() - 1) {
-                    System.out.println("Strike missed!");
-                    continue;
-                }
-
-                while (targets.size()-1>index){
-                    targets.remove(index+1);
-                    counter++;
-                    if (counter == radius){
-                        break;
+                    if (mileage >= 100000) {
+                        mileageMap.remove(car);
+                        fuelMap.remove(car);
+                        System.out.println("Time to sell the " + car+"!");
                     }
-                }
-                counter =0;
-                while (index-1>=0){
-                    targets.remove(index-1);
-                    index--;
-                    counter++;
-                    if (counter == radius){
-                        break;
-                    }
+
+
+                } else {
+                    System.out.println("Not enough fuel to make that ride");
                 }
 
-                targets.remove(index);
-
-
+            } else if (commands.contains("Refuel")) {
+                int refuelAmount = Integer.parseInt(commandsArr[2]);
+                availableFuel += refuelAmount; //74+40 = 114 - 75
+                if (availableFuel > 75) {
+                    availableFuel = 75;
+                    refuelAmount = 75- fuelMap.get(car);
+                }
+                fuelMap.replace(car,availableFuel);
+                System.out.printf("%s refueled with %d liters%n",car,refuelAmount);
+            } else if (commands.contains("Revert")) {
+                int revertedDistance = Integer.parseInt(commandsArr[2]);
+                mileage -= revertedDistance;
+                if (mileage<10000){
+                    mileageMap.replace(car,10000);
+                } else {
+                    mileageMap.replace(car,mileage);
+                    System.out.printf("%s mileage decreased by %d kilometers%n", car, revertedDistance);
+                }
 
             }
-
         }
-        String print =(targets.toString().replace("[","").replace("]","")
-                .replace(",",""));
-        print= print.replaceAll(" ","\\|");
-        System.out.println(print);
+
+        for (Map.Entry<String, Integer> element : mileageMap.entrySet()) {
+            String car = element.getKey();
+            int mileage = element.getValue();
+            int fuel = fuelMap.get(car);
+
+            System.out.printf("%s -> Mileage: %d kms, Fuel in the tank: %d lt.%n", car, mileage,fuel);
+        }
+
     }
 }
 
