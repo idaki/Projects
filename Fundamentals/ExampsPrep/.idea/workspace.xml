@@ -31,6 +31,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/idaki/Documents/GitHub/Softuni-/Fundamentals/ExampsPrep&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   }
 }</component>
@@ -46,13 +47,13 @@
       <recent name="E01_Programming_Fundamentals_Final_Exam_Retake" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.p03">
-    <configuration name="E02_Programming_Fundamentals_Final_Exam.p03" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="E02_Programming_Fundamentals_Final_Exam.p03" />
+  <component name="RunManager" selected="Application.E05.p03">
+    <configuration name="E05.p01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E05.p01" />
       <module name="ExampsPrep" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="E02_Programming_Fundamentals_Final_Exam.*" />
+          <option name="PATTERN" value="E05.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -60,12 +61,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="E03.p01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="E03.p01" />
+    <configuration name="E05.p02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E05.p02" />
       <module name="ExampsPrep" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="E03.*" />
+          <option name="PATTERN" value="E05.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -73,12 +74,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="p01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="E04.p01" />
+    <configuration name="E05.p03" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E05.p03" />
       <module name="ExampsPrep" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="E04.*" />
+          <option name="PATTERN" value="E05.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -114,11 +115,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.E05.p03" />
+        <item itemvalue="Application.E05.p02" />
+        <item itemvalue="Application.E05.p01" />
         <item itemvalue="Application.p03" />
         <item itemvalue="Application.p02" />
-        <item itemvalue="Application.p01" />
-        <item itemvalue="Application.E03.p01" />
-        <item itemvalue="Application.E02_Programming_Fundamentals_Final_Exam.p03" />
       </list>
     </recent_temporary>
   </component>
@@ -196,6 +197,26 @@
           <url>file://$PROJECT_DIR$/src/E04/p03.java</url>
           <line>17</line>
           <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/E05/p01.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/E05/p02.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/E05/p02.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/E05/p03.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
