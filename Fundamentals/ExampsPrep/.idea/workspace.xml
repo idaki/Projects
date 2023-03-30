@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4374081-07f7-41d4-b39b-6689442f2964" name="Changes" comment="" />
+    <list default="true" id="b4374081-07f7-41d4-b39b-6689442f2964" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/E04/p03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/E04/p03.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,12 +50,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.p03">
-    <configuration name="E02_Programming_Fundamentals_Final_Exam.p03" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="E02_Programming_Fundamentals_Final_Exam.p03" />
+    <configuration name="E03.p01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E03.p01" />
       <module name="ExampsPrep" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="E02_Programming_Fundamentals_Final_Exam.*" />
+          <option name="PATTERN" value="E03.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -60,12 +63,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="E03.p01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="E03.p01" />
+    <configuration name="E05.p03" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="E05.p03" />
       <module name="ExampsPrep" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="E03.*" />
+          <option name="PATTERN" value="E05.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,10 +118,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.p03" />
+        <item itemvalue="Application.E05.p03" />
         <item itemvalue="Application.p02" />
         <item itemvalue="Application.p01" />
         <item itemvalue="Application.E03.p01" />
-        <item itemvalue="Application.E02_Programming_Fundamentals_Final_Exam.p03" />
       </list>
     </recent_temporary>
   </component>
@@ -194,8 +197,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/E04/p03.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="45" />
+          <line>25</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/E04/p03.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -208,6 +216,9 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ExampsPrep$p03.ic" NAME="p03 Coverage Results" MODIFIED="1680203308645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>E04.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/ExampsPrep$E02_Programming_Fundamentals_Final_Exam_p03.ic" NAME="E02_Programming_Fundamentals_Final_Exam.p03 Coverage Results" MODIFIED="1679671236369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>E02_Programming_Fundamentals_Final_Exam.*</FILTER>
     </SUITE>
