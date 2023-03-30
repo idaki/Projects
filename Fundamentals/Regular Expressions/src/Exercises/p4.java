@@ -1,10 +1,13 @@
 package Exercises;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class p04 {
+public class p4 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = Integer.parseInt(scanner.nextLine());
@@ -22,23 +25,23 @@ public class p04 {
                 char currentChar = input.charAt(j);
                 text.append((char) (currentChar - count));
             }
-                String decodedInput= text.toString();
+            String decodedInput= text.toString();
 
-             //   String regexValidation = "\\@(?<name>[A-Z][a-z]+)[^\\@\\-\\!\\>\\:]:(?<population>[0-9]+)[^\\@\\-\\!\\>\\:]!(?<type>[AD])\\!\\-\\>(?<solierCount>\\d+)";
-            String regexValidation = "@(?<name>[A-Za-z]+)[^@\\-!>:]*:(?<population>[0-9]+)[^@\\-!>:]*!(?<type>[A|D])!->(?<solierCount>\\d+)";
+            //   String regexValidation = "\\@(?<name>[A-Z][a-z]+)[^\\@\\-\\!\\>\\:]:(?<population>[0-9]+)[^\\@\\-\\!\\>\\:]!(?<type>[AD])\\!\\-\\>(?<solierCount>\\d+)";
+            String regexValidation = "@(?<name>[A-Za-z]+)[^\\@\\-!>:]*:(?<population>[0-9]+)[^@\\-!>:]*!(?<type>[A|D])!->(?<solierCount>\\d+)";
             Pattern patternValidation = Pattern.compile(regexValidation);
-                Matcher matcherValidation = patternValidation.matcher(decodedInput);
+            Matcher matcherValidation = patternValidation.matcher(decodedInput);
 
-             while (matcherValidation.find()) {
-                    String typeAction = matcherValidation.group("type");
+            while (matcherValidation.find()) {
+                String typeAction = matcherValidation.group("type");
 
-                    if (typeAction.equals("A")) {
-                        attackedPlanetList.add(matcherValidation.group("name"));
-                    } else if (typeAction.equals("D")) {
-                        defendedPlanetList.add(matcherValidation.group("name"));
-                    }
+                if (typeAction.equals("A")) {
+                    attackedPlanetList.add(matcherValidation.group("name"));
+                } else if (typeAction.equals("D")) {
+                    defendedPlanetList.add(matcherValidation.group("name"));
                 }
             }
+        }
 
         Collections.sort(attackedPlanetList);
         Collections.sort(defendedPlanetList);
