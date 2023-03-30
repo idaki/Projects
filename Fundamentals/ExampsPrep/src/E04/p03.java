@@ -16,11 +16,11 @@ public class p03 {
         String command = "";
 
         while (!"End".equals(command = scanner.nextLine())) {
-            String[] commandArr = command.split("\\s+-\\s+");
+            String[] commandArr = command.split(" - ");
             String name = commandArr[1];
-            if(!hitPointsMap.containsKey(name)){
-                continue;
-            }
+
+
+
 
             if (command.contains("CastSpell")) {
 
@@ -43,7 +43,7 @@ public class p03 {
                 }
             } else if (command.contains("TakeDamage")) {
                 //TakeDamage – {hero name} – {damage} – {attacker}"
-                name = commandArr[1];
+
                 int hitPointsNeeded = Integer.parseInt(commandArr[2]);
                 String attacker = commandArr[3];
                 int hitPointsAvailable = hitPointsMap.get(name);
@@ -63,7 +63,6 @@ public class p03 {
             } else if (command.contains("Recharge")) {
 //"Recharge – {hero name} – {amount}"
 
-                name = commandArr[1];
                 int addManaPoints = Integer.parseInt(commandArr[2]);
                 int manaPointsAvailable = manaPointsMap.get(name);
                 manaPointsAvailable += addManaPoints;
@@ -77,7 +76,7 @@ public class p03 {
 
             } else if (command.contains("Heal")) {
                 //"Heal – {hero name} – {amount}"
-                name = commandArr[1];
+
                 int addHitPoints = Integer.parseInt(commandArr[2]);
                 int hitPointsAvailable = hitPointsMap.get(name);
                 hitPointsAvailable += addHitPoints;
@@ -108,13 +107,13 @@ public class p03 {
     private static void consoleHeroesInput(Scanner scanner, int n, Map<String, Integer> hitPointsMap, Map<String, Integer> manaPointsMap) {
         for (int i = 0; i < n; i++) {
             String input = scanner.nextLine();
-            String[] inputArr = input.split("\\s+");
+            String[] inputArr = input.split(" ");
             String name = inputArr[0];
             if (!hitPointsMap.containsKey(name)){
-            int hitPoints = Integer.parseInt(inputArr[1]);
-            int manaPoints = Integer.parseInt(inputArr[2]);
-            hitPointsMap.put(name, hitPoints);
-            manaPointsMap.put(name, manaPoints);
+                int hitPoints = Integer.parseInt(inputArr[1]);
+                int manaPoints = Integer.parseInt(inputArr[2]);
+                hitPointsMap.put(name, hitPoints);
+                manaPointsMap.put(name, manaPoints);
             }
         }
     }

@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4374081-07f7-41d4-b39b-6689442f2964" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Exams/src/E03_Programming_Fundamentals_Mid_Exam_Retake/p01.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ExampsPrep/E04/p01.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ExampsPrep/E04/p01.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ExampsPrep/E04/p02.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ExampsPrep/E04/p02.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ExampsPrep/E04/p03.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ExampsPrep/E04/p03.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/E04/p01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/E04/p01.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/E04/p02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/E04/p02.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/E04/p03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/E04/p03.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exams/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exams/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exams/out/production/Exams/E03_Programming_Fundamentals_Mid_Exam_Retake/PB02.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Exams/out/production/Exams/E03_Programming_Fundamentals_Mid_Exam_Retake/PB02.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exams/out/production/Exams/E03_Programming_Fundamentals_Mid_Exam_Retake/PB03.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Exams/out/production/Exams/E03_Programming_Fundamentals_Mid_Exam_Retake/PB03.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exams/src/E03_Programming_Fundamentals_Mid_Exam_Retake/PB01.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exams/src/E03_Programming_Fundamentals_Mid_Exam_Retake/PB03.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Exams/src/E03_Programming_Fundamentals_Mid_Exam_Retake/PB03.java" afterDir="false" />
-    </list>
+    <list default="true" id="b4374081-07f7-41d4-b39b-6689442f2964" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,18 +194,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/E04/p03.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/E04/p03.java</url>
           <line>17</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/E04/p03.java</url>
-          <line>6</line>
-          <option name="timeStamp" value="44" />
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
