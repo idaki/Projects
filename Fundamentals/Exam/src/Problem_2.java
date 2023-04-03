@@ -15,8 +15,6 @@ public class Problem_2 {
             String color = matcher.group("color");
             String eggsAmount = matcher.group("amount");
             System.out.printf("You found %s %s eggs!%n",eggsAmount,color);
-
         }
-
     }
 }

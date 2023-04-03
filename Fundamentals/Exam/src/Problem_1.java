@@ -49,7 +49,6 @@ public class Problem_1 {
                 int endIndex =indexStart+indexCount;
                 text = text.substring(indexStart,endIndex);
                 System.out.println(text);
-
             }
 
         }
