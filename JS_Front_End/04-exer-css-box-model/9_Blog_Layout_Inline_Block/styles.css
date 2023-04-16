@@ -1,0 +1,28 @@
+html{
+    font-family: Helvetica, sans-serif;
+}
+
+body{
+    color: rgb(51, 51, 51);
+    background-color:  rgb(238, 238, 238);
+}
+
+img{
+    width: 50%
+}
+
+header p{
+    padding-bottom: 30px;
+
+}
+.article{
+width: 65%;
+padding-left: 40px;
+float: left;
+}
+
+.aside{
+    display: inline-block;
+    width: 25%;
+ 
+}
