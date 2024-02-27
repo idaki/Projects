@@ -38,7 +38,7 @@
       <recent name="Exercises" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PB03_Characters_in_Range">
+  <component name="RunManager" selected="Application.PB04_Password_Validator">
     <configuration name="PB02_Vowels_Count" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Exercises.PB02_Vowels_Count" />
       <module name="Methods" />
@@ -78,12 +78,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PB10_Multiply_Evens_by_Odds" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.PB10_Multiply_Evens_by_Odds" />
+    <configuration name="PB04_Password_Validator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercises.PB04_Password_Validator" />
       <module name="Methods" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.*" />
+          <option name="PATTERN" value="Exercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -106,11 +106,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PB04_Password_Validator" />
         <item itemvalue="Application.PB03_Characters_in_Range" />
         <item itemvalue="Application.PB02_Vowels_Count" />
         <item itemvalue="Application.PB03_Printing_Triangle" />
         <item itemvalue="Application.PB11_Math_operations" />
-        <item itemvalue="Application.PB10_Multiply_Evens_by_Odds" />
       </list>
     </recent_temporary>
   </component>
@@ -143,6 +143,11 @@
           <url>file://$PROJECT_DIR$/src/Exercises/PB03_Characters_in_Range.java</url>
           <line>8</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercises/PB04_Password_Validator.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
