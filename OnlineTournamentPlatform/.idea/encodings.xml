@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/AdminModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/AuthenticationModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommunicationModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CompanyUserModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ConsumerUserModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ExternalUserModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MatchModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PlatformAdminModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RankingModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TeamModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TournamentManagementModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TournamentModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/UserModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
