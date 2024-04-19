@@ -6,12 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="TournamentModule" />
-        <module name="UserModule" />
-        <module name="TeamModule" />
-        <module name="MatchModule" />
         <module name="AdminModule" />
         <module name="RankingModule" />
+        <module name="UserModule" />
+        <module name="TournamentModule" />
+        <module name="TeamModule" />
+        <module name="GameModule" />
+        <module name="MatchModule" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -33,6 +34,7 @@
       <module name="CompanyUserModule" options="-parameters" />
       <module name="ConsumerUserModule" options="-parameters" />
       <module name="ExternalUserModule" options="-parameters" />
+      <module name="GameModule" options="-parameters" />
       <module name="MatchModule" options="-parameters" />
       <module name="PlatformAdminModule" options="-parameters" />
       <module name="RankingModule" options="-parameters" />

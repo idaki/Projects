@@ -21,6 +21,8 @@
         <option value="$PROJECT_DIR$/Authentication/pom.xml" />
         <option value="$PROJECT_DIR$/AdminModule/pom.xml" />
         <option value="$PROJECT_DIR$/UserModule/pom.xml" />
+        <option value="$PROJECT_DIR$/TeamModule/pom.xml" />
+        <option value="$PROJECT_DIR$/GameModule/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

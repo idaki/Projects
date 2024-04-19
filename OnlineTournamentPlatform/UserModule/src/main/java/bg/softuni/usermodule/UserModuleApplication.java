@@ -8,6 +8,8 @@ public class UserModuleApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(UserModuleApplication.class, args);
+
+
     }
 
 }
