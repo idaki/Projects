@@ -17,6 +17,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="AuthenticationModule" target="21" />
+      <module name="CommonModule" target="21" />
       <module name="CommunicationModule" target="21" />
       <module name="CompanyUserModule" target="21" />
       <module name="ConsumerUserModule" target="21" />
