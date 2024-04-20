@@ -1,8 +1,9 @@
 package bg.softuni.usermodule.service.impl;
 
 import bg.softuni.usermodule.models.dto.gson.ConsumerImportDTO;
-import bg.softuni.usermodule.models.entity.business.company.Company;
+
 import bg.softuni.usermodule.models.entity.consumer.Consumer;
+
 import bg.softuni.usermodule.repository.ConsumerRepository;
 import bg.softuni.usermodule.service.ConsumerService;
 import com.google.gson.Gson;
@@ -14,15 +15,15 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+
+
 @Service
 public class ConsumerServiceImpl implements ConsumerService {
+
     private final ConsumerRepository consumerRepository;
     private final ModelMapper modelMapper;
-    private final String FILE_PATH = "src/main/resources/files/users.json";
     private final Gson gson;
-    private final ResourceLoader resourceLoader;
-
-
+    private final ResourceLoader resourceLoader ;
 
 
     public ConsumerServiceImpl(ConsumerRepository consumerRepository, ModelMapper modelMapper, Gson gson, ResourceLoader resourceLoader) {
@@ -31,7 +32,6 @@ public class ConsumerServiceImpl implements ConsumerService {
         this.gson = gson;
         this.resourceLoader = resourceLoader;
     }
-
 
     @Override
     public boolean areImported() {
@@ -52,7 +52,7 @@ public class ConsumerServiceImpl implements ConsumerService {
 
         for (ConsumerImportDTO consumerImportDTO : consumerImportDTOS) {
             Consumer consumer = modelMapper.map(consumerImportDTO,Consumer.class);
-            this.consumerRepository.saveAndFlush(consumer);
+           this.consumerRepository.saveAndFlush(consumer);
         }
         return "CompanyImport Completed";
     }

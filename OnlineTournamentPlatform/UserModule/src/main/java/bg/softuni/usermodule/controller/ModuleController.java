@@ -3,10 +3,8 @@ package bg.softuni.usermodule.controller;
 import bg.softuni.usermodule.service.CompanyService;
 import bg.softuni.usermodule.service.ConsumerService;
 import bg.softuni.usermodule.service.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 
 @Component
