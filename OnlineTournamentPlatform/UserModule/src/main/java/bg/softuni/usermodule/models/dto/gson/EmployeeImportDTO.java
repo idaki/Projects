@@ -1,11 +1,9 @@
 package bg.softuni.usermodule.models.dto.gson;
 
-
 import com.google.gson.annotations.Expose;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
-
 public class EmployeeImportDTO implements Serializable {
 
     @Expose

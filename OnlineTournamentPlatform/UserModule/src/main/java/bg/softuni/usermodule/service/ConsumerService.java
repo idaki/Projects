@@ -6,9 +6,9 @@ import java.io.IOException;
 
 
 public interface ConsumerService {
-    boolean areImported();
-
-    String readUsersFromFile() throws IOException;
-
-    String importUsers() throws IOException;
+//    boolean areImported();
+//
+//    String readUsersFromFile() throws IOException;
+//
+//    String importUsers() throws IOException;
 }
