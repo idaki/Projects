@@ -10,16 +10,21 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
 public class EmployeeUserDetailsServiceImpl implements UserDetailsService {
 
     private final EmployeeRepository employeeRepository;
     private final PasswordEmployeeRepository passwordRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public EmployeeUserDetailsServiceImpl(EmployeeRepository employeeRepository, PasswordEmployeeRepository passwordRepository) {
+    public EmployeeUserDetailsServiceImpl(EmployeeRepository employeeRepository,
+                                          PasswordEmployeeRepository passwordRepository,
+                                          PasswordEncoder passwordEncoder) {
         this.employeeRepository = employeeRepository;
         this.passwordRepository = passwordRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -39,5 +44,14 @@ public class EmployeeUserDetailsServiceImpl implements UserDetailsService {
 
         PasswordEmployee passwordEmployee = passwordEmployeeOptional.get();
         return new EmployeeUserDetails(employee, passwordEmployee);
+    }
+
+    // Method to save a new password for an employee
+    public void savePassword(Employee employee, String rawPassword) {
+        String hashedPassword = passwordEncoder.encode(rawPassword);
+        PasswordEmployee password = new PasswordEmployee();
+        password.setHashedPassword(hashedPassword);
+        password.setUser(employee);
+        passwordRepository.save(password);
     }
 }

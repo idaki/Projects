@@ -72,6 +72,7 @@
         <module>UserService</module>
         <module>TeamService</module>
         <module>AuthenticationService</module>
+        <module>AdminService</module>
     </modules>
 
     <build>
