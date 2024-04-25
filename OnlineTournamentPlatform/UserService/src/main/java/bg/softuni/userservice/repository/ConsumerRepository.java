@@ -12,4 +12,6 @@ public interface ConsumerRepository extends JpaRepository<Consumer,Long> {
     Optional<Consumer> findById(Long iL);
 
     Optional<Consumer> findByEmail(java.lang.String email);
+
+    Optional<Consumer> findByUsername(String username);
 }

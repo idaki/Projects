@@ -43,4 +43,5 @@ public class PasswordConsumer implements Password {
         this.hashedPassword = hashedPassword;
     }
 
+
 }
