@@ -8,6 +8,7 @@
     <packaging>pom</packaging>
     <name>OnlineTournamentPlatform</name>
     <description>OnlineTournamentPlatform</description>
+
     <properties>
         <java.version>17</java.version>
         <spring-boot.version>3.2.5</spring-boot.version>
@@ -37,7 +38,7 @@
 
             <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
             <dependency>
-               <groupId>mysql</groupId>
+                <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>8.0.32</version>
             </dependency>

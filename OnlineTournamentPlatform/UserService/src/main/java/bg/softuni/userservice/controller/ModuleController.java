@@ -2,9 +2,6 @@ package bg.softuni.userservice.controller;
 
 
 
-import bg.softuni.userservice.service.CompanyService;
-import bg.softuni.userservice.service.ConsumerService;
-import bg.softuni.userservice.service.EmployeeService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,17 +9,17 @@ import org.springframework.stereotype.Component;
 
 public class ModuleController implements CommandLineRunner {
 
-    private final CompanyService companyService;
-    private final EmployeeService employeeService;
-    private final ConsumerService consumerService;
-
-
-
-    public ModuleController(CompanyService companyService, EmployeeService employeeService, ConsumerService consumerService) {
-        this.companyService = companyService;
-        this.employeeService = employeeService;
-        this.consumerService = consumerService;
-    }
+//    private final CompanyService companyService;
+//    private final EmployeeService employeeService;
+//    private final ConsumerService consumerService;
+//
+//
+//
+//    public ModuleController(CompanyService companyService, EmployeeService employeeService, ConsumerService consumerService) {
+//        this.companyService = companyService;
+//        this.employeeService = employeeService;
+//        this.consumerService = consumerService;
+//    }
 
     @Override
     public void run(String... args) throws Exception {

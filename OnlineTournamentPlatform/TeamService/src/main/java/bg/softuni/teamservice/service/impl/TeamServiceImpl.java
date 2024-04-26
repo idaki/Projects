@@ -3,6 +3,7 @@ package bg.softuni.teamservice.service.impl;
 import bg.softuni.teamservice.entity.Team;
 import bg.softuni.teamservice.repository.TeamRepository;
 import bg.softuni.teamservice.service.TeamService;
+
 import bg.softuni.userservice.models.entity.consumer.Consumer;
 import bg.softuni.userservice.repository.ConsumerRepository;
 import org.springframework.beans.factory.annotation.Autowired;

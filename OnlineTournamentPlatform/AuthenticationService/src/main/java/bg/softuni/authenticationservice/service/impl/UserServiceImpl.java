@@ -1,76 +1,95 @@
 package bg.softuni.authenticationservice.service.impl;
 
-import bg.softuni.userservice.models.entity.business.employee.Employee;
-import bg.softuni.userservice.models.entity.business.employee.PasswordEmployee;
+import java.util.ArrayList;
+import java.util.Optional;
+
+
+import bg.softuni.authenticationservice.UserPasswordRepository;
+import bg.softuni.authenticationservice.service.password.UserPasswordService;
+import bg.softuni.userservice.models.entity.business.Company;
+import bg.softuni.userservice.models.entity.business.Employee;
 import bg.softuni.userservice.models.entity.consumer.Consumer;
-import bg.softuni.userservice.models.entity.consumer.PasswordConsumer;
+import bg.softuni.userservice.models.entity.password.UserPassword;
+import bg.softuni.userservice.repository.CompanyRepository;
 import bg.softuni.userservice.repository.ConsumerRepository;
-import bg.softuni.userservice.repository.PasswordConsumerRepository;
+import bg.softuni.userservice.repository.EmployeeRepository;
+import bg.softuni.userservice.service.company.CompanyService;
+import bg.softuni.userservice.service.consumer.ConsumerService;
+import bg.softuni.userservice.service.employee.EmployeeService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Optional;
-
 @Service
-public class UserServiceImpl implements UserDetailsService, UserService {
+public class UserServiceImpl implements UserDetailsService,UserService {
 
-    private final ConsumerRepository consumerRepository;
-    private final PasswordConsumerRepository passwordConsumerRepository;
-    private final PasswordEncoder passwordEncoder;
+   private final CompanyRepository companyRepository;
+   private final EmployeeRepository employeeRepository;
+   private final ConsumerRepository consumerRepository;
+    private final UserPasswordRepository passwordRepository;
 
 
-    public UserServiceImpl(ConsumerRepository consumerRepository, PasswordConsumerRepository passwordConsumerRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(ConsumerService consumerService
+            , EmployeeService employeeService
+            , CompanyService companyService
+            , UserPasswordService userPasswordService
+            , PasswordEncoder passwordEncoder
+            , CompanyRepository companyRepository
+            , EmployeeRepository employeeRepository
+            , ConsumerRepository consumerRepository
+            , UserPasswordRepository passwordRepository) {
+        this.companyRepository = companyRepository;
+        this.employeeRepository = employeeRepository;
         this.consumerRepository = consumerRepository;
-        this.passwordConsumerRepository = passwordConsumerRepository;
-        this.passwordEncoder = passwordEncoder;
-
-
+        this.passwordRepository = passwordRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Consumer> consumerOptional = consumerRepository.findByUsername(username);
 
-        if (consumerOptional.isEmpty()) {
-            throw new UsernameNotFoundException("Consumer not found");
+        Optional<Company> optionalCompany = this.companyRepository.findByUsername(username);
+        Optional<Employee> optionalEmployee = this.employeeRepository.findByUsername(username);
+        Optional<Consumer> optionalConsumer = this.consumerRepository.findByUsername(username);
+
+
+        Optional<UserPassword> userPassword = null;
+
+        if(optionalCompany.isPresent()) {
+            Company company = optionalCompany.get();
+            userPassword = this.passwordRepository.findByCompany(company);
+        }else if(optionalEmployee.isPresent()) {
+            Employee employee = optionalEmployee.get();
+            userPassword = this.passwordRepository.findByEmployee(employee);
+        }else if(optionalConsumer.isPresent()) {
+            Consumer consumer = optionalConsumer.get();
+            userPassword = this.passwordRepository.findByConsumer(consumer);
         }
 
-        Consumer consumer = consumerOptional.get();
-        Optional<PasswordConsumer> passwordConsumerOptional = passwordConsumerRepository.findByUser(consumer);
 
-        if (passwordConsumerOptional.isEmpty()) {
-            throw new UsernameNotFoundException("Password not found for consumer");
+        if (userPassword.isEmpty()) {
+            throw new UsernameNotFoundException("User not found");
         }
 
-        PasswordConsumer passwordConsumer = passwordConsumerOptional.get();
+        UserPassword passwordDetails = userPassword.get();
+        String hashedPassword = passwordDetails.getHashedPassword();
+
+        Object user = passwordDetails.getConsumer() != null ? passwordDetails.getConsumer() :
+                (passwordDetails.getEmployee() != null ? passwordDetails.getEmployee() :
+                        passwordDetails.getCompany());
+
         return new org.springframework.security.core.userdetails.User(
-                consumer.getUsername(),
-                passwordConsumer.getHashedPassword(),
+                username,
+                hashedPassword,
                 new ArrayList<>()
         );
-    }
 
-@Override
-    // Method to save a new password for an employee
-       public void savePassword(Consumer cosnumer, String rawPassword) {
-        String hashedPassword = passwordEncoder.encode(rawPassword);
-       PasswordConsumer  password = new PasswordConsumer();
-        password.setHashedPassword(hashedPassword);
-        password.setUser(cosnumer);
-        this.passwordConsumerRepository.saveAndFlush(password);
     }
 
 
-    @Override
-    public void importPasswords() {
-        for (long i = 1; i <=this.consumerRepository.count() ; i++) {
-            Consumer consumer =this.consumerRepository.findById(i).get();
-            String password = consumer.getUsername();
-            this.savePassword(consumer,password);
-        }
-    }
+
+
+
+
 }
