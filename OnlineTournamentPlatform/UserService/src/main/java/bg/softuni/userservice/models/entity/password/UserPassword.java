@@ -2,8 +2,8 @@ package bg.softuni.userservice.models.entity.password;
 
 
 import bg.softuni.userservice.models.entity.business.Company;
-import bg.softuni.userservice.models.entity.business.Employee;
-import bg.softuni.userservice.models.entity.consumer.Consumer;
+
+import bg.softuni.userservice.models.entity.user.User;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,18 +13,12 @@ public class UserPassword {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private User user;
+
     @Column(name = "hashed_password", nullable = false)
     private String hashedPassword;
-
-    @OneToOne(mappedBy = "password")
-    private Consumer consumer;
-
-    @OneToOne(mappedBy = "password")
-    private Employee employee;
-
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
 
     public Long getId() {
         return id;
@@ -34,6 +28,14 @@ public class UserPassword {
         this.id = id;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public String getHashedPassword() {
         return hashedPassword;
     }
@@ -41,29 +43,4 @@ public class UserPassword {
     public void setHashedPassword(String hashedPassword) {
         this.hashedPassword = hashedPassword;
     }
-
-    public Consumer getConsumer() {
-        return consumer;
-    }
-
-    public void setConsumer(Consumer consumer) {
-        this.consumer = consumer;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
 }

@@ -1,4 +1,4 @@
-package bg.softuni.userservice.models.entity.base;
+package bg.softuni.userservice.models.entity.user;
 
 import jakarta.persistence.*;
 
@@ -19,6 +19,7 @@ public abstract class User {
 
     @Column(name = "is_logged", nullable = false)
     private Boolean isLogged;
+
 
     public User() {
         this.isLogged = false;

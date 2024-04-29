@@ -1,7 +1,7 @@
 package bg.softuni.userservice.models.entity.business;
 
 
-import bg.softuni.userservice.models.entity.base.User;
+import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.models.entity.password.UserPassword;
 import jakarta.persistence.*;
 

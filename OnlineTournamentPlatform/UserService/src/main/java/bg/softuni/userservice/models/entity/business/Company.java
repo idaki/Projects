@@ -1,6 +1,6 @@
 package bg.softuni.userservice.models.entity.business;
 
-import bg.softuni.userservice.models.entity.base.User;
+import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.models.entity.password.UserPassword;
 import jakarta.persistence.*;
 
@@ -14,7 +14,7 @@ public class Company extends User {
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Employee> employees;
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<UserPassword> passwords;
 
     public Company(Set<Employee> employees, Set<UserPassword> passwords) {

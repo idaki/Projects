@@ -3,7 +3,6 @@ package bg.softuni.userservice.service.consumer;
 import bg.softuni.userservice.models.entity.consumer.Consumer;
 import bg.softuni.userservice.repository.ConsumerRepository;
 import bg.softuni.userservice.service.crud.CrudServiceImpl;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 @Service
