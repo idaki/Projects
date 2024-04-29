@@ -1,5 +1,6 @@
 package bg.softuni.teamservice.service.impl;
 
+import bg.softuni.crudservice.crud.CrudServiceImpl;
 import bg.softuni.teamservice.entity.Team;
 import bg.softuni.teamservice.repository.TeamRepository;
 import bg.softuni.teamservice.service.TeamService;
@@ -14,17 +15,18 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-public class TeamServiceImpl implements TeamService {
+public class TeamServiceImpl extends CrudServiceImpl<Team,Long> implements TeamService {
 
 
     private final ConsumerRepository consumerRepository;
     private final TeamRepository teamRepository;
-
-    @Autowired
+@Autowired
     public TeamServiceImpl(ConsumerRepository consumerRepository, TeamRepository teamRepository) {
-        this.consumerRepository = consumerRepository;
+    super(teamRepository);
+    this.consumerRepository = consumerRepository;
         this.teamRepository = teamRepository;
     }
+
 
     @Override
     @Transactional

@@ -33,6 +33,13 @@
             <artifactId>UserService</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <!-- Project Dependencies -->
+        <dependency>
+            <groupId>bg.softuni</groupId>
+            <artifactId>CrudService</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
         <dependency>
             <groupId>com.mysql</groupId>

@@ -9,10 +9,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>UserService</artifactId>
+    <artifactId>CrudService</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>UserService</name>
-    <description>UserService</description>
+    <name>CrudService</name>
+    <description>CrudService</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -30,16 +30,8 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+
         </dependency>
-
-        <!-- Project Dependencies -->
-        <dependency>
-            <groupId>bg.softuni</groupId>
-            <artifactId>CrudService</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-
         <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
         <dependency>
             <groupId>com.mysql</groupId>

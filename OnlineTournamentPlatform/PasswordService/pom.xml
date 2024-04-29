@@ -30,7 +30,19 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
+        <!-- Project Dependencies -->
+        <dependency>
+            <groupId>bg.softuni</groupId>
+            <artifactId>CrudService</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>bg.softuni</groupId>
+            <artifactId>UserService</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
         <dependency>

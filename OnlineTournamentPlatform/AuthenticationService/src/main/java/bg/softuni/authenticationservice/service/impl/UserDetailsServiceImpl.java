@@ -1,9 +1,7 @@
 package bg.softuni.authenticationservice.service.impl;
 
-import bg.softuni.authenticationservice.UserPasswordRepository;
-import bg.softuni.userservice.models.entity.business.Company;
-import bg.softuni.userservice.models.entity.business.Employee;
-import bg.softuni.userservice.models.entity.consumer.Consumer;
+
+import bg.softuni.passwordservice.repository.PasswordRepository;
 import bg.softuni.userservice.models.entity.password.UserPassword;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.CompanyRepository;
@@ -20,19 +18,16 @@ import java.util.Optional;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-   private final CompanyRepository companyRepository;
-   private final EmployeeRepository employeeRepository;
-   private final ConsumerRepository consumerRepository;
-    private final UserPasswordRepository passwordRepository;
-    private final UserRepository userRepository;
 
-    public UserDetailsServiceImpl(CompanyRepository companyRepository, EmployeeRepository employeeRepository, ConsumerRepository consumerRepository, UserPasswordRepository passwordRepository, UserRepository userRepository) {
-        this.companyRepository = companyRepository;
-        this.employeeRepository = employeeRepository;
-        this.consumerRepository = consumerRepository;
+    public UserDetailsServiceImpl(PasswordRepository passwordRepository, UserRepository userRepository) {
         this.passwordRepository = passwordRepository;
         this.userRepository = userRepository;
     }
+
+    private final PasswordRepository passwordRepository;
+    private final UserRepository userRepository;
+
+
 
 
     @Override

@@ -1,12 +1,13 @@
 package bg.softuni.userservice.service.company;
 
+import bg.softuni.crudservice.crud.CrudServiceImpl;
 import bg.softuni.userservice.models.entity.business.Company;
 import bg.softuni.userservice.repository.CompanyRepository;
-import bg.softuni.userservice.service.crud.CrudServiceImpl;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+
 
 @Service
 public class CompanyServiceImpl extends CrudServiceImpl<Company, Long> implements CompanyService {

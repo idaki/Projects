@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"bg.softuni.authenticationservice", "bg.softuni.userservice"})
+@ComponentScan(basePackages = {"bg.softuni.authenticationservice", "bg.softuni.userservice", "bg.softuni.passwordservice"})
 @EnableWebSecurity
 public class AuthenticationServiceApplication {
 

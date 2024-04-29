@@ -1,4 +1,4 @@
-package bg.softuni.userservice.service.crud;
+package bg.softuni.crudservice.crud;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,10 +1,11 @@
 package bg.softuni.userservice.service.employee;
 
 
+import bg.softuni.crudservice.crud.CrudServiceImpl;
 import bg.softuni.userservice.models.dto.gson.EmployeeImportDTO;
 import bg.softuni.userservice.models.entity.business.Employee;
 import bg.softuni.userservice.repository.EmployeeRepository;
-import bg.softuni.userservice.service.crud.CrudServiceImpl;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
