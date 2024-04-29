@@ -14,12 +14,8 @@ public class Company extends User {
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Employee> employees;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<UserPassword> passwords;
-
     public Company(Set<Employee> employees, Set<UserPassword> passwords) {
         this.employees = employees;
-        this.passwords = passwords;
     }
 
     public Company() {
@@ -34,11 +30,4 @@ public class Company extends User {
         this.employees = employees;
     }
 
-    public Set<UserPassword> getPasswords() {
-        return passwords;
-    }
-
-    public void setPasswords(Set<UserPassword> passwords) {
-        this.passwords = passwords;
-    }
 }

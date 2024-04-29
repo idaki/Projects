@@ -1,5 +1,6 @@
 package bg.softuni.userservice.models.entity.user;
 
+import bg.softuni.userservice.models.entity.password.UserPassword;
 import jakarta.persistence.*;
 
 @Entity
@@ -20,6 +21,16 @@ public abstract class User {
     @Column(name = "is_logged", nullable = false)
     private Boolean isLogged;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "password_id", referencedColumnName = "id")
+    private UserPassword password;
+
+
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+        this.isLogged = false;
+    }
 
     public User() {
         this.isLogged = false;

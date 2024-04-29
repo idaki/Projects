@@ -13,11 +13,6 @@ public class Employee extends User {
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "password_id", referencedColumnName = "id")
-    private UserPassword password;
-
-
     public Company getCompany() {
         return company;
     }
@@ -26,13 +21,6 @@ public class Employee extends User {
         this.company = company;
     }
 
-    public UserPassword getPassword() {
-        return password;
-    }
-
-    public void setPassword(UserPassword password) {
-        this.password = password;
-    }
 
 
 }

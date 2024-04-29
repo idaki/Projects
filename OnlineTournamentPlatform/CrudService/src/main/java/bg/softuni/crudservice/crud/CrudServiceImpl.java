@@ -27,7 +27,7 @@ public abstract class  CrudServiceImpl<T, ID> implements CrudService<T, ID> {
 
     @Override
     public T save(T entity) {
-        return repository.save(entity);
+        return repository.saveAndFlush(entity);
     }
 
     @Override
@@ -39,7 +39,7 @@ public abstract class  CrudServiceImpl<T, ID> implements CrudService<T, ID> {
     public T update(ID id, T entity) {
         // Assuming the entity has an ID field
         if (repository.existsById(id)) {
-            return repository.save(entity);
+            return repository.saveAndFlush(entity);
         }
         return null;
     }
