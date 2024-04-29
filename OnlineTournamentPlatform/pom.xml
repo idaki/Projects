@@ -13,8 +13,9 @@
         <java.version>17</java.version>
         <spring-boot.version>3.2.5</spring-boot.version>
         <mysql.connector.version>8.0.33</mysql.connector.version>
-
         <spring.version>6.1.6</spring.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -36,12 +37,13 @@
             <!-- ... other dependency elements ... -->
 
 
-            <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+            <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
             <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.32</version>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>8.3.0</version>
             </dependency>
+
             <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -74,6 +76,7 @@
         <module>TeamService</module>
         <module>AuthenticationService</module>
         <module>AdminService</module>
+        <module>PasswordService</module>
     </modules>
 
     <build>
