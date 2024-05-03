@@ -1,7 +1,7 @@
 package bg.softuni.teamservice.service.impl;
 
 import bg.softuni.crudservice.crud.CrudServiceImpl;
-import bg.softuni.teamservice.entity.Team;
+import bg.softuni.teamservice.entity.TeamEntity;
 import bg.softuni.teamservice.repository.TeamRepository;
 import bg.softuni.teamservice.service.TeamService;
 
@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-public class TeamServiceImpl extends CrudServiceImpl<Team,Long> implements TeamService {
+public class TeamServiceImpl extends CrudServiceImpl<TeamEntity,Long> implements TeamService {
 
 
     private final ConsumerRepository consumerRepository;
@@ -31,7 +31,7 @@ public class TeamServiceImpl extends CrudServiceImpl<Team,Long> implements TeamS
     @Override
     @Transactional
     public void addPlayer() {
-        Team team1 = new Team("Team1", 3);
+        TeamEntity team1 = new TeamEntity("Team1", 3);
 
 
         for (long i = 1; i <= 3; i++) {
