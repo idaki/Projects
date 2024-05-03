@@ -78,9 +78,9 @@
         <module>AdminService</module>
         <module>PasswordService</module>
         <module>CrudService</module>
-        <module>TournamentService</module>
         <module>GameService</module>
         <module>CommunicationService</module>
+        <module>TournamentService</module>
     </modules>
 
     <build>

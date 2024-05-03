@@ -33,26 +33,6 @@
         </dependency>
 
         <!-- Project Dependencies -->
-        <dependency>
-            <groupId>bg.softuni</groupId>
-            <artifactId>CrudService</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>bg.softuni</groupId>
-            <artifactId>GameService</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>bg.softuni</groupId>
-            <artifactId>TeamService</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>bg.softuni</groupId>
-            <artifactId>UserService</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
 
 
 
@@ -81,6 +61,17 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>bg.softuni</groupId>
+            <artifactId>GameService</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>bg.softuni</groupId>
+            <artifactId>TeamService</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
