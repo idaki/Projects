@@ -31,28 +31,30 @@ public class TeamServiceImpl extends CrudServiceImpl<TeamEntity,Long> implements
     @Override
     @Transactional
     public void addPlayer() {
-        TeamEntity team1 = new TeamEntity("Team1", 3);
+//        TeamEntity team1 = new TeamEntity("Team1", 3);
 
-
-        for (long i = 1; i <= 3; i++) {
-            Optional<Consumer> consumer = this.consumerRepository.findById(i);
-
-            if (consumer.isPresent()) {
-                long consumerId = consumer.get().getId();
-                team1.getUsersPlatformIds().add(consumerId);
-                System.out.printf("Consumer %s added to team %s\n", consumerId, team1.getName());
-
-            } else {
-                System.out.println("Consumer not found");
-            }
+//
+//        for (long i = 1; i <= 3; i++) {
+//            Optional<Consumer> consumer = this.consumerRepository.findById(i);
+//
+//            if (consumer.isPresent()) {
+//                long consumerId = consumer.get().getId();
+//                team1.getUsersPlatformIds().add(consumerId);
+//                System.out.printf("Consumer %s added to team %s\n", consumerId, team1.getName());
+//
+//            } else {
+//                System.out.println("Consumer not found");
+//            }
         }
-
-
-        this.teamRepository.saveAndFlush(team1);
-    }
 
     @Override
     public void removePlayer() {
-        // Implementation for removing a player from a team
+
     }
-}
+
+
+//        this.teamRepository.saveAndFlush(team1);
+    }
+
+
+

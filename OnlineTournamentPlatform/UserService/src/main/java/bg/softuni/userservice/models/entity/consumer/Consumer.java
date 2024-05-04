@@ -6,7 +6,7 @@ import bg.softuni.userservice.models.entity.password.UserPassword;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "platform_consumer_users")
+@Table(name = "user_consumers")
 public class Consumer extends User {
 
 

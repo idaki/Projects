@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 
 @SpringBootApplication
 @EnableWebSecurity
-@EntityScan({"bg.softuni.gameservice", "bg.softuni.tournamentservice"})
+@EntityScan({"bg.softuni.gameservice", "bg.softuni.tournamentservice","bg.softuni.teamservice","bg.softuni.userservice"})
 public class TournamentServiceApplication {
 
     public static void main(String[] args) {
