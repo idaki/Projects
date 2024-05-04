@@ -1,4 +1,4 @@
-package bg.softuni.gameservice;
+package bg.softuni.gameservice.model;
 
 import jakarta.persistence.*;
 
