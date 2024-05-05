@@ -6,7 +6,7 @@ import bg.softuni.userservice.models.entity.password.UserPassword;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user_employees")
+@Table(name = "employees")
 public class Employee extends User {
 
     @ManyToOne

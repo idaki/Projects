@@ -1,4 +1,4 @@
-package bg.softuni.adminservice.service.userservice.User;
+package bg.softuni.adminservice.service.userservice.user;
 
 import bg.softuni.userservice.models.entity.business.Company;
 import bg.softuni.userservice.models.entity.business.Employee;

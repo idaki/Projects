@@ -1,21 +1,18 @@
 package bg.softuni.teamservice.service.impl;
 
 import bg.softuni.crudservice.crud.CrudServiceImpl;
-import bg.softuni.teamservice.entity.TeamEntity;
+import bg.softuni.teamservice.entity.Team;
 import bg.softuni.teamservice.repository.TeamRepository;
 import bg.softuni.teamservice.service.TeamService;
 
 
-import bg.softuni.userservice.models.entity.consumer.Consumer;
 import bg.softuni.userservice.repository.ConsumerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
 @Service
-public class TeamServiceImpl extends CrudServiceImpl<TeamEntity,Long> implements TeamService {
+public class TeamServiceImpl extends CrudServiceImpl<Team,Long> implements TeamService {
 
 
     private final ConsumerRepository consumerRepository;
