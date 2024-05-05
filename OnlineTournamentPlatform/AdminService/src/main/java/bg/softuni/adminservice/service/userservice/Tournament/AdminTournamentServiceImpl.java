@@ -1,17 +1,21 @@
-package bg.softuni.adminservice.service.userservice.Tournament;
+package bg.softuni.adminservice.service.userservice.tournament;
 
-import bg.softuni.gameservice.model.Game;
+import bg.softuni.teamservice.entity.Team;
+import bg.softuni.teamservice.repository.TeamRepository;
 import bg.softuni.tournamentservice.model.Tournament;
 import bg.softuni.tournamentservice.repository.TournamentRepository;
-import bg.softuni.userservice.service.user.UserService;
 import org.springframework.stereotype.Service;
+
+import static ch.qos.logback.core.joran.spi.ConsoleTarget.findByName;
 
 @Service
 public class AdminTournamentServiceImpl implements AdminTournamentService {
     private final TournamentRepository tournamentRepository;
+    private final TeamRepository teamRepository;
 
-    public AdminTournamentServiceImpl(TournamentRepository tournamentRepository) {
+    public AdminTournamentServiceImpl(TournamentRepository tournamentRepository, TeamRepository teamRepository) {
         this.tournamentRepository = tournamentRepository;
+        this.teamRepository = teamRepository;
     }
 @Override
     public void createTournament() {
@@ -19,5 +23,13 @@ public class AdminTournamentServiceImpl implements AdminTournamentService {
         tournament=tournament.setName("Tournament1");
    this.tournamentRepository.save(tournament);
 
+    }
+
+    @Override
+    public void addTeamToTournament() {
+        Team team = this.teamRepository.findByName("Team1");
+        Tournament tournament = this.tournamentRepository.findByName("Tournament1");
+        tournament.getTeams().add(team);
+        tournamentRepository.save(tournament);
     }
 }

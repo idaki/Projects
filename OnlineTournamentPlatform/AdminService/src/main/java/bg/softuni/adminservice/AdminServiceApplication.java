@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
         ,"bg.softuni.adminservice"
         ,"bg.softuni.authenticationservice"
         ,"bg.softuni.tournamentservice"
+        ,"bg.softuni.teamservice"
 })
 @EnableWebSecurity
 public class AdminServiceApplication {

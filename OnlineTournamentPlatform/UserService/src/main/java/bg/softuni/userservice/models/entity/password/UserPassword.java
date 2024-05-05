@@ -7,7 +7,7 @@ import bg.softuni.userservice.models.entity.user.User;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user_passwords")
+@Table(name = "passwords")
 public class UserPassword {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

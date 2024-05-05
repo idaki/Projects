@@ -1,4 +1,4 @@
-package bg.softuni.adminservice.service.userservice.User;
+package bg.softuni.adminservice.service.userservice.user;
 
 public interface AdminUserService {
 
