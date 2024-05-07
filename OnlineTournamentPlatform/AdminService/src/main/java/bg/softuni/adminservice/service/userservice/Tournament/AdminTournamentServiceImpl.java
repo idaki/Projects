@@ -1,4 +1,4 @@
-package bg.softuni.adminservice.service.userservice.tournament;
+package bg.softuni.adminservice.service.userservice.Tournament;
 
 import bg.softuni.teamservice.entity.Team;
 import bg.softuni.teamservice.repository.TeamRepository;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import static ch.qos.logback.core.joran.spi.ConsoleTarget.findByName;
 
 @Service
-public class AdminTournamentServiceImpl implements AdminTournamentService {
+public class AdminTournamentServiceImpl implements bg.softuni.adminservice.service.userservice.tournament.AdminTournamentService {
     private final TournamentRepository tournamentRepository;
     private final TeamRepository teamRepository;
 

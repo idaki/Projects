@@ -1,4 +1,4 @@
-package bg.softuni.adminservice.service.userservice.user;
+package bg.softuni.adminservice.service.userservice.User;
 
 import bg.softuni.userservice.models.entity.business.Company;
 import bg.softuni.userservice.models.entity.business.Employee;
@@ -9,7 +9,7 @@ import bg.softuni.userservice.service.user.UserService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AdminUserServiceImpl implements AdminUserService {
+public class AdminUserServiceImpl implements bg.softuni.adminservice.service.userservice.user.AdminUserService {
     private final UserRepository userRepository;
     private final UserService userService;
 
