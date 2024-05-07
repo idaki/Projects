@@ -2,10 +2,8 @@ package bg.softuni.tournamentservice;
 
 import bg.softuni.gameservice.Game;
 import bg.softuni.teamservice.entity.Team;
-import bg.softuni.teamservice.entity.TeamEntity;
 import jakarta.persistence.*;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,9 +16,12 @@ public class Tournament {
     private String name;
 
     @OneToOne
- private Game game;
- @OneToMany
-    private Set<TeamEntity> teams = new HashSet<>();
+    private Game game;
+
+    @ElementCollection
+    @CollectionTable(name = "tournament_teams", joinColumns = @JoinColumn(name = "tournament_id"))
+    @Column(name = "team_id")
+    private Set<Long> teamIds;
 
     public void setId(Long id) {
         this.id = id;

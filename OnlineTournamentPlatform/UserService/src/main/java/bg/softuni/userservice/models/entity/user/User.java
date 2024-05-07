@@ -4,7 +4,7 @@ import bg.softuni.userservice.models.entity.password.UserPassword;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users_users")
+@Table(name = "platform_users")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User {
 
