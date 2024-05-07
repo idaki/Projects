@@ -6,12 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"bg.softuni.userservice"
-        ,"bg.softuni.adminservice"
-        ,"bg.softuni.authenticationservice"
-        ,"bg.softuni.tournamentservice"
-        ,"bg.softuni.teamservice"
-})
+@ComponentScan(basePackages = {"bg.softuni.userservice","bg.softuni.adminservice","bg.softuni.authenticationservice"})
 @EnableWebSecurity
 public class AdminServiceApplication {
 

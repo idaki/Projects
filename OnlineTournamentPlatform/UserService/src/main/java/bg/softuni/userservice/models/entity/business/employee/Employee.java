@@ -1,21 +1,24 @@
-package bg.softuni.userservice.models.entity.consumer;
+package bg.softuni.userservice.models.entity.business.employee;
 
+
+import bg.softuni.userservice.models.entity.business.company.Company;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="platform_consumer_users")
-
-public class Consumer {
+@Table(name = "platform_employees")
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(unique = true,nullable = false)
     private String username;
 
     @Column(unique = true,nullable = false)
     private String email;
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 
 
     public Long getId() {
@@ -40,5 +43,13 @@ public class Consumer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }

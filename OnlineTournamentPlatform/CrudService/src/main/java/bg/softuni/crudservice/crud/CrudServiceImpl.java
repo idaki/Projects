@@ -25,8 +25,6 @@ public abstract class  CrudServiceImpl<T, ID> implements CrudService<T, ID> {
         return this.repository.findById(id);
     }
 
-
-
     @Override
     public T save(T entity) {
         return repository.saveAndFlush(entity);
@@ -39,7 +37,7 @@ public abstract class  CrudServiceImpl<T, ID> implements CrudService<T, ID> {
 
     @Override
     public T update(ID id, T entity) {
-
+        // Assuming the entity has an ID field
         if (repository.existsById(id)) {
             return repository.saveAndFlush(entity);
         }

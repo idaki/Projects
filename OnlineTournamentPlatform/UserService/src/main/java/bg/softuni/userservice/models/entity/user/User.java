@@ -4,7 +4,7 @@ import bg.softuni.userservice.models.entity.password.UserPassword;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users_users")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User {
 
@@ -48,9 +48,8 @@ public abstract class User {
         return username;
     }
 
-    public User setUsername(String username) {
+    public void setUsername(String username) {
         this.username = username;
-        return this;
     }
 
     public String getEmail() {

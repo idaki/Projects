@@ -1,6 +1,5 @@
 package bg.softuni.userservice.models.dto.gson;
 
-
 import com.google.gson.annotations.Expose;
 import jakarta.validation.constraints.NotNull;
 
