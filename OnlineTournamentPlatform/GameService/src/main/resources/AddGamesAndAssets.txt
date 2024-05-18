@@ -1,0 +1,33 @@
+-- Step 1: Insert games without description
+INSERT INTO games (title) VALUES ('Gigantic');
+INSERT INTO games (title) VALUES ('Neverwinter');
+INSERT INTO games (title) VALUES ('Star Trek Online');
+INSERT INTO games (title) VALUES ('PWI');
+INSERT INTO games (title) VALUES ('Subnautica');
+INSERT INTO games (title) VALUES ('Remnant: From The Ashes');
+INSERT INTO games (title) VALUES ('Forsaken World');
+INSERT INTO games (title) VALUES ('Hob');
+INSERT INTO games (title) VALUES ('Torchlight II');
+INSERT INTO games (title) VALUES ('Torchlight III');
+
+-- Step 2: Insert assets for each game
+-- Gigantic
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Gigantic Image', 'src/main/resources/img/Gigantic.png', LAST_INSERT_ID());
+-- Neverwinter
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Neverwinter Image', 'C:\\Users\\Idaki\\Documents\\GitHub\\Softuni\\OnlineTournamentPlatform\\GameService\\src\\main\\resources\\img\\Neverwinter.jpeg', LAST_INSERT_ID());
+-- Star Trek Online
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Star Trek Online Image', 'C:\\Users\\Idaki\\Documents\\GitHub\\Softuni\\OnlineTournamentPlatform\\GameService\\src\\main\\resources\\img\\STO+2010.jpg', LAST_INSERT_ID());
+-- PWI
+INSERT INTO assets (name, url_asset, game_id) VALUES ('PWI Image', 'C:\\Users\\Idaki\\Documents\\GitHub\\Softuni\\OnlineTournamentPlatform\\GameService\\src\\main\\resources\\img\\PWI.jpg', LAST_INSERT_ID());
+-- Subnautica
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Subnautica Image', 'C:\\Users\\Idaki\\Documents\\GitHub\\Softuni\\OnlineTournamentPlatform\\GameService\\src\\main\\resources\\img\\subnautica.jpg', LAST_INSERT_ID());
+-- Remnant: From The Ashes
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Remnant: From The Ashes Image', 'C:\\Users\\Idaki\\Documents\\GitHub\\Softuni\\OnlineTournamentPlatform\\GameService\\src\\main\\resources\\img\\Remnant.jpg', LAST_INSERT_ID());
+-- Forsaken World
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Forsaken World Image', 'C:\\Users\\Idaki\\Documents\\GitHub\\Softuni\\OnlineTournamentPlatform\\GameService\\src\\main\\resources\\img\\Forsaken-World-Gods-and-Demons-image.png', LAST_INSERT_ID());
+-- Hob
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Hob Image', 'C:\\Users\\Idaki\\Documents\\GitHub\\Softuni\\OnlineTournamentPlatform\\GameService\\src\\main\\resources\\img\\Hob.jpg', LAST_INSERT_ID());
+-- Torchlight II
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Torchlight II Image', 'C:\\Users\\Idaki\\Documents\\GitHub\\Softuni\\OnlineTournamentPlatform\\GameService\\src\\main\\resources\\img\\Torchlight2.jpg', LAST_INSERT_ID());
+-- Torchlight III
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Torchlight III Image', 'C:\\Users\\Idaki\\Documents\\GitHub\\Softuni\\OnlineTournamentPlatform\\GameService\\src\\main\\resources\\img\\Torchlight3.jpg', LAST_INSERT_ID());

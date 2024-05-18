@@ -1,7 +1,6 @@
 package bg.softuni.tournamentservice;
 
-import bg.softuni.gameservice.Game;
-import bg.softuni.teamservice.entity.Team;
+import bg.softuni.gameservice.model.Game;
 import jakarta.persistence.*;
 
 import java.util.Set;
