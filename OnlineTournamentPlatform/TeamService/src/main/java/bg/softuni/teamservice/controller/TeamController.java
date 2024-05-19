@@ -15,7 +15,7 @@ public class TeamController implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        this.teamService.addPlayer();
+//        this.teamService.addPlayer();
 
 
     }

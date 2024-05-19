@@ -4,9 +4,9 @@ import bg.softuni.userservice.models.entity.password.UserPassword;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "platform_users")
+@Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class User {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,23 +18,11 @@ public abstract class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(name = "is_logged", nullable = false)
-    private Boolean isLogged;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "password_id", referencedColumnName = "id")
     private UserPassword password;
-
-
-    public User(String username, String email) {
-        this.username = username;
-        this.email = email;
-        this.isLogged = false;
-    }
-
-    public User() {
-        this.isLogged = false;
-    }
 
     public Long getId() {
         return id;
@@ -60,7 +48,14 @@ public abstract class User {
         this.email = email;
     }
 
-    public User(Boolean isLogged) {
-        this.isLogged = isLogged;
+    public UserPassword getPassword() {
+        return password;
     }
+
+    public void setPassword(UserPassword password) {
+        this.password = password;
+    }
+
+    // Constructor, Getters and Setters
 }
+

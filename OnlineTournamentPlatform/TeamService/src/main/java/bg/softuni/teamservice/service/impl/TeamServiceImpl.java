@@ -39,7 +39,7 @@ public class TeamServiceImpl extends CrudServiceImpl<TeamEntity,Long> implements
 
             if (consumer.isPresent()) {
                 long consumerId = consumer.get().getId();
-                team1.getUsersPlatformIds().add(consumerId);
+                team1.getUserIds().add(consumerId);
                 System.out.printf("Consumer %s added to team %s\n", consumerId, team1.getName());
 
             } else {

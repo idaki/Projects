@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "team_team_users")
-public class TeamEntity implements Team {
+@Table(name = "teams")
+public class TeamEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,23 +20,21 @@ public class TeamEntity implements Team {
     @Column(name = "team_size")
     private int capacity;
 
+    @Column(name = "tournament_id")
+    private Long tournamentId;
+
     @ElementCollection
-    @CollectionTable(name = "team_user_platform_ids", joinColumns = @JoinColumn(name = "team_id"))
-    @Column(name = "user_platform_id")
-    private Set<Long> usersPlatformIds;
-
-
-
+    @CollectionTable(name = "team_user_ids", joinColumns = @JoinColumn(name = "team_id"))
+    @Column(name = "user_id")
+    private Set<Long> userIds;
 
     public TeamEntity(String name, int capacity) {
         this.name = name;
         this.capacity = capacity;
-        this.usersPlatformIds = new HashSet<>();
+        this.userIds = new HashSet<>();
     }
 
-    public TeamEntity() {
-
-    }
+    public TeamEntity() {}
 
     // Getters and Setters
     public Long getId() {
@@ -63,11 +61,19 @@ public class TeamEntity implements Team {
         this.capacity = capacity;
     }
 
-    public Set<Long> getUsersPlatformIds() {
-        return usersPlatformIds;
+    public Long getTournamentId() {
+        return tournamentId;
     }
 
-    public void setUsersPlatformIds(Set<Long> usersPlatformIds) {
-        this.usersPlatformIds = usersPlatformIds;
+    public void setTournamentId(Long tournamentId) {
+        this.tournamentId = tournamentId;
+    }
+
+    public Set<Long> getUserIds() {
+        return userIds;
+    }
+
+    public void setUserIds(Set<Long> userIds) {
+        this.userIds = userIds;
     }
 }

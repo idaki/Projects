@@ -1,15 +1,13 @@
 package bg.softuni.userservice.models.entity.business;
 
-
 import bg.softuni.userservice.models.entity.user.User;
-import bg.softuni.userservice.models.entity.password.UserPassword;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "platform_employees")
+@Table(name = "employees")
 public class Employee extends User {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company company;
 
@@ -20,7 +18,4 @@ public class Employee extends User {
     public void setCompany(Company company) {
         this.company = company;
     }
-
-
-
 }
