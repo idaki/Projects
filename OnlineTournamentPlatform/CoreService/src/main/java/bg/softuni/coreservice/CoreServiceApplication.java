@@ -1,18 +1,13 @@
-package bg.softuni.userservice;
+package bg.softuni.coreservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-
 @SpringBootApplication
-
-
-
-public class UserServiceApplication {
+public class CoreServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class, args);
+        SpringApplication.run(CoreServiceApplication.class, args);
     }
 
 }
