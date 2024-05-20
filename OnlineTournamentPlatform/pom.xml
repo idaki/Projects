@@ -64,7 +64,7 @@
     </dependencyManagement>
 
     <modules>
-        <module>CoreService</module>
+        <module>WebService</module>
         <module>UserService</module>
         <module>TeamService</module>
         <module>AuthenticationService</module>

@@ -33,11 +33,7 @@
         </dependency>
 
         <!-- Project Dependencies -->
-        <dependency>
-            <groupId>bg.softuni</groupId>
-            <artifactId>CoreService</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
         <dependency>
             <groupId>bg.softuni</groupId>
             <artifactId>CrudService</artifactId>
@@ -70,12 +66,5 @@
 
 
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+
 </project>

@@ -8,7 +8,6 @@ import bg.softuni.tournamentservice.model.viewDto.TournamentDTO;
 import bg.softuni.tournamentservice.repository.TournamentRepository;
 import bg.softuni.tournamentservice.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,9 +18,10 @@ import java.util.stream.Collectors;
 public class TournamentServiceImpl extends CrudServiceImpl<Tournament, Long> implements TournamentService {
 
     private final TournamentRepository tournamentRepository;
+
     @Autowired
-    public TournamentServiceImpl(JpaRepository<Tournament, Long> repository, TournamentRepository tournamentRepository) {
-        super(repository);
+    public TournamentServiceImpl(TournamentRepository tournamentRepository) {
+        super(tournamentRepository);
         this.tournamentRepository = tournamentRepository;
     }
 
@@ -36,7 +36,7 @@ public class TournamentServiceImpl extends CrudServiceImpl<Tournament, Long> imp
     private TournamentDTO convertToDto(Tournament tournament) {
         TournamentDTO dto = new TournamentDTO();
         Game game = tournament.getGame();
-        String description ="PLACEHOLDER TEXT";
+        String description = "PLACEHOLDER TEXT";
         Set<Asset> assets = game.getAssets();
         String img = "";
         if (!assets.isEmpty()) {
@@ -44,7 +44,7 @@ public class TournamentServiceImpl extends CrudServiceImpl<Tournament, Long> imp
         }
         dto.setId(tournament.getId());
         dto.setName(tournament.getName());
-        dto.setDescription(description); // Assuming you have a method in GameService to map a Game entity to a GameDTO
+        dto.setDescription(description);
         dto.setUrl(img);
         return dto;
     }

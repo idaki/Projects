@@ -4,14 +4,11 @@ import bg.softuni.tournamentservice.model.Tournament;
 import bg.softuni.tournamentservice.model.viewDto.TournamentDTO;
 import bg.softuni.tournamentservice.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-
 @RequestMapping("/api/tournaments")
 public class TournamentController {
 
@@ -23,46 +20,27 @@ public class TournamentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TournamentDTO>> getAllTournaments() {
-        List<TournamentDTO> tournaments = tournamentService.getAllTournaments();
-        return new ResponseEntity<>(tournaments, HttpStatus.OK);
+    public List<TournamentDTO> getAllTournaments() {
+        return tournamentService.getAllTournaments();
     }
-//
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Tournament> getTournamentById(@PathVariable Long id) {
-//        Tournament tournament = tournamentService.findById(id).orElse(null);
-//        if (tournament != null) {
-//            return new ResponseEntity<>(tournament, HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
-//
-//    @PostMapping
-//    public ResponseEntity<Tournament> createTournament(@RequestBody Tournament tournament) {
-//        Tournament createdTournament = tournamentService.save(tournament);
-//        return new ResponseEntity<>(createdTournament, HttpStatus.CREATED);
-//    }
-//
-//    @PutMapping("/{id}")
-//    public ResponseEntity<Tournament> updateTournament(@PathVariable Long id, @RequestBody Tournament tournament) {
-//        Tournament existingTournament = tournamentService.findById(id).orElse(null);
-//        if (existingTournament != null) {
-//            Tournament updatedTournament = tournamentService.save(tournament);
-//            return new ResponseEntity<>(updatedTournament, HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Void> deleteTournament(@PathVariable Long id) {
-//        Tournament existingTournament = tournamentService.findById(id).orElse(null);
-//        if (existingTournament != null) {
-//            tournamentService.deleteById(id);
-//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
+
+    @GetMapping("/{id}")
+    public TournamentDTO getTournamentById(@PathVariable Long id) {
+        return null;   // Implement this method if needed
+    }
+
+    @PostMapping
+    public TournamentDTO createTournament(@RequestBody TournamentDTO tournamentDTO) {
+        return null;   // Implement this method if needed
+    }
+
+    @PutMapping("/{id}")
+    public TournamentDTO updateTournament(@PathVariable Long id, @RequestBody TournamentDTO tournamentDTO) {
+     return null;   // Implement this method if needed
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTournament(@PathVariable Long id) {
+        // Implement this method if needed
+    }
 }

@@ -1,10 +1,7 @@
 package bg.softuni.tournamentservice.model.viewDto;
 
 
-import bg.softuni.gameservice.model.Asset;
-import bg.softuni.gameservice.model.ExportDto.GameDTO;
-
-import java.util.Set;
+;
 
 public class TournamentDTO {
     private Long id;
