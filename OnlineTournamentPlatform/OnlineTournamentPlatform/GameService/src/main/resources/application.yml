@@ -1,0 +1,26 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: 'TRUE'
+    hibernate:
+      ddl-auto: update
+  application:
+    name: GameService
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: '1234'
+    username: root
+    url: 'jdbc:mysql://localhost:3306/tournament?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true '
+  main:
+    web-application-type: none
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor: TRACE
+        SQL: DEBUG
+      nodeValue: WARN
+    blog: WARN
