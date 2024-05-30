@@ -1,6 +1,8 @@
 package bg.softuni.tournamentservice.model;
 
 import bg.softuni.gameservice.model.Game;
+import bg.softuni.locationservice.model.Country;
+import bg.softuni.locationservice.model.Region;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -24,6 +26,16 @@ public class Tournament {
     @CollectionTable(name = "tournament_teams", joinColumns = @JoinColumn(name = "tournament_id"))
     @Column(name = "team_id")
     private Set<Long> teamIds;
+
+    @ManyToMany
+    @JoinTable(name = "tournament_countries",
+            joinColumns = @JoinColumn(name = "tournament_id"),
+            inverseJoinColumns = @JoinColumn(name = "country_id"))
+    private Set<Country> countries;
+
+    @ManyToOne
+    @JoinColumn(name = "region_id")
+    private Region region;
 
 
     public Long getId() {

@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories("bg.softuni.*" )
 @ComponentScan(basePackages = { "bg.softuni.tournamentservice.*"
         ,"bg.softuni.gameservice.*"
+        ,"bg.softuni.locationservice.*"
 })
 @EntityScan("bg.softuni.*" )
 public class WebServiceApplication {

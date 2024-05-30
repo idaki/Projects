@@ -1,4 +1,4 @@
-                                      -- Users and Password Import
+-- Users and Password Import
 -- Insert companies into users table
 INSERT INTO users (username, email)
 VALUES
@@ -55,8 +55,8 @@ VALUES
 INSERT INTO employees (id, company_id)
 SELECT u.id, c.id
 FROM (SELECT id, ROW_NUMBER() OVER (ORDER BY id) as row_num FROM users WHERE username LIKE 'employee%') u
-JOIN (SELECT id, ROW_NUMBER() OVER (ORDER BY id) as row_num FROM users WHERE username LIKE 'company%') c
-ON u.row_num = c.row_num;
+         JOIN (SELECT id, ROW_NUMBER() OVER (ORDER BY id) as row_num FROM users WHERE username LIKE 'company%') c
+              ON u.row_num = c.row_num;
 -- Insert consumers into users table
 INSERT INTO users (username, email)
 VALUES
@@ -98,22 +98,22 @@ INSERT INTO user_passwords (user_id, hashed_password)
 SELECT id, 'hashed_password' FROM users WHERE username LIKE 'consumer%';
 
 
-                                           -- Inserts Games and Assets
+-- Inserts Games and Assets
 
 
 -- Insert games
 
 INSERT INTO games (title) VALUES
-('Gigantic'),
-('Neverwinter'),
-('Star Trek Online'),
-('PWI'),
-('Subnautica'),
-('Remnant: From The Ashes'),
-('Forsaken World'),
-('Hob'),
-('Torchlight II'),
-('Torchlight III');
+                              ('Gigantic'),
+                              ('Neverwinter'),
+                              ('Star Trek Online'),
+                              ('PWI'),
+                              ('Subnautica'),
+                              ('Remnant: From The Ashes'),
+                              ('Forsaken World'),
+                              ('Hob'),
+                              ('Torchlight II'),
+                              ('Torchlight III');
 
 -- Insert assets for each game
 -- Gigantic
@@ -146,73 +146,73 @@ INSERT INTO assets (name, url_asset, game_id) VALUES ('Torchlight II Image', 'C:
 -- Torchlight III
 INSERT INTO assets (name, url_asset, game_id) VALUES ('Torchlight III Image', 'C:\\Users\\Idaki\\Documents\\GitHub\\Softuni\\OnlineTournamentPlatform\\GameService\\src\\main\\resources\\img\\Torchlight3.jpg', LAST_INSERT_ID());
 
- -- Insert Tournaments and Teams
+-- Insert Tournaments and Teams
 
 -- Insert tournaments
 INSERT INTO tournaments (id, name, game_id, manager_id) VALUES
-    (1, 'Forsaken World Tournament', 7, 1),  -- Forsaken World
-    (2, 'Gigantic Tournament', 1, 2),        -- Gigantic
-    (3, 'Hob Tournament', 8, 3),              -- Hob
-    (4, 'Neverwinter Tournament', 2, 4),      -- Neverwinter
-    (5, 'PWI Tournament', 4, 5),              -- PWI
-    (6, 'Remnant: From The Ashes Tournament', 6, 6),  -- Remnant: From The Ashes
-    (7, 'Star Trek Online Tournament', 3, 7),          -- Star Trek Online
-    (8, 'Subnautica Tournament', 5, 8),                -- Subnautica
-    (9, 'Torchlight II Tournament', 9, 9),             -- Torchlight II
-    (10, 'Torchlight III Tournament', 10, 10);
+                                                            (1, 'Forsaken World Tournament', 7, 1),  -- Forsaken World
+                                                            (2, 'Gigantic Tournament', 1, 2),        -- Gigantic
+                                                            (3, 'Hob Tournament', 8, 3),              -- Hob
+                                                            (4, 'Neverwinter Tournament', 2, 4),      -- Neverwinter
+                                                            (5, 'PWI Tournament', 4, 5),              -- PWI
+                                                            (6, 'Remnant: From The Ashes Tournament', 6, 6),  -- Remnant: From The Ashes
+                                                            (7, 'Star Trek Online Tournament', 3, 7),          -- Star Trek Online
+                                                            (8, 'Subnautica Tournament', 5, 8),                -- Subnautica
+                                                            (9, 'Torchlight II Tournament', 9, 9),             -- Torchlight II
+                                                            (10, 'Torchlight III Tournament', 10, 10);
 
 -- You can use any naming convention for teams
 INSERT INTO teams (name, team_size, tournament_id) VALUES
-    ('Team 1', 4, 1),
-    ('Team 2', 4, 1),
-    ('Team 3', 4, 1),
-    ('Team 4', 4, 1),
-    ('Team 5', 4, 1),
-    ('Team 1', 4, 2),
-    ('Team 2', 4, 2),
-    ('Team 3', 4, 2),
-    ('Team 4', 4, 2),
-    ('Team 5', 4, 2),
-    ('Team 1', 4, 3),
-    ('Team 2', 4, 3),
-    ('Team 3', 4, 3),
-    ('Team 4', 4, 3),
-    ('Team 5', 4, 3),
-    ('Team 1', 4, 4),
-    ('Team 2', 4, 4),
-    ('Team 3', 4, 4),
-    ('Team 4', 4, 4),
-    ('Team 5', 4, 4),
-    ('Team 1', 4, 5),
-    ('Team 2', 4, 5),
-    ('Team 3', 4, 5),
-    ('Team 4', 4, 5),
-    ('Team 5', 4, 5),
-    ('Team 1', 4, 6),
-    ('Team 2', 4, 6),
-    ('Team 3', 4, 6),
-    ('Team 4', 4, 6),
-    ('Team 5', 4, 6),
-    ('Team 1', 4, 7),
-    ('Team 2', 4, 7),
-    ('Team 3', 4, 7),
-    ('Team 4', 4, 7),
-    ('Team 5', 4, 7),
-    ('Team 1', 4, 8),
-    ('Team 2', 4, 8),
-    ('Team 3', 4, 8),
-    ('Team 4', 4, 8),
-    ('Team 5', 4, 8),
-    ('Team 1', 4, 9),
-    ('Team 2', 4, 9),
-    ('Team 3', 4, 9),
-    ('Team 4', 4, 9),
-    ('Team 5', 4, 9),
-    ('Team 1', 4, 10),
-    ('Team 2', 4, 10),
-    ('Team 3', 4, 10),
-    ('Team 4', 4, 10),
-    ('Team 5', 4, 10);
+                                                       ('Team 1', 4, 1),
+                                                       ('Team 2', 4, 1),
+                                                       ('Team 3', 4, 1),
+                                                       ('Team 4', 4, 1),
+                                                       ('Team 5', 4, 1),
+                                                       ('Team 1', 4, 2),
+                                                       ('Team 2', 4, 2),
+                                                       ('Team 3', 4, 2),
+                                                       ('Team 4', 4, 2),
+                                                       ('Team 5', 4, 2),
+                                                       ('Team 1', 4, 3),
+                                                       ('Team 2', 4, 3),
+                                                       ('Team 3', 4, 3),
+                                                       ('Team 4', 4, 3),
+                                                       ('Team 5', 4, 3),
+                                                       ('Team 1', 4, 4),
+                                                       ('Team 2', 4, 4),
+                                                       ('Team 3', 4, 4),
+                                                       ('Team 4', 4, 4),
+                                                       ('Team 5', 4, 4),
+                                                       ('Team 1', 4, 5),
+                                                       ('Team 2', 4, 5),
+                                                       ('Team 3', 4, 5),
+                                                       ('Team 4', 4, 5),
+                                                       ('Team 5', 4, 5),
+                                                       ('Team 1', 4, 6),
+                                                       ('Team 2', 4, 6),
+                                                       ('Team 3', 4, 6),
+                                                       ('Team 4', 4, 6),
+                                                       ('Team 5', 4, 6),
+                                                       ('Team 1', 4, 7),
+                                                       ('Team 2', 4, 7),
+                                                       ('Team 3', 4, 7),
+                                                       ('Team 4', 4, 7),
+                                                       ('Team 5', 4, 7),
+                                                       ('Team 1', 4, 8),
+                                                       ('Team 2', 4, 8),
+                                                       ('Team 3', 4, 8),
+                                                       ('Team 4', 4, 8),
+                                                       ('Team 5', 4, 8),
+                                                       ('Team 1', 4, 9),
+                                                       ('Team 2', 4, 9),
+                                                       ('Team 3', 4, 9),
+                                                       ('Team 4', 4, 9),
+                                                       ('Team 5', 4, 9),
+                                                       ('Team 1', 4, 10),
+                                                       ('Team 2', 4, 10),
+                                                       ('Team 3', 4, 10),
+                                                       ('Team 4', 4, 10),
+                                                       ('Team 5', 4, 10);
 
 -- Assigning managers to tournaments
 UPDATE tournaments SET manager_id = 1 WHERE id = 1;   -- Assigning user 1 as manager for Forsaken World Tournament
@@ -223,135 +223,276 @@ UPDATE tournaments SET manager_id = 5 WHERE id = 5;   -- Assigning user 5 as man
 UPDATE tournaments SET manager_id = 6 WHERE id = 6;   -- Assigning user 6 as manager for Remnant: From The Ashes Tournament
 UPDATE tournaments SET manager_id = 7 WHERE id = 7;   -- Assigning user 7 as manager for Star Trek Online Tournament
 
- -- Upate Tournament User Relation
+-- Upate Tournament User Relation
 -- Upate Tournament User Relation
 
 -- Forsaken World Tournament
 INSERT INTO team_user_ids (team_id, user_id) VALUES
-                                             -- For Teams 1-5 of Forsaken World Tournament
-                                             (1, 41), (1, 42), (1, 43), (1, 44),
-                                             (2, 45), (2, 46), (2, 47), (2, 48),
-                                             (3, 49), (3, 50), (3, 51), (3, 52),
-                                             (4, 53), (4, 54), (4, 55), (4, 56),
-                                             (5, 57), (5, 58), (5, 59), (5, 60);
+                                                 -- For Teams 1-5 of Forsaken World Tournament
+                                                 (1, 41), (1, 42), (1, 43), (1, 44),
+                                                 (2, 45), (2, 46), (2, 47), (2, 48),
+                                                 (3, 49), (3, 50), (3, 51), (3, 52),
+                                                 (4, 53), (4, 54), (4, 55), (4, 56),
+                                                 (5, 57), (5, 58), (5, 59), (5, 60);
 
 -- Gigantic Tournament
 INSERT INTO team_user_ids (team_id, user_id) VALUES
-                                             -- For Teams 1-5 of Gigantic Tournament
-                                             (6, 41), (6, 42), (6, 43), (6, 44),
-                                             (7, 45), (7, 46), (7, 47), (7, 48),
-                                             (8, 49), (8, 50), (8, 51), (8, 52),
-                                             (9, 53), (9, 54), (10, 55), (11, 56),
-                                             (12, 57), (12, 58), (12, 59), (12, 60);
+                                                 -- For Teams 1-5 of Gigantic Tournament
+                                                 (6, 41), (6, 42), (6, 43), (6, 44),
+                                                 (7, 45), (7, 46), (7, 47), (7, 48),
+                                                 (8, 49), (8, 50), (8, 51), (8, 52),
+                                                 (9, 53), (9, 54), (10, 55), (11, 56),
+                                                 (12, 57), (12, 58), (12, 59), (12, 60);
 
 -- Hob Tournament
 INSERT INTO team_user_ids (team_id, user_id) VALUES
-                                             -- For Teams 1-5 of Hob Tournament
-                                             (13, 41), (13, 42), (13, 43), (13, 44),
-                                             (14, 45), (14, 46), (14, 47), (14, 48),
-                                             (15, 49), (15, 50), (15, 51), (15, 52),
-                                             (16, 53), (16, 54), (16, 55), (16, 56),
-                                             (17, 57), (17, 58), (17, 59), (17, 60);
+                                                 -- For Teams 1-5 of Hob Tournament
+                                                 (13, 41), (13, 42), (13, 43), (13, 44),
+                                                 (14, 45), (14, 46), (14, 47), (14, 48),
+                                                 (15, 49), (15, 50), (15, 51), (15, 52),
+                                                 (16, 53), (16, 54), (16, 55), (16, 56),
+                                                 (17, 57), (17, 58), (17, 59), (17, 60);
 
 -- Neverwinter Tournament
 INSERT INTO team_user_ids (team_id, user_id) VALUES
-                                             -- For Teams 1-5 of Neverwinter Tournament
-                                             (18, 41), (18, 42), (18, 43), (18, 44),
-                                             (19, 45), (19, 46), (19, 47), (19, 48),
-                                             (20, 49), (20, 50), (20, 51), (20, 52),
-                                             (21, 53), (21, 54), (21, 55), (21, 56),
-                                             (22, 57), (22, 58), (22, 59), (22, 60);
+                                                 -- For Teams 1-5 of Neverwinter Tournament
+                                                 (18, 41), (18, 42), (18, 43), (18, 44),
+                                                 (19, 45), (19, 46), (19, 47), (19, 48),
+                                                 (20, 49), (20, 50), (20, 51), (20, 52),
+                                                 (21, 53), (21, 54), (21, 55), (21, 56),
+                                                 (22, 57), (22, 58), (22, 59), (22, 60);
 
 -- PWI Tournament
 INSERT INTO team_user_ids (team_id, user_id) VALUES
-                                             -- For Teams 1-5 of PWI Tournament
-                                             (23, 41), (23, 42), (23, 43), (23, 44),
-                                             (24, 45), (24, 46), (24, 47), (24, 48),
-                                             (25, 49), (25, 50), (25, 51), (25, 52),
-                                             (26, 53), (26, 54), (26, 55), (26, 56),
-                                             (27, 57), (27, 58), (27, 59), (27, 60);
+                                                 -- For Teams 1-5 of PWI Tournament
+                                                 (23, 41), (23, 42), (23, 43), (23, 44),
+                                                 (24, 45), (24, 46), (24, 47), (24, 48),
+                                                 (25, 49), (25, 50), (25, 51), (25, 52),
+                                                 (26, 53), (26, 54), (26, 55), (26, 56),
+                                                 (27, 57), (27, 58), (27, 59), (27, 60);
 
 -- Remnant: From The Ashes Tournament
 INSERT INTO team_user_ids (team_id, user_id) VALUES
-                                             -- For Teams 1-5 of Remnant: From The Ashes Tournament
-                                             (28, 41), (28, 42), (28, 43), (28, 44),
-                                             (29, 45), (29, 46), (29, 47), (29, 48),
-                                             (30, 49), (30, 50), (30, 51), (30, 52),
-                                             (31, 53), (31, 54), (31, 55), (31, 56),
-                                             (32, 57), (32, 58), (32, 59), (32, 60);
+                                                 -- For Teams 1-5 of Remnant: From The Ashes Tournament
+                                                 (28, 41), (28, 42), (28, 43), (28, 44),
+                                                 (29, 45), (29, 46), (29, 47), (29, 48),
+                                                 (30, 49), (30, 50), (30, 51), (30, 52),
+                                                 (31, 53), (31, 54), (31, 55), (31, 56),
+                                                 (32, 57), (32, 58), (32, 59), (32, 60);
 
 -- Star Trek Online Tournament
 INSERT INTO team_user_ids (team_id, user_id) VALUES
-                                             -- For Teams 1-5 of Star Trek Online Tournament
-                                             (33, 41), (33, 42), (33, 43), (33, 44),
-                                             (34, 45), (34, 46), (34, 47), (34, 48),
-                                             (35, 49), (35, 50), (35, 51), (35, 52),
-                                             (36, 53), (36, 54), (36, 55), (36, 56),
-                                             (37, 57), (37, 58), (37, 59), (37, 60);
+                                                 -- For Teams 1-5 of Star Trek Online Tournament
+                                                 (33, 41), (33, 42), (33, 43), (33, 44),
+                                                 (34, 45), (34, 46), (34, 47), (34, 48),
+                                                 (35, 49), (35, 50), (35, 51), (35, 52),
+                                                 (36, 53), (36, 54), (36, 55), (36, 56),
+                                                 (37, 57), (37, 58), (37, 59), (37, 60);
 
 -- Subnautica Tournament
 INSERT INTO team_user_ids (team_id, user_id) VALUES
-                                             -- For Teams 1-5 of Subnautica Tournament
-                                             (38, 41), (38, 42), (38, 43), (38, 44),
-                                             (39, 45), (39, 46), (39, 47), (39, 48),
-                                             (40, 49), (40, 50), (40, 51), (40, 52),
-                                             (41, 53), (41, 54), (41, 55), (41, 56),
-                                             (42, 57), (42, 58), (42, 59), (42, 60);
+                                                 -- For Teams 1-5 of Subnautica Tournament
+                                                 (38, 41), (38, 42), (38, 43), (38, 44),
+                                                 (39, 45), (39, 46), (39, 47), (39, 48),
+                                                 (40, 49), (40, 50), (40, 51), (40, 52),
+                                                 (41, 53), (41, 54), (41, 55), (41, 56),
+                                                 (42, 57), (42, 58), (42, 59), (42, 60);
 
 -- Torchlight II Tournament
 INSERT INTO team_user_ids (team_id, user_id) VALUES
-                                             -- For Teams 1-5 of Torchlight II Tournament
-                                             (43, 41), (43, 42), (43, 43), (43, 44),
-                                             (44, 45), (44, 46), (44, 47), (44, 48),
-                                             (45, 49), (45, 50), (45, 51), (45, 52),
-                                             (46, 53), (46, 54), (46, 55), (46, 56),
-                                             (47, 57), (47, 58), (47, 59), (47, 60);
+                                                 -- For Teams 1-5 of Torchlight II Tournament
+                                                 (43, 41), (43, 42), (43, 43), (43, 44),
+                                                 (44, 45), (44, 46), (44, 47), (44, 48),
+                                                 (45, 49), (45, 50), (45, 51), (45, 52),
+                                                 (46, 53), (46, 54), (46, 55), (46, 56),
+                                                 (47, 57), (47, 58), (47, 59), (47, 60);
 
 -- Torchlight III Tournament
 INSERT INTO team_user_ids (team_id, user_id) VALUES
-                                             -- For Teams 1-5 of Torchlight III Tournament
-                                             (48, 41), (48, 42), (48, 43), (48, 44),
-                                             (49, 45), (49, 46), (49, 47), (49, 48),
-                                             (50, 49), (50, 54), (50, 55), (50, 56);
+                                                 -- For Teams 1-5 of Torchlight III Tournament
+                                                 (48, 41), (48, 42), (48, 43), (48, 44),
+                                                 (49, 45), (49, 46), (49, 47), (49, 48),
+                                                 (50, 49), (50, 54), (50, 55), (50, 56);
 
 
-				-- Insert tournament and team relation
+-- Insert tournament and team relation
 -- Forsaken World Tournament
 INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                         (1, 1), (1, 2), (1, 3), (1, 4), (1, 5);
+                                                          (1, 1), (1, 2), (1, 3), (1, 4), (1, 5);
 
 -- Gigantic Tournament
 INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                         (2, 6), (2, 7), (2, 8), (2, 9), (2, 10);
+                                                          (2, 6), (2, 7), (2, 8), (2, 9), (2, 10);
 
 -- Hob Tournament
 INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                         (3, 11), (3, 12), (3, 13), (3, 14), (3, 15);
+                                                          (3, 11), (3, 12), (3, 13), (3, 14), (3, 15);
 
 -- Neverwinter Tournament
 INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                         (4, 16), (4, 17), (4, 18), (4, 19), (4, 20);
+                                                          (4, 16), (4, 17), (4, 18), (4, 19), (4, 20);
 
 -- PWI Tournament
 INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                         (5, 21), (5, 22), (5, 23), (5, 24), (5, 25);
+                                                          (5, 21), (5, 22), (5, 23), (5, 24), (5, 25);
 
 -- Remnant: From The Ashes Tournament
 INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                         (6, 26), (6, 27), (6, 28), (6, 29), (6, 30);
+                                                          (6, 26), (6, 27), (6, 28), (6, 29), (6, 30);
 
 -- Star Trek Online Tournament
 INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                         (7, 31), (7, 32), (7, 33), (7, 34), (7, 35);
+                                                          (7, 31), (7, 32), (7, 33), (7, 34), (7, 35);
 
 -- Subnautica Tournament
 INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                         (8, 36), (8, 37), (8, 38), (8, 39), (8, 40);
+                                                          (8, 36), (8, 37), (8, 38), (8, 39), (8, 40);
 
 -- Torchlight II Tournament
 INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                         (9, 41), (9, 42), (9, 43), (9, 44), (9, 45);
+                                                          (9, 41), (9, 42), (9, 43), (9, 44), (9, 45);
 
 -- Torchlight III Tournament
 INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                         (10, 46), (10, 47), (10, 48), (10, 49), (10, 50);
+                                                          (10, 46), (10, 47), (10, 48), (10, 49), (10, 50);
+
+-- Insert regions
+-- Create table for Region
+CREATE TABLE regions (
+                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                         name VARCHAR(255) NOT NULL
+);
+
+-- Create table for Country
+CREATE TABLE countries (
+                           id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                           name VARCHAR(255) NOT NULL,
+                           region_id BIGINT,
+                           FOREIGN KEY (region_id) REFERENCES regions(id)
+);
+
+-- Insert regions
+INSERT INTO regions (id, name) VALUES
+                                   (1, 'North America'),
+                                   (2, 'Europe'),
+                                   (3, 'South America'),
+                                   (4, 'Asia-Pacific');
+
+-- Insert countries
+-- North America
+INSERT INTO countries (id, name, region_id) VALUES
+                                                (1, 'United States', 1),
+                                                (2, 'Canada', 1),
+                                                (3, 'Mexico', 1),
+                                                (4, 'Bermuda', 1),
+                                                (5, 'Greenland', 1),
+                                                (6, 'Saint Pierre and Miquelon', 1),
+                                                (7, 'Belize', 1),
+                                                (8, 'Costa Rica', 1),
+                                                (9, 'El Salvador', 1),
+                                                (10, 'Guatemala', 1),
+                                                (11, 'Honduras', 1),
+                                                (12, 'Nicaragua', 1),
+                                                (13, 'Panama', 1),
+                                                (14, 'Antigua and Barbuda', 1),
+                                                (15, 'Bahamas', 1),
+                                                (16, 'Barbados', 1),
+                                                (17, 'Cuba', 1),
+                                                (18, 'Dominica', 1),
+                                                (19, 'Dominican Republic', 1),
+                                                (20, 'Grenada', 1),
+                                                (21, 'Haiti', 1),
+                                                (22, 'Jamaica', 1),
+                                                (23, 'Saint Kitts and Nevis', 1),
+                                                (24, 'Saint Lucia', 1),
+                                                (25, 'Saint Vincent and the Grenadines', 1),
+                                                (26, 'Trinidad and Tobago', 1),
+-- Europe
+                                                (27, 'United Kingdom', 2),
+                                                (28, 'Germany', 2),
+                                                (29, 'France', 2),
+                                                (30, 'Italy', 2),
+                                                (31, 'Spain', 2),
+                                                (32, 'Netherlands', 2),
+                                                (33, 'Switzerland', 2),
+                                                (34, 'Sweden', 2),
+                                                (35, 'Belgium', 2),
+                                                (36, 'Austria', 2),
+                                                (37, 'Poland', 2),
+                                                (38, 'Norway', 2),
+                                                (39, 'Denmark', 2),
+                                                (40, 'Finland', 2),
+                                                (41, 'Czech Republic', 2),
+                                                (42, 'Ireland', 2),
+                                                (43, 'Portugal', 2),
+                                                (44, 'Greece', 2),
+                                                (45, 'Hungary', 2),
+                                                (46, 'Romania', 2),
+                                                (47, 'Ukraine', 2),
+                                                (48, 'Slovakia', 2),
+                                                (49, 'Croatia', 2),
+                                                (50, 'Lithuania', 2),
+                                                (51, 'Slovenia', 2),
+                                                (52, 'Latvia', 2),
+                                                (53, 'Estonia', 2),
+                                                (54, 'Bulgaria', 2),
+                                                (55, 'Serbia', 2),
+                                                (56, 'Bosnia and Herzegovina', 2),
+                                                (57, 'Albania', 2),
+                                                (58, 'Montenegro', 2),
+                                                (59, 'North Macedonia', 2),
+                                                (60, 'Kosovo', 2),
+                                                (61, 'Andorra', 2),
+                                                (62, 'Liechtenstein', 2),
+                                                (63, 'Monaco', 2),
+                                                (64, 'San Marino', 2),
+                                                (65, 'Vatican City', 2),
+-- South America
+                                                (66, 'Brazil', 3),
+                                                (67, 'Argentina', 3),
+                                                (68, 'Peru', 3),
+                                                (69, 'Colombia', 3),
+                                                (70, 'Venezuela', 3),
+                                                (71, 'Chile', 3),
+                                                (72, 'Ecuador', 3),
+                                                (73, 'Bolivia', 3),
+                                                (74, 'Paraguay', 3),
+                                                (75, 'Uruguay', 3),
+                                                (76, 'Guyana', 3),
+                                                (77, 'Suriname', 3),
+                                                (78, 'French Guiana', 3),
+-- Asia-Pacific
+                                                (79, 'Australia', 4),
+                                                (80, 'New Zealand', 4),
+                                                (81, 'Japan', 4),
+                                                (82, 'China', 4),
+                                                (83, 'India', 4),
+                                                (84, 'Indonesia', 4),
+                                                (85, 'South Korea', 4),
+                                                (86, 'Philippines', 4),
+                                                (87, 'Vietnam', 4),
+                                                (88, 'Thailand', 4),
+                                                (89, 'Malaysia', 4),
+                                                (90, 'Singapore', 4),
+                                                (91, 'Bangladesh', 4),
+                                                (92, 'Pakistan', 4),
+                                                (93, 'Taiwan', 4),
+                                                (94, 'Sri Lanka', 4),
+                                                (95, 'Myanmar', 4),
+                                                (96, 'Nepal', 4),
+                                                (97, 'Cambodia', 4),
+                                                (98, 'Hong Kong', 4),
+                                                (99, 'Macau', 4),
+                                                (100, 'Mongolia', 4),
+                                                (101, 'Brunei', 4),
+                                                (102, 'Timor-Leste', 4),
+                                                (103, 'Fiji', 4),
+                                                (104, 'Papua New Guinea', 4),
+                                                (105, 'Vanuatu', 4),
+                                                (106, 'Solomon Islands', 4),
+                                                (107, 'Tonga', 4),
+                                                (108, 'Kiribati', 4),
+                                                (109, 'Tuvalu', 4),
+                                                (110, 'Nauru', 4),
+                                                (111, 'Marshall Islands', 4),
+                                                (112, 'Palau', 4);
