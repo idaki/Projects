@@ -1,9 +1,10 @@
 package bg.softuni.locationservice.service;
 
+import bg.softuni.locationservice.model.viewDTO.CountryDTO;
+import bg.softuni.locationservice.model.viewDTO.RegionDTO;
 
-import bg.softuni.crudservice.crud.CrudService;
-import bg.softuni.locationservice.model.Region;
+import java.util.List;
 
-
-public interface RegionService extends CrudService<Region, Long> {
+public interface RegionService {
+    List<RegionDTO> findAllRegions();
 }

@@ -1,17 +1,33 @@
 package bg.softuni.locationservice.service.impl;
 
-import bg.softuni.crudservice.crud.CrudServiceImpl;
 import bg.softuni.locationservice.model.Country;
+import bg.softuni.locationservice.model.viewDTO.CountryDTO;
+import bg.softuni.locationservice.repository.CountryRepository;
 import bg.softuni.locationservice.service.CountryService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-@Service
-public class CountryServiceImpl extends CrudServiceImpl<Country, Long> implements CountryService {
+import java.util.List;
+import java.util.stream.Collectors;
 
-    @Autowired
-    public CountryServiceImpl(JpaRepository<Country, Long> repository) {
-        super(repository);
+@Service
+public class CountryServiceImpl implements CountryService {
+
+    private final CountryRepository countryRepository;
+
+    public CountryServiceImpl(CountryRepository countryRepository) {
+        this.countryRepository = countryRepository;
+    }
+
+    @Override
+    public List<CountryDTO> findByRegionId(Long regionId) {
+        List<Country> countries = countryRepository.findAllByRegionId(regionId);
+        return countries.stream()
+                .map(country -> {
+                    CountryDTO countryDTO = new CountryDTO();
+                    countryDTO.setName(country.getName());
+                    countryDTO.setId(country.getId());
+                    return countryDTO;
+                })
+                .collect(Collectors.toList());
     }
 }
