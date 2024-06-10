@@ -43,6 +43,12 @@
             <artifactId>LocationService</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>bg.softuni</groupId>
+            <artifactId>AuthenticationService</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
 
 
         <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
@@ -67,7 +73,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>bg.softuni</groupId>
+            <artifactId>UserService</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>bg.softuni</groupId>
             <artifactId>GameService</artifactId>
@@ -79,6 +89,9 @@
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+
+
+
 
     </dependencies>
     <build>

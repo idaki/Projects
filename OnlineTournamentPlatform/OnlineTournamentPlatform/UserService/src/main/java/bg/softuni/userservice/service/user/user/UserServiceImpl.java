@@ -1,12 +1,8 @@
-package bg.softuni.userservice.service.user;
+package bg.softuni.userservice.service.user.user;
 
 
 import bg.softuni.crudservice.crud.CrudServiceImpl;
-import bg.softuni.userservice.models.entity.business.Company;
-import bg.softuni.userservice.models.entity.business.Employee;
-import bg.softuni.userservice.models.entity.consumer.Consumer;
 import bg.softuni.userservice.models.entity.user.User;
-
 import bg.softuni.userservice.repository.UserRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;

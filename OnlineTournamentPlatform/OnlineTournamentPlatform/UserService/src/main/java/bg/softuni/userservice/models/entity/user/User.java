@@ -1,6 +1,5 @@
 package bg.softuni.userservice.models.entity.user;
 
-import bg.softuni.userservice.models.entity.password.UserPassword;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,12 +16,11 @@ public class User {
 
     @Column(unique = true, nullable = false)
     private String email;
+    @Column
+    private String password;
 
 
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "password_id", referencedColumnName = "id")
-    private UserPassword password;
 
     public Long getId() {
         return id;
@@ -48,11 +46,11 @@ public class User {
         this.email = email;
     }
 
-    public UserPassword getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(UserPassword password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

@@ -10,8 +10,8 @@ spring:
     name: UserDetailsServiceImpl
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    password: '1234'
-    username: root
+    password: ${db_password}
+    username: ${db_username}
     url: 'jdbc:mysql://localhost:3306/tournament?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true '
   main:
     web-application-type: none

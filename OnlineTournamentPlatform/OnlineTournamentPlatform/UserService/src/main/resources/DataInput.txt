@@ -1,55 +1,56 @@
--- Users and Password Import
+use tournament;
 -- Insert companies into users table
-INSERT INTO users (username, email)
+INSERT INTO users (username, email, password)
 VALUES
-    ('company1', 'company1@example.com'),
-    ('company2', 'company2@example.com'),
-    ('company3', 'company3@example.com'),
-    ('company4', 'company4@example.com'),
-    ('company5', 'company5@example.com'),
-    ('company6', 'company6@example.com'),
-    ('company7', 'company7@example.com'),
-    ('company8', 'company8@example.com'),
-    ('company9', 'company9@example.com'),
-    ('company10', 'company10@example.com'),
-    ('company11', 'company11@example.com'),
-    ('company12', 'company12@example.com'),
-    ('company13', 'company13@example.com'),
-    ('company14', 'company14@example.com'),
-    ('company15', 'company15@example.com'),
-    ('company16', 'company16@example.com'),
-    ('company17', 'company17@example.com'),
-    ('company18', 'company18@example.com'),
-    ('company19', 'company19@example.com'),
-    ('company20', 'company20@example.com');
+    ('company1', 'company1@example.com', 'hashed_password1'),
+    ('company2', 'company2@example.com', 'hashed_password2'),
+    ('company3', 'company3@example.com', 'hashed_password3'),
+    ('company4', 'company4@example.com', 'hashed_password4'),
+    ('company5', 'company5@example.com', 'hashed_password5'),
+    ('company6', 'company6@example.com', 'hashed_password6'),
+    ('company7', 'company7@example.com', 'hashed_password7'),
+    ('company8', 'company8@example.com', 'hashed_password8'),
+    ('company9', 'company9@example.com', 'hashed_password9'),
+    ('company10', 'company10@example.com', 'hashed_password10'),
+    ('company11', 'company11@example.com', 'hashed_password11'),
+    ('company12', 'company12@example.com', 'hashed_password12'),
+    ('company13', 'company13@example.com', 'hashed_password13'),
+    ('company14', 'company14@example.com', 'hashed_password14'),
+    ('company15', 'company15@example.com', 'hashed_password15'),
+    ('company16', 'company16@example.com', 'hashed_password16'),
+    ('company17', 'company17@example.com', 'hashed_password17'),
+    ('company18', 'company18@example.com', 'hashed_password18'),
+    ('company19', 'company19@example.com', 'hashed_password19'),
+    ('company20', 'company20@example.com', 'hashed_password20');
 
 -- Insert into companies table
 INSERT INTO companies (id)
 SELECT id FROM users WHERE username LIKE 'company%';
 
 -- Insert employees into users table
-INSERT INTO users (username, email)
+INSERT INTO users (username, email, password)
 VALUES
-    ('employee1', 'employee1@example.com'),
-    ('employee2', 'employee2@example.com'),
-    ('employee3', 'employee3@example.com'),
-    ('employee4', 'employee4@example.com'),
-    ('employee5', 'employee5@example.com'),
-    ('employee6', 'employee6@example.com'),
-    ('employee7', 'employee7@example.com'),
-    ('employee8', 'employee8@example.com'),
-    ('employee9', 'employee9@example.com'),
-    ('employee10', 'employee10@example.com'),
-    ('employee11', 'employee11@example.com'),
-    ('employee12', 'employee12@example.com'),
-    ('employee13', 'employee13@example.com'),
-    ('employee14', 'employee14@example.com'),
-    ('employee15', 'employee15@example.com'),
-    ('employee16', 'employee16@example.com'),
-    ('employee17', 'employee17@example.com'),
-    ('employee18', 'employee18@example.com'),
-    ('employee19', 'employee19@example.com'),
-    ('employee20', 'employee20@example.com');
+    ('employee1', 'employee1@example.com', 'hashed_password21'),
+    ('employee2', 'employee2@example.com', 'hashed_password22'),
+    ('employee3', 'employee3@example.com', 'hashed_password23'),
+    ('employee4', 'employee4@example.com', 'hashed_password24'),
+    ('employee5', 'employee5@example.com', 'hashed_password25'),
+    ('employee6', 'employee6@example.com', 'hashed_password26'),
+    ('employee7', 'employee7@example.com', 'hashed_password27'),
+    ('employee8', 'employee8@example.com', 'hashed_password28'),
+    ('employee9', 'employee9@example.com', 'hashed_password29'),
+    ('employee10', 'employee10@example.com', 'hashed_password30'),
+    ('employee11', 'employee11@example.com', 'hashed_password31'),
+    ('employee12', 'employee12@example.com', 'hashed_password32'),
+    ('employee13', 'employee13@example.com', 'hashed_password33'),
+    ('employee14', 'employee14@example.com', 'hashed_password34'),
+    ('employee15', 'employee15@example.com', 'hashed_password35'),
+    ('employee16', 'employee16@example.com', 'hashed_password36'),
+    ('employee17', 'employee17@example.com', 'hashed_password37'),
+    ('employee18', 'employee18@example.com', 'hashed_password38'),
+    ('employee19', 'employee19@example.com', 'hashed_password39'),
+    ('employee20', 'employee20@example.com', 'hashed_password40');
+
 
 -- Insert employees into employees table and link to companies
 INSERT INTO employees (id, company_id)
@@ -57,45 +58,35 @@ SELECT u.id, c.id
 FROM (SELECT id, ROW_NUMBER() OVER (ORDER BY id) as row_num FROM users WHERE username LIKE 'employee%') u
          JOIN (SELECT id, ROW_NUMBER() OVER (ORDER BY id) as row_num FROM users WHERE username LIKE 'company%') c
               ON u.row_num = c.row_num;
+
 -- Insert consumers into users table
-INSERT INTO users (username, email)
+INSERT INTO users (username, email, password)
 VALUES
-    ('consumer1', 'consumer1@example.com'),
-    ('consumer2', 'consumer2@example.com'),
-    ('consumer3', 'consumer3@example.com'),
-    ('consumer4', 'consumer4@example.com'),
-    ('consumer5', 'consumer5@example.com'),
-    ('consumer6', 'consumer6@example.com'),
-    ('consumer7', 'consumer7@example.com'),
-    ('consumer8', 'consumer8@example.com'),
-    ('consumer9', 'consumer9@example.com'),
-    ('consumer10', 'consumer10@example.com'),
-    ('consumer11', 'consumer11@example.com'),
-    ('consumer12', 'consumer12@example.com'),
-    ('consumer13', 'consumer13@example.com'),
-    ('consumer14', 'consumer14@example.com'),
-    ('consumer15', 'consumer15@example.com'),
-    ('consumer16', 'consumer16@example.com'),
-    ('consumer17', 'consumer17@example.com'),
-    ('consumer18', 'consumer18@example.com'),
-    ('consumer19', 'consumer19@example.com'),
-    ('consumer20', 'consumer20@example.com');
+    ('consumer1', 'consumer1@example.com', 'hashed_password41'),
+    ('consumer2', 'consumer2@example.com', 'hashed_password42'),
+    ('consumer3', 'consumer3@example.com', 'hashed_password43'),
+    ('consumer4', 'consumer4@example.com', 'hashed_password44'),
+    ('consumer5', 'consumer5@example.com', 'hashed_password45'),
+    ('consumer6', 'consumer6@example.com', 'hashed_password46'),
+    ('consumer7', 'consumer7@example.com', 'hashed_password47'),
+    ('consumer8', 'consumer8@example.com', 'hashed_password48'),
+    ('consumer9', 'consumer9@example.com', 'hashed_password49'),
+    ('consumer10', 'consumer10@example.com', 'hashed_password50'),
+    ('consumer11', 'consumer11@example.com', 'hashed_password51'),
+    ('consumer12', 'consumer12@example.com', 'hashed_password52'),
+    ('consumer13', 'consumer13@example.com', 'hashed_password53'),
+    ('consumer14', 'consumer14@example.com', 'hashed_password54'),
+    ('consumer15', 'consumer15@example.com', 'hashed_password55'),
+    ('consumer16', 'consumer16@example.com', 'hashed_password56'),
+    ('consumer17', 'consumer17@example.com', 'hashed_password57'),
+    ('consumer18', 'consumer18@example.com', 'hashed_password58'),
+    ('consumer19', 'consumer19@example.com', 'hashed_password59'),
+    ('consumer20', 'consumer20@example.com', 'hashed_password60');
+
 
 -- Insert into consumers table
 INSERT INTO consumers (id)
 SELECT id FROM users WHERE username LIKE 'consumer%';
-
--- Add passwords for companies
-INSERT INTO user_passwords (user_id, hashed_password)
-SELECT id, 'hashed_password' FROM users WHERE username LIKE 'company%';
-
--- Add passwords for employees
-INSERT INTO user_passwords (user_id, hashed_password)
-SELECT id, 'hashed_password' FROM users WHERE username LIKE 'employee%';
-
--- Add passwords for consumers
-INSERT INTO user_passwords (user_id, hashed_password)
-SELECT id, 'hashed_password' FROM users WHERE username LIKE 'consumer%';
 
 
 -- Inserts Games and Assets
@@ -356,20 +347,7 @@ INSERT INTO tournament_teams (tournament_id, team_id) VALUES
 INSERT INTO tournament_teams (tournament_id, team_id) VALUES
                                                           (10, 46), (10, 47), (10, 48), (10, 49), (10, 50);
 
--- Insert regions
--- Create table for Region
-CREATE TABLE regions (
-                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                         name VARCHAR(255) NOT NULL
-);
 
--- Create table for Country
-CREATE TABLE countries (
-                           id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                           name VARCHAR(255) NOT NULL,
-                           region_id BIGINT,
-                           FOREIGN KEY (region_id) REFERENCES regions(id)
-);
 
 -- Insert regions
 INSERT INTO regions (id, name) VALUES
