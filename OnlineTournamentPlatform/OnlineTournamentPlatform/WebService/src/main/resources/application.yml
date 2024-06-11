@@ -10,8 +10,8 @@ spring:
     name: WebService
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    password: ${db_password}
-    username: ${db_username}
+    password: 1234
+    username: root
     url: 'jdbc:mysql://localhost:3306/tournament?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true '
 logging:
   level:
@@ -23,3 +23,8 @@ logging:
       nodeValue: WARN
       springframework: DEBUG
     blog: DEBUG
+app:
+  remember:
+    me:
+      token:
+        key: yourUniqueSecretKey

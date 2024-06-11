@@ -7,5 +7,5 @@ import bg.softuni.userservice.models.entity.consumer.Consumer;
 public interface ConsumerService extends CrudService<Consumer, Long> {
 
 
-
+    Consumer registerConsumer(String username, String password, String email);
 }
