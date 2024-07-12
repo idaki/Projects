@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -35,6 +36,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/public/**").permitAll()  // Public endpoints
                         .requestMatchers("/api/login", "/api/register").permitAll()  // Authentication endpoints
+                        .requestMatchers("/public/**").permitAll()
+                        .requestMatchers("/api/tournaments").permitAll()
+                        .requestMatchers("/api/regions").permitAll()
+                        .requestMatchers("/api/countries/by-region/{regionId}").permitAll()
+                        .requestMatchers("/api/games").permitAll()
+                        .requestMatchers("/api/register-consumer").permitAll()
+                        .requestMatchers("/api/login").permitAll()
                         .anyRequest().authenticated()  // All other requests need authentication
                 )
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class) // Add JWT filter

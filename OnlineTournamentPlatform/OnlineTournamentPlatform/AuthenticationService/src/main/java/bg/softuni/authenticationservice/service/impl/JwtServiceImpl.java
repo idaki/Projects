@@ -16,7 +16,7 @@ import java.util.function.Function;
 public class JwtServiceImpl extends JwtService {
 
 //    @Value("${jwt.secret}")
-    private String secretKey = "c90e026bde4e104a95a516043dd51a348f052f4e8da0fd133c89c391ccca395d";
+    private String secretKey = "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e";
 
 //    @Value("${jwt.expiration}")
     private long expirationTime = 1000*60*60*1; // in milliseconds
