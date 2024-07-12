@@ -25,23 +25,27 @@ public class UserServiceImpl extends CrudServiceImpl<User, Long> implements User
     public Optional<User> findByUsername(String username) {
         return this.userRepository.findByUsername(username);
     }
-
     @Override
-    public boolean doesUserExist(String usernameOrEmail) {
-        Optional<User> optionalUser = this.userRepository.findByEmail(usernameOrEmail);
-
-        if (optionalUser.isPresent()) {
-            return true;
-        }
-
-        optionalUser = this.userRepository.findByUsername(usernameOrEmail);
-
-        return optionalUser.isPresent();
+    public Optional<User> findByEmail(String email) {
+        return this.userRepository.findByEmail(email);
     }
 
 
+    @Override
+    public boolean isExistingUser (String username, String email){
+        return findByUsername(username).isPresent()
+                || findByEmail(email).isPresent()
+                || findByUsername(email).isPresent()
+                || findByEmail(username).isPresent();
 
+    }
 
+    @Override
+    public void register(String username, String password, String email) {
+        if (!isExistingUser(username, email)){
+            registerUser( username,  password,  email);
+        }
+    }
 
 
     public User registerUser(String username, String password, String email) {

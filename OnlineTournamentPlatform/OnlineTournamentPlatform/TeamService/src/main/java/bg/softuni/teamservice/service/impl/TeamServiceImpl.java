@@ -6,8 +6,8 @@ import bg.softuni.teamservice.repository.TeamRepository;
 import bg.softuni.teamservice.service.TeamService;
 
 
-import bg.softuni.userservice.models.entity.consumer.Consumer;
-import bg.softuni.userservice.repository.ConsumerRepository;
+import bg.softuni.userservice.models.entity.user.User;
+import bg.softuni.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,12 +18,12 @@ import java.util.Optional;
 public class TeamServiceImpl extends CrudServiceImpl<TeamEntity,Long> implements TeamService {
 
 
-    private final ConsumerRepository consumerRepository;
+    private final UserRepository userRepository;
     private final TeamRepository teamRepository;
 @Autowired
-    public TeamServiceImpl(ConsumerRepository consumerRepository, TeamRepository teamRepository) {
+    public TeamServiceImpl( UserRepository userRepository, TeamRepository teamRepository) {
     super(teamRepository);
-    this.consumerRepository = consumerRepository;
+    this.userRepository = userRepository;
         this.teamRepository = teamRepository;
     }
 
@@ -35,7 +35,7 @@ public class TeamServiceImpl extends CrudServiceImpl<TeamEntity,Long> implements
 
 
         for (long i = 1; i <= 3; i++) {
-            Optional<Consumer> consumer = this.consumerRepository.findById(i);
+            Optional<User> consumer = this.userRepository.findById(i);
 
             if (consumer.isPresent()) {
                 long consumerId = consumer.get().getId();

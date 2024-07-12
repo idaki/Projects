@@ -1,8 +1,9 @@
 package bg.softuni.userservice.controller;
 
 
-import bg.softuni.userservice.models.dto.gson.ConsumerRegisterDTO;
-import bg.softuni.userservice.service.consumer.ConsumerService;
+import bg.softuni.userservice.models.dto.gson.UserRegisterDTO;
+
+import bg.softuni.userservice.service.user.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,19 +12,19 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api")
-public class ConsumerRegistrationController {
+public class UserRegistrationController {
 
-    private final ConsumerService consumerService;
+    private final UserService userService;
 
     @Autowired
-    public ConsumerRegistrationController(ConsumerService consumerService) {
-        this.consumerService = consumerService;
+    public UserRegistrationController(UserService userService) {
+        this.userService = userService;
     }
 
     @PostMapping("/register-consumer")
-    public ResponseEntity<String> registerConsumer(@RequestBody ConsumerRegisterDTO consumerDTO) {
+    public ResponseEntity<String> registerConsumer(@RequestBody UserRegisterDTO registerDTO) {
         try {
-            consumerService.registerConsumer(consumerDTO.getUsername(), consumerDTO.getPassword(), consumerDTO.getEmail());
+           userService.register(registerDTO.getUsername(), registerDTO.getPassword(),registerDTO.getEmail());
             return ResponseEntity.ok("Consumer registered successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Consumer registration failed: " + e.getMessage());

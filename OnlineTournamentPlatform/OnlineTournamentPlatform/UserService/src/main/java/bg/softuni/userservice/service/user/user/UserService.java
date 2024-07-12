@@ -11,9 +11,9 @@ public interface UserService extends CrudService<User, Long> {
 
     Optional<User> findByUsername(String username);
 
+    Optional<User> findByEmail(String email);
 
+    boolean isExistingUser(String username, String password);
 
-    boolean doesUserExist(String usernameOrEmail);
-
-
+    void register(String username, String password, String email);
 }
