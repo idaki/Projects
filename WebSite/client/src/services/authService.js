@@ -20,7 +20,7 @@ async function fetchWithSettings(url, options) {
 
     if (!response.ok) {
       const errorBody = typeof responseBody === 'object' ? responseBody : { message: responseBody };
-      throw new Error(`HTTP error ${response.status}: ${errorBody.message || responseBody}`);
+      throw new Error(errorBody.message || responseBody);
     }
 
     return responseBody;

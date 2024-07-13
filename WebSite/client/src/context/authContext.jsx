@@ -1,5 +1,3 @@
-// src/context/authContext.jsx
-
 import React, { createContext, useState, useEffect } from 'react';
 import * as authService from '../services/authService'; // Adjust the path as needed
 
@@ -18,17 +16,18 @@ const AuthProvider = ({ children }) => {
     console.log("Auth state updated:", auth); // Debug log
   }, [auth]);
 
-  const loginSubmitHandler = async (formData) => {
+  const loginSubmitHandler = async (username, password) => {
     setLoading(true);
     try {
-      const result = await authService.login(formData.username, formData.password);
+      const result = await authService.login(username, password);
       setAuth(result);
       setError(null);
-    } catch (error) {
-      setError(error.message);
-      console.error("Login failed:", error);
-    } finally {
       setLoading(false);
+      return result; // Return the result on success
+    } catch (error) {
+      setLoading(false);
+      setError(error.message); // Set error from server directly
+      throw error; // Throw the original error
     }
   };
 
