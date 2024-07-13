@@ -6,9 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableJpaRepositories("bg.softuni.*")
@@ -20,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
         "bg.softuni.authenticationservice.*"
 })
 @EntityScan("bg.softuni.*")
+@EnableScheduling
 public class WebServiceApplication {
 
     private final LoginService loginService;
