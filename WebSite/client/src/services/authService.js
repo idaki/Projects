@@ -1,30 +1,33 @@
-// src/services/authService.js
-
 const baseUrl = 'http://localhost:8080/api';
 
 async function fetchWithSettings(url, options) {
   const defaultHeaders = {
     'Content-Type': 'application/json',
-    'X-Authorization': JSON.parse(localStorage.getItem('authData'))?.accessToken || ''
+    'Authorization': `Bearer ${JSON.parse(localStorage.getItem('authData'))?.accessToken || ''}`
   };
 
-  const response = await fetch(url, {
-    ...options,
-    headers: {
-      ...defaultHeaders,
-      ...options.headers
+  try {
+    const response = await fetch(url, {
+      ...options,
+      headers: {
+        ...defaultHeaders,
+        ...options.headers
+      }
+    });
+
+    const isJsonResponse = response.headers.get('Content-Type')?.includes('application/json');
+    const responseBody = isJsonResponse ? await response.json() : await response.text();
+
+    if (!response.ok) {
+      const errorBody = typeof responseBody === 'object' ? responseBody : { message: responseBody };
+      throw new Error(`HTTP error ${response.status}: ${errorBody.message || responseBody}`);
     }
-  });
 
-  const isJsonResponse = response.headers.get('Content-Type')?.includes('application/json');
-  const responseBody = isJsonResponse ? await response.json() : await response.text();
-
-  if (!response.ok) {
-    const errorBody = typeof responseBody === 'object' ? responseBody : { message: responseBody };
-    throw new Error(`HTTP error ${response.status}: ${errorBody.message || responseBody}`);
+    return responseBody;
+  } catch (error) {
+    console.error("Fetch failed:", error);
+    throw error;
   }
-
-  return responseBody;
 }
 
 export const login = async (username, password) => {
@@ -47,7 +50,7 @@ export const registerConsumer = async (username, password, email) => {
 
 export const logout = async () => {
   await fetchWithSettings(`${baseUrl}/logout`, {
-    method: 'GET'
+    method: 'POST'
   });
   localStorage.removeItem('authData');
 };
