@@ -1,28 +1,66 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import * as authService from '../services/authService'; // Adjust the path as needed
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useState(() => {
+    const savedAuth = localStorage.getItem('authData');
+    return savedAuth ? JSON.parse(savedAuth) : {};
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('authData', JSON.stringify(auth));
+  }, [auth]);
 
   const loginSubmitHandler = async (formData) => {
-    const result = await authService.login(formData.username, formData.password);
-    setAuth(result);
+    setLoading(true);
+    try {
+      const result = await authService.login(formData.username, formData.password);
+      setAuth(result);
+      setError(null);
+    } catch (error) {
+      setError(error.message);
+      console.error("Login failed:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const registerConsumerSubmitHandler = async (formData) => {
-    const result = await authService.registerConsumer(formData.username, formData.password, formData.email);
-    setAuth(result);
+    setLoading(true);
+    try {
+      const result = await authService.registerConsumer(formData.username, formData.password, formData.email);
+      setAuth(result);
+      setError(null);
+    } catch (error) {
+      setError(error.message);
+      console.error("Registration failed:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const logoutHandler = async () => {
-    await authService.logout();
-    setAuth({});
+    setLoading(true);
+    try {
+      await authService.logout();
+      setAuth({});
+      setError(null);
+    } catch (error) {
+      setError(error.message);
+      console.error("Logout failed:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const contextValue = {
     auth,
+    loading,
+    error,
     loginSubmitHandler,
     registerConsumerSubmitHandler,
     logoutHandler,

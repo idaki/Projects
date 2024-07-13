@@ -1,4 +1,3 @@
-// UserAuthContainerModal.jsx
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import LoginModal from '../login/LoginModal';
@@ -9,29 +8,19 @@ import styles from './UserAuthContainerModal.module.css';
 Modal.setAppElement('#root');
 
 export default function UserAuthContainerModal({ onClose }) {
-    const [showLogin, setShowLogin] = useState(true);
-    const [showRegister, setShowRegister] = useState(false);
-    const [showResetPassword, setShowResetPassword] = useState(false);
-
-
+    const [view, setView] = useState('login'); // Use a single state variable for managing views
 
     const handleRegisterClick = () => {
-        setShowLogin(false);
-        setShowRegister(true);
-        setShowResetPassword(false);
+        setView('register');
     };
 
     const handleResetPasswordClick = () => {
-        setShowLogin(false);
-        setShowRegister(false);
-        setShowResetPassword(true);
+        setView('resetPassword');
     };
 
     const handleClose = () => {
         onClose(); // Call the onClose function provided by the parent component
-        setShowLogin(false);
-        setShowRegister(false);
-        setShowResetPassword(false);
+        setView(''); // Reset the view state
     };
 
     const handleOverlayClick = (event) => {
@@ -42,7 +31,7 @@ export default function UserAuthContainerModal({ onClose }) {
 
     return (
         <Modal
-            isOpen={showLogin || showRegister || showResetPassword}
+            isOpen={view !== ''}
             onRequestClose={handleClose}
             contentLabel="User Authentication"
             className={styles.modalContent}
@@ -51,11 +40,15 @@ export default function UserAuthContainerModal({ onClose }) {
         >
             <div onClick={handleOverlayClick} className={styles.overlay}>
                 <div className={styles.modalContent}>
-                    {showLogin && <LoginModal onClose={handleClose} onRegisterClick={handleRegisterClick} onForgotPasswordClick={handleResetPasswordClick} />}
-                    {showRegister && <RegisterModal onClose={handleClose} />}
-                    {showResetPassword && <ResetPasswordModal onClose={handleClose} />}
-                
-    
+                    {view === 'login' && (
+                        <LoginModal
+                            onClose={handleClose}
+                            onRegisterClick={handleRegisterClick}
+                            onForgotPasswordClick={handleResetPasswordClick}
+                        />
+                    )}
+                    {view === 'register' && <RegisterModal onClose={handleClose} />}
+                    {view === 'resetPassword' && <ResetPasswordModal onClose={handleClose} />}
                 </div>
             </div>
         </Modal>

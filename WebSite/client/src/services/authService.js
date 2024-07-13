@@ -1,62 +1,57 @@
 const baseUrl = 'http://localhost:8080/api';
 
-export const login = async (username, password) => {
-  const response = await fetch(`${baseUrl}/login`, {
-    method: 'POST',
+async function fetchWithSettings(url, options) {
+  const defaultHeaders = {
+    'Content-Type': 'application/json',
+    'X-Authorization': JSON.parse(localStorage.getItem('authData'))?.accessToken || ''
+  };
+
+  const response = await fetch(url, {
+    ...options,
     headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ usernameOrEmail: username, password })
-  });
-
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-
-  const result = await response.json();
-  localStorage.setItem('accessToken', result.accessToken);
-  return result;
-};
-
-export const registerConsumer = async (username, password, email) => {
-  const response = await fetch(`${baseUrl}/register-consumer`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ username, password, email })
-  });
-
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-
-  const result = await response.json();
-  return result;
-};
-
-export const logout = async () => {
-  const response = await fetch(`${baseUrl}/logout`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Authorization': localStorage.getItem('accessToken')
+      ...defaultHeaders,
+      ...options.headers
     }
   });
 
+  const isJsonResponse = response.headers.get('Content-Type')?.includes('application/json');
+  const responseBody = isJsonResponse ? await response.json() : await response.text();
+
   if (!response.ok) {
-    throw new Error('Network response was not ok');
+    const errorBody = typeof responseBody === 'object' ? responseBody : { message: responseBody };
+    throw new Error(`HTTP error ${response.status}: ${errorBody.message || responseBody}`);
   }
 
-  localStorage.removeItem('accessToken');
-  return {};
+  return responseBody;
+}
+
+export const login = async (username, password) => {
+  const result = await fetchWithSettings(`${baseUrl}/login`, {
+    method: 'POST',
+    body: JSON.stringify({ usernameOrEmail: username, password })
+  });
+
+  const authData = { accessToken: result };
+  localStorage.setItem('authData', JSON.stringify(authData));
+  return authData;
+};
+
+export const registerConsumer = async (username, password, email) => {
+  return fetchWithSettings(`${baseUrl}/register-consumer`, {
+    method: 'POST',
+    body: JSON.stringify({ username, password, email })
+  });
+};
+
+export const logout = async () => {
+  await fetchWithSettings(`${baseUrl}/logout`, {
+    method: 'GET'
+  });
+  localStorage.removeItem('authData');
 };
 
 export const getAllGames = async () => {
-  const response = await fetch(`${baseUrl}/games`);
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-  const result = await response.json();
-  return result;
+  return fetchWithSettings(`${baseUrl}/games`, {
+    method: 'GET'
+  });
 };

@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import AuthContext from '../../../context/authContext'; // Adjust the import path as necessary
 
 export default function LoginModal({ onClose, onRegisterClick, onForgotPasswordClick }) {
-  const { loginSubmitHandler } = useContext(AuthContext); // Get login handler from context
+  const { loginSubmitHandler, loading, error } = useContext(AuthContext);
 
   const [loginFormData, setLoginFormData] = useState({
     username: '',
@@ -33,12 +33,12 @@ export default function LoginModal({ onClose, onRegisterClick, onForgotPasswordC
       return;
     }
     try {
-      await loginSubmitHandler({ username: loginFormData.username, password: loginFormData.password }); // Use context login handler
+      await loginSubmitHandler({ username: loginFormData.username, password: loginFormData.password });
       onClose();
     } catch (error) {
       setErrors(prevState => ({
         ...prevState,
-        general: 'Invalid username or password',
+        general: error.message || 'Invalid username or password',
       }));
     }
   };
@@ -55,6 +55,7 @@ export default function LoginModal({ onClose, onRegisterClick, onForgotPasswordC
             value={loginFormData.username}
             onChange={handleLoginChange}
             placeholder="Username"
+            disabled={loading}
           />
           {errors.username && <div className="invalid-feedback">{errors.username}</div>}
         </div>
@@ -68,17 +69,19 @@ export default function LoginModal({ onClose, onRegisterClick, onForgotPasswordC
             value={loginFormData.password}
             onChange={handleLoginChange}
             placeholder="Password"
+            disabled={loading}
           />
           {errors.password && <div className="invalid-feedback">{errors.password}</div>}
         </div>
 
         <div className="d-flex justify-content-center">
-          <button type="submit" className="btn btn-primary row mb-4">
-            Login
+          <button type="submit" className="btn btn-primary row mb-4" disabled={loading}>
+            {loading ? 'Logging in...' : 'Login'}
           </button>
         </div>
       </form>
 
+      {error && <div className="alert alert-danger">{error}</div>}
       {errors.general && <div className="alert alert-danger">{errors.general}</div>}
 
       <div className="text-center mb-3">
