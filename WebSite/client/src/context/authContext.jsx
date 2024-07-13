@@ -1,3 +1,5 @@
+// src/context/authContext.jsx
+
 import React, { createContext, useState, useEffect } from 'react';
 import * as authService from '../services/authService'; // Adjust the path as needed
 
@@ -13,6 +15,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('authData', JSON.stringify(auth));
+    console.log("Auth state updated:", auth); // Debug log
   }, [auth]);
 
   const loginSubmitHandler = async (formData) => {

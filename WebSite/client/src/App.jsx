@@ -1,3 +1,5 @@
+// src/App.jsx
+
 import React from "react";
 import NavigationModal from "./components/nav-container/NavigationContainer";
 import FooterModal from './components/footer/FooterContainer';

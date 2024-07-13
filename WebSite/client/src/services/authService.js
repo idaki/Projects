@@ -1,3 +1,5 @@
+// src/services/authService.js
+
 const baseUrl = 'http://localhost:8080/api';
 
 async function fetchWithSettings(url, options) {
