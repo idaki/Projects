@@ -9,6 +9,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +22,9 @@ public class JwtServiceImpl extends JwtService {
 
     private final UserRepository userRepository;
     private final TokenRepository tokenRepository;
-//    @Value("${jwt.secret}")
-    private String secretKey = "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e";
+
+    @Value("${jwt.secretkey}")
+    private String secretKey ;
 
 //    @Value("${jwt.expiration}")
     private long expirationTime = 1000*60*60*1; // in milliseconds

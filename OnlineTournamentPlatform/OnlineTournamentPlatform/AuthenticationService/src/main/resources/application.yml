@@ -14,6 +14,8 @@ spring:
       ddl-auto: update
   application:
     name: AuthenticationService
+jwt:
+  secret: ${JWT_SECRETKEY}
 logging:
   level:
     org:

@@ -24,3 +24,6 @@ logging:
         SQL: DEBUG
       nodeValue: WARN
     blog: WARN
+mail:
+  sendgrid:
+    api-key: ${SENDGRID_API_KEY}
