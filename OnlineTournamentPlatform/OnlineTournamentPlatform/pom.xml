@@ -70,7 +70,6 @@
         <module>AuthenticationService</module>
         <module>CrudService</module>
         <module>GameService</module>
-        <module>CommunicationService</module>
         <module>TournamentService</module>
         <module>LocationService</module>
     </modules>
