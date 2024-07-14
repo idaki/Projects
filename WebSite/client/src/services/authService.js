@@ -48,6 +48,13 @@ export const registerConsumer = async (username, password, email) => {
   });
 };
 
+export const resetPassword = async (email) => {
+  return fetchWithSettings(`${baseUrl}/reset-password`, {
+    method: 'POST',
+    body: JSON.stringify({ email })
+  });
+};
+
 export const logout = async () => {
   await fetchWithSettings(`${baseUrl}/logout`, {
     method: 'POST'

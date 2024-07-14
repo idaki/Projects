@@ -1,20 +1,17 @@
-// src/App.jsx
-
-import React from "react";
-import NavigationModal from "./components/nav-container/NavigationContainer";
-import FooterModal from './components/footer/FooterContainer';
-import HeaderModal from "./components/header/HeaderContainer";
-import TournamentsContainer from "./components/tournament-container/TournamentsContainer";
-import { AuthProvider } from "./context/authContext";
+import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import NavigationModal from './components/nav-container/NavigationContainer';
+import FooterModal from './components/footer/FooterContainer';
+import BodyModal from './components/body/body-container';
+import { AuthProvider } from './context/authContext';
 
 function App() {
   return (
     <Router>
       <AuthProvider>
         <NavigationModal />
-        <HeaderModal />
-        <TournamentsContainer />
+       
+        <BodyModal />
         <FooterModal />
       </AuthProvider>
     </Router>

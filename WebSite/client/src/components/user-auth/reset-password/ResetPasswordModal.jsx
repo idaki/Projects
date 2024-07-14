@@ -1,43 +1,55 @@
-import React, { useState } from 'react';
-import { validateEmail } from '../../../services/formValidator/resetPasswordValidator'
+import React, { useState, useContext } from 'react';
+import AuthContext from '../../../context/authContext'; // Adjust the import path as necessary
 
 export default function ResetPasswordModal({ onClose }) {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
+  const { resetPasswordHandler } = useContext(AuthContext);
 
-  const handleChange = (e) => {
+  const [email, setEmail] = useState('');
+  const [localError, setLocalError] = useState('');
+
+  const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    setError('');
+    if (localError) {
+      setLocalError('');
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleResetSubmit = async (e) => {
     e.preventDefault();
-    // Validate email format using the external validator
-    const emailError = validateEmail(email);
-    if (emailError) {
-      setError(emailError);
+    if (!email) {
+      setLocalError('Email is required');
       return;
     }
-    // Handle reset password logic
-    console.log("Reset password for email:", email);
-    // Close modal
-    onClose();
+    try {
+      await resetPasswordHandler(email);
+      onClose();
+    } catch (err) {
+      setLocalError(err.message || 'An error occurred while resetting password. Please try again.');
+    }
   };
 
   return (
-    <div className="p-4">
-      <form onSubmit={handleSubmit}>
+    <div>
+      <form onSubmit={handleResetSubmit}>
         <div className="form-outline mb-4">
           <input
             type="email"
+            id="reset-email"
+            className={`form-control ${localError && 'is-invalid'}`}
+            name="email"
             value={email}
-            onChange={handleChange}
-            className={`form-control ${error && 'is-invalid'}`}
+            onChange={handleEmailChange}
             placeholder="Email"
           />
-          {error && <div className="invalid-feedback">{error}</div>}
         </div>
-        <button type="submit" className="btn btn-primary mb-4">Reset Password</button>
+
+        {localError && <div className="alert alert-danger">{localError}</div>}
+
+        <div className="d-flex justify-content-center">
+          <button type="submit" className="btn btn-primary mb-4">
+            Reset Password
+          </button>
+        </div>
       </form>
     </div>
   );

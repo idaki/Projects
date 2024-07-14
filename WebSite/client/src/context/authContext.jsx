@@ -1,75 +1,60 @@
 import React, { createContext, useState, useEffect } from 'react';
-import * as authService from '../services/authService'; // Adjust the path as needed
+import { login, logout, registerConsumer, resetPassword } from '../services/authService'; // Ensure registerConsumer is imported
 
 const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(() => {
-    const savedAuth = localStorage.getItem('authData');
-    return savedAuth ? JSON.parse(savedAuth) : {};
+    const persistedAuth = localStorage.getItem('authData');
+    return persistedAuth ? JSON.parse(persistedAuth) : null;
   });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    localStorage.setItem('authData', JSON.stringify(auth));
-    console.log("Auth state updated:", auth); // Debug log
-  }, [auth]);
-
-  const loginSubmitHandler = async (username, password) => {
-    setLoading(true);
+  const loginHandler = async (username, password) => {
     try {
-      const result = await authService.login(username, password);
-      setAuth(result);
-      setError(null);
-      setLoading(false);
-      return result; // Return the result on success
+      const authData = await login(username, password);
+      setAuth(authData);
     } catch (error) {
-      setLoading(false);
-      setError(error.message); // Set error from server directly
-      throw error; // Throw the original error
-    }
-  };
-
-  const registerConsumerSubmitHandler = async (formData) => {
-    setLoading(true);
-    try {
-      const result = await authService.registerConsumer(formData.username, formData.password, formData.email);
-      setAuth(result);
-      setError(null);
-    } catch (error) {
-      setError(error.message);
-      console.error("Registration failed:", error);
-    } finally {
-      setLoading(false);
+      console.error('Login failed', error);
+      throw error;
     }
   };
 
   const logoutHandler = async () => {
-    setLoading(true);
     try {
-      await authService.logout();
-      setAuth({});
-      setError(null);
+      await logout();
+      setAuth(null);
     } catch (error) {
-      setError(error.message);
-      console.error("Logout failed:", error);
-    } finally {
-      setLoading(false);
+      console.error('Logout failed', error);
     }
   };
 
-  const contextValue = {
-    auth,
-    loading,
-    error,
-    loginSubmitHandler,
-    registerConsumerSubmitHandler,
-    logoutHandler,
+  const registerHandler = async (username, password, email) => {
+    try {
+      await registerConsumer(username, password, email);
+    } catch (error) {
+      console.error('Registration failed', error);
+      throw error;
+    }
   };
 
-  return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
+  const resetPasswordHandler = async (email) => {
+    try {
+      await resetPassword(email);
+    } catch (error) {
+      console.error('Password reset failed', error);
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem('authData', JSON.stringify(auth));
+  }, [auth]);
+
+  return (
+    <AuthContext.Provider value={{ auth, loginHandler, logoutHandler, registerHandler, resetPasswordHandler }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
-export { AuthProvider };
 export default AuthContext;

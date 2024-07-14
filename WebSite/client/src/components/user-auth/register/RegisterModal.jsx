@@ -1,145 +1,88 @@
 import React, { useState, useContext } from 'react';
-import AuthContext from '../../../context/authContext'; // Adjust the path as needed
+import AuthContext from '../../../context/authContext';
 
 export default function RegisterModal({ onClose }) {
-  const { registerConsumerSubmitHandler } = useContext(AuthContext);
+  const { registerHandler } = useContext(AuthContext);
 
-  const [formData, setFormData] = useState({
+  const [registerFormData, setRegisterFormData] = useState({
     username: '',
-    email: '',
     password: '',
-    newsletter: true,
-    age: true
+    email: ''
   });
 
-  const [errors, setErrors] = useState({
-    username: '',
-    email: '',
-    password: '',
-    general: ''
-  });
+  const [localError, setLocalError] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value, checked } = e.target;
-    setFormData(prevState => ({
+  const handleRegisterChange = (e) => {
+    const { name, value } = e.target;
+    setRegisterFormData((prevState) => ({
       ...prevState,
-      [name]: name === 'newsletter' || name === 'age' ? checked : value
+      [name]: value
     }));
+    if (localError) {
+      setLocalError('');
+    }
   };
 
-  const handleSubmit = async (e) => {
+  const handleRegisterSubmit = async (e) => {
     e.preventDefault();
-
-    // Simple validation
-    const newErrors = {};
-    if (!formData.username) newErrors.username = 'Username is required';
-    if (!formData.email) newErrors.email = 'Email is required';
-    if (!formData.password) newErrors.password = 'Password is required';
-    setErrors(newErrors);
-
-    if (Object.keys(newErrors).length === 0) {
-      try {
-        await registerConsumerSubmitHandler(formData); // Call the context handler to submit the form
-        onClose(); // Close the modal on successful registration
-      } catch (error) {
-        setErrors(prevState => ({
-          ...prevState,
-          general: 'Registration failed',
-        }));
-      }
+    if (!registerFormData.username || !registerFormData.password || !registerFormData.email) {
+      setLocalError('All fields are required');
+      return;
+    }
+    try {
+      await registerHandler(registerFormData.username, registerFormData.password, registerFormData.email);
+      onClose();
+    } catch (err) {
+      setLocalError(err.message || 'An error occurred during registration. Please try again.');
     }
   };
 
   return (
-    <div className="position-relative p-4">
-      <form onSubmit={handleSubmit}>
-        {/* Username input */}
+    <div>
+      <form onSubmit={handleRegisterSubmit}>
         <div className="form-outline mb-4">
           <input
             type="text"
-            id="username"
-            className={`form-control ${errors.username && 'is-invalid'}`}
+            id="register-username"
+            className={`form-control ${localError && 'is-invalid'}`}
             name="username"
-            value={formData.username}
-            onChange={handleChange}
+            value={registerFormData.username}
+            onChange={handleRegisterChange}
             placeholder="Username"
           />
-          {errors.username && <div className="invalid-feedback">{errors.username}</div>}
         </div>
 
-        {/* Email input */}
-        <div className="form-outline mb-4">
-          <input
-            type="email"
-            id="email"
-            className={`form-control ${errors.email && 'is-invalid'}`}
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email"
-          />
-          {errors.email && <div className="invalid-feedback">{errors.email}</div>}
-        </div>
-
-        {/* Password input */}
         <div className="form-outline mb-4">
           <input
             type="password"
-            id="password"
-            className={`form-control ${errors.password && 'is-invalid'}`}
+            id="register-password"
+            className={`form-control ${localError && 'is-invalid'}`}
             name="password"
-            value={formData.password}
-            onChange={handleChange}
+            value={registerFormData.password}
+            onChange={handleRegisterChange}
             placeholder="Password"
           />
-          {errors.password && <div className="invalid-feedback">{errors.password}</div>}
         </div>
 
-        {/* Checkboxes */}
-        <div className="row mb-4">
-          <div className="col d-flex justify-content-start">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="newsletter"
-                name="newsletter"
-                checked={formData.newsletter}
-                onChange={handleChange}
-              />
-              <label className="form-check-label" htmlFor="newsletter">
-                Subscribe to our newsletter
-              </label>
-            </div>
-          </div>
+        <div className="form-outline mb-4">
+          <input
+            type="email"
+            id="register-email"
+            className={`form-control ${localError && 'is-invalid'}`}
+            name="email"
+            value={registerFormData.email}
+            onChange={handleRegisterChange}
+            placeholder="Email"
+          />
         </div>
 
-        <div className="row mb-4">
-          <div className="col d-flex justify-content-start">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="age"
-                name="age"
-                checked={formData.age}
-                onChange={handleChange}
-              />
-              <label className="form-check-label" htmlFor="age">
-                I am 16+ years old!
-              </label>
-            </div>
-          </div>
-        </div>
+        {localError && <div className="alert alert-danger">{localError}</div>}
 
-        {/* Submit button */}
         <div className="d-flex justify-content-center">
-          <button type="submit" className="btn btn-primary row mb-4">
-            Sign up
+          <button type="submit" className="btn btn-primary mb-4">
+            Register
           </button>
         </div>
-
-        {errors.general && <div className="alert alert-danger">{errors.general}</div>}
       </form>
     </div>
   );
