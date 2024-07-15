@@ -1,0 +1,18 @@
+/* MainFeedModal.module.css */
+.mainFeed {
+  padding: 20px;
+}
+
+.card {
+  margin-top: 20px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-title {
+  font-size: 24px;
+}
+
+.card-text {
+  font-size: 16px;
+}

@@ -1,0 +1,26 @@
+/* SidebarModal.module.css */
+.sidebar {
+  background-color: #f8f9fa;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1050;
+  position: fixed;
+  top: 100px; /* Adjust based on header size */
+  right: 0; /* Align to the right side */
+  width: 250px; /* Fixed width */
+  height: 100%; /* Full height */
+}
+
+.navLink {
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.navLink:hover {
+  color: #007bff;
+}
+
+.popup {
+  display: block; /* Ensure it's visible when active */
+}
