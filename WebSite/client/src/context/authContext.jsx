@@ -30,7 +30,13 @@ export const AuthProvider = ({ children }) => {
 
   const registerHandler = async (username, password, email) => {
     try {
-      await registerConsumer(username, password, email);
+      // Register the user and automatically log them in
+      const authData = await registerConsumer(username, password, email);
+  
+      console.log('Registration and auto-login successful:', authData);
+      
+      // Update the auth state with the new token received
+      setAuth(authData);
     } catch (error) {
       console.error('Registration failed', error);
       throw error;

@@ -73,11 +73,27 @@ export const login = async (username, password) => {
 };
 
 export const registerConsumer = async (username, password, email) => {
-    return fetchWithSettings(`${baseUrl}/register-consumer`, {
-        method: 'POST',
-        body: JSON.stringify({ username, password, email })
-    });
+    try {
+        // Attempt to register the user
+        const registrationResult = await fetchWithSettings(`${baseUrl}/register-consumer`, {
+            method: 'POST',
+            body: JSON.stringify({ username, password, email })
+        });
+
+        console.log('Registration successful, attempting to log in...');
+
+        // Automatically log in the user after successful registration
+        const loginResult = await login(username, password);
+        console.log('Login successful after registration:', loginResult);
+        
+        // Return the login result which includes the auth token
+        return loginResult;
+    } catch (error) {
+        console.error("Error during registration or login:", error);
+        throw error;
+    }
 };
+
 
 export const resetPassword = async (email) => {
     return fetchWithSettings(`${baseUrl}/reset-password`, {

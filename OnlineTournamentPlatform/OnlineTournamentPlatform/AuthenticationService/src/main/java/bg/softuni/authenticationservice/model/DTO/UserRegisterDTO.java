@@ -1,4 +1,4 @@
-package bg.softuni.userservice.models.dto.gson;
+package bg.softuni.authenticationservice.model.DTO;
 
 public class UserRegisterDTO {
     private String username;

@@ -1,6 +1,7 @@
 package bg.softuni.authenticationservice.service.impl;
 
 import bg.softuni.authenticationservice.model.DTO.LoginDTO;
+import bg.softuni.authenticationservice.model.DTO.UserRegisterDTO;
 import bg.softuni.authenticationservice.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,6 +19,7 @@ public class LoginServiceImpl implements LoginService {
         this.authenticationManager = authenticationManager;
     }
 
+    @Override
     public boolean login(LoginDTO loginDTO) {
         try {
             Authentication authentication = authenticationManager.authenticate(
@@ -32,4 +34,6 @@ public class LoginServiceImpl implements LoginService {
         }
     }
 }
+
+
 

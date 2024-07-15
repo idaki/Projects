@@ -4,6 +4,16 @@ public class LoginDTO {
     private String usernameOrEmail;
     private String password;
 
+    // Default constructor
+    public LoginDTO() {
+    }
+
+    // Constructor with parameters
+    public LoginDTO(String usernameOrEmail, String password) {
+        this.usernameOrEmail = usernameOrEmail;
+        this.password = password;
+    }
+
     // Getters and setters
     public String getUsernameOrEmail() {
         return usernameOrEmail;
