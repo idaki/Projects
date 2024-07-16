@@ -16,7 +16,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
         "bg.softuni.gameservice.*",
         "bg.softuni.userservice.*",
         "bg.softuni.locationservice.*",
-        "bg.softuni.authenticationservice.*"
+        "bg.softuni.communicationservice.*",
+        "bg.softuni.authenticationservice.*",
+
 })
 @EntityScan("bg.softuni.*")
 @EnableScheduling

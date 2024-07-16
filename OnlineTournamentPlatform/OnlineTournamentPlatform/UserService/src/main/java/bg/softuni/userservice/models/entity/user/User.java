@@ -1,10 +1,11 @@
 package bg.softuni.userservice.models.entity.user;
 
+import bg.softuni.userservice.models.entity.password.Password;
+import bg.softuni.userservice.models.entity.FriendRequest;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
-import  bg.softuni.userservice.models.entity.user.FriendRequest;
 
 @Entity
 @Table(name = "users")
@@ -20,8 +21,9 @@ public class User {
 
     @Column(unique = true, nullable = false)
     private String email;
-    @Column
-    private String password;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Password password;
 
     @ManyToMany
     @JoinTable(
@@ -31,12 +33,19 @@ public class User {
     )
     private Set<User> friends = new HashSet<>();
 
-    @OneToMany(mappedBy = "sender")
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<FriendRequest> sentRequests = new HashSet<>();
 
-    @OneToMany(mappedBy = "receiver")
+    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<FriendRequest> receivedRequests = new HashSet<>();
 
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+    }
+
+    public User() {
+    }
 
     public Long getId() {
         return id;
@@ -62,11 +71,11 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
+    public Password getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(Password password) {
         this.password = password;
     }
 
@@ -78,6 +87,19 @@ public class User {
         this.friends = friends;
     }
 
-    // Constructor, Getters and Setters
-}
+    public Set<FriendRequest> getSentRequests() {
+        return sentRequests;
+    }
 
+    public void setSentRequests(Set<FriendRequest> sentRequests) {
+        this.sentRequests = sentRequests;
+    }
+
+    public Set<FriendRequest> getReceivedRequests() {
+        return receivedRequests;
+    }
+
+    public void setReceivedRequests(Set<FriendRequest> receivedRequests) {
+        this.receivedRequests = receivedRequests;
+    }
+}

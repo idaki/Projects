@@ -1,5 +1,6 @@
-package bg.softuni.userservice.models.entity.user;
+package bg.softuni.userservice.models.entity;
 
+import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.models.enums.FriendRequestStatus;
 import jakarta.persistence.*;
 

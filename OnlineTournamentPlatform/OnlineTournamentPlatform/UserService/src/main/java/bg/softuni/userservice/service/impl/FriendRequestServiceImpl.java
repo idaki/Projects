@@ -1,8 +1,9 @@
 package bg.softuni.userservice.service.impl;
 
 import bg.softuni.userservice.models.dto.gson.FriendRequestDTO;
-import bg.softuni.userservice.models.entity.user.FriendRequest;
 
+
+import bg.softuni.userservice.models.entity.FriendRequest;
 import bg.softuni.userservice.models.entity.user.User;
 
 import bg.softuni.userservice.models.enums.FriendRequestStatus;

@@ -26,7 +26,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username or email: " + usernameOrEmail));
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getUsername())
-                .password(user.getPassword())  // No encoding
+                .password(user.getPassword().getPasswordHash())  // No encoding
                 .authorities("USER") // Adjust authorities as necessary
                 .build();
     }

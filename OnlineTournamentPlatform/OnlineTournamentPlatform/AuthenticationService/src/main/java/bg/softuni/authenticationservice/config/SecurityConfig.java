@@ -30,14 +30,17 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
 
-    @Autowired
-    private JwtRequestFilter jwtRequestFilter;
+    private final UserDetailsServiceImpl userDetailsService;
+    private final JwtRequestFilter jwtRequestFilter;
 
     @Value("${app.remember.me.token.key}")
     private String rememberMeTokenKey;
+
+    public SecurityConfig(UserDetailsServiceImpl userDetailsService, JwtRequestFilter jwtRequestFilter) {
+        this.userDetailsService = userDetailsService;
+        this.jwtRequestFilter = jwtRequestFilter;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -48,8 +51,16 @@ public class SecurityConfig {
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/public/**", "/api/login", "/api/register", "/api/tournaments", "/api/regions",
-                                "/api/countries/by-region/{regionId}", "/api/games", "/api/register-consumer").permitAll()
+                        .requestMatchers("/public/**"
+                                , "/api/login"
+                                , "/api/register"
+                                , "/api/reset-password"
+                                , "/api/tournaments"
+                                , "/api/regions",
+                                "/api/countries/by-region/{regionId}"
+                                , "/api/games"
+                                , "/api/register-consumer")
+                        .permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .cors(withDefaults())
