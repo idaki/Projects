@@ -102,6 +102,13 @@ export const resetPassword = async (email) => {
     });
 };
 
+export const updatePassword = async (email) => {
+    return fetchWithSettings(`${baseUrl}/reset-password`, {
+        method: 'POST',
+        body: JSON.stringify({ email })
+    });
+};
+
 export const logout = async () => {
     await fetchWithSettings(`${baseUrl}/logout`, {
         method: 'POST'
