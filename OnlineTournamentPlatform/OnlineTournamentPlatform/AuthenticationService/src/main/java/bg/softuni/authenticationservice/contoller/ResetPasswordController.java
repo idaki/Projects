@@ -1,6 +1,7 @@
 package bg.softuni.authenticationservice.contoller;
 
 import bg.softuni.authenticationservice.model.DTO.ResetPasswordDTO;
+import bg.softuni.authenticationservice.model.UpdatePasswordDTO;
 import bg.softuni.userservice.service.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,5 +25,15 @@ public class ResetPasswordController {
     public ResponseEntity<String> resetPassword(@RequestBody ResetPasswordDTO resetPasswordDTO) {
         passwordService.generateResetToken(resetPasswordDTO.getEmail());
         return ResponseEntity.ok("Password reset token has been sent to your email.");
+    }
+
+    @PostMapping("/update-password")
+    public ResponseEntity<String> updatePassword(@RequestBody UpdatePasswordDTO updatePasswordDTO) {
+        try {
+            passwordService.updatePassword(updatePasswordDTO.getToken(), updatePasswordDTO.getNewPassword());
+            return ResponseEntity.ok("Password successfully updated.");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

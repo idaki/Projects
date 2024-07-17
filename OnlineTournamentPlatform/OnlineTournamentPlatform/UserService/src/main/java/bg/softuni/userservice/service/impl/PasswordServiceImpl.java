@@ -48,13 +48,13 @@ public class PasswordServiceImpl implements PasswordService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
         message.setSubject("Password Reset Request");
-        message.setText("To reset your password, please click on the following link: http://localhost:5173/reset-password?token=" + token);
+        message.setText("To reset your password, please click on the following link: http://localhost:5173/newpassword?token=" + token);
         mailSender.send(message);
     }
 
     @Override
-    public void updatePassword(String userId, String newPassword) {
-        Optional<User> userOptional = userRepository.findById(Long.parseLong(userId));
+    public void updatePassword(String token, String newPassword) {
+        Optional<User> userOptional = userRepository.findByPassword_ResetPasswordToken(token);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             Password password = user.getPassword();
@@ -63,6 +63,8 @@ public class PasswordServiceImpl implements PasswordService {
             password.setResetPasswordToken(null);
             password.setResetPasswordTokenExpiryDate(null);
             userRepository.save(user);
+        } else {
+            throw new IllegalArgumentException("Invalid token");
         }
     }
 

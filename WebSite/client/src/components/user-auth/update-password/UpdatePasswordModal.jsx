@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './UpdatePasswordModal.module.css';
+import{updatePassword} from '../../../services/authService';
 
 Modal.setAppElement('#root'); // Ensure this is set correctly for accessibility
 
@@ -12,14 +13,23 @@ function UpdatePasswordModal() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const [token, setToken] = useState('');
 
   useEffect(() => {
     if (location.pathname === '/newpassword') {
-      setModalIsOpen(true);
+      const params = new URLSearchParams(location.search);
+      const token = params.get('token');
+      if (token) {
+        setToken(token);
+        setModalIsOpen(true);
+      } else {
+        setModalIsOpen(false);
+        navigate('/');
+      }
     } else {
       setModalIsOpen(false);
     }
-  }, [location]);
+  }, [location, navigate]);
 
   const handleCloseModal = () => {
     setModalIsOpen(false);
@@ -34,15 +44,19 @@ function UpdatePasswordModal() {
     setConfirmPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
     }
-    // TODO: Implement actual password update logic here
-    console.log('Password successfully updated'); // Placeholder for actual implementation
-    handleCloseModal();
+    try {
+      const response = await updatePassword(token, password);
+      console.log('Password successfully updated', response);
+      handleCloseModal();
+    } catch (err) {
+      setError(err.message || 'An error occurred while updating the password. Please try again.');
+    }
   };
 
   return (
@@ -76,7 +90,6 @@ function UpdatePasswordModal() {
               placeholder="Confirm New Password"
             />
           </div>
-          {error && <div className="alert alert-danger">{error}</div>}
           <div className="d-flex justify-content-center">
             <button type="submit" className="btn btn-primary mb-4">
               Change Password
