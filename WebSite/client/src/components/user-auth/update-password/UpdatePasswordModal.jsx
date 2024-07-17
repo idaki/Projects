@@ -1,79 +1,91 @@
-import React, { useState, useContext } from 'react';
-import AuthContext from '../../../context/authContext'; // Adjust the import path as necessary
+import React, { useState, useEffect } from 'react';
+import Modal from 'react-modal';
+import { useLocation, useNavigate } from 'react-router-dom';
+import styles from './UpdatePasswordModal.module.css';
 
-export default function UpdatePasswordModal({ onClose }) {
-  const { changePasswordHandler } = useContext(AuthContext);
+Modal.setAppElement('#root'); // Ensure this is set correctly for accessibility
 
+function UpdatePasswordModal() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [localError, setLocalError] = useState('');
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (location.pathname === '/newpassword') {
+      setModalIsOpen(true);
+    } else {
+      setModalIsOpen(false);
+    }
+  }, [location]);
+
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+    navigate('/'); // Redirect to the homepage or a relevant page
+  };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    if (localError) {
-      setLocalError('');
-    }
   };
 
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
-    if (localError) {
-      setLocalError('');
-    }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!password || !confirmPassword) {
-      setLocalError('Both password fields are required');
-      return;
-    }
     if (password !== confirmPassword) {
-      setLocalError('Passwords do not match');
+      setError('Passwords do not match');
       return;
     }
-    try {
-      await changePasswordHandler(password);
-      onClose();
-    } catch (err) {
-      setLocalError(err.message || 'An error occurred while changing the password. Please try again.');
-    }
+    // TODO: Implement actual password update logic here
+    console.log('Password successfully updated'); // Placeholder for actual implementation
+    handleCloseModal();
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div className="form-outline mb-4">
-          <input
-            type="password"
-            id="new-password"
-            className={`form-control ${localError && 'is-invalid'}`}
-            name="password"
-            value={password}
-            onChange={handlePasswordChange}
-            placeholder="New Password"
-          />
-        </div>
-        <div className="form-outline mb-4">
-          <input
-            type="password"
-            id="confirm-password"
-            className={`form-control ${localError && 'is-invalid'}`}
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={handleConfirmPasswordChange}
-            placeholder="Confirm Password"
-          />
-        </div>
-
-        {localError && <div className="alert alert-danger">{localError}</div>}
-
-        <div className="d-flex justify-content-center">
-          <button type="submit" className="btn btn-primary mb-4">
-            Change Password
-          </button>
-        </div>
-      </form>
-    </div>
+    <Modal
+      isOpen={modalIsOpen}
+      onRequestClose={handleCloseModal}
+      contentLabel="Update Password"
+      overlayClassName={styles.overlay}
+      className={styles.modal}
+    >
+      <div className={styles.modalContent}>
+        {error && <p className="alert alert-danger">{error}</p>}
+        <form onSubmit={handleSubmit} className={styles.userAuthContent}>
+          <div className="form-outline mb-4">
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              value={password}
+              onChange={handlePasswordChange}
+              placeholder="New Password"
+            />
+          </div>
+          <div className="form-outline mb-4">
+            <input
+              type="password"
+              className="form-control"
+              id="confirm-password"
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
+              placeholder="Confirm New Password"
+            />
+          </div>
+          {error && <div className="alert alert-danger">{error}</div>}
+          <div className="d-flex justify-content-center">
+            <button type="submit" className="btn btn-primary mb-4">
+              Change Password
+            </button>
+          </div>
+        </form>
+      </div>
+    </Modal>
   );
 }
+
+export default UpdatePasswordModal;
