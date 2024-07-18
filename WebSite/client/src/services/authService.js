@@ -115,9 +115,12 @@ export const updatePasswordAndLogin = async (token, newPassword) => {
         });
 
         console.log('Password updated successfully, received new JWT token:', response);
-        
+
+        // Check if response is an object and contains the accessToken field
+        const jwtToken = response.accessToken ? response.accessToken : response;
+
         // Store the new JWT token in localStorage
-        const authData = { accessToken: response };
+        const authData = { accessToken: jwtToken };
         localStorage.setItem('authData', JSON.stringify(authData));
         
         // Return the new JWT token
@@ -127,7 +130,6 @@ export const updatePasswordAndLogin = async (token, newPassword) => {
         throw error;
     }
 };
-
 export const logout = async () => {
     await fetchWithSettings(`${baseUrl}/logout`, {
         method: 'POST'
