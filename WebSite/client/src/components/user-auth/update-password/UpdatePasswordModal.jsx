@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Modal from 'react-modal';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './UpdatePasswordModal.module.css';
-import{updatePassword} from '../../../services/authService';
+import { updatePasswordAndLogin } from '../../../services/authService';
+import AuthContext from '../../../context/authContext';
 
 Modal.setAppElement('#root'); // Ensure this is set correctly for accessibility
 
 function UpdatePasswordModal() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { setAuth } = useContext(AuthContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -51,8 +53,9 @@ function UpdatePasswordModal() {
       return;
     }
     try {
-      const response = await updatePassword(token, password);
-      console.log('Password successfully updated', response);
+      const authData = await updatePasswordAndLogin(token, password);
+      console.log('Password successfully updated and logged in', authData);
+      setAuth(authData);
       handleCloseModal();
     } catch (err) {
       setError(err.message || 'An error occurred while updating the password. Please try again.');

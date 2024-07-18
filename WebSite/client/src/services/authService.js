@@ -7,12 +7,18 @@ function getCsrfToken() {
     return csrfToken;
 }
 
+// Function to get the JWT token from localStorage
+function getJwtToken() {
+    const authData = JSON.parse(localStorage.getItem('authData'));
+    return authData?.accessToken || '';
+}
+
 // Enhanced fetch function with CSRF token handling for secure API interactions
 async function fetchWithSettings(url, options) {
     const csrfToken = getCsrfToken();
     const defaultHeaders = {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('authData'))?.accessToken || ''}`
+        'Authorization': `Bearer ${getJwtToken()}`
     };
 
     // Include CSRF token for state-changing methods (POST, PUT, DELETE, PATCH)
@@ -94,7 +100,6 @@ export const registerConsumer = async (username, password, email) => {
     }
 };
 
-
 export const resetPassword = async (email) => {
     return fetchWithSettings(`${baseUrl}/reset-password`, {
         method: 'POST',
@@ -102,14 +107,26 @@ export const resetPassword = async (email) => {
     });
 };
 
-export const updatePassword = async (token, newPassword) => {
-    return fetchWithSettings(`${baseUrl}/update-password`, {
-        method: 'POST',
-        body: JSON.stringify({ token, newPassword })
-    });
+export const updatePasswordAndLogin = async (token, newPassword) => {
+    try {
+        const response = await fetchWithSettings(`${baseUrl}/update-password`, {
+            method: 'POST',
+            body: JSON.stringify({ token, newPassword })
+        });
+
+        console.log('Password updated successfully, received new JWT token:', response);
+        
+        // Store the new JWT token in localStorage
+        const authData = { accessToken: response };
+        localStorage.setItem('authData', JSON.stringify(authData));
+        
+        // Return the new JWT token
+        return authData;
+    } catch (error) {
+        console.error('Error updating password:', error);
+        throw error;
+    }
 };
-
-
 
 export const logout = async () => {
     await fetchWithSettings(`${baseUrl}/logout`, {

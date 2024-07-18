@@ -12,4 +12,6 @@ public interface JwtService {
     public abstract <T> T extractClaim(String token, Function<Claims, T> claimsResolver);
 
     public Claims extractAllClaims(String token);
+
+    String generateTokenAfterPasswordUpdate(String token);
 }

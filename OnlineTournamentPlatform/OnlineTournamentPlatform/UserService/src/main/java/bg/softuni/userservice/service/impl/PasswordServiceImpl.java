@@ -64,7 +64,7 @@ public class PasswordServiceImpl implements PasswordService {
             Password password = user.getPassword();
             password.setPasswordHash(passwordEncoder.encode(newPassword));
             password.setPasswordSetDate(LocalDateTime.now());
-            password.setResetPasswordToken(null);
+            password.setActiveResetPasswordToken(false);
             password.setResetPasswordTokenExpiryDate(null);
             userRepository.save(user);
         } else {

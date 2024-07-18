@@ -1,4 +1,3 @@
-// UserAuthContainerModal.jsx
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import LoginModal from '../login/LoginModal';

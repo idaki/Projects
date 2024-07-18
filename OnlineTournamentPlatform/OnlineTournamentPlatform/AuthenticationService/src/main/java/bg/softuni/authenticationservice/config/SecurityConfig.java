@@ -54,6 +54,7 @@ public class SecurityConfig {
                         .requestMatchers("/public/**"
                                 , "/api/login"
                                 , "/api/register"
+                                , "/api/login-after-update"
                                 , "/api/reset-password"
                                 , "/api/update-password"
                                 , "/api/tournaments"

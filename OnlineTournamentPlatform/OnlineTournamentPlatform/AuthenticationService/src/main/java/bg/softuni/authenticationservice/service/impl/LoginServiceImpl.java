@@ -1,9 +1,12 @@
 package bg.softuni.authenticationservice.service.impl;
 
 import bg.softuni.authenticationservice.model.DTO.LoginDTO;
+import bg.softuni.authenticationservice.model.DTO.UpdatePasswordDTO;
 import bg.softuni.authenticationservice.service.LoginService;
+import bg.softuni.userservice.models.entity.password.Password;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.UserRepository;
+import bg.softuni.userservice.service.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,40 +23,36 @@ public class LoginServiceImpl implements LoginService {
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final PasswordService passwordService;
 
     @Autowired
-    public LoginServiceImpl(AuthenticationManager authenticationManager, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public LoginServiceImpl(AuthenticationManager authenticationManager, UserRepository userRepository, PasswordEncoder passwordEncoder, PasswordService passwordService) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.passwordService = passwordService;
     }
 
     @Override
     public boolean login(LoginDTO loginDTO) {
-        Optional<User> userByEmailOptional = userRepository.findByEmail(loginDTO.getUsernameOrEmail());
-        Optional<User> userByUsernameOptional = userRepository.findByUsername(loginDTO.getUsernameOrEmail());
+        Optional<User> userOptional = userRepository.findByEmail(loginDTO.getUsernameOrEmail());
+        if (userOptional.isEmpty()) {
+            userOptional = userRepository.findByUsername(loginDTO.getUsernameOrEmail());
+        }
 
-        if (userByEmailOptional.isEmpty() && userByUsernameOptional.isEmpty()) {
+        if (userOptional.isEmpty()) {
             return false; // No user found
         }
 
-        User user;
-
-        if (userByEmailOptional.isPresent()) {
-            user = userByEmailOptional.get();
-        } else {
-            user = userByUsernameOptional.get();
+        User user = userOptional.get();
+        if (!passwordEncoder.matches(loginDTO.getPassword(), user.getPassword().getPasswordHash())) {
+            return false; // Password does not match
         }
 
-        if (user.getPassword() == null || !passwordEncoder.matches(loginDTO.getPassword(), user.getPassword().getPasswordHash())) {
-            return false; // No password set or password does not match
-        }
-
-        // Authenticate with Spring Security to handle the security context
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            user.getUsername(), // or user.getEmail() depending on your login strategy
+                            user.getUsername(),
                             loginDTO.getPassword()
                     )
             );
@@ -64,22 +63,10 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public boolean loginAfterPasswordUpdate(String usernameOrEmail, String newPassword) {
-        Optional<User> userOptional = userRepository.findByUsername(usernameOrEmail).or(() -> userRepository.findByEmail(usernameOrEmail));
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            try {
-                Authentication authentication = authenticationManager.authenticate(
-                        new UsernamePasswordAuthenticationToken(
-                                user.getUsername(), // or user.getEmail() depending on your login strategy
-                                newPassword
-                        )
-                );
-                return authentication.isAuthenticated();
-            } catch (AuthenticationException e) {
-                return false; // Authentication failed
-            }
-        }
-        return false; // User not found
+    public boolean loginAfterPasswordUpdate(UpdatePasswordDTO updatePasswordDTO) {
+        Password password = passwordService.getUserByResetToken(updatePasswordDTO.getToken());
+        User user = password.getUser();
+        LoginDTO loginDTO = new LoginDTO(user.getUsername(), updatePasswordDTO.getNewPassword());
+        return this.login(loginDTO);
     }
 }

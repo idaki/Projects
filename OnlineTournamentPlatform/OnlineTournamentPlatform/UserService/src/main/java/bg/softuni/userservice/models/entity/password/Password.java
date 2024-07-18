@@ -2,6 +2,7 @@ package bg.softuni.userservice.models.entity.password;
 
 import bg.softuni.userservice.models.entity.user.User;
 import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,17 +23,18 @@ public class Password {
     private String resetPasswordToken;
 
     @Column
+    private Boolean isActiveResetPasswordToken;
+
+    @Column
     private LocalDateTime resetPasswordTokenExpiryDate;
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-
     public Password() {
     }
 
-    // Parameterized constructor
     public Password(String passwordHash, LocalDateTime passwordSetDate, User user) {
         this.passwordHash = passwordHash;
         this.passwordSetDate = passwordSetDate;
@@ -86,5 +88,13 @@ public class Password {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Boolean getActiveResetPasswordToken() {
+        return isActiveResetPasswordToken;
+    }
+
+    public void setActiveResetPasswordToken(Boolean activeResetPasswordToken) {
+        this.isActiveResetPasswordToken = activeResetPasswordToken;
     }
 }

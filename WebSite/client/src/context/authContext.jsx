@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { login, logout, registerConsumer, resetPassword } from '../services/authService'; // Ensure registerConsumer is imported
+import { login, logout, registerConsumer, resetPassword, updatePasswordAndLogin } from '../services/authService';
 
 const AuthContext = createContext();
 
@@ -30,12 +30,8 @@ export const AuthProvider = ({ children }) => {
 
   const registerHandler = async (username, password, email) => {
     try {
-      // Register the user and automatically log them in
       const authData = await registerConsumer(username, password, email);
-  
       console.log('Registration and auto-login successful:', authData);
-      
-      // Update the auth state with the new token received
       setAuth(authData);
     } catch (error) {
       console.error('Registration failed', error);
@@ -52,12 +48,23 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const updatePasswordHandler = async (token, newPassword) => {
+    try {
+      const authData = await updatePasswordAndLogin(token, newPassword);
+      console.log('Password updated successfully:', authData);
+      setAuth(authData);
+    } catch (error) {
+      console.error('Password update failed', error);
+      throw error;
+    }
+  };
+
   useEffect(() => {
     localStorage.setItem('authData', JSON.stringify(auth));
   }, [auth]);
 
   return (
-    <AuthContext.Provider value={{ auth, loginHandler, logoutHandler, registerHandler, resetPasswordHandler }}>
+    <AuthContext.Provider value={{ auth, loginHandler, logoutHandler, registerHandler, resetPasswordHandler, updatePasswordHandler, setAuth }}>
       {children}
     </AuthContext.Provider>
   );
