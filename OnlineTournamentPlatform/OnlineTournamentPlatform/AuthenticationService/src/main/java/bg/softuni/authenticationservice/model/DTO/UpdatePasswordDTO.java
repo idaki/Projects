@@ -1,4 +1,4 @@
-package bg.softuni.authenticationservice.model;
+package bg.softuni.authenticationservice.model.DTO;
 
 public class UpdatePasswordDTO {
     private String token;

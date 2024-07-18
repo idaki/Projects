@@ -1,4 +1,4 @@
-package bg.softuni.userservice.service.user.user;
+package bg.softuni.userservice.service.user;
 
 
 import bg.softuni.crudservice.crud.CrudService;

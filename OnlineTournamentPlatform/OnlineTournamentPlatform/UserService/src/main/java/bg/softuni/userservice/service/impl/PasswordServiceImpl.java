@@ -2,6 +2,7 @@ package bg.softuni.userservice.service.impl;
 
 import bg.softuni.userservice.models.entity.password.Password;
 import bg.softuni.userservice.models.entity.user.User;
+import bg.softuni.userservice.repository.PasswordRepository;
 import bg.softuni.userservice.repository.UserRepository;
 import bg.softuni.userservice.service.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,15 @@ public class PasswordServiceImpl implements PasswordService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JavaMailSender mailSender;
+    private final PasswordRepository passwordRepository;
 
     @Autowired
-    public PasswordServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, JavaMailSender mailSender) {
+    public PasswordServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, JavaMailSender mailSender, PasswordRepository passwordRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.mailSender = mailSender;
+
+        this.passwordRepository = passwordRepository;
     }
 
     @Override
@@ -54,7 +58,7 @@ public class PasswordServiceImpl implements PasswordService {
 
     @Override
     public void updatePassword(String token, String newPassword) {
-        Optional<User> userOptional = userRepository.findByPassword_ResetPasswordToken(token);
+        Optional<User> userOptional = userRepository.findByPasswordResetToken(token);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             Password password = user.getPassword();
@@ -82,13 +86,18 @@ public class PasswordServiceImpl implements PasswordService {
 
     @Override
     public boolean isResetTokenValid(String token) {
-        Optional<User> userOptional = userRepository.findByPassword_ResetPasswordToken(token);
+        Optional<User> userOptional = userRepository.findByPasswordResetToken(token);
         return userOptional.isPresent() && userOptional.get().getPassword().getResetPasswordTokenExpiryDate().isAfter(LocalDateTime.now());
     }
 
     @Override
     public String getUserIdByResetToken(String token) {
-        Optional<User> userOptional = userRepository.findByPassword_ResetPasswordToken(token);
+        Optional<User> userOptional = userRepository.findByPasswordResetToken(token);
         return userOptional.map(user -> String.valueOf(user.getId())).orElse(null);
+    }
+
+    @Override
+    public Password getUserByResetToken(String token) {
+        return this.passwordRepository.findUserByResetPasswordToken(token);
     }
 }

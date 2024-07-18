@@ -16,6 +16,7 @@ import java.util.Optional;
 
 @Service
 public class LoginServiceImpl implements LoginService {
+
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -36,14 +37,14 @@ public class LoginServiceImpl implements LoginService {
             return false; // No user found
         }
 
-        User user =new User();
+        User user;
 
         if (userByEmailOptional.isPresent()) {
-
-            user= userByEmailOptional.get();
-        }else {
-            user= userByUsernameOptional.get();
+            user = userByEmailOptional.get();
+        } else {
+            user = userByUsernameOptional.get();
         }
+
         if (user.getPassword() == null || !passwordEncoder.matches(loginDTO.getPassword(), user.getPassword().getPasswordHash())) {
             return false; // No password set or password does not match
         }
@@ -60,5 +61,25 @@ public class LoginServiceImpl implements LoginService {
         } catch (AuthenticationException e) {
             return false; // Authentication failed
         }
+    }
+
+    @Override
+    public boolean loginAfterPasswordUpdate(String usernameOrEmail, String newPassword) {
+        Optional<User> userOptional = userRepository.findByUsername(usernameOrEmail).or(() -> userRepository.findByEmail(usernameOrEmail));
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            try {
+                Authentication authentication = authenticationManager.authenticate(
+                        new UsernamePasswordAuthenticationToken(
+                                user.getUsername(), // or user.getEmail() depending on your login strategy
+                                newPassword
+                        )
+                );
+                return authentication.isAuthenticated();
+            } catch (AuthenticationException e) {
+                return false; // Authentication failed
+            }
+        }
+        return false; // User not found
     }
 }

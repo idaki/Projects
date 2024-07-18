@@ -7,4 +7,5 @@ public interface LoginService {
     boolean login(LoginDTO loginDTO);
 
 
+    boolean loginAfterPasswordUpdate(String username, String newPassword);
 }

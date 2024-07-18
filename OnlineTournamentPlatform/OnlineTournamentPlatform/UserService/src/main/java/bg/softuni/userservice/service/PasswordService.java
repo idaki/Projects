@@ -1,5 +1,7 @@
 package bg.softuni.userservice.service;
 
+import bg.softuni.userservice.models.entity.password.Password;
+
 public interface PasswordService {
      void generateResetToken(String email) ;
 
@@ -7,4 +9,6 @@ public interface PasswordService {
     void setResetToken(String userId, String token);
     boolean isResetTokenValid(String token);
     String getUserIdByResetToken(String token);
+
+    Password getUserByResetToken(String token);
 }

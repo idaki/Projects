@@ -1,10 +1,11 @@
-package bg.softuni.userservice.service.user.user;
+package bg.softuni.userservice.service.impl;
 
 import bg.softuni.crudservice.crud.CrudServiceImpl;
 
 import bg.softuni.userservice.models.entity.password.Password;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.UserRepository;
+import bg.softuni.userservice.service.user.UserService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

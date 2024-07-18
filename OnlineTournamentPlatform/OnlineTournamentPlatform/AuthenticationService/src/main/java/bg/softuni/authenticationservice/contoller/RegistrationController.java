@@ -3,7 +3,7 @@ package bg.softuni.authenticationservice.contoller;
 import bg.softuni.authenticationservice.model.DTO.LoginDTO;
 import bg.softuni.authenticationservice.model.DTO.UserRegisterDTO;
 import bg.softuni.authenticationservice.service.LoginService;
-import bg.softuni.userservice.service.user.user.UserService;
+import bg.softuni.userservice.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
