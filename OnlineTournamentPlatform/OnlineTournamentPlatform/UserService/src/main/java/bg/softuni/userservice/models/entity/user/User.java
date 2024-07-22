@@ -2,6 +2,7 @@ package bg.softuni.userservice.models.entity.user;
 
 import bg.softuni.userservice.models.entity.password.Password;
 import bg.softuni.userservice.models.entity.FriendRequest;
+import bg.softuni.userservice.models.entity.authorisation.Role;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -19,6 +20,12 @@ public class User {
     @Column(unique = true, nullable = false)
     private String username;
 
+    @Column
+    private String firstName;
+
+    @Column
+    private String lastName;
+
     @Column(unique = true, nullable = false)
     private String email;
 
@@ -33,6 +40,14 @@ public class User {
     )
     private Set<User> friends = new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
+
     @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<FriendRequest> sentRequests = new HashSet<>();
 
@@ -44,8 +59,7 @@ public class User {
         this.email = email;
     }
 
-    public User() {
-    }
+    public User() {}
 
     public Long getId() {
         return id;
@@ -85,6 +99,14 @@ public class User {
 
     public void setFriends(Set<User> friends) {
         this.friends = friends;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public Set<FriendRequest> getSentRequests() {

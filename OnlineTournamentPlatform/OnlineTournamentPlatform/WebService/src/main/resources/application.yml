@@ -19,13 +19,16 @@ spring:
         format_sql: 'TRUE'
     hibernate:
       ddl-auto: update
+
   application:
     name: WebService
+
   datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    password: ${db_password}
-    username: ${db_username}
-    url: 'jdbc:mysql://localhost:3306/tournament_db?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true '
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ${DB_PASSWORD}
+    username: ${DB_USERNAME}
+    url: 'jdbc:mysql://localhost:3306/tournament_db?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true'
+
 logging:
   level:
     org:
@@ -33,11 +36,17 @@ logging:
         type:
           descriptor: TRACE
         SQL: DEBUG
+      springframework:
+        security: DEBUG
+        web: DEBUG
       nodeValue: WARN
-      springframework: DEBUG
     blog: DEBUG
+
 app:
   remember:
     me:
       token:
         key: yourUniqueSecretKey
+
+jwt:
+  secretkey: "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"  # Ensure this environment variable is set

@@ -34,6 +34,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/OnlineTournamentPlatform/AuthorizationService/pom.xml" />
         <option value="$PROJECT_DIR$/PasswordService/pom.xml" />
       </set>
     </option>
