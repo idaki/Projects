@@ -31,7 +31,6 @@ export const AuthProvider = ({ children }) => {
   const registerHandler = async (username, password, email) => {
     try {
       const authData = await registerConsumer(username, password, email);
-      console.log('Registration and auto-login successful:', authData);
       setAuth(authData);
     } catch (error) {
       console.error('Registration failed', error);
@@ -51,7 +50,6 @@ export const AuthProvider = ({ children }) => {
   const updatePasswordHandler = async (token, newPassword) => {
     try {
       const authData = await updatePasswordAndLogin(token, newPassword);
-      console.log('Password updated successfully:', authData);
       setAuth(authData);
     } catch (error) {
       console.error('Password update failed', error);
@@ -64,7 +62,7 @@ export const AuthProvider = ({ children }) => {
   }, [auth]);
 
   return (
-    <AuthContext.Provider value={{ auth, loginHandler, logoutHandler, registerHandler, resetPasswordHandler, updatePasswordHandler, setAuth }}>
+    <AuthContext.Provider value={{ auth, loginHandler, logoutHandler, registerHandler, resetPasswordHandler, updatePasswordHandler }}>
       {children}
     </AuthContext.Provider>
   );

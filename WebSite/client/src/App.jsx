@@ -8,14 +8,15 @@ import UpdatePasswordModal from './components/user-auth/update-password/UpdatePa
 function App() {
   return (
     <Router>
-        <NavigationModal />
-        <BodyModal />
-        <FooterModal />
-        <Routes>
-          <Route path="/newpassword" element={<UpdatePasswordModal />} />
-        </Routes>
+      <NavigationModal />
+      <BodyModal />
+      <FooterModal />
+      <Routes>
+        <Route path="/newpassword" element={<UpdatePasswordModal />} />
+        {/* Define other routes here */}
+      </Routes>
     </Router>
   );
 }
 
-export default App;  // Ensure App is exported as the default export
+export default App;

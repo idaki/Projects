@@ -23,7 +23,7 @@ const SettingsContainer = ({ isOpen, toggle }) => {
             <div className="row mb-5 gx-5">
               <ChangePasswordModal />
             </div>
-            <div className="gap-3 d-md-flex justify-content-md-end text-center">
+            <div className="gap-3 d-flex justify-content-center text-center">
               <button type="button" className="btn btn-danger btn-lg">Delete profile</button>
               <button type="button" className="btn btn-primary btn-lg">Update profile</button>
               <button type="button" className="btn btn-primary btn-lg">Close</button>
