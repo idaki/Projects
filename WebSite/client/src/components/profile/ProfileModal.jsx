@@ -1,15 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react'; // Ensure useContext is imported
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import NavigationModal from '../authNavigationModal/NavigationModal ';
 import SidebarModal from '../sidebar/SidebarModal';
 import MainFeedModal from '../mainfeed/mainffeedmodal';
 import styles from './ProfileModal.module.css';
 import SettingsContainer from '../settings/settings-container/SettingsModal';
+import NavigationModal from '../authNavigationModal/NavigationModal ';
+import AuthContext from '../../context/authContext'; // Ensure AuthContext is imported
+import { getUserDetails } from '../../services/userDetailsService';
+
 
 const ProfileModal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [userProfile, setUserProfile] = useState(null);
+  const [error, setError] = useState(null);
+  const { auth } = useContext(AuthContext); // Ensure useContext is used correctly
+
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const profile = await getUserDetails();
+        setUserProfile(profile);
+      } catch (error) {
+        setError('Failed to fetch user profile');
+      }
+    };
+
+    if (auth && auth.accessToken) {
+      fetchUserProfile();
+    }
+  }, [auth]);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -23,6 +45,10 @@ const ProfileModal = () => {
     setSettingsOpen(false);
   };
 
+  if (!auth) {
+    return <div>Please log in to see your profile.</div>;
+  }
+
   return (
     <div className="container-fluid">
       <div className={`row align-items-center ${styles.profileHeader}`}>
@@ -35,8 +61,12 @@ const ProfileModal = () => {
             onClick={toggleSidebar}
             style={{ cursor: 'pointer' }}
           />
-          <h2>Kevin Anderson</h2>
-          <h3>Web Designer</h3>
+          {userProfile ? (
+            <h2>{userProfile.username}</h2>
+          ) : (
+            <p>Loading...</p>
+          )}
+          {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
       </div>
 

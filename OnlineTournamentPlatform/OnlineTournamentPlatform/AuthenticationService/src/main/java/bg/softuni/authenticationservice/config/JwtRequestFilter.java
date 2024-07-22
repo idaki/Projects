@@ -2,8 +2,6 @@ package bg.softuni.authenticationservice.config;
 
 import bg.softuni.authenticationservice.service.JwtService;
 import bg.softuni.authenticationservice.service.impl.UserDetailsServiceImpl;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.MalformedJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,8 +18,10 @@ import io.jsonwebtoken.Claims;
 
 
 import java.io.IOException;
+
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
+
 
     private final JwtService jwtService;
     private final UserDetailsServiceImpl userDetailsService;
@@ -42,15 +42,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
-            try {
-                username = jwtService.extractClaim(jwt, Claims::getSubject);
-            } catch (ExpiredJwtException | MalformedJwtException e) {
-                // JWT is invalid or expired
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write("{\"error\": \"Invalid JWT token\"}");
-                response.getWriter().flush();
-                return;
-            }
+            username = jwtService.extractClaim(jwt, Claims::getSubject);
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {

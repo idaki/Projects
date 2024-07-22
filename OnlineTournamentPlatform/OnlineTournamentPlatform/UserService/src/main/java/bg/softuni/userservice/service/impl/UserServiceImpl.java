@@ -2,13 +2,14 @@ package bg.softuni.userservice.service.impl;
 
 import bg.softuni.crudservice.crud.CrudServiceImpl;
 
+import bg.softuni.userservice.models.dto.gson.UserDetailsExportDTO;
 import bg.softuni.userservice.models.entity.authorisation.Role;
 import bg.softuni.userservice.models.entity.password.Password;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.models.enums.RoleEnum;
 import bg.softuni.userservice.repository.RoleRepository;
 import bg.softuni.userservice.repository.UserRepository;
-import bg.softuni.userservice.service.user.UserService;
+import bg.softuni.userservice.service.UserService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -56,6 +57,7 @@ public class UserServiceImpl extends CrudServiceImpl<User, Long> implements User
         }
     }
 
+    
     public User registerUser(String username, String password, String email) {
         User user = new User();
         user.setUsername(username);
@@ -81,4 +83,16 @@ public class UserServiceImpl extends CrudServiceImpl<User, Long> implements User
         // Save the user
         return save(user); // Use the save method from CrudServiceImpl
     }
+
+    public UserDetailsExportDTO getUserDetails(String username) {
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
+        UserDetailsExportDTO userDetails = new UserDetailsExportDTO();
+        userDetails.setUsername(user.getUsername());
+        userDetails.setFirstName(user.getFirstName());
+        userDetails.setLastName(user.getLastName());
+        userDetails.setEmail(user.getEmail());
+        return userDetails;
+    }
+
+
 }
