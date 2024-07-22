@@ -1,22 +1,20 @@
-import React, { useState, useEffect, useContext } from 'react'; // Ensure useContext is imported
+import React, { useState, useEffect, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import SidebarModal from '../sidebar/SidebarModal';
-import MainFeedModal from '../mainfeed/mainffeedmodal';
+import MainFeedModal from '../../components/mainfeed/mainffeedmodal';
 import styles from './ProfileModal.module.css';
-import SettingsContainer from '../settings/settings-container/SettingsModal';
-import NavigationModal from '../authNavigationModal/NavigationModal ';
-import AuthContext from '../../context/authContext'; // Ensure AuthContext is imported
+import SettingsContainer from '../../components/settings/settings-container/SettingsModal';
+import NavigationModal from '../../components/authNavigationModal/NavigationModal ';
+import AuthContext from '../../context/authContext';
 import { getUserDetails } from '../../services/userDetailsService';
-
 
 const ProfileModal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
   const [error, setError] = useState(null);
-  const { auth } = useContext(AuthContext); // Ensure useContext is used correctly
-
+  const { auth } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchUserProfile = async () => {

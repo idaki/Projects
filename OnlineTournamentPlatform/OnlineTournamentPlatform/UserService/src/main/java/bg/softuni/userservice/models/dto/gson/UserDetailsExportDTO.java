@@ -1,8 +1,12 @@
 package bg.softuni.userservice.models.dto.gson;
 
+import jakarta.persistence.Column;
+
 public class UserDetailsExportDTO {
     private String username;
+    @Column(name="first_name")
     private String firstName;
+    @Column(name="last_name")
     private String lastName;
     private String email;
 

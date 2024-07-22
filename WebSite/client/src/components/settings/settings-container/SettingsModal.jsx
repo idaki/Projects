@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ContactDetailsModal from '../contact-details/ContactDetailsModal';
 import UploadProfileImageModal from '../uploade-profile-image/UploadProfileImageModal';
 import ChangePasswordModal from '../change-password/ChangePasswordModal';
+import AuthContext from '../../../context/authContext';
+import { getUserDetails } from '../../../services/userDetailsService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SettingsContainer = ({ isOpen, toggle }) => {
+  const [userDetails, setUserDetails] = useState(null);
+  const { auth } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const details = await getUserDetails();
+        setUserDetails(details);
+      } catch (error) {
+        console.error('Failed to fetch user details:', error);
+      }
+    };
+
+    if (auth && auth.accessToken) {
+      fetchUserDetails();
+    }
+  }, [auth]);
+
   if (!isOpen) return null;
 
   return (
@@ -17,7 +37,7 @@ const SettingsContainer = ({ isOpen, toggle }) => {
           </div>
           <form className="file-upload">
             <div className="row mb-5 gx-5">
-              <ContactDetailsModal />
+              {userDetails && <ContactDetailsModal userDetails={userDetails} />}
               <UploadProfileImageModal />
             </div>
             <div className="row mb-5 gx-5">
@@ -26,7 +46,7 @@ const SettingsContainer = ({ isOpen, toggle }) => {
             <div className="gap-3 d-flex justify-content-center text-center">
               <button type="button" className="btn btn-danger btn-lg">Delete profile</button>
               <button type="button" className="btn btn-primary btn-lg">Update profile</button>
-              <button type="button" className="btn btn-primary btn-lg">Close</button>
+              <button type="button" className="btn btn-primary btn-lg" onClick={toggle}>Close</button>
             </div>
           </form>
         </div>

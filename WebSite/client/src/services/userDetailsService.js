@@ -2,17 +2,11 @@
 import { fetchWithSettings } from '../utils/utils';
 import { BASE_URL } from '../config/config';
 
-const getJwtToken = () => {
-    const authData = JSON.parse(localStorage.getItem('authData'));
-    return authData?.accessToken || '';
-};
-
-
-
+// API interaction function to get user details
 export const getUserDetails = async () => {
     try {
         const result = await fetchWithSettings(`${BASE_URL}/user/details`, {
-            method: 'GET' // Use GET method for fetching details
+            method: 'GET'
         });
 
         console.log('User details retrieved:', result);
