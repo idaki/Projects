@@ -46,6 +46,16 @@ const ContactDetailsModal = ({ userDetails }) => {
               defaultValue={userDetails ? userDetails.email : ''}
             />
           </div>
+          <div className="col-md-6">
+            <label className="form-label">username *</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="username"
+              aria-label="username"
+              defaultValue={userDetails ? userDetails.username : ''}
+            />
+          </div>
         </div>
       </div>
     </div>
