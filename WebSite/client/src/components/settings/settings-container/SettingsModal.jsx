@@ -3,12 +3,13 @@ import ContactDetailsModal from '../contact-details/ContactDetailsModal';
 import UploadProfileImageModal from '../uploade-profile-image/UploadProfileImageModal';
 import ChangePasswordModal from '../change-password/ChangePasswordModal';
 import AuthContext from '../../../context/authContext';
-import { getUserDetails } from '../../../services/userDetailsService';
+import { getUserDetails, deleteUser } from '../../../services/userDetailsService';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SettingsContainer = ({ isOpen, toggle }) => {
   const [userDetails, setUserDetails] = useState(null);
-  const { auth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -24,6 +25,17 @@ const SettingsContainer = ({ isOpen, toggle }) => {
       fetchUserDetails();
     }
   }, [auth]);
+
+  const handleDelete = async () => {
+    try {
+      await deleteUser();
+      // Log out the user after successful deletion
+      setAuth(null);
+      localStorage.removeItem('authData');
+    } catch (error) {
+      console.error('Failed to delete user:', error);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -44,7 +56,7 @@ const SettingsContainer = ({ isOpen, toggle }) => {
               <ChangePasswordModal />
             </div>
             <div className="gap-3 d-flex justify-content-center text-center">
-              <button type="button" className="btn btn-danger btn-lg">Delete profile</button>
+              <button type="button" className="btn btn-danger btn-lg" onClick={handleDelete}>Delete profile</button>
               <button type="button" className="btn btn-primary btn-lg">Update profile</button>
               <button type="button" className="btn btn-primary btn-lg" onClick={toggle}>Close</button>
             </div>
