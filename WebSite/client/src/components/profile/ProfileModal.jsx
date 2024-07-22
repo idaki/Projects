@@ -2,15 +2,25 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import NavigationModal from '../authNavigationModal/NavigationModal ';
-import SidebarModal from '../sidebar/SidebarModal'; // Assuming SidebarModal is in the same directory as ProfileModal
-import MainFeedModal from '../mainfeed/mainffeedmodal'; // Assuming MainFeedModal is in the same directory as ProfileModal
-import styles from './ProfileModal.module.css'; // Use relative path
+import SidebarModal from '../sidebar/SidebarModal';
+import MainFeedModal from '../mainfeed/mainffeedmodal';
+import styles from './ProfileModal.module.css';
+import SettingsContainer from '../settings/settings-container/SettingsModal';
 
 const ProfileModal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
+  };
+
+  const openSettings = () => {
+    setSettingsOpen(true);
+  };
+
+  const closeSettings = () => {
+    setSettingsOpen(false);
   };
 
   return (
@@ -35,8 +45,9 @@ const ProfileModal = () => {
           <NavigationModal />
         </div>
         <div className="col-md-9">
-          <SidebarModal isOpen={sidebarOpen} toggle={toggleSidebar} />
-          <MainFeedModal />
+          <SidebarModal isOpen={sidebarOpen} toggle={toggleSidebar} openSettings={openSettings} />
+          {!settingsOpen && <MainFeedModal />}
+          <SettingsContainer isOpen={settingsOpen} toggle={closeSettings} />
         </div>
       </div>
     </div>
