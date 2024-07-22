@@ -20,4 +20,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u JOIN FETCH u.password p WHERE p.resetPasswordToken = :token")
     Optional<User> findByPasswordResetToken(@Param("token") String token);
+
+    void deleteByUsername(String username);
 }

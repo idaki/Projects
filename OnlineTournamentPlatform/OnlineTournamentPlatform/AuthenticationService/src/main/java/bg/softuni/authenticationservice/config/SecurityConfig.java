@@ -62,7 +62,8 @@ public class SecurityConfig {
                                 "/api/countries/by-region/{regionId}"
                                 , "/api/games"
                                 , "/api/register-consumer"
-                                , "/user/details")
+                                , "/user/details"
+                                , "/user/delete")
                         .permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)

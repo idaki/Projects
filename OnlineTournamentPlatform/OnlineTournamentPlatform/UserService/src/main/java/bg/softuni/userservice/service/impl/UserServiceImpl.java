@@ -10,9 +10,13 @@ import bg.softuni.userservice.models.enums.RoleEnum;
 import bg.softuni.userservice.repository.RoleRepository;
 import bg.softuni.userservice.repository.UserRepository;
 import bg.softuni.userservice.service.UserService;
+import bg.softuni.userservice.utils.UserDeleteEvent;
+
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -24,12 +28,14 @@ public class UserServiceImpl extends CrudServiceImpl<User, Long> implements User
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
+    private final ApplicationEventPublisher eventPublisher;
 
-    public UserServiceImpl(JpaRepository<User, Long> repository, UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+    public UserServiceImpl(JpaRepository<User, Long> repository, UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository, ApplicationEventPublisher eventPublisher) {
         super(repository);
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
+        this.eventPublisher = eventPublisher;
     }
 
     @Override
@@ -92,6 +98,18 @@ public class UserServiceImpl extends CrudServiceImpl<User, Long> implements User
         userDetails.setLastName(user.getLastName());
         userDetails.setEmail(user.getEmail());
         return userDetails;
+    }
+
+
+
+    @Override
+    public void deleteUserByUsername(String username) {
+        // Fetch user by username
+        Optional<User> user = userRepository.findByUsername(username);
+        if (user.isPresent()) {
+            eventPublisher.publishEvent(new UserDeleteEvent(this, user.get()));
+            userRepository.deleteByUsername(username);
+        }
     }
 
 

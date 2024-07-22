@@ -1,6 +1,6 @@
 package bg.softuni.authenticationservice.service.impl;
 
-import bg.softuni.authenticationservice.repositry.TokenRepository;
+import bg.softuni.userservice.repository.TokenRepository;
 import bg.softuni.authenticationservice.service.LogoutService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

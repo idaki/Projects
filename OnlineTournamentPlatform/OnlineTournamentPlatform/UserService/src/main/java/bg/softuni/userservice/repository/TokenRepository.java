@@ -1,6 +1,6 @@
-package bg.softuni.authenticationservice.repositry;
+package bg.softuni.userservice.repository;
 
-import bg.softuni.authenticationservice.model.Token;
+import bg.softuni.userservice.models.entity.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

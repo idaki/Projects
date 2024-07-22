@@ -14,4 +14,6 @@ public interface JwtService {
     public Claims extractAllClaims(String token);
 
     String generateTokenAfterPasswordUpdate(String token);
+
+    String extractUsername(String token);
 }

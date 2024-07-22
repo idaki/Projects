@@ -1,7 +1,7 @@
 package bg.softuni.authenticationservice.service.scheduled;
 
 
-import bg.softuni.authenticationservice.repositry.TokenRepository;
+import bg.softuni.userservice.repository.TokenRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

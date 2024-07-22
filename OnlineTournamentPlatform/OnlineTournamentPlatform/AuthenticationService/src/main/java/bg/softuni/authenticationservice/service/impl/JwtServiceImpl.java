@@ -1,12 +1,11 @@
 package bg.softuni.authenticationservice.service.impl;
 
-import bg.softuni.authenticationservice.model.Token;
-import bg.softuni.authenticationservice.repositry.TokenRepository;
+import bg.softuni.userservice.models.entity.Token;
+import bg.softuni.userservice.repository.TokenRepository;
 import bg.softuni.authenticationservice.service.JwtService;
 import bg.softuni.userservice.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -79,6 +78,12 @@ public class JwtServiceImpl implements JwtService {
     public String generateTokenAfterPasswordUpdate(String token) {
         String username = extractClaim(token, Claims::getSubject);
         return this.generateToken(username);
+    }
+
+    @Override
+    public String extractUsername(String token) {
+
+        return this.extractAllClaims(token).getSubject();
     }
 
     private Boolean isTokenExpired(String token) {

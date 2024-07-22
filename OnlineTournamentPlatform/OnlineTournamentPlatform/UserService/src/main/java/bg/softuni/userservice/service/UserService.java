@@ -20,4 +20,6 @@ public interface UserService extends CrudService<User, Long> {
 
 
     UserDetailsExportDTO getUserDetails(String username);
+
+    void deleteUserByUsername(String username);
 }

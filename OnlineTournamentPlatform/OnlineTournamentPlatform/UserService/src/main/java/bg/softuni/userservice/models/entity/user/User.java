@@ -1,8 +1,12 @@
 package bg.softuni.userservice.models.entity.user;
 
+
+import bg.softuni.userservice.models.entity.Token;
 import bg.softuni.userservice.models.entity.password.Password;
 import bg.softuni.userservice.models.entity.FriendRequest;
 import bg.softuni.userservice.models.entity.authorisation.Role;
+
+
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -32,7 +36,10 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Password password;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Token> tokens = new HashSet<>();
+
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_friends",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -40,7 +47,7 @@ public class User {
     )
     private Set<User> friends = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -60,6 +67,8 @@ public class User {
     }
 
     public User() {}
+
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -107,6 +116,14 @@ public class User {
 
     public void setPassword(Password password) {
         this.password = password;
+    }
+
+    public Set<Token> getTokens() {
+        return tokens;
+    }
+
+    public void setTokens(Set<Token> tokens) {
+        this.tokens = tokens;
     }
 
     public Set<User> getFriends() {

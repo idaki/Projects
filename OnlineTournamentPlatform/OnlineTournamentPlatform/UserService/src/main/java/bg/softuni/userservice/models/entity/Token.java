@@ -1,38 +1,37 @@
-package bg.softuni.authenticationservice.model;
+package bg.softuni.userservice.models.entity;
 
-
-import bg.softuni.authenticationservice.model.enums.TokenType;
 import bg.softuni.userservice.models.entity.user.User;
+import bg.softuni.userservice.models.enums.TokenType;
 import jakarta.persistence.*;
-
 
 @Entity
 @Table(name = "tokens")
 public class Token {
 
     @Id
-    @GeneratedValue
-    public long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(unique = true)
-    public String token;
+    private String token;
 
     @Enumerated(EnumType.STRING)
-    public TokenType tokenType = TokenType.BEARER;
+    private TokenType tokenType = TokenType.BEARER;
 
-    public boolean revoked;
+    private boolean revoked;
 
-    public boolean expired;
+    private boolean expired;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    public User user;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    public long getId() {
+    // Getters and Setters
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
