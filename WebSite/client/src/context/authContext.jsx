@@ -1,13 +1,11 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useCallback } from 'react';
 import { login, logout, registerConsumer, resetPassword, updatePasswordAndLogin } from '../services/authService';
+import usePersistedState from '../hooks/usePersistedState'; // Ensure correct import path
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState(() => {
-    const persistedAuth = localStorage.getItem('authData');
-    return persistedAuth ? JSON.parse(persistedAuth) : null;
-  });
+  const [auth, setAuth] = usePersistedState('authData', null);
 
   const loginHandler = async (username, password) => {
     try {
@@ -19,14 +17,14 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logoutHandler = async () => {
+  const logoutHandler = useCallback(async () => {
     try {
       await logout();
       setAuth(null);
     } catch (error) {
       console.error('Logout failed', error);
     }
-  };
+  }, []);
 
   const registerHandler = async (username, password, email) => {
     try {
@@ -57,12 +55,8 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    localStorage.setItem('authData', JSON.stringify(auth));
-  }, [auth]);
-
   return (
-    <AuthContext.Provider value={{ auth, loginHandler, logoutHandler, registerHandler, resetPasswordHandler, updatePasswordHandler }}>
+    <AuthContext.Provider value={{ auth, loginHandler, logoutHandler, registerHandler, resetPasswordHandler, updatePasswordHandler, setAuth }}>
       {children}
     </AuthContext.Provider>
   );

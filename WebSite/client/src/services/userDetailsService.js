@@ -27,6 +27,7 @@ export const deleteUser = async () => {
         });
 
         console.log('User deleted successfully:', result);
+        localStorage.removeItem('authData');
         return result;
     } catch (error) {
         console.error("Failed to delete user:", error);

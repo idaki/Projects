@@ -1,13 +1,5 @@
-import { useState, useEffect } from 'react';
-
-// Custom hook for debouncing
-function useDebouncedEffect(effect, deps, delay) {
-  useEffect(() => {
-    const handler = setTimeout(() => effect(), delay);
-
-    return () => clearTimeout(handler);
-  }, [...deps, delay]);
-}
+import { useState } from 'react';
+import useDebouncedEffect from './useDebouncedEffect'; // Ensure correct path
 
 export default function usePersistedState(key, defaultValue) {
   const [state, setState] = useState(() => {
