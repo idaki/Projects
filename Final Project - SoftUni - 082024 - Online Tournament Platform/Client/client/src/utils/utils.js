@@ -20,6 +20,12 @@ export async function fetchWithSettings(url, options) {
             credentials: 'include'
         });
 
+        if (response.status === 401) {
+            localStorage.removeItem('authData');
+            window.location.href = '/';
+            return;
+        }
+
         const isJsonResponse = response.headers.get('Content-Type')?.includes('application/json');
         const responseBody = isJsonResponse ? await response.json() : await response.text();
 

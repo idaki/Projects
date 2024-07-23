@@ -23,7 +23,7 @@ public class JwtServiceImpl implements JwtService {
     @Value("${jwt.secretkey}")
     private String secretKey;
 
-    private long expirationTime = 1000 * 60 * 60 * 1; // in milliseconds
+    private long expirationTime = 1000 * 60 * 60*1; // 1h min in milliseconds
 
     public JwtServiceImpl(UserRepository userRepository, TokenRepository tokenRepository) {
         this.userRepository = userRepository;

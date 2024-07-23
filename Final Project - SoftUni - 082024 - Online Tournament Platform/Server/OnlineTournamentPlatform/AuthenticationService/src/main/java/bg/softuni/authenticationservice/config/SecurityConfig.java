@@ -2,8 +2,6 @@ package bg.softuni.authenticationservice.config;
 
 import bg.softuni.authenticationservice.service.impl.UserDetailsServiceImpl;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -16,7 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-import org.springframework.security.web.csrf.CsrfTokenRequestHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -30,12 +27,8 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
-
     private final UserDetailsServiceImpl userDetailsService;
     private final JwtRequestFilter jwtRequestFilter;
-
-    @Value("${app.remember.me.token.key}")
-    private String rememberMeTokenKey;
 
     public SecurityConfig(UserDetailsServiceImpl userDetailsService, JwtRequestFilter jwtRequestFilter) {
         this.userDetailsService = userDetailsService;
@@ -51,19 +44,17 @@ public class SecurityConfig {
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/public/**"
-                                , "/api/login"
-                                , "/api/register"
-                                , "/api/login-after-update"
-                                , "/api/reset-password"
-                                , "/api/update-password"
-                                , "/api/tournaments"
-                                , "/api/regions",
-                                "/api/countries/by-region/{regionId}"
-                                , "/api/games"
-                                , "/api/register-consumer"
-                                , "/user/details"
-                                , "/user/delete")
+                        .requestMatchers("/public/**",
+                                "/api/login",
+                                "/api/register",
+                                "/api/login-after-update",
+                                "/api/reset-password",
+                                "/api/update-password",
+                                "/api/tournaments",
+                                "/api/regions",
+                                "/api/countries/by-region/{regionId}",
+                                "/api/games",
+                                "/api/register-consumer")
                         .permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
