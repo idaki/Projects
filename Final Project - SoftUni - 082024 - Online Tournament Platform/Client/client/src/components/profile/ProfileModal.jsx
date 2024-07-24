@@ -1,20 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import styles from '../profile/ProfileModal.module.css';
+
+import AuthNavigationModal from '../authNavigationModal/AuthNavigationModal';
 import SidebarModal from '../sidebar/SidebarModal';
-import MainFeedModal from '../../components/mainfeed/mainffeedmodal';
-import styles from './ProfileModal.module.css';
-import SettingsContainer from '../../components/settings/settings-container/SettingsModal';
-import NavigationModal from '../../components/authNavigationModal/NavigationModal ';
+import MainFeedModal from '../mainfeed/MainFeedModal';
+import SettingsContainer from '../settings/settings-container/SettingsModal';
+
 import AuthContext from '../../context/authContext';
 import { getUserDetails } from '../../services/userDetailsService';
-import FriendsModal from '../friends/friends-container/FriendsModal';
+
+
 
 const ProfileModal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
   const [error, setError] = useState(null);
+  const [mainContent, setMainContent] = useState('tournaments'); // Default to 'tournaments'
   const { auth } = useContext(AuthContext);
 
   useEffect(() => {
@@ -71,13 +75,12 @@ const ProfileModal = () => {
 
       <div className="row">
         <div className="col-md-3">
-          <NavigationModal />
+          <AuthNavigationModal setMainContent={setMainContent} />
         </div>
         <div className="col-md-9">
-         <SidebarModal isOpen={sidebarOpen} toggle={toggleSidebar} openSettings={openSettings} />
-          {!settingsOpen && <MainFeedModal />}
+          <SidebarModal isOpen={sidebarOpen} toggle={toggleSidebar} openSettings={openSettings} />
+          {!settingsOpen && <MainFeedModal currentView={mainContent} />}
           <SettingsContainer isOpen={settingsOpen} toggle={closeSettings} />
-         
         </div>
       </div>
     </div>

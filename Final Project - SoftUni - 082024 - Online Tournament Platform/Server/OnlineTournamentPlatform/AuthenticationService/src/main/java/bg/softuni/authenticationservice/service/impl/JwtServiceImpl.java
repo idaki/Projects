@@ -51,6 +51,7 @@ public class JwtServiceImpl implements JwtService {
         newToken.setExpired(false);
         newToken.setRevoked(false);
         tokenRepository.save(newToken);
+
     }
 
     @Override
