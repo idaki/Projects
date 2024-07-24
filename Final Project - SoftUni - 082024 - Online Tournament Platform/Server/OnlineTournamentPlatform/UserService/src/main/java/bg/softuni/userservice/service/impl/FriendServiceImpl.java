@@ -8,9 +8,11 @@ import bg.softuni.userservice.repository.FriendRepository;
 import bg.softuni.userservice.repository.TokenRepository;
 import bg.softuni.userservice.repository.UserRepository;
 import bg.softuni.userservice.service.FriendService;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -50,13 +52,14 @@ public class FriendServiceImpl implements FriendService {
         Set<Friend> friends = user.getFriends();
 
 
+        List<FriendDTO> result = new ArrayList<>();
+        for (Friend friend : friends) {
+            result.add(new FriendDTO(friend.getFriend().getFirstName(), friend.getFriend().getLastName()));
+        }
+
         System.out.println();
-        return friends.stream()
-                .map(friend -> {
-                    User friendUser = friend.getUser(); // Use getUser() method to get the related entity
-                    return new FriendDTO(friendUser.getFirstName(), friendUser.getLastName());
-                })
-                .collect(Collectors.toList());
+
+        return result;
     }
 
 }

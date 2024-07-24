@@ -10,12 +10,11 @@ export const getAllFriends = async () => {
     }
 
     const response = await fetchWithSettings(`${BASE_URL}/friends`, {
-      method: 'POST',
+      method: 'GET',
       headers: {
-        'Authorization': `Bearer ${jwt}`,  // Sending the JWT in the Authorization header as well
-        'Content-Type': 'text/plain'  // Change Content-Type to text/plain if the body will only contain the JWT string
-      },
-      body: jwt  // Send the JWT as a plain text string
+        'Authorization': `Bearer ${jwt}`,  // Send the JWT in the Authorization header
+        'Content-Type': 'application/json'  // Set Content-Type to application/json
+      }
     });
 
     if (!response.ok) {

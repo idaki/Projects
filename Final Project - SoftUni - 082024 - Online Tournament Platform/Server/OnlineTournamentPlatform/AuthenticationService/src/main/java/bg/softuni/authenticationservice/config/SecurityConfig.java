@@ -54,7 +54,7 @@ public class SecurityConfig {
                                 "/api/regions",
                                 "/api/countries/by-region/{regionId}",
                                 "/api/games",
-                                "/api/friend",
+                                "/api/friends",
                                 "/api/register-consumer")
                         .permitAll()
                         .anyRequest().authenticated())
