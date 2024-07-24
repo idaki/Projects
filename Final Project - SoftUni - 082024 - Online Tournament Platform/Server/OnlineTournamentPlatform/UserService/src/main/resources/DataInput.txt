@@ -455,7 +455,6 @@ INSERT INTO countries (id, name, region_id) VALUES
 -- Insert Roles
 INSERT INTO roles (name) VALUES
 ('ADMIN_TEAM'),
-('ADMIN_SUPER'),
 ('ADMIN_TOURNAMENT'),
 ('USER_TEAM'),
 ('USER_TOURNAMENT'),
@@ -483,7 +482,6 @@ INSERT INTO permissions (name) VALUES
 -- Insert Role-Permission Mappings
 INSERT INTO role_permissions (role_id, permission_id) VALUES
 ((SELECT id FROM roles WHERE name = 'ADMIN_TEAM'), (SELECT id FROM permissions WHERE name = 'MANAGE_ALL_TEAMS')),
-((SELECT id FROM roles WHERE name = 'ADMIN_SUPER'), (SELECT id FROM permissions WHERE name = 'MANAGE_ALL_USERS')),
 ((SELECT id FROM roles WHERE name = 'ADMIN_TOURNAMENT'), (SELECT id FROM permissions WHERE name = 'MANAGE_ALL_TOURNAMENTS')),
 ((SELECT id FROM roles WHERE name = 'USER_TEAM'), (SELECT id FROM permissions WHERE name = 'VIEW_TEAM')),
 ((SELECT id FROM roles WHERE name = 'USER_TOURNAMENT'), (SELECT id FROM permissions WHERE name = 'VIEW_TOURNAMENT')),
@@ -496,3 +494,11 @@ INSERT INTO role_permissions (role_id, permission_id) VALUES
 ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_EMAIL')),
 ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'MANAGE_FRIENDS')),
 ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'MANAGE_OWN_PROFILE'));
+
+-- Insert friends in one direction
+INSERT INTO friends (user_id, friend_id)
+SELECT u1.id, u2.id FROM users u1, users u2 WHERE u1.id != u2.id;
+
+-- Insert friends in the reciprocal direction
+INSERT INTO friends (user_id, friend_id)
+SELECT u2.id, u1.id FROM users u1, users u2 WHERE u1.id != u2.id;

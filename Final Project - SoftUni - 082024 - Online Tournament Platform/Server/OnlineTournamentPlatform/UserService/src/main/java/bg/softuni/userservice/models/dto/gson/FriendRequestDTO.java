@@ -1,11 +1,11 @@
 package bg.softuni.userservice.models.dto.gson;
-
 public class FriendRequestDTO {
     private Long id;
     private Long senderId;
     private Long receiverId;
     private String status;
 
+    // Getters and Setters
     public Long getId() {
         return id;
     }

@@ -1,17 +1,14 @@
 package bg.softuni.userservice.models.entity.user;
 
-
 import bg.softuni.userservice.models.entity.Token;
 import bg.softuni.userservice.models.entity.password.Password;
 import bg.softuni.userservice.models.entity.FriendRequest;
 import bg.softuni.userservice.models.entity.authorisation.Role;
-
+import bg.softuni.userservice.models.entity.Friend;
 
 import jakarta.persistence.*;
-
 import java.util.HashSet;
 import java.util.Set;
-
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -39,13 +36,8 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<Token> tokens = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "user_friends",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "friend_id")
-    )
-    private Set<User> friends = new HashSet<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<Friend> friends = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -126,11 +118,11 @@ public class User {
         this.tokens = tokens;
     }
 
-    public Set<User> getFriends() {
+    public Set<Friend> getFriends() {
         return friends;
     }
 
-    public void setFriends(Set<User> friends) {
+    public void setFriends(Set<Friend> friends) {
         this.friends = friends;
     }
 
@@ -158,3 +150,4 @@ public class User {
         this.receivedRequests = receivedRequests;
     }
 }
+

@@ -3,11 +3,13 @@ package bg.softuni.userservice.service.impl;
 import bg.softuni.userservice.models.dto.gson.FriendRequestDTO;
 
 
+import bg.softuni.userservice.models.entity.Friend;
 import bg.softuni.userservice.models.entity.FriendRequest;
 import bg.softuni.userservice.models.entity.user.User;
 
 import bg.softuni.userservice.models.enums.FriendRequestStatus;
 
+import bg.softuni.userservice.repository.FriendRepository;
 import bg.softuni.userservice.repository.FriendRequestRepository;
 import bg.softuni.userservice.repository.UserRepository;
 import bg.softuni.userservice.service.FriendRequestService;
@@ -20,11 +22,13 @@ import java.util.Optional;
 public class FriendRequestServiceImpl implements FriendRequestService {
     private final FriendRequestRepository friendRequestRepository;
     private final UserRepository userRepository;
+    private final FriendRepository friendRepository;
     private final ModelMapper modelMapper;
 
-    public FriendRequestServiceImpl(FriendRequestRepository friendRequestRepository, UserRepository userRepository, ModelMapper modelMapper) {
+    public FriendRequestServiceImpl(FriendRequestRepository friendRequestRepository, UserRepository userRepository, FriendRepository friendRepository, ModelMapper modelMapper) {
         this.friendRequestRepository = friendRequestRepository;
         this.userRepository = userRepository;
+        this.friendRepository = friendRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -48,27 +52,29 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         throw new IllegalArgumentException("Invalid sender or receiver ID");
     }
 @Override
-    public FriendRequestDTO respondToFriendRequest(Long requestId, FriendRequestStatus status) {
-        Optional<FriendRequest> requestOpt = friendRequestRepository.findById(requestId);
+public FriendRequestDTO respondToFriendRequest(Long requestId, FriendRequestStatus status) {
+    Optional<FriendRequest> requestOpt = friendRequestRepository.findById(requestId);
 
-        if (requestOpt.isPresent()) {
-            FriendRequest request = requestOpt.get();
-            request.setStatus(status);
+    if (requestOpt.isPresent()) {
+        FriendRequest request = requestOpt.get();
+        request.setStatus(status);
 
-            if (status == FriendRequestStatus.ACCEPTED) {
-                User sender = request.getSender();
-                User receiver = request.getReceiver();
+        if (status == FriendRequestStatus.ACCEPTED) {
+            User sender = request.getSender();
+            User receiver = request.getReceiver();
 
-                sender.getFriends().add(receiver);
-                receiver.getFriends().add(sender);
+            // Create new Friend entities for both sender and receiver
+            Friend senderFriend = new Friend(sender, receiver);
+            Friend receiverFriend = new Friend(receiver, sender);
 
-                userRepository.save(sender);
-                userRepository.save(receiver);
-            }
-
-            FriendRequest updatedRequest = friendRequestRepository.save(request);
-            return modelMapper.map(updatedRequest, FriendRequestDTO.class);
+            // Save the new Friend entities
+            friendRepository.save(senderFriend);
+            friendRepository.save(receiverFriend);
         }
-        throw new IllegalArgumentException("Invalid request ID");
+
+        FriendRequest updatedRequest = friendRequestRepository.save(request);
+        return modelMapper.map(updatedRequest, FriendRequestDTO.class);
     }
+    throw new IllegalArgumentException("Invalid request ID");
+}
 }

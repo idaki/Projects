@@ -8,6 +8,7 @@ import SettingsContainer from '../../components/settings/settings-container/Sett
 import NavigationModal from '../../components/authNavigationModal/NavigationModal ';
 import AuthContext from '../../context/authContext';
 import { getUserDetails } from '../../services/userDetailsService';
+import FriendsModal from '../friends/friends-container/FriendsModal';
 
 const ProfileModal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -73,9 +74,10 @@ const ProfileModal = () => {
           <NavigationModal />
         </div>
         <div className="col-md-9">
-          <SidebarModal isOpen={sidebarOpen} toggle={toggleSidebar} openSettings={openSettings} />
+         <SidebarModal isOpen={sidebarOpen} toggle={toggleSidebar} openSettings={openSettings} />
           {!settingsOpen && <MainFeedModal />}
           <SettingsContainer isOpen={settingsOpen} toggle={closeSettings} />
+         
         </div>
       </div>
     </div>

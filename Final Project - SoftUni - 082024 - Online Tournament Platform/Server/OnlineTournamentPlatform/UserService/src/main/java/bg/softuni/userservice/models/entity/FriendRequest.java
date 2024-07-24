@@ -3,7 +3,6 @@ package bg.softuni.userservice.models.entity;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.models.enums.FriendRequestStatus;
 import jakarta.persistence.*;
-
 @Entity
 @Table(name = "friend_requests")
 public class FriendRequest {
