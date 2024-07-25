@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './MainFeedModal.module.css'; // Assuming MainFeedModal.module.css is in the same directory
-import TournamentsContainer from '../tournament-container/TournamentsContainer';
+import TournamentsContainer from '../tournaments/my-tournaments/MyTournamentsContainer';
 import FriendsContainer from '../friends/FriendsContainer'
+import TeamContainer from '../teams/TeamContainer';
 
 
 export default function MainFeedModal({ currentView }) {
@@ -16,6 +17,7 @@ export default function MainFeedModal({ currentView }) {
       </div>
       {currentView === 'tournaments' && <TournamentsContainer />}
       {currentView === 'friends' && <FriendsContainer />}
+      {currentView === 'teams' && <TeamContainer />}
       {/* Add other views as needed */}
     </div>
   );

@@ -62,7 +62,9 @@ INSERT INTO users (username, email, first_name, last_name) VALUES
     ('user57', 'user57@example.com', 'User57FirstName', 'User57LastName'),
     ('user58', 'user58@example.com', 'User58FirstName', 'User58LastName'),
     ('user59', 'user59@example.com', 'User59FirstName', 'User59LastName'),
-    ('user60', 'user60@example.com', 'User60FirstName', 'User60LastName');-- Inserts Games and Assets
+    ('user60', 'user60@example.com', 'User60FirstName', 'User60LastName');-
+
+    - Inserts Games and Assets
 
 
 -- Insert games
@@ -187,11 +189,10 @@ UPDATE tournaments SET manager_id = 5 WHERE id = 5;   -- Assigning user 5 as man
 UPDATE tournaments SET manager_id = 6 WHERE id = 6;   -- Assigning user 6 as manager for Remnant: From The Ashes Tournament
 UPDATE tournaments SET manager_id = 7 WHERE id = 7;   -- Assigning user 7 as manager for Star Trek Online Tournament
 
--- Upate Tournament User Relation
--- Upate Tournament User Relation
 
+-- Upate Tournament User Relation
 -- Forsaken World Tournament
-INSERT INTO team_user_ids (team_id, user_id) VALUES
+INSERT INTO team_users (team_id, user_id) VALUES
                                                  -- For Teams 1-5 of Forsaken World Tournament
                                                  (1, 41), (1, 42), (1, 43), (1, 44),
                                                  (2, 45), (2, 46), (2, 47), (2, 48),
@@ -200,7 +201,7 @@ INSERT INTO team_user_ids (team_id, user_id) VALUES
                                                  (5, 57), (5, 58), (5, 59), (5, 60);
 
 -- Gigantic Tournament
-INSERT INTO team_user_ids (team_id, user_id) VALUES
+INSERT INTO team_users (team_id, user_id) VALUES
                                                  -- For Teams 1-5 of Gigantic Tournament
                                                  (6, 41), (6, 42), (6, 43), (6, 44),
                                                  (7, 45), (7, 46), (7, 47), (7, 48),
@@ -209,7 +210,7 @@ INSERT INTO team_user_ids (team_id, user_id) VALUES
                                                  (12, 57), (12, 58), (12, 59), (12, 60);
 
 -- Hob Tournament
-INSERT INTO team_user_ids (team_id, user_id) VALUES
+INSERT INTO team_users (team_id, user_id) VALUES
                                                  -- For Teams 1-5 of Hob Tournament
                                                  (13, 41), (13, 42), (13, 43), (13, 44),
                                                  (14, 45), (14, 46), (14, 47), (14, 48),
@@ -218,7 +219,7 @@ INSERT INTO team_user_ids (team_id, user_id) VALUES
                                                  (17, 57), (17, 58), (17, 59), (17, 60);
 
 -- Neverwinter Tournament
-INSERT INTO team_user_ids (team_id, user_id) VALUES
+INSERT INTO team_users (team_id, user_id) VALUES
                                                  -- For Teams 1-5 of Neverwinter Tournament
                                                  (18, 41), (18, 42), (18, 43), (18, 44),
                                                  (19, 45), (19, 46), (19, 47), (19, 48),
@@ -227,7 +228,7 @@ INSERT INTO team_user_ids (team_id, user_id) VALUES
                                                  (22, 57), (22, 58), (22, 59), (22, 60);
 
 -- PWI Tournament
-INSERT INTO team_user_ids (team_id, user_id) VALUES
+INSERT INTO team_users (team_id, user_id) VALUES
                                                  -- For Teams 1-5 of PWI Tournament
                                                  (23, 41), (23, 42), (23, 43), (23, 44),
                                                  (24, 45), (24, 46), (24, 47), (24, 48),
@@ -236,7 +237,7 @@ INSERT INTO team_user_ids (team_id, user_id) VALUES
                                                  (27, 57), (27, 58), (27, 59), (27, 60);
 
 -- Remnant: From The Ashes Tournament
-INSERT INTO team_user_ids (team_id, user_id) VALUES
+INSERT INTO team_users (team_id, user_id) VALUES
                                                  -- For Teams 1-5 of Remnant: From The Ashes Tournament
                                                  (28, 41), (28, 42), (28, 43), (28, 44),
                                                  (29, 45), (29, 46), (29, 47), (29, 48),
@@ -245,7 +246,7 @@ INSERT INTO team_user_ids (team_id, user_id) VALUES
                                                  (32, 57), (32, 58), (32, 59), (32, 60);
 
 -- Star Trek Online Tournament
-INSERT INTO team_user_ids (team_id, user_id) VALUES
+INSERT INTO team_users (team_id, user_id) VALUES
                                                  -- For Teams 1-5 of Star Trek Online Tournament
                                                  (33, 41), (33, 42), (33, 43), (33, 44),
                                                  (34, 45), (34, 46), (34, 47), (34, 48),
@@ -254,7 +255,7 @@ INSERT INTO team_user_ids (team_id, user_id) VALUES
                                                  (37, 57), (37, 58), (37, 59), (37, 60);
 
 -- Subnautica Tournament
-INSERT INTO team_user_ids (team_id, user_id) VALUES
+INSERT INTO team_users (team_id, user_id) VALUES
                                                  -- For Teams 1-5 of Subnautica Tournament
                                                  (38, 41), (38, 42), (38, 43), (38, 44),
                                                  (39, 45), (39, 46), (39, 47), (39, 48),
@@ -263,7 +264,7 @@ INSERT INTO team_user_ids (team_id, user_id) VALUES
                                                  (42, 57), (42, 58), (42, 59), (42, 60);
 
 -- Torchlight II Tournament
-INSERT INTO team_user_ids (team_id, user_id) VALUES
+INSERT INTO team_users (team_id, user_id) VALUES
                                                  -- For Teams 1-5 of Torchlight II Tournament
                                                  (43, 41), (43, 42), (43, 43), (43, 44),
                                                  (44, 45), (44, 46), (44, 47), (44, 48),
@@ -272,12 +273,11 @@ INSERT INTO team_user_ids (team_id, user_id) VALUES
                                                  (47, 57), (47, 58), (47, 59), (47, 60);
 
 -- Torchlight III Tournament
-INSERT INTO team_user_ids (team_id, user_id) VALUES
+INSERT INTO team_users (team_id, user_id) VALUES
                                                  -- For Teams 1-5 of Torchlight III Tournament
                                                  (48, 41), (48, 42), (48, 43), (48, 44),
                                                  (49, 45), (49, 46), (49, 47), (49, 48),
                                                  (50, 49), (50, 54), (50, 55), (50, 56);
-
 
 -- Insert tournament and team relation
 -- Forsaken World Tournament

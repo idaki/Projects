@@ -83,17 +83,8 @@
             <artifactId>UserService</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>bg.softuni</groupId>
-            <artifactId>GameService</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>bg.softuni</groupId>
-            <artifactId>TeamService</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+
+
 
 
 

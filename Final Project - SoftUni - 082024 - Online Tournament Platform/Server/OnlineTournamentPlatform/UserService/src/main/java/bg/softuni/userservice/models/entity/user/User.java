@@ -53,10 +53,13 @@ public class User {
     @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<FriendRequest> receivedRequests = new HashSet<>();
 
+
     public User(String username, String email) {
         this.username = username;
         this.email = email;
     }
+
+
 
     public User() {}
 

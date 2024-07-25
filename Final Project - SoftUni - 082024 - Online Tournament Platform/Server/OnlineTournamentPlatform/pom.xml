@@ -66,11 +66,8 @@
     <modules>
         <module>WebService</module>
         <module>UserService</module>
-        <module>TeamService</module>
         <module>AuthenticationService</module>
-        <module>CrudService</module>
-        <module>GameService</module>
-        <module>CommunicationService</module>
+          <module>CommunicationService</module>
         <module>TournamentService</module>
         <module>LocationService</module>
     </modules>

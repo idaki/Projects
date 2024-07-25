@@ -1,23 +1,9 @@
-import { getJwtToken, getCsrfToken } from '../../utils/utils';
-import { BASE_URL } from '../../config/config';
+import { getJwtToken, getCsrfToken } from '../utils/utils';
+import { BASE_URL } from '../config/config';
 
-
-
-export const getAll = async () => {
-    const response = await fetch(`${BASE_URL}/tournaments/subscribed`);
-    const result = await response.json();
-
-    const data = Object.values(result);
-
-    return data;
-};
-
-
-;
-
-export const getMyTournaments = async () => {
+export const getMyTeams = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/tournaments/subscribed`, {
+    const response = await fetch(`${BASE_URL}/teams/my-teams`, {
       method: 'POST', // Ensure the API requires POST for fetching data
       headers: {
         'Content-Type': 'application/json',

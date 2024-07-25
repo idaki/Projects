@@ -54,6 +54,7 @@ public class SecurityConfig {
                                 "/api/reset-password",
                                 "/api/update-password",
                                 "/api/tournaments",
+                                "/api/teams/my-teams",
                                 "/api/regions",
                                 "/api/countries/by-region/{regionId}",
                                 "/api/games",

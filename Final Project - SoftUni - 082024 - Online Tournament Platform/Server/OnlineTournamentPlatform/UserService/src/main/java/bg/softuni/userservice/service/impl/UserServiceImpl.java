@@ -1,6 +1,6 @@
 package bg.softuni.userservice.service.impl;
 
-import bg.softuni.crudservice.crud.CrudServiceImpl;
+
 
 import bg.softuni.userservice.models.dto.gson.UserDetailsExportDTO;
 import bg.softuni.userservice.models.entity.Token;
@@ -12,20 +12,20 @@ import bg.softuni.userservice.repository.RoleRepository;
 import bg.softuni.userservice.repository.TokenRepository;
 import bg.softuni.userservice.repository.UserRepository;
 import bg.softuni.userservice.service.UserService;
-import bg.softuni.userservice.utils.UserDeleteEvent;
+
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
 @Service
-public class UserServiceImpl extends CrudServiceImpl<User, Long> implements UserService {
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
@@ -34,7 +34,7 @@ public class UserServiceImpl extends CrudServiceImpl<User, Long> implements User
     private final TokenRepository tokenRepository;
 
     public UserServiceImpl(JpaRepository<User, Long> repository, UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository, ApplicationEventPublisher eventPublisher, TokenRepository tokenRepository) {
-        super(repository);
+
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
@@ -78,7 +78,7 @@ public class UserServiceImpl extends CrudServiceImpl<User, Long> implements User
 
         createHashedPassword(password, user);
 
-        return save(user); // Use the save method from CrudServiceImpl
+        return userRepository.save(user);
     }
 
     private static User getNewUser(String username, String email) {
@@ -141,7 +141,7 @@ public class UserServiceImpl extends CrudServiceImpl<User, Long> implements User
         }
 
         user.setRoles(Set.of(role));
-        save(user);
+        userRepository.save(user);
     }
 
 

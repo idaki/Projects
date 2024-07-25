@@ -3,7 +3,9 @@ package bg.softuni.tournamentservice.controller;
 
 import bg.softuni.tournamentservice.model.viewDto.TournamentDTO;
 import bg.softuni.tournamentservice.service.TournamentService;
+import bg.softuni.userservice.models.dto.FriendDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,5 +44,14 @@ public class TournamentController {
     @DeleteMapping("/{id}")
     public void deleteTournament(@PathVariable Long id) {
         // Implement this method if needed
+    }
+
+    @PostMapping("/subscribed")
+    public ResponseEntity<List<TournamentDTO>> getAllFriends(@RequestHeader("Authorization") String authorizationHeader) {
+        String jwt = authorizationHeader.substring(7); // Remove "Bearer " prefix
+        if (jwt.isEmpty()) {
+            return ResponseEntity.badRequest().build(); // Return bad request if JWT is empty
+        }
+        return ResponseEntity.ok(tournamentService.getSubscribedInTournaments(jwt));
     }
 }
