@@ -28,8 +28,9 @@ public class FriendController {
         if (jwt.isEmpty()) {
             return ResponseEntity.badRequest().build(); // Return bad request if JWT is empty
         }
-        ResponseEntity<List<FriendDTO>> reuslt =ResponseEntity.ok(friendService.getAllFriends(jwt));
+
+        ResponseEntity<List<FriendDTO>> result =ResponseEntity.ok(friendService.getAllFriends(jwt));
         System.out.println();
-        return reuslt;
+        return result;
     }
 }
