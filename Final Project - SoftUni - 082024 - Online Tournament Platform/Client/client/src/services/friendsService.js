@@ -1,4 +1,4 @@
-import { getJwtToken } from '../utils/utils';
+import { getJwtToken, getCsrfToken } from '../utils/utils';
 import { BASE_URL } from '../config/config';
 
 export const getAll = async () => {
@@ -7,7 +7,8 @@ export const getAll = async () => {
       method: 'POST', // Ensure the API requires POST for fetching data
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${getJwtToken()}`
+        'Authorization': `Bearer ${getJwtToken()}`,
+        'X-XSRF-TOKEN': getCsrfToken() // Include CSRF token in the headers
       },
       credentials: 'include'
     });
@@ -43,7 +44,7 @@ export const getAll = async () => {
     }
 
     localStorage.setItem('friendsList', JSON.stringify(data));
-    return data;  // Assume data is an array of FriendDTOs
+    return data; // Assume data is an array of FriendDTOs
   } catch (error) {
     console.error('Failed to fetch friends:', error);
     throw error;

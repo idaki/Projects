@@ -4,10 +4,16 @@ export function getJwtToken() {
     return authData?.accessToken || '';
 }
 
+export function getCsrfToken() {
+    const match = document.cookie.match(new RegExp('(^| )XSRF-TOKEN=([^;]+)'));
+    return match ? match[2] : '';
+}
+
 export async function fetchWithSettings(url, options) {
     const defaultHeaders = {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${getJwtToken()}`
+        'Authorization': `Bearer ${getJwtToken()}`,
+        'X-XSRF-TOKEN': getCsrfToken() // Include CSRF token in the headers
     };
 
     try {

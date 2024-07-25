@@ -1,7 +1,8 @@
-import { fetchWithSettings } from '../utils/utils';
+// authService.js
+import { fetchWithSettings, getCsrfToken, getJwtToken } from '../utils/utils';
 import { BASE_URL } from '../config/config';
 
-// API interaction functions
+// Login function
 export const login = async (username, password) => {
   try {
     const result = await fetchWithSettings(`${BASE_URL}/login`, {
@@ -19,6 +20,7 @@ export const login = async (username, password) => {
   }
 };
 
+// Register function
 export const registerConsumer = async (username, password, email) => {
   try {
     const registrationResult = await fetchWithSettings(`${BASE_URL}/register-consumer`, {
@@ -37,6 +39,7 @@ export const registerConsumer = async (username, password, email) => {
   }
 };
 
+// Reset password function
 export const resetPassword = async (email) => {
   return fetchWithSettings(`${BASE_URL}/reset-password`, {
     method: 'POST',
@@ -44,6 +47,7 @@ export const resetPassword = async (email) => {
   });
 };
 
+// Update password and login function
 export const updatePasswordAndLogin = async (token, newPassword) => {
   try {
     const response = await fetchWithSettings(`${BASE_URL}/update-password`, {
@@ -63,6 +67,7 @@ export const updatePasswordAndLogin = async (token, newPassword) => {
   }
 };
 
+// Logout function
 export const logout = async () => {
   try {
     await fetchWithSettings(`${BASE_URL}/logout`, {
@@ -75,6 +80,7 @@ export const logout = async () => {
   window.location.href = '/login'; // Redirect to login after clearing auth data
 };
 
+// Get all games function
 export const getAllGames = async () => {
   return fetchWithSettings(`${BASE_URL}/games`, {
     method: 'GET',

@@ -1,5 +1,5 @@
 // userDetailsService.js
-import { fetchWithSettings, getJwtToken } from '../utils/utils';
+import { fetchWithSettings, getJwtToken, getCsrfToken } from '../utils/utils';
 import { BASE_URL } from '../config/config';
 
 // API interaction function to get user details
@@ -22,7 +22,8 @@ export const deleteUser = async () => {
         const result = await fetchWithSettings(`${BASE_URL}/user/delete`, {
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${getJwtToken()}`
+                'Authorization': `Bearer ${getJwtToken()}`,
+                'X-XSRF-TOKEN': getCsrfToken() // Include CSRF token in the headers
             }
         });
 
