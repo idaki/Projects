@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class TeamServiceImpl implements TeamService {
@@ -48,20 +48,17 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public List<TeamDTO> getMyTeams(String token) {
-      User user = tokenService.getUserByToken(token);
+        User user = tokenService.getUserByToken(token);
+        List<Team> teamList = teamRepository.getAllByUsers(user);
 
-      List<Team> teamList = teamRepository.findByUsers_Id(user.getId());
+        List<TeamDTO> teamDTOList = new ArrayList<>();
+        for (Team team : teamList) {
+            TeamDTO teamDTO = new TeamDTO(); // Instantiate inside the loop
+            teamDTO.setTeamName(team.getName());
+            teamDTO.setId(team.getId());
+            teamDTOList.add(teamDTO);
+        }
 
-
-
-TeamDTO teamDTO = new TeamDTO();
-List<TeamDTO> teamDTOList = new ArrayList<>();
-for (Team team : teamList) {
-    teamDTO.setTeamName(team.getName());
-    teamDTO.setId(team.getId());
-teamDTOList.add(teamDTO);
-
-}
         return teamDTOList;
     }
 }

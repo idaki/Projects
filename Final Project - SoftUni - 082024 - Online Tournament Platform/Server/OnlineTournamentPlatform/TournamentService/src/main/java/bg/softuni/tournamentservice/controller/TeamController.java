@@ -8,11 +8,13 @@ import bg.softuni.tournamentservice.service.TeamService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController("/teams")
+@RestController
+@RequestMapping("/api/teams")
 public class TeamController {
 
     private final TeamService teamService;
@@ -25,12 +27,10 @@ public class TeamController {
     public ResponseEntity<List<TeamDTO>> getTeams(@RequestHeader("Authorization") String authorizationHeader) {
         String jwt = authorizationHeader.substring(7); // Remove "Bearer " prefix
         if (jwt.isEmpty()) {
-            ResponseEntity<List<TeamDTO>> build = ResponseEntity.badRequest().build();
-            return build; // Return bad request if JWT is empty
+            return ResponseEntity.badRequest().build(); // Return bad request if JWT is empty
         }
 
-       return ResponseEntity.ok(teamService.getMyTeams(jwt));
-
-
+        return ResponseEntity.ok(teamService.getMyTeams(jwt));
     }
 }
+

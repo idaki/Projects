@@ -43,7 +43,7 @@ export const getAll = async () => {
       throw new Error('Invalid data format from server');
     }
 
-    localStorage.setItem('friendsList', JSON.stringify(data));
+    sessionStorage.setItem('friendsList', JSON.stringify(data));
     return data; // Assume data is an array of FriendDTOs
   } catch (error) {
     console.error('Failed to fetch friends:', error);
