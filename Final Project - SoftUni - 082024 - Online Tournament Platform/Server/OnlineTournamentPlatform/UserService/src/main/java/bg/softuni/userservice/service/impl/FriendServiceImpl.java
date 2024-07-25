@@ -54,10 +54,10 @@ public class FriendServiceImpl implements FriendService {
 
         List<FriendDTO> result = new ArrayList<>();
         for (Friend friend : friends) {
-            result.add(new FriendDTO(friend.getFriend().getFirstName(), friend.getFriend().getLastName()));
+            result.add(new FriendDTO(friend.getFriend().getId(),friend.getFriend().getFirstName(), friend.getFriend().getLastName()));
         }
 
-        System.out.println();
+
 
         return result;
     }

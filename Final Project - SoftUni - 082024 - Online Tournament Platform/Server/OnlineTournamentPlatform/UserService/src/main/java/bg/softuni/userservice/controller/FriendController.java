@@ -20,14 +20,16 @@ public class FriendController {
         this.friendService = friendService;
     }
 
-    @GetMapping("/friends")
+
+
+    @PostMapping("/friends")
     public ResponseEntity<List<FriendDTO>> getAllFriends(@RequestHeader("Authorization") String authorizationHeader) {
         String jwt = authorizationHeader.substring(7); // Remove "Bearer " prefix
         if (jwt.isEmpty()) {
             return ResponseEntity.badRequest().build(); // Return bad request if JWT is empty
         }
-
-
-        return ResponseEntity.ok(friendService.getAllFriends(jwt));
+        ResponseEntity<List<FriendDTO>> reuslt =ResponseEntity.ok(friendService.getAllFriends(jwt));
+        System.out.println();
+        return reuslt;
     }
 }

@@ -1,9 +1,12 @@
 import React from 'react';
 import styles from './MainFeedModal.module.css'; // Assuming MainFeedModal.module.css is in the same directory
 import TournamentsContainer from '../tournament-container/TournamentsContainer';
-import FriendsModal from '../friends/friends-container/FriendsModal';
+import FriendsContainer from '../friends/FriendsContainer'
+
 
 export default function MainFeedModal({ currentView }) {
+ 
+ 
   return (
     <div className={`col-md-9 ${styles.mainFeed}`}>
       <div className="card">
@@ -12,7 +15,7 @@ export default function MainFeedModal({ currentView }) {
         </div>
       </div>
       {currentView === 'tournaments' && <TournamentsContainer />}
-      {currentView === 'friends' && <FriendsModal />}
+      {currentView === 'friends' && <FriendsContainer />}
       {/* Add other views as needed */}
     </div>
   );

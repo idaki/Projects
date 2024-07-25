@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Pagination = ({ friendsPerPage, totalFriends, paginate, currentPage }) => {
@@ -13,7 +12,7 @@ const Pagination = ({ friendsPerPage, totalFriends, paginate, currentPage }) => 
       <ul className="pagination">
         {pageNumbers.map((number) => (
           <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
-            <a onClick={() => paginate(number)} href="javascript:;" className="page-link">
+            <a onClick={() => paginate(number)} href="#" className="page-link">
               {number}
             </a>
           </li>

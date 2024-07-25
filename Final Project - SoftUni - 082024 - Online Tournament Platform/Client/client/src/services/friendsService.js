@@ -1,27 +1,48 @@
-import { fetchWithSettings, getJwtToken } from '../utils/utils';
+import { getJwtToken } from '../utils/utils';
 import { BASE_URL } from '../config/config';
 
-export const getAllFriends = async () => {
+export const getAll = async () => {
   try {
-    const jwt = getJwtToken();  // Get the JWT from localStorage
-    if (!jwt) {
-      console.error("JWT token is empty");
-      throw new Error("JWT token is empty");  // Validate the JWT is not empty
-    }
-
-    const response = await fetchWithSettings(`${BASE_URL}/friends`, {
-      method: 'GET',
+    const response = await fetch(`${BASE_URL}/friends`, {
+      method: 'POST', // Ensure the API requires POST for fetching data
       headers: {
-        'Authorization': `Bearer ${jwt}`,  // Send the JWT in the Authorization header
-        'Content-Type': 'application/json'  // Set Content-Type to application/json
-      }
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getJwtToken()}`
+      },
+      credentials: 'include'
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    if (!response) {
+      throw new Error('No response from server');
     }
 
-    const data = await response.json();
+    console.log('Response received:', response);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+    }
+
+    const contentType = response.headers.get('Content-Type');
+    let data;
+    if (contentType && contentType.includes('application/json')) {
+      data = await response.json();
+    } else {
+      const textData = await response.text();
+      console.error('Unexpected response format:', textData);
+      throw new Error('Unexpected response format');
+    }
+
+    console.log('Fetched friends data:', data); // Log the fetched friends data
+
+    // Check if the data is an array and contains objects with expected keys
+    if (!Array.isArray(data) || data.some(item => typeof item !== 'object' || !item.id)) {
+      console.error('Expected data to be an array of objects but received:', data);
+      throw new Error('Invalid data format from server');
+    }
+
+    localStorage.setItem('friendsList', JSON.stringify(data));
     return data;  // Assume data is an array of FriendDTOs
   } catch (error) {
     console.error('Failed to fetch friends:', error);
