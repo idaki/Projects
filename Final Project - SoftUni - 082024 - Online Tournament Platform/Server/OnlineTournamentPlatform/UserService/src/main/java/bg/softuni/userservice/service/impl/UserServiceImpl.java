@@ -68,10 +68,13 @@ public class UserServiceImpl implements UserService {
         // Create new User
         User user = getNewUser(username, email);
 
-        UserProfile userProfile = createUserProfile(user);
+        UserProfile userProfile = new UserProfile();
+        userProfile.setFirstName("");
+        userProfile.setLastName("");
+        userProfile.setUser(user);
 
         user.setUserProfile(userProfile);
-
+        user = userRepository.save(user);
         UserSecurity userSecurity = new UserSecurity();
         userSecurity.setUser(user);
         userSecurity = userSecurityRepository.save(userSecurity);
@@ -115,6 +118,7 @@ public class UserServiceImpl implements UserService {
         UserSecurity userSecurity = user.getUserSecurity();
         if (userSecurity == null) {
             userSecurity = new UserSecurity();
+            userSecurity.setUser(user); // Set the user to userSecurity
             user.setUserSecurity(userSecurity);
         }
 
@@ -122,7 +126,11 @@ public class UserServiceImpl implements UserService {
         passwordEntity.setPasswordHash(passwordEncoder.encode(password));
         passwordEntity.setUserSecurity(userSecurity); // Set userSecurity to passwordEntity
         userSecurity.setPassword(passwordEntity);
+
+        // Save the user, which will also save userSecurity and password due to cascading
+        userRepository.save(user);
     }
+
 
     public UserDetailsExportDTO getUserDetails(String username) {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
