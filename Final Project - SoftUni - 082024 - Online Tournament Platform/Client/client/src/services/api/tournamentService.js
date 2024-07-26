@@ -4,12 +4,13 @@ import { BASE_URL } from '../../config/config';
 
 
 export const getAll = async () => {
-    const response = await fetch(`${BASE_URL}/tournaments/subscribed`);
+    const response = await fetch(`${BASE_URL}/tournaments/all`);
     const result = await response.json();
 
     const data = Object.values(result);
 
     return data;
+    
 };
 
 
@@ -17,7 +18,7 @@ export const getAll = async () => {
 
 export const getMyTournaments = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/tournaments/subscribed`, {
+    const response = await fetch(`${BASE_URL}/tournaments/managed`, {
       method: 'POST', // Ensure the API requires POST for fetching data
       headers: {
         'Content-Type': 'application/json',

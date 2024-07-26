@@ -21,7 +21,7 @@ public class TournamentController {
         this.tournamentService = tournamentService;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<TournamentDTO> getAllTournaments() {
         return tournamentService.getAllTournaments();
     }
@@ -46,12 +46,12 @@ public class TournamentController {
         // Implement this method if needed
     }
 
-    @PostMapping("/subscribed")
-    public ResponseEntity<List<TournamentDTO>> getAllFriends(@RequestHeader("Authorization") String authorizationHeader) {
+    @PostMapping("/managed")
+    public ResponseEntity<List<TournamentDTO>> getMyTournaments(@RequestHeader("Authorization") String authorizationHeader) {
         String jwt = authorizationHeader.substring(7); // Remove "Bearer " prefix
         if (jwt.isEmpty()) {
             return ResponseEntity.badRequest().build(); // Return bad request if JWT is empty
         }
-        return ResponseEntity.ok(tournamentService.getSubscribedInTournaments(jwt));
+        return ResponseEntity.ok(tournamentService.getManagedTournaments(jwt));
     }
 }

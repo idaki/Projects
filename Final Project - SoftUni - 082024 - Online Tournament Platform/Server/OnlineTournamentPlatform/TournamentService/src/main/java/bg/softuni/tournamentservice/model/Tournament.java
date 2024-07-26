@@ -1,6 +1,6 @@
 package bg.softuni.tournamentservice.model;
 
-
+import bg.softuni.userservice.models.entity.user.User;
 import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,8 +16,9 @@ public class Tournament {
     @Column
     private String name;
 
-    @Column(name = "manager_id")
-    private Long managerId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager_id")
+    private User manager;
 
     @OneToOne
     @JoinColumn(name = "game_id")
@@ -25,11 +26,6 @@ public class Tournament {
 
     @OneToMany(mappedBy = "tournament")
     private Set<Team> teams = new HashSet<>();
-
-
-
-
-
 
     // Getters and Setters
     public Long getId() {
@@ -48,12 +44,12 @@ public class Tournament {
         this.name = name;
     }
 
-    public Long getManagerId() {
-        return managerId;
+    public User getManager() {
+        return manager;
     }
 
-    public void setManagerId(Long managerId) {
-        this.managerId = managerId;
+    public void setManager(User manager) {
+        this.manager = manager;
     }
 
     public Game getGame() {
@@ -71,6 +67,4 @@ public class Tournament {
     public void setTeams(Set<Team> teams) {
         this.teams = teams;
     }
-
-
 }

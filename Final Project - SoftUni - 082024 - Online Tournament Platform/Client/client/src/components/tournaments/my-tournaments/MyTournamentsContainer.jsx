@@ -7,7 +7,7 @@ export default function TournamentsContainer() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        tournamentService.getAll()
+        tournamentService.getMyTournaments()
             .then(result => {
                 setTournaments(result);
                 setIsLoading(false);

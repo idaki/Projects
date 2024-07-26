@@ -24,4 +24,6 @@ public interface UserService  {
     void deleteUserByUsername(String username);
 
     void createSuperAdmin();
+
+    User findUserByToken(String jwt);
 }

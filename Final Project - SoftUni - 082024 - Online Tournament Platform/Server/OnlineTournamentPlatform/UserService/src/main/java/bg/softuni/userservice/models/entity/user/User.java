@@ -9,6 +9,7 @@ import bg.softuni.userservice.models.entity.Friend;
 import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -53,18 +54,14 @@ public class User {
     @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<FriendRequest> receivedRequests = new HashSet<>();
 
-
     public User(String username, String email) {
         this.username = username;
         this.email = email;
     }
 
-
-
     public User() {}
 
     // Getters and Setters
-
     public Long getId() {
         return id;
     }
@@ -153,4 +150,3 @@ public class User {
         this.receivedRequests = receivedRequests;
     }
 }
-

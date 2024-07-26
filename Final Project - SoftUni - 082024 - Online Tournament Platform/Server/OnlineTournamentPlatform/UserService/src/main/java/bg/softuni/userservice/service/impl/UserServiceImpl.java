@@ -144,5 +144,15 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public User findUserByToken(String jwt) {
+      Optional<Token> tokenOpt = tokenRepository.findByToken(jwt);
+        if (tokenOpt.isEmpty()) {
+            throw new RuntimeException("Token not found");
+        }
+            return tokenOpt.get().getUser();
+        }
+    }
 
-}
+
+
