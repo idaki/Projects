@@ -1,12 +1,12 @@
 import React from 'react';
-import TournamentsContainer from '../tournaments/my-tournaments/MyTournamentsContainer';
+import PublicTournamentsContainer from '../tournaments/public-tournaments/PublicTournamentsContainer';
 import HeaderContainer from '../header/HeaderContainer';
 
 export default function PublicContainer() {
   return (
     <div>
-      <HeaderContainer/>
-      <TournamentsContainer />
+      <HeaderContainer/>np
+      <PublicTournamentsContainer />
 
     </div>
   );

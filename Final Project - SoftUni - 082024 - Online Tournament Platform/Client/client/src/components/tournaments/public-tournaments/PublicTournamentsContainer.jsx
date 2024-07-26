@@ -2,32 +2,21 @@ import React, { useState, useEffect } from 'react';
 import TournamentCard from '../tournament-card/TournamentCard';
 import * as tournamentService from '../../../services/api/tournamentService';
 
-export default function MyTournamentsContainer() {
+export default function PublicTournamentsContainer() {
     const [tournaments, setTournaments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [reload, setReload] = useState(false); // Define reload state
 
     useEffect(() => {
-        const fetchTournaments = async () => {
-            try {
-                const storedTournaments = sessionStorage.getItem('myTournamentsList');
-                if (storedTournaments && !reload) {
-                    setTournaments(JSON.parse(storedTournaments));
-                    setIsLoading(false);
-                } else {
-                    const result = await tournamentService.getMyTournaments(); // Call the function
-                    setTournaments(result);
-                    sessionStorage.setItem('myTournamentsList', JSON.stringify(result)); // Store in session storage
-                    setIsLoading(false);
-                }
-            } catch (error) {
-                console.error('Failed to fetch tournaments:', error);
+        tournamentService.getAll()
+            .then(result => {
+                setTournaments(result);
                 setIsLoading(false);
-            }
-        };
-
-        fetchTournaments();
-    }, [reload]); // Ensure reload is defined and used
+            })
+            .catch(err => {
+                console.log(err);
+                setIsLoading(false);
+            });
+    }, []);
 
     return (
         <section className="py-5 min-vh-100 d-flex align-items-center justify-content-center">

@@ -2,22 +2,22 @@ import React, { useState, useEffect } from 'react';
 import TournamentCard from '../tournament-card/TournamentCard';
 import * as tournamentService from '../../../services/api/tournamentService';
 
-export default function MyTournamentsContainer() {
-    const [tournaments, setTournaments] = useState([]);
+export default function WatchlistContainer() {
+    const [tournaments, setWatchlist] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [reload, setReload] = useState(false); // Define reload state
+    const [reload, setReload] = useState(false);
 
     useEffect(() => {
         const fetchTournaments = async () => {
             try {
-                const storedTournaments = sessionStorage.getItem('myTournamentsList');
-                if (storedTournaments && !reload) {
-                    setTournaments(JSON.parse(storedTournaments));
+                const storedWatchlist = sessionStorage.getItem('myWatchList');
+                if (storedWatchlist && !reload) {
+                    setWatchlist(JSON.parse(storedWatchlist));
                     setIsLoading(false);
                 } else {
-                    const result = await tournamentService.getMyTournaments(); // Call the function
-                    setTournaments(result);
-                    sessionStorage.setItem('myTournamentsList', JSON.stringify(result)); // Store in session storage
+                    const result = await tournamentService.getMyWatchList();
+                    setWatchlist(result);
+                    sessionStorage.setItem('myWatchList', JSON.stringify(result));
                     setIsLoading(false);
                 }
             } catch (error) {
@@ -27,7 +27,7 @@ export default function MyTournamentsContainer() {
         };
 
         fetchTournaments();
-    }, [reload]); // Ensure reload is defined and used
+    }, [reload]);
 
     return (
         <section className="py-5 min-vh-100 d-flex align-items-center justify-content-center">

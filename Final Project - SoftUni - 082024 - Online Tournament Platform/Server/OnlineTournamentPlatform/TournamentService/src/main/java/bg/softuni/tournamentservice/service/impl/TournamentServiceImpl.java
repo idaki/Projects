@@ -56,6 +56,15 @@ public class TournamentServiceImpl implements TournamentService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<TournamentDTO> getWatchlistTournaments(String jwt) {
+        User user = userService.findUserByToken(jwt);
+        List<Tournament> tournaments = tournamentRepository.findByFollowerId(user.getId());
+        return tournaments.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
     private TournamentDTO convertToDto(Tournament tournament) {
         TournamentDTO dto = new TournamentDTO();
         Game game = tournament.getGame();

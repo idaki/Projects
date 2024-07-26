@@ -11,4 +11,6 @@ public interface TournamentService  {
     List<TournamentDTO> getSubscribedInTournaments(String jwt);
 
     List<TournamentDTO> getManagedTournaments(String jwt);
+
+    List<TournamentDTO> getWatchlistTournaments(String jwt);
 }

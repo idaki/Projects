@@ -65,3 +65,28 @@ export const getMyTournaments = async () => {
     throw error;
   }
 };
+
+export const getMyWatchList = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/tournaments/watchlist`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getJwtToken()}`,
+        'X-XSRF-TOKEN': getCsrfToken()
+      },
+      credentials: 'include'
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Failed to fetch watchlist:', error);
+    throw error;
+  }
+};

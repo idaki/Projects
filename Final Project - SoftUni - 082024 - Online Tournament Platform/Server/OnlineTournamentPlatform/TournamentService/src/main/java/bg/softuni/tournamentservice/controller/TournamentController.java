@@ -26,25 +26,7 @@ public class TournamentController {
         return tournamentService.getAllTournaments();
     }
 
-    @GetMapping("/{id}")
-    public TournamentDTO getTournamentById(@PathVariable Long id) {
-        return null;   // Implement this method if needed
-    }
 
-    @PostMapping
-    public TournamentDTO createTournament(@RequestBody TournamentDTO tournamentDTO) {
-        return null;   // Implement this method if needed
-    }
-
-    @PutMapping("/{id}")
-    public TournamentDTO updateTournament(@PathVariable Long id, @RequestBody TournamentDTO tournamentDTO) {
-     return null;   // Implement this method if needed
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteTournament(@PathVariable Long id) {
-        // Implement this method if needed
-    }
 
     @PostMapping("/managed")
     public ResponseEntity<List<TournamentDTO>> getMyTournaments(@RequestHeader("Authorization") String authorizationHeader) {
@@ -53,5 +35,13 @@ public class TournamentController {
             return ResponseEntity.badRequest().build(); // Return bad request if JWT is empty
         }
         return ResponseEntity.ok(tournamentService.getManagedTournaments(jwt));
+    }
+    @PostMapping("/watchlist")
+    public ResponseEntity<List<TournamentDTO>> getWatchlist(@RequestHeader("Authorization") String authorizationHeader) {
+        String jwt = authorizationHeader.substring(7); // Remove "Bearer " prefix
+        if (jwt.isEmpty()) {
+            return ResponseEntity.badRequest().build(); // Return bad request if JWT is empty
+        }
+        return ResponseEntity.ok(tournamentService.getWatchlistTournaments(jwt));
     }
 }

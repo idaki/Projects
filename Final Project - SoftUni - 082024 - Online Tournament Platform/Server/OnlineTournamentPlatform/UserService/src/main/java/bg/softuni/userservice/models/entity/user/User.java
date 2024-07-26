@@ -2,7 +2,6 @@ package bg.softuni.userservice.models.entity.user;
 
 import bg.softuni.userservice.models.entity.Token;
 import bg.softuni.userservice.models.entity.password.Password;
-import bg.softuni.userservice.models.entity.FriendRequest;
 import bg.softuni.userservice.models.entity.authorisation.Role;
 import bg.softuni.userservice.models.entity.Friend;
 
@@ -48,11 +47,6 @@ public class User {
     )
     private Set<Role> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<FriendRequest> sentRequests = new HashSet<>();
-
-    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<FriendRequest> receivedRequests = new HashSet<>();
 
     public User(String username, String email) {
         this.username = username;
@@ -134,19 +128,4 @@ public class User {
         this.roles = roles;
     }
 
-    public Set<FriendRequest> getSentRequests() {
-        return sentRequests;
-    }
-
-    public void setSentRequests(Set<FriendRequest> sentRequests) {
-        this.sentRequests = sentRequests;
-    }
-
-    public Set<FriendRequest> getReceivedRequests() {
-        return receivedRequests;
-    }
-
-    public void setReceivedRequests(Set<FriendRequest> receivedRequests) {
-        this.receivedRequests = receivedRequests;
-    }
 }

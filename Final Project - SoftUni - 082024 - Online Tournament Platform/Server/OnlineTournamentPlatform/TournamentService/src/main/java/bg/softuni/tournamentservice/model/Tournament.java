@@ -20,6 +20,13 @@ public class Tournament {
     @JoinColumn(name = "manager_id")
     private User manager;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "tournament_followers",
+            joinColumns = @JoinColumn(name = "tournament_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private Set<User> followers = new HashSet<>();
     @OneToOne
     @JoinColumn(name = "game_id")
     private Game game;

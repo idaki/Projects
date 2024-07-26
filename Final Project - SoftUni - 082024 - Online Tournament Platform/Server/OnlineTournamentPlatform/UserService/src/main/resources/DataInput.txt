@@ -3,66 +3,66 @@ USE tournament_db;
 
 -- Insert users with first name and last name
 INSERT INTO users (username, email, first_name, last_name) VALUES
-    ('user1', 'user1@example.com', 'User1FirstName', 'User1LastName'),
-    ('user2', 'user2@example.com', 'User2FirstName', 'User2LastName'),
-    ('user3', 'user3@example.com', 'User3FirstName', 'User3LastName'),
-    ('user4', 'user4@example.com', 'User4FirstName', 'User4LastName'),
-    ('user5', 'user5@example.com', 'User5FirstName', 'User5LastName'),
-    ('user6', 'user6@example.com', 'User6FirstName', 'User6LastName'),
-    ('user7', 'user7@example.com', 'User7FirstName', 'User7LastName'),
-    ('user8', 'user8@example.com', 'User8FirstName', 'User8LastName'),
-    ('user9', 'user9@example.com', 'User9FirstName', 'User9LastName'),
-    ('user10', 'user10@example.com', 'User10FirstName', 'User10LastName'),
-    ('user11', 'user11@example.com', 'User11FirstName', 'User11LastName'),
-    ('user12', 'user12@example.com', 'User12FirstName', 'User12LastName'),
-    ('user13', 'user13@example.com', 'User13FirstName', 'User13LastName'),
-    ('user14', 'user14@example.com', 'User14FirstName', 'User14LastName'),
-    ('user15', 'user15@example.com', 'User15FirstName', 'User15LastName'),
-    ('user16', 'user16@example.com', 'User16FirstName', 'User16LastName'),
-    ('user17', 'user17@example.com', 'User17FirstName', 'User17LastName'),
-    ('user18', 'user18@example.com', 'User18FirstName', 'User18LastName'),
-    ('user19', 'user19@example.com', 'User19FirstName', 'User19LastName'),
-    ('user20', 'user20@example.com', 'User20FirstName', 'User20LastName'),
-    ('user21', 'user21@example.com', 'User21FirstName', 'User21LastName'),
-    ('user22', 'user22@example.com', 'User22FirstName', 'User22LastName'),
-    ('user23', 'user23@example.com', 'User23FirstName', 'User23LastName'),
-    ('user24', 'user24@example.com', 'User24FirstName', 'User24LastName'),
-    ('user25', 'user25@example.com', 'User25FirstName', 'User25LastName'),
-    ('user26', 'user26@example.com', 'User26FirstName', 'User26LastName'),
-    ('user27', 'user27@example.com', 'User27FirstName', 'User27LastName'),
-    ('user28', 'user28@example.com', 'User28FirstName', 'User28LastName'),
-    ('user29', 'user29@example.com', 'User29FirstName', 'User29LastName'),
-    ('user30', 'user30@example.com', 'User30FirstName', 'User30LastName'),
-    ('user31', 'user31@example.com', 'User31FirstName', 'User31LastName'),
-    ('user32', 'user32@example.com', 'User32FirstName', 'User32LastName'),
-    ('user33', 'user33@example.com', 'User33FirstName', 'User33LastName'),
-    ('user34', 'user34@example.com', 'User34FirstName', 'User34LastName'),
-    ('user35', 'user35@example.com', 'User35FirstName', 'User35LastName'),
-    ('user36', 'user36@example.com', 'User36FirstName', 'User36LastName'),
-    ('user37', 'user37@example.com', 'User37FirstName', 'User37LastName'),
-    ('user38', 'user38@example.com', 'User38FirstName', 'User38LastName'),
-    ('user39', 'user39@example.com', 'User39FirstName', 'User39LastName'),
-    ('user40', 'user40@example.com', 'User40FirstName', 'User40LastName'),
-    ('user41', 'user41@example.com', 'User41FirstName', 'User41LastName'),
-    ('user42', 'user42@example.com', 'User42FirstName', 'User42LastName'),
-    ('user43', 'user43@example.com', 'User43FirstName', 'User43LastName'),
-    ('user44', 'user44@example.com', 'User44FirstName', 'User44LastName'),
-    ('user45', 'user45@example.com', 'User45FirstName', 'User45LastName'),
-    ('user46', 'user46@example.com', 'User46FirstName', 'User46LastName'),
-    ('user47', 'user47@example.com', 'User47FirstName', 'User47LastName'),
-    ('user48', 'user48@example.com', 'User48FirstName', 'User48LastName'),
-    ('user49', 'user49@example.com', 'User49FirstName', 'User49LastName'),
-    ('user50', 'user50@example.com', 'User50FirstName', 'User50LastName'),
-    ('user51', 'user51@example.com', 'User51FirstName', 'User51LastName'),
-    ('user52', 'user52@example.com', 'User52FirstName', 'User52LastName'),
-    ('user53', 'user53@example.com', 'User53FirstName', 'User53LastName'),
-    ('user54', 'user54@example.com', 'User54FirstName', 'User54LastName'),
-    ('user55', 'user55@example.com', 'User55FirstName', 'User55LastName'),
-    ('user56', 'user56@example.com', 'User56FirstName', 'User56LastName'),
-    ('user57', 'user57@example.com', 'User57FirstName', 'User57LastName'),
-    ('user58', 'user58@example.com', 'User58FirstName', 'User58LastName'),
-    ('user59', 'user59@example.com', 'User59FirstName', 'User59LastName'),
-    ('user60', 'user60@example.com', 'User60FirstName', 'User60LastName');-
+                                                               ('user1', 'user1@example.com', 'User1FirstName', 'User1LastName'),
+                                                               ('user2', 'user2@example.com', 'User2FirstName', 'User2LastName'),
+                                                               ('user3', 'user3@example.com', 'User3FirstName', 'User3LastName'),
+                                                               ('user4', 'user4@example.com', 'User4FirstName', 'User4LastName'),
+                                                               ('user5', 'user5@example.com', 'User5FirstName', 'User5LastName'),
+                                                               ('user6', 'user6@example.com', 'User6FirstName', 'User6LastName'),
+                                                               ('user7', 'user7@example.com', 'User7FirstName', 'User7LastName'),
+                                                               ('user8', 'user8@example.com', 'User8FirstName', 'User8LastName'),
+                                                               ('user9', 'user9@example.com', 'User9FirstName', 'User9LastName'),
+                                                               ('user10', 'user10@example.com', 'User10FirstName', 'User10LastName'),
+                                                               ('user11', 'user11@example.com', 'User11FirstName', 'User11LastName'),
+                                                               ('user12', 'user12@example.com', 'User12FirstName', 'User12LastName'),
+                                                               ('user13', 'user13@example.com', 'User13FirstName', 'User13LastName'),
+                                                               ('user14', 'user14@example.com', 'User14FirstName', 'User14LastName'),
+                                                               ('user15', 'user15@example.com', 'User15FirstName', 'User15LastName'),
+                                                               ('user16', 'user16@example.com', 'User16FirstName', 'User16LastName'),
+                                                               ('user17', 'user17@example.com', 'User17FirstName', 'User17LastName'),
+                                                               ('user18', 'user18@example.com', 'User18FirstName', 'User18LastName'),
+                                                               ('user19', 'user19@example.com', 'User19FirstName', 'User19LastName'),
+                                                               ('user20', 'user20@example.com', 'User20FirstName', 'User20LastName'),
+                                                               ('user21', 'user21@example.com', 'User21FirstName', 'User21LastName'),
+                                                               ('user22', 'user22@example.com', 'User22FirstName', 'User22LastName'),
+                                                               ('user23', 'user23@example.com', 'User23FirstName', 'User23LastName'),
+                                                               ('user24', 'user24@example.com', 'User24FirstName', 'User24LastName'),
+                                                               ('user25', 'user25@example.com', 'User25FirstName', 'User25LastName'),
+                                                               ('user26', 'user26@example.com', 'User26FirstName', 'User26LastName'),
+                                                               ('user27', 'user27@example.com', 'User27FirstName', 'User27LastName'),
+                                                               ('user28', 'user28@example.com', 'User28FirstName', 'User28LastName'),
+                                                               ('user29', 'user29@example.com', 'User29FirstName', 'User29LastName'),
+                                                               ('user30', 'user30@example.com', 'User30FirstName', 'User30LastName'),
+                                                               ('user31', 'user31@example.com', 'User31FirstName', 'User31LastName'),
+                                                               ('user32', 'user32@example.com', 'User32FirstName', 'User32LastName'),
+                                                               ('user33', 'user33@example.com', 'User33FirstName', 'User33LastName'),
+                                                               ('user34', 'user34@example.com', 'User34FirstName', 'User34LastName'),
+                                                               ('user35', 'user35@example.com', 'User35FirstName', 'User35LastName'),
+                                                               ('user36', 'user36@example.com', 'User36FirstName', 'User36LastName'),
+                                                               ('user37', 'user37@example.com', 'User37FirstName', 'User37LastName'),
+                                                               ('user38', 'user38@example.com', 'User38FirstName', 'User38LastName'),
+                                                               ('user39', 'user39@example.com', 'User39FirstName', 'User39LastName'),
+                                                               ('user40', 'user40@example.com', 'User40FirstName', 'User40LastName'),
+                                                               ('user41', 'user41@example.com', 'User41FirstName', 'User41LastName'),
+                                                               ('user42', 'user42@example.com', 'User42FirstName', 'User42LastName'),
+                                                               ('user43', 'user43@example.com', 'User43FirstName', 'User43LastName'),
+                                                               ('user44', 'user44@example.com', 'User44FirstName', 'User44LastName'),
+                                                               ('user45', 'user45@example.com', 'User45FirstName', 'User45LastName'),
+                                                               ('user46', 'user46@example.com', 'User46FirstName', 'User46LastName'),
+                                                               ('user47', 'user47@example.com', 'User47FirstName', 'User47LastName'),
+                                                               ('user48', 'user48@example.com', 'User48FirstName', 'User48LastName'),
+                                                               ('user49', 'user49@example.com', 'User49FirstName', 'User49LastName'),
+                                                               ('user50', 'user50@example.com', 'User50FirstName', 'User50LastName'),
+                                                               ('user51', 'user51@example.com', 'User51FirstName', 'User51LastName'),
+                                                               ('user52', 'user52@example.com', 'User52FirstName', 'User52LastName'),
+                                                               ('user53', 'user53@example.com', 'User53FirstName', 'User53LastName'),
+                                                               ('user54', 'user54@example.com', 'User54FirstName', 'User54LastName'),
+                                                               ('user55', 'user55@example.com', 'User55FirstName', 'User55LastName'),
+                                                               ('user56', 'user56@example.com', 'User56FirstName', 'User56LastName'),
+                                                               ('user57', 'user57@example.com', 'User57FirstName', 'User57LastName'),
+                                                               ('user58', 'user58@example.com', 'User58FirstName', 'User58LastName'),
+                                                               ('user59', 'user59@example.com', 'User59FirstName', 'User59LastName'),
+                                                               ('user60', 'user60@example.com', 'User60FirstName', 'User60LastName');-
 
     - Inserts Games and Assets
 
@@ -193,305 +193,137 @@ UPDATE tournaments SET manager_id = 7 WHERE id = 7;   -- Assigning user 7 as man
 -- Upate Tournament User Relation
 -- Forsaken World Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
-                                                 -- For Teams 1-5 of Forsaken World Tournament
-                                                 (1, 41), (1, 42), (1, 43), (1, 44),
-                                                 (2, 45), (2, 46), (2, 47), (2, 48),
-                                                 (3, 49), (3, 50), (3, 51), (3, 52),
-                                                 (4, 53), (4, 54), (4, 55), (4, 56),
-                                                 (5, 57), (5, 58), (5, 59), (5, 60);
+                                              -- For Teams 1-5 of Forsaken World Tournament
+                                              (1, 41), (1, 42), (1, 43), (1, 44),
+                                              (2, 45), (2, 46), (2, 47), (2, 48),
+                                              (3, 49), (3, 50), (3, 51), (3, 52),
+                                              (4, 53), (4, 54), (4, 55), (4, 56),
+                                              (5, 57), (5, 58), (5, 59), (5, 60);
 
 -- Gigantic Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
-                                                 -- For Teams 1-5 of Gigantic Tournament
-                                                 (6, 41), (6, 42), (6, 43), (6, 44),
-                                                 (7, 45), (7, 46), (7, 47), (7, 48),
-                                                 (8, 49), (8, 50), (8, 51), (8, 52),
-                                                 (9, 53), (9, 54), (10, 55), (11, 56),
-                                                 (12, 57), (12, 58), (12, 59), (12, 60);
+                                              -- For Teams 1-5 of Gigantic Tournament
+                                              (6, 41), (6, 42), (6, 43), (6, 44),
+                                              (7, 45), (7, 46), (7, 47), (7, 48),
+                                              (8, 49), (8, 50), (8, 51), (8, 52),
+                                              (9, 53), (9, 54), (10, 55), (11, 56),
+                                              (12, 57), (12, 58), (12, 59), (12, 60);
 
 -- Hob Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
-                                                 -- For Teams 1-5 of Hob Tournament
-                                                 (13, 41), (13, 42), (13, 43), (13, 44),
-                                                 (14, 45), (14, 46), (14, 47), (14, 48),
-                                                 (15, 49), (15, 50), (15, 51), (15, 52),
-                                                 (16, 53), (16, 54), (16, 55), (16, 56),
-                                                 (17, 57), (17, 58), (17, 59), (17, 60);
+                                              -- For Teams 1-5 of Hob Tournament
+                                              (13, 41), (13, 42), (13, 43), (13, 44),
+                                              (14, 45), (14, 46), (14, 47), (14, 48),
+                                              (15, 49), (15, 50), (15, 51), (15, 52),
+                                              (16, 53), (16, 54), (16, 55), (16, 56),
+                                              (17, 57), (17, 58), (17, 59), (17, 60);
 
 -- Neverwinter Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
-                                                 -- For Teams 1-5 of Neverwinter Tournament
-                                                 (18, 41), (18, 42), (18, 43), (18, 44),
-                                                 (19, 45), (19, 46), (19, 47), (19, 48),
-                                                 (20, 49), (20, 50), (20, 51), (20, 52),
-                                                 (21, 53), (21, 54), (21, 55), (21, 56),
-                                                 (22, 57), (22, 58), (22, 59), (22, 60);
+                                              -- For Teams 1-5 of Neverwinter Tournament
+                                              (18, 41), (18, 42), (18, 43), (18, 44),
+                                              (19, 45), (19, 46), (19, 47), (19, 48),
+                                              (20, 49), (20, 50), (20, 51), (20, 52),
+                                              (21, 53), (21, 54), (21, 55), (21, 56),
+                                              (22, 57), (22, 58), (22, 59), (22, 60);
 
 -- PWI Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
-                                                 -- For Teams 1-5 of PWI Tournament
-                                                 (23, 41), (23, 42), (23, 43), (23, 44),
-                                                 (24, 45), (24, 46), (24, 47), (24, 48),
-                                                 (25, 49), (25, 50), (25, 51), (25, 52),
-                                                 (26, 53), (26, 54), (26, 55), (26, 56),
-                                                 (27, 57), (27, 58), (27, 59), (27, 60);
+                                              -- For Teams 1-5 of PWI Tournament
+                                              (23, 41), (23, 42), (23, 43), (23, 44),
+                                              (24, 45), (24, 46), (24, 47), (24, 48),
+                                              (25, 49), (25, 50), (25, 51), (25, 52),
+                                              (26, 53), (26, 54), (26, 55), (26, 56),
+                                              (27, 57), (27, 58), (27, 59), (27, 60);
 
 -- Remnant: From The Ashes Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
-                                                 -- For Teams 1-5 of Remnant: From The Ashes Tournament
-                                                 (28, 41), (28, 42), (28, 43), (28, 44),
-                                                 (29, 45), (29, 46), (29, 47), (29, 48),
-                                                 (30, 49), (30, 50), (30, 51), (30, 52),
-                                                 (31, 53), (31, 54), (31, 55), (31, 56),
-                                                 (32, 57), (32, 58), (32, 59), (32, 60);
+                                              -- For Teams 1-5 of Remnant: From The Ashes Tournament
+                                              (28, 41), (28, 42), (28, 43), (28, 44),
+                                              (29, 45), (29, 46), (29, 47), (29, 48),
+                                              (30, 49), (30, 50), (30, 51), (30, 52),
+                                              (31, 53), (31, 54), (31, 55), (31, 56),
+                                              (32, 57), (32, 58), (32, 59), (32, 60);
 
 -- Star Trek Online Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
-                                                 -- For Teams 1-5 of Star Trek Online Tournament
-                                                 (33, 41), (33, 42), (33, 43), (33, 44),
-                                                 (34, 45), (34, 46), (34, 47), (34, 48),
-                                                 (35, 49), (35, 50), (35, 51), (35, 52),
-                                                 (36, 53), (36, 54), (36, 55), (36, 56),
-                                                 (37, 57), (37, 58), (37, 59), (37, 60);
+                                              -- For Teams 1-5 of Star Trek Online Tournament
+                                              (33, 41), (33, 42), (33, 43), (33, 44),
+                                              (34, 45), (34, 46), (34, 47), (34, 48),
+                                              (35, 49), (35, 50), (35, 51), (35, 52),
+                                              (36, 53), (36, 54), (36, 55), (36, 56),
+                                              (37, 57), (37, 58), (37, 59), (37, 60);
 
 -- Subnautica Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
-                                                 -- For Teams 1-5 of Subnautica Tournament
-                                                 (38, 41), (38, 42), (38, 43), (38, 44),
-                                                 (39, 45), (39, 46), (39, 47), (39, 48),
-                                                 (40, 49), (40, 50), (40, 51), (40, 52),
-                                                 (41, 53), (41, 54), (41, 55), (41, 56),
-                                                 (42, 57), (42, 58), (42, 59), (42, 60);
+                                              -- For Teams 1-5 of Subnautica Tournament
+                                              (38, 41), (38, 42), (38, 43), (38, 44),
+                                              (39, 45), (39, 46), (39, 47), (39, 48),
+                                              (40, 49), (40, 50), (40, 51), (40, 52),
+                                              (41, 53), (41, 54), (41, 55), (41, 56),
+                                              (42, 57), (42, 58), (42, 59), (42, 60);
 
 -- Torchlight II Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
-                                                 -- For Teams 1-5 of Torchlight II Tournament
-                                                 (43, 41), (43, 42), (43, 43), (43, 44),
-                                                 (44, 45), (44, 46), (44, 47), (44, 48),
-                                                 (45, 49), (45, 50), (45, 51), (45, 52),
-                                                 (46, 53), (46, 54), (46, 55), (46, 56),
-                                                 (47, 57), (47, 58), (47, 59), (47, 60);
+                                              -- For Teams 1-5 of Torchlight II Tournament
+                                              (43, 41), (43, 42), (43, 43), (43, 44),
+                                              (44, 45), (44, 46), (44, 47), (44, 48),
+                                              (45, 49), (45, 50), (45, 51), (45, 52),
+                                              (46, 53), (46, 54), (46, 55), (46, 56),
+                                              (47, 57), (47, 58), (47, 59), (47, 60);
 
 -- Torchlight III Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
-                                                 -- For Teams 1-5 of Torchlight III Tournament
-                                                 (48, 41), (48, 42), (48, 43), (48, 44),
-                                                 (49, 45), (49, 46), (49, 47), (49, 48),
-                                                 (50, 49), (50, 54), (50, 55), (50, 56);
+                                              -- For Teams 1-5 of Torchlight III Tournament
+                                              (48, 41), (48, 42), (48, 43), (48, 44),
+                                              (49, 45), (49, 46), (49, 47), (49, 48),
+                                              (50, 49), (50, 54), (50, 55), (50, 56);
 
--- Insert tournament and team relation
--- Forsaken World Tournament
-INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                          (1, 1), (1, 2), (1, 3), (1, 4), (1, 5);
-
--- Gigantic Tournament
-INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                          (2, 6), (2, 7), (2, 8), (2, 9), (2, 10);
-
--- Hob Tournament
-INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                          (3, 11), (3, 12), (3, 13), (3, 14), (3, 15);
-
--- Neverwinter Tournament
-INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                          (4, 16), (4, 17), (4, 18), (4, 19), (4, 20);
-
--- PWI Tournament
-INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                          (5, 21), (5, 22), (5, 23), (5, 24), (5, 25);
-
--- Remnant: From The Ashes Tournament
-INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                          (6, 26), (6, 27), (6, 28), (6, 29), (6, 30);
-
--- Star Trek Online Tournament
-INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                          (7, 31), (7, 32), (7, 33), (7, 34), (7, 35);
-
--- Subnautica Tournament
-INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                          (8, 36), (8, 37), (8, 38), (8, 39), (8, 40);
-
--- Torchlight II Tournament
-INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                          (9, 41), (9, 42), (9, 43), (9, 44), (9, 45);
-
--- Torchlight III Tournament
-INSERT INTO tournament_teams (tournament_id, team_id) VALUES
-                                                          (10, 46), (10, 47), (10, 48), (10, 49), (10, 50);
-
-
-
--- Insert regions
-INSERT INTO regions (id, name) VALUES
-                                   (1, 'North America'),
-                                   (2, 'Europe'),
-                                   (3, 'South America'),
-                                   (4, 'Asia-Pacific');
-
--- Insert countries
--- North America
-INSERT INTO countries (id, name, region_id) VALUES
-                                                (1, 'United States', 1),
-                                                (2, 'Canada', 1),
-                                                (3, 'Mexico', 1),
-                                                (4, 'Bermuda', 1),
-                                                (5, 'Greenland', 1),
-                                                (6, 'Saint Pierre and Miquelon', 1),
-                                                (7, 'Belize', 1),
-                                                (8, 'Costa Rica', 1),
-                                                (9, 'El Salvador', 1),
-                                                (10, 'Guatemala', 1),
-                                                (11, 'Honduras', 1),
-                                                (12, 'Nicaragua', 1),
-                                                (13, 'Panama', 1),
-                                                (14, 'Antigua and Barbuda', 1),
-                                                (15, 'Bahamas', 1),
-                                                (16, 'Barbados', 1),
-                                                (17, 'Cuba', 1),
-                                                (18, 'Dominica', 1),
-                                                (19, 'Dominican Republic', 1),
-                                                (20, 'Grenada', 1),
-                                                (21, 'Haiti', 1),
-                                                (22, 'Jamaica', 1),
-                                                (23, 'Saint Kitts and Nevis', 1),
-                                                (24, 'Saint Lucia', 1),
-                                                (25, 'Saint Vincent and the Grenadines', 1),
-                                                (26, 'Trinidad and Tobago', 1),
--- Europe
-                                                (27, 'United Kingdom', 2),
-                                                (28, 'Germany', 2),
-                                                (29, 'France', 2),
-                                                (30, 'Italy', 2),
-                                                (31, 'Spain', 2),
-                                                (32, 'Netherlands', 2),
-                                                (33, 'Switzerland', 2),
-                                                (34, 'Sweden', 2),
-                                                (35, 'Belgium', 2),
-                                                (36, 'Austria', 2),
-                                                (37, 'Poland', 2),
-                                                (38, 'Norway', 2),
-                                                (39, 'Denmark', 2),
-                                                (40, 'Finland', 2),
-                                                (41, 'Czech Republic', 2),
-                                                (42, 'Ireland', 2),
-                                                (43, 'Portugal', 2),
-                                                (44, 'Greece', 2),
-                                                (45, 'Hungary', 2),
-                                                (46, 'Romania', 2),
-                                                (47, 'Ukraine', 2),
-                                                (48, 'Slovakia', 2),
-                                                (49, 'Croatia', 2),
-                                                (50, 'Lithuania', 2),
-                                                (51, 'Slovenia', 2),
-                                                (52, 'Latvia', 2),
-                                                (53, 'Estonia', 2),
-                                                (54, 'Bulgaria', 2),
-                                                (55, 'Serbia', 2),
-                                                (56, 'Bosnia and Herzegovina', 2),
-                                                (57, 'Albania', 2),
-                                                (58, 'Montenegro', 2),
-                                                (59, 'North Macedonia', 2),
-                                                (60, 'Kosovo', 2),
-                                                (61, 'Andorra', 2),
-                                                (62, 'Liechtenstein', 2),
-                                                (63, 'Monaco', 2),
-                                                (64, 'San Marino', 2),
-                                                (65, 'Vatican City', 2),
--- South America
-                                                (66, 'Brazil', 3),
-                                                (67, 'Argentina', 3),
-                                                (68, 'Peru', 3),
-                                                (69, 'Colombia', 3),
-                                                (70, 'Venezuela', 3),
-                                                (71, 'Chile', 3),
-                                                (72, 'Ecuador', 3),
-                                                (73, 'Bolivia', 3),
-                                                (74, 'Paraguay', 3),
-                                                (75, 'Uruguay', 3),
-                                                (76, 'Guyana', 3),
-                                                (77, 'Suriname', 3),
-                                                (78, 'French Guiana', 3),
--- Asia-Pacific
-                                                (79, 'Australia', 4),
-                                                (80, 'New Zealand', 4),
-                                                (81, 'Japan', 4),
-                                                (82, 'China', 4),
-                                                (83, 'India', 4),
-                                                (84, 'Indonesia', 4),
-                                                (85, 'South Korea', 4),
-                                                (86, 'Philippines', 4),
-                                                (87, 'Vietnam', 4),
-                                                (88, 'Thailand', 4),
-                                                (89, 'Malaysia', 4),
-                                                (90, 'Singapore', 4),
-                                                (91, 'Bangladesh', 4),
-                                                (92, 'Pakistan', 4),
-                                                (93, 'Taiwan', 4),
-                                                (94, 'Sri Lanka', 4),
-                                                (95, 'Myanmar', 4),
-                                                (96, 'Nepal', 4),
-                                                (97, 'Cambodia', 4),
-                                                (98, 'Hong Kong', 4),
-                                                (99, 'Macau', 4),
-                                                (100, 'Mongolia', 4),
-                                                (101, 'Brunei', 4),
-                                                (102, 'Timor-Leste', 4),
-                                                (103, 'Fiji', 4),
-                                                (104, 'Papua New Guinea', 4),
-                                                (105, 'Vanuatu', 4),
-                                                (106, 'Solomon Islands', 4),
-                                                (107, 'Tonga', 4),
-                                                (108, 'Kiribati', 4),
-                                                (109, 'Tuvalu', 4),
-                                                (110, 'Nauru', 4),
-                                                (111, 'Marshall Islands', 4),
-                                                (112, 'Palau', 4);
 
 -- Roles And Permissions
 
 -- Insert Roles
 INSERT INTO roles (name) VALUES
-('ADMIN_TEAM'),
-('ADMIN_TOURNAMENT'),
-('USER_TEAM'),
-('USER_TOURNAMENT'),
-('MANAGER_TEAM'),
-('MANAGER_TOURNAMENT'),
-('ADMIN_PROFILE');
+                             ('ADMIN_TEAM'),
+                             ('ADMIN_TOURNAMENT'),
+                             ('USER_TEAM'),
+                             ('USER_TOURNAMENT'),
+                             ('MANAGER_TEAM'),
+                             ('MANAGER_TOURNAMENT'),
+                             ('ADMIN_PROFILE');
 
 -- Insert Permissions (if not already present)
 INSERT INTO permissions (name) VALUES
-('MANAGE_ALL_TEAMS'),
-('MANAGE_ALL_USERS'),
-('MANAGE_ALL_TOURNAMENTS'),
-('VIEW_TEAM'),
-('VIEW_TOURNAMENT'),
-('MANAGE_TEAM'),
-('MANAGE_TOURNAMENT'),
-('CHANGE_USERNAME'),
-('CHANGE_PASSWORD'),
-('CHANGE_FIRST_NAME'),
-('CHANGE_LAST_NAME'),
-('CHANGE_EMAIL'),
-('MANAGE_FRIENDS'),
-('MANAGE_OWN_PROFILE');
+                                   ('MANAGE_ALL_TEAMS'),
+                                   ('MANAGE_ALL_USERS'),
+                                   ('MANAGE_ALL_TOURNAMENTS'),
+                                   ('VIEW_TEAM'),
+                                   ('VIEW_TOURNAMENT'),
+                                   ('MANAGE_TEAM'),
+                                   ('MANAGE_TOURNAMENT'),
+                                   ('CHANGE_USERNAME'),
+                                   ('CHANGE_PASSWORD'),
+                                   ('CHANGE_FIRST_NAME'),
+                                   ('CHANGE_LAST_NAME'),
+                                   ('CHANGE_EMAIL'),
+                                   ('MANAGE_FRIENDS'),
+                                   ('MANAGE_OWN_PROFILE');
 
 -- Insert Role-Permission Mappings
 INSERT INTO role_permissions (role_id, permission_id) VALUES
-((SELECT id FROM roles WHERE name = 'ADMIN_TEAM'), (SELECT id FROM permissions WHERE name = 'MANAGE_ALL_TEAMS')),
-((SELECT id FROM roles WHERE name = 'ADMIN_TOURNAMENT'), (SELECT id FROM permissions WHERE name = 'MANAGE_ALL_TOURNAMENTS')),
-((SELECT id FROM roles WHERE name = 'USER_TEAM'), (SELECT id FROM permissions WHERE name = 'VIEW_TEAM')),
-((SELECT id FROM roles WHERE name = 'USER_TOURNAMENT'), (SELECT id FROM permissions WHERE name = 'VIEW_TOURNAMENT')),
-((SELECT id FROM roles WHERE name = 'MANAGER_TEAM'), (SELECT id FROM permissions WHERE name = 'MANAGE_TEAM')),
-((SELECT id FROM roles WHERE name = 'MANAGER_TOURNAMENT'), (SELECT id FROM permissions WHERE name = 'MANAGE_TOURNAMENT')),
-((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_USERNAME')),
-((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_FIRST_NAME')),
-((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_LAST_NAME')),
-((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_PASSWORD')),
-((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_EMAIL')),
-((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'MANAGE_FRIENDS')),
-((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'MANAGE_OWN_PROFILE'));
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_TEAM'), (SELECT id FROM permissions WHERE name = 'MANAGE_ALL_TEAMS')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_TOURNAMENT'), (SELECT id FROM permissions WHERE name = 'MANAGE_ALL_TOURNAMENTS')),
+                                                          ((SELECT id FROM roles WHERE name = 'USER_TEAM'), (SELECT id FROM permissions WHERE name = 'VIEW_TEAM')),
+                                                          ((SELECT id FROM roles WHERE name = 'USER_TOURNAMENT'), (SELECT id FROM permissions WHERE name = 'VIEW_TOURNAMENT')),
+                                                          ((SELECT id FROM roles WHERE name = 'MANAGER_TEAM'), (SELECT id FROM permissions WHERE name = 'MANAGE_TEAM')),
+                                                          ((SELECT id FROM roles WHERE name = 'MANAGER_TOURNAMENT'), (SELECT id FROM permissions WHERE name = 'MANAGE_TOURNAMENT')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_USERNAME')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_FIRST_NAME')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_LAST_NAME')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_PASSWORD')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_EMAIL')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'MANAGE_FRIENDS')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'MANAGE_OWN_PROFILE'));
 
 -- Insert friends in one direction
 INSERT INTO friends (user_id, friend_id)

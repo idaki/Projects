@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styles from './MainFeedModal.module.css'; // Assuming MainFeedModal.module.css is in the same directory
-import TournamentsContainer from '../tournaments/my-tournaments/MyTournamentsContainer';
+import MyTournamentsContainer from '../tournaments/my-tournaments/MyTournamentsContainer';
 import FriendsContainer from '../friends/FriendsContainer';
 import TeamContainer from '../teams/TeamContainer';
+import WatchlistContainer from '../tournaments/watchlist/WatchListContainer';
 
 export default function MainFeedModal({ currentView }) {
   const [reload, setReload] = useState(false);
@@ -20,10 +21,10 @@ export default function MainFeedModal({ currentView }) {
           <h5 className="card-title">{currentView.toUpperCase()}</h5>
         </div>
       </div>
-      {currentView === 'tournaments' && <TournamentsContainer />}
+      {currentView === 'tournaments' && <MyTournamentsContainer />}
       {currentView === 'friends' && <FriendsContainer reload={reload} />}
       {currentView === 'teams' && <TeamContainer />}
-      {/* Add other views as needed */}
+      {currentView === 'watchlist' && <WatchlistContainer />}
     </div>
   );
 }
