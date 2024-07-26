@@ -45,7 +45,7 @@ public class LoginServiceImpl implements LoginService {
         }
 
         User user = userOptional.get();
-        if (!passwordEncoder.matches(loginDTO.getPassword(), user.getPassword().getPasswordHash())) {
+        if (!passwordEncoder.matches(loginDTO.getPassword(), user.getUserSecurity().getPassword().getPasswordHash())) {
             return false; // Password does not match
         }
 
@@ -65,7 +65,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public boolean loginAfterPasswordUpdate(UpdatePasswordDTO updatePasswordDTO) {
         Password password = passwordService.getUserByResetToken(updatePasswordDTO.getToken());
-        User user = password.getUser();
+        User user = password.getUserSecurity().getUser();
         LoginDTO loginDTO = new LoginDTO(user.getUsername(), updatePasswordDTO.getNewPassword());
         return this.login(loginDTO);
     }

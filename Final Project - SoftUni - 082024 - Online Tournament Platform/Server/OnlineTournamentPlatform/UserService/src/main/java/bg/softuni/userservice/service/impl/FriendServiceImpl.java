@@ -8,7 +8,6 @@ import bg.softuni.userservice.repository.FriendRepository;
 import bg.softuni.userservice.repository.TokenRepository;
 import bg.softuni.userservice.repository.UserRepository;
 import bg.softuni.userservice.service.FriendService;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class FriendServiceImpl implements FriendService {
@@ -32,34 +30,25 @@ public class FriendServiceImpl implements FriendService {
         this.tokenRepository = tokenRepository;
     }
 
-
-
     @Override
     public List<FriendDTO> getAllFriends(String jwt) {
-        String test = jwt;
         Optional<Token> tokenOpt = tokenRepository.findByToken(jwt);
         if (tokenOpt.isEmpty()) {
             throw new RuntimeException("No token found");
         }
-        User userNotWorking = tokenOpt.get().getUser();
-        String username = tokenOpt.get().getUser().getUsername();
-        Optional<User> userOpt = this.userRepository.findByUsername(username);
 
-        if (userOpt.isEmpty()) {throw new RuntimeException("No user found");}
+        User user = tokenOpt.get().getUserSecurity().getUser();
+        if (user == null) {
+            throw new RuntimeException("No user found for the provided token");
+        }
 
-        User user = userOpt.get();
-        String name = user.getFirstName();
         Set<Friend> friends = user.getFriends();
-
 
         List<FriendDTO> result = new ArrayList<>();
         for (Friend friend : friends) {
-            result.add(new FriendDTO(friend.getFriend().getId(),friend.getFriend().getFirstName(), friend.getFriend().getLastName()));
+            result.add(new FriendDTO(friend.getFriend().getId(), friend.getFriend().getUserProfile().getFirstName(), friend.getFriend().getUserProfile().getLastName()));
         }
-
-
 
         return result;
     }
-
 }

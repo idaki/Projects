@@ -1,6 +1,7 @@
 package bg.softuni.authenticationservice.service.impl;
 
 import bg.softuni.userservice.models.entity.Token;
+import bg.softuni.userservice.models.entity.user.UserSecurity;
 import bg.softuni.userservice.repository.TokenRepository;
 import bg.softuni.authenticationservice.service.JwtService;
 import bg.softuni.userservice.repository.UserRepository;
@@ -9,6 +10,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -47,12 +49,17 @@ public class JwtServiceImpl implements JwtService {
     private void saveTokenToDB(String username, String token) {
         Token newToken = new Token();
         newToken.setToken(token);
-        newToken.setUser(userRepository.findByUsername(username).get());
+        UserSecurity userSecurity = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"))
+                .getUserSecurity();
+        newToken.setUserSecurity(userSecurity);
         newToken.setExpired(false);
         newToken.setRevoked(false);
         tokenRepository.save(newToken);
-
     }
+
+
+
 
     @Override
     public Boolean validateToken(String token, String username) {

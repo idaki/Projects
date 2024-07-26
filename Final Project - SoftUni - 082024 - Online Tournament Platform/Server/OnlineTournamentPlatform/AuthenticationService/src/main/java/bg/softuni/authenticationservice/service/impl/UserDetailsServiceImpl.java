@@ -1,6 +1,5 @@
 package bg.softuni.authenticationservice.service.impl;
 
-
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
     private final UserRepository userRepository;
 
     @Autowired
@@ -26,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username or email: " + usernameOrEmail));
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getUsername())
-                .password(user.getPassword().getPasswordHash())  // No encoding
+                .password(user.getUserSecurity().getPassword().getPasswordHash())  // No encoding
                 .authorities("USER") // Adjust authorities as necessary
                 .build();
     }

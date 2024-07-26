@@ -1,11 +1,17 @@
 package bg.softuni.userservice.models.entity;
 
-import bg.softuni.userservice.models.entity.user.User;
+import bg.softuni.userservice.models.entity.user.UserSecurity;
 import bg.softuni.userservice.models.enums.TokenType;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "tokens")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Token {
 
     @Id
@@ -22,56 +28,7 @@ public class Token {
 
     private boolean expired;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public TokenType getTokenType() {
-        return tokenType;
-    }
-
-    public void setTokenType(TokenType tokenType) {
-        this.tokenType = tokenType;
-    }
-
-    public boolean isRevoked() {
-        return revoked;
-    }
-
-    public void setRevoked(boolean revoked) {
-        this.revoked = revoked;
-    }
-
-    public boolean isExpired() {
-        return expired;
-    }
-
-    public void setExpired(boolean expired) {
-        this.expired = expired;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_security_id", nullable = false)
+    private UserSecurity userSecurity;
 }

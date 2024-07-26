@@ -42,7 +42,7 @@ public class ResetPasswordController {
         try {
             passwordService.updatePassword(updatePasswordDTO.getToken(), updatePasswordDTO.getNewPassword());
             // Retrieve the user based on the token
-            User user = passwordService.getUserByResetToken(updatePasswordDTO.getToken()).getUser();
+            User user = passwordService.getUserByResetToken(updatePasswordDTO.getToken()).getUserSecurity().getUser();
             // Generate a new JWT token
             String jwt = jwtService.generateToken(user.getUsername());
             // Return the new JWT token in the response

@@ -28,7 +28,6 @@ public class PasswordServiceImpl implements PasswordService {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.mailSender = mailSender;
-
         this.passwordRepository = passwordRepository;
     }
 
@@ -37,11 +36,11 @@ public class PasswordServiceImpl implements PasswordService {
         Optional<User> userOptional = userRepository.findByEmail(email);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            Password password = user.getPassword();
+            Password password = user.getUserSecurity().getPassword();
             String token = UUID.randomUUID().toString();
             password.setResetPasswordToken(token);
             password.setResetPasswordTokenExpiryDate(LocalDateTime.now().plusHours(24));
-            userRepository.save(user);
+            passwordRepository.save(password);
 
             // Send the reset token via email
             sendResetTokenEmail(user.getEmail(), token);
@@ -58,20 +57,15 @@ public class PasswordServiceImpl implements PasswordService {
 
     @Override
     public void updatePassword(String token, String newPassword) {
-
-      Optional<Password> passwordOptional = passwordRepository.findUserByResetPasswordToken(token);
-    User user = null;
-     if (passwordOptional.isPresent()) {
-         user=passwordOptional.get().getUser();
-     }
-
-        if (user!=null) {
-            Password password = user.getPassword();
+        Optional<Password> passwordOptional = passwordRepository.findUserByResetPasswordToken(token);
+        if (passwordOptional.isPresent()) {
+            Password password = passwordOptional.get();
             password.setPasswordHash(passwordEncoder.encode(newPassword));
             password.setPasswordSetDate(LocalDateTime.now());
-            password.setActiveResetPasswordToken(false);
+            password.setResetPasswordToken(null);
             password.setResetPasswordTokenExpiryDate(null);
-            userRepository.save(user);
+            password.setIsActiveResetPasswordToken(false);
+            passwordRepository.save(password);
         } else {
             throw new IllegalArgumentException("Invalid token");
         }
@@ -82,32 +76,32 @@ public class PasswordServiceImpl implements PasswordService {
         Optional<User> userOptional = userRepository.findById(Long.parseLong(userId));
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            Password password = user.getPassword();
+            Password password = user.getUserSecurity().getPassword();
             password.setResetPasswordToken(token);
             password.setResetPasswordTokenExpiryDate(LocalDateTime.now().plusHours(24));
-            userRepository.save(user);
+            passwordRepository.save(password);
         }
     }
 
     @Override
     public boolean isResetTokenValid(String token) {
-        Optional<User> userOptional = userRepository.findByPasswordResetToken(token);
-        return userOptional.isPresent() && userOptional.get().getPassword().getResetPasswordTokenExpiryDate().isAfter(LocalDateTime.now());
+        Optional<Password> passwordOptional = passwordRepository.findUserByResetPasswordToken(token);
+        return passwordOptional.isPresent() && passwordOptional.get().getResetPasswordTokenExpiryDate().isAfter(LocalDateTime.now());
     }
 
     @Override
     public String getUserIdByResetToken(String token) {
-        Optional<User> userOptional = userRepository.findByPasswordResetToken(token);
-        return userOptional.map(user -> String.valueOf(user.getId())).orElse(null);
+        Optional<Password> passwordOptional = passwordRepository.findUserByResetPasswordToken(token);
+        return passwordOptional.map(password -> String.valueOf(password.getUserSecurity().getUser().getId())).orElse(null);
     }
 
     @Override
     public Password getUserByResetToken(String token) {
-       Optional<Password> passwordOptional = passwordRepository.findUserByResetPasswordToken(token);
-       if (passwordOptional.isEmpty()) {
-           throw new IllegalArgumentException("Invalid token");
-       }
+        Optional<Password> passwordOptional = passwordRepository.findUserByResetPasswordToken(token);
+        if (passwordOptional.isEmpty()) {
+            throw new IllegalArgumentException("Invalid token");
+        }
 
-       return this.passwordRepository.findUserByResetPasswordToken(token).get();
+        return passwordOptional.get();
     }
 }

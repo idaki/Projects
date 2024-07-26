@@ -8,6 +8,7 @@ import bg.softuni.userservice.service.TokenService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
 @Service
 public class TokenServiceImpl implements TokenService {
     private final TokenRepository tokenRepository;
@@ -17,19 +18,18 @@ public class TokenServiceImpl implements TokenService {
         this.tokenRepository = tokenRepository;
         this.userRepository = userRepository;
     }
-    @Override
-    public User getUserByToken(String token){
 
+    @Override
+    public User getUserByToken(String token) {
         Optional<Token> tokenOpt = tokenRepository.findByToken(token);
         if (tokenOpt.isEmpty()) {
             throw new RuntimeException("No token found");
         }
-        User userNotWorking = tokenOpt.get().getUser();
-        String username = tokenOpt.get().getUser().getUsername();
-        Optional<User> userOpt = this.userRepository.findByUsername(username);
-
-        if (userOpt.isEmpty()) {throw new RuntimeException("No user found");}
-
-        return userOpt.get();
+        Token tokenEntity = tokenOpt.get();
+        User user = tokenEntity.getUserSecurity().getUser();
+        if (user == null) {
+            throw new RuntimeException("No user found for the token");
+        }
+        return user;
     }
 }
