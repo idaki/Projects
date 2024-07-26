@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -15,5 +16,4 @@ public interface TournamentRepository extends JpaRepository<Tournament, Long> {
 
     @Query("SELECT t FROM Tournament t JOIN t.followers f WHERE f.id = :userId")
     List<Tournament> findByFollowerId(@Param("userId") Long userId);
-
 }

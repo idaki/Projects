@@ -1,7 +1,7 @@
 package bg.softuni.tournamentservice.controller;
 
 
-import bg.softuni.tournamentservice.model.ExportDto.GameTitleDTO;
+import bg.softuni.tournamentservice.model.ExportDto.GameDTO;
 import bg.softuni.tournamentservice.service.GameService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +17,7 @@ public class GameController {
     }
 
     @GetMapping("/api/games")
-    public Set<GameTitleDTO> getAllGames() {
+    public Set<GameDTO> getAllGames() {
         return gameService.getAllGames();
     }
 }

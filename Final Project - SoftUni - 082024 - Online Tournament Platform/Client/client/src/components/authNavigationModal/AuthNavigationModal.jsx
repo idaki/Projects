@@ -9,6 +9,8 @@ export default function AuthNavigationModal({ setMainContent }) {
         <a className="nav-link" href="#" onClick={() => setMainContent('tournaments')}>My Tournaments</a>
         <a className="nav-link" href="#"onClick={() => setMainContent('teams')}>My Teams</a>
         <a className="nav-link" href="#"onClick={() => setMainContent('watchlist')}>Watchlist</a>
+        <a className="nav-link" href="#"onClick={() => setMainContent('create-tournament')}>Create Tournament</a>
+        
       </div>
     </div>
   );

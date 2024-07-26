@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import CreateTournamentModal from '../tournament-create/CreateTournamentModal';
+import CreateTournamentModal from '../tournaments/tournament-create/CreateTournamentModal';
 
 Modal.setAppElement('#root');
 
@@ -23,12 +23,7 @@ export default function HeaderModal() {
                     <p className="lead fw-normal text-white-50 mb-0">Where every pixel sparks a possibility. Join the community for epic online tournaments!</p>
                 </div>
             </div>
-            <div className="text-center text-white" >
-                <button type="submit" className="btn btn-primary row mb-4" onClick={openModal}>Create Tournament</button>
-                <Modal isOpen={isOpen} onRequestClose={closeModal}>
-                    <CreateTournamentModal />
-                </Modal>
-            </div>
+          
         </header>
     );
 }

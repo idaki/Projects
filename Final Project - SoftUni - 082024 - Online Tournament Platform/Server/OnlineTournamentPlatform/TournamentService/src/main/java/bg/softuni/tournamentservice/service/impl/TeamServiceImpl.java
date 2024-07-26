@@ -27,6 +27,7 @@ public class TeamServiceImpl implements TeamService {
     private final TokenService tokenService;
 
 
+
 @Autowired
     public TeamServiceImpl(UserRepository userRepository, TeamRepository teamRepository, TokenService tokenService) {
 

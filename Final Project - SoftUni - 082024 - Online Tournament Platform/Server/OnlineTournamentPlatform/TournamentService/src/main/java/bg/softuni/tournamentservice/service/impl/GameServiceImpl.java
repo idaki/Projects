@@ -3,7 +3,6 @@ package bg.softuni.tournamentservice.service.impl;
 
 import bg.softuni.tournamentservice.model.ExportDto.GameDTO;
 
-import bg.softuni.tournamentservice.model.ExportDto.GameTitleDTO;
 import bg.softuni.tournamentservice.model.Game;
 import bg.softuni.tournamentservice.repository.AssetRepository;
 import bg.softuni.tournamentservice.repository.GameRepository;
@@ -26,36 +25,23 @@ public class GameServiceImpl implements GameService {
     }
 
 
+
+
+
+
     @Override
-    public GameDTO mapToGameDTO(Game game) {
-        if (game == null) {
-            return null;
+    public Set<GameDTO> getAllGames() {
+        List<Game> games = gameRepository.findAll();
+
+        Set<GameDTO> gameTitleListDTOs = new TreeSet<>();
+
+        for (Game game : games) {
+            GameDTO gameTitleDTO = new GameDTO();
+            gameTitleDTO.setTitle(game.getTitle());
+            gameTitleDTO.setId(game.getId());
+            gameTitleListDTOs.add(gameTitleDTO);
         }
 
-        GameDTO gameDTO = new GameDTO();
-        gameDTO.setId(game.getId());
-        gameDTO.setTitle(game.getTitle());
-        // Map other properties as needed
-        return gameDTO;
-    }
-
-    @Override
-    public List<Game> findAll() {
-        return gameRepository.findAll();
-    }
-
-    @Override
-    public Set<GameTitleDTO> getAllGames() {
-        List<Game> games = gameRepository.findAll();
-        Set<GameTitleDTO> gameTitleListDTOs = new TreeSet<>();
-        games.forEach(game -> {
-            GameTitleDTO gameTitleDTO = new GameTitleDTO();
-            gameTitleDTO.setTitle(game.getTitle());
-            gameTitleListDTOs.add(gameTitleDTO);
-
-        });
-
-        System.out.println();
         return gameTitleListDTOs;
     }
 

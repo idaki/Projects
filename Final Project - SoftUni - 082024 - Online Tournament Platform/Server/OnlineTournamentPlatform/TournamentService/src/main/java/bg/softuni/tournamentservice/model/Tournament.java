@@ -2,6 +2,8 @@ package bg.softuni.tournamentservice.model;
 
 import bg.softuni.userservice.models.entity.user.User;
 import jakarta.persistence.*;
+
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,6 +18,24 @@ public class Tournament {
     @Column
     private String name;
 
+    @Column
+    private String category;
+
+    @Column
+    private String summary;
+
+    @Column
+    private Date startDate;
+
+    @Column
+    private Date endDate;
+
+    @Column
+    private int numberOfTeams;
+
+    @Column
+    private int teamSize;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manager_id")
     private User manager;
@@ -27,6 +47,7 @@ public class Tournament {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private Set<User> followers = new HashSet<>();
+
     @OneToOne
     @JoinColumn(name = "game_id")
     private Game game;
@@ -49,6 +70,54 @@ public class Tournament {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public int getNumberOfTeams() {
+        return numberOfTeams;
+    }
+
+    public void setNumberOfTeams(int numberOfTeams) {
+        this.numberOfTeams = numberOfTeams;
+    }
+
+    public int getTeamSize() {
+        return teamSize;
+    }
+
+    public void setTeamSize(int teamSize) {
+        this.teamSize = teamSize;
     }
 
     public User getManager() {

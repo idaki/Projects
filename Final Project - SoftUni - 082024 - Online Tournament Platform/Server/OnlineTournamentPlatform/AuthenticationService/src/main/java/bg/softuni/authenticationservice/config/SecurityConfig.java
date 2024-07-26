@@ -55,8 +55,9 @@ public class SecurityConfig {
                                 "/api/update-password",
                                 "/api/tournaments",
                                 "/api/tournaments/all",
-                                "/api/tournaments/managed"
-                                ,"/api/tournaments/watchlist",
+                                "/api/tournaments/managed",
+                                "/api/tournaments/watchlist",
+                                "/api/tournaments/create",
                                 "/api/games",
                                 "/api/friends",
                                 "/api/register-consumer",

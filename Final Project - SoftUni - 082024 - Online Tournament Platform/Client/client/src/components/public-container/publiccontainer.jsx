@@ -5,7 +5,7 @@ import HeaderContainer from '../header/HeaderContainer';
 export default function PublicContainer() {
   return (
     <div>
-      <HeaderContainer/>np
+      <HeaderContainer/>
       <PublicTournamentsContainer />
 
     </div>

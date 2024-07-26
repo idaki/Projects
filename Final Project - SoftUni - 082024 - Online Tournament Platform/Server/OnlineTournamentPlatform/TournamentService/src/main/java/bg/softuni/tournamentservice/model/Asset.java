@@ -23,6 +23,14 @@ public class Asset {
     @JoinColumn(name = "game_id")
     private Game game;
 
+    public Asset() {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.url = url;
+        this.game = game;
+    }
+
     public Long getId() {
         return id;
     }

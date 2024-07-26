@@ -90,3 +90,29 @@ export const getMyWatchList = async () => {
     throw error;
   }
 };
+
+
+export const createTournament = async (tournamentData) => {
+  try {
+    const response = await fetch(`${BASE_URL}/tournaments/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getJwtToken()}`,
+        'X-XSRF-TOKEN': getCsrfToken()
+      },
+      credentials: 'include',
+      body: JSON.stringify(tournamentData)
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Failed to create tournament:', error);
+    throw error;
+  }
+};

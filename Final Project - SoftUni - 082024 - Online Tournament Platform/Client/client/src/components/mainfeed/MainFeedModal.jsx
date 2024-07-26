@@ -4,6 +4,7 @@ import MyTournamentsContainer from '../tournaments/my-tournaments/MyTournamentsC
 import FriendsContainer from '../friends/FriendsContainer';
 import TeamContainer from '../teams/TeamContainer';
 import WatchlistContainer from '../tournaments/watchlist/WatchListContainer';
+import CreateTournamentModal from '../tournaments/tournament-create/CreateTournamentModal';
 
 export default function MainFeedModal({ currentView }) {
   const [reload, setReload] = useState(false);
@@ -25,6 +26,7 @@ export default function MainFeedModal({ currentView }) {
       {currentView === 'friends' && <FriendsContainer reload={reload} />}
       {currentView === 'teams' && <TeamContainer />}
       {currentView === 'watchlist' && <WatchlistContainer />}
+      {currentView === 'create-tournament' && <CreateTournamentModal />}
     </div>
   );
 }

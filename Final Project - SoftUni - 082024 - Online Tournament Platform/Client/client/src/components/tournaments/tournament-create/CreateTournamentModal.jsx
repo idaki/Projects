@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { getAllGames } from '../../services/api/gameService';
-import { getAllRegions, getAllCountriesByRegion } from '../../services/api/locationService';
+import { getAllGames } from '../../../services/api/gameService';
+import { createTournament } from '../../../services/api/tournamentService';
+import { validateCreateTournamentForm } from '../../../services/formValidator/createTournamentFormValidator';
 
-import { validateCreateTournamentForm } from '../../services/formValidator/createTournamentFormValidator';
-
-export default function CreateTournamentModal({ onClose }) {
+export default function CreateTournamentModal({ onClose, onCreate }) {
   const [formData, setFormData] = useState({
+    name: '',
     title: '',
     category: '',
     summary: '',
@@ -14,32 +14,16 @@ export default function CreateTournamentModal({ onClose }) {
     endDate: '',
     numberOfTeams: '',
     teamSize: '',
-    region: '',
-    country: []
   });
 
-  const [errors, setErrors] = useState({
-    title: '',
-    category: '',
-    summary: '',
-    startDate: '',
-    endDate: '',
-    numberOfTeams: '',
-    teamSize: '',
-    region: '',
-    country: ''
-  });
-
+  const [errors, setErrors] = useState({});
   const [games, setGames] = useState([]);
-  const [regions, setRegions] = useState([]);
-  const [countries, setCountries] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [gamesData, regionsData] = await Promise.all([getAllGames(), getAllRegions()]);
+        const gamesData = await getAllGames();
         setGames(gamesData);
-        setRegions(regionsData);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -48,52 +32,49 @@ export default function CreateTournamentModal({ onClose }) {
     fetchData();
   }, []);
 
-  useEffect(() => {
-
-    const fetchCountriesPerRegion = async () => {
-      try {
-        const countriesData = await getAllCountriesByRegion(formData.region);
-        setCountries(countriesData);
-        console.log('Fetched countries:', countriesData); // Log fetched countries
-      } catch (error) {
-        console.error('Error fetching countries:', error);
-      }
-    };
-
-    fetchCountriesPerRegion();
-  }, [formData.region]);
-
-
   const handleChange = (e) => {
-    const { name, options } = e.target;
-    const selectedCountryIds = Array.from(options)
-      .filter(option => option.selected)
-      .map(option => option.value);
+    const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
-      [name]: selectedCountryIds,
+      [name]: value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { valid, errors } = validateCreateTournamentForm(formData);
     if (valid) {
-      console.log(formData);
-      onClose();
+      try {
+        const createdTournament = await createTournament(formData);
+        console.log('Tournament created successfully:', createdTournament);
+        onCreate(); // Call the onCreate prop to refresh the tournament list
+        onClose(); // Close the modal
+      } catch (error) {
+        console.error('Failed to create tournament:', error);
+      }
     } else {
       setErrors(errors);
     }
   };
 
-
-
-
-
   return (
     <div className="container mt-5">
       <form onSubmit={handleSubmit}>
         <h1>Create Tournament</h1>
+
+        <div className="form-group mb-3">
+          <label htmlFor="name">Tournament name:</label>
+          <input
+            type="text"
+            className={`form-control ${errors.name && 'is-invalid'}`}
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Enter tournament name..."
+          />
+          {errors.name && <div className="invalid-feedback">{errors.name}</div>}
+        </div>
 
         <div className="form-group mb-3">
           <label htmlFor="title">Legendary title:</label>
@@ -106,13 +87,11 @@ export default function CreateTournamentModal({ onClose }) {
           >
             <option key="default" value="">Select a game...</option>
             {games.map(game => (
-              <option key={game.title} value={game.title}>{game.title}</option>
+              <option key={game.id} value={game.title}>{game.title}</option>
             ))}
           </select>
-
           {errors.title && <div className="invalid-feedback">{errors.title}</div>}
         </div>
-
 
         <div className="form-group mb-3">
           <label htmlFor="category">Category:</label>
@@ -127,8 +106,6 @@ export default function CreateTournamentModal({ onClose }) {
           />
           {errors.category && <div className="invalid-feedback">{errors.category}</div>}
         </div>
-
-
 
         <div className="form-group mb-3">
           <label htmlFor="summary">Summary:</label>
@@ -195,48 +172,6 @@ export default function CreateTournamentModal({ onClose }) {
           />
           {errors.teamSize && <div className="invalid-feedback">{errors.teamSize}</div>}
         </div>
-
-
-
-        <div className="form-group mb-3">
-          <label htmlFor="region">Region:</label>
-
-          <select
-            className={`form-control ${errors.region && 'is-invalid'}`}
-            id="region"
-            name="region"
-            value={formData.region}
-            onChange={handleChange}
-          >
-            <option key="default" value="">Select a region...</option>
-            {regions.map(region => (
-              <option key={region.id} value={region.id}>{region.name}</option>
-            ))}
-          </select>
-
-          {errors.region && <div className="invalid-feedback">{errors.region}</div>}
-        </div>
-
-
-        <div className="form-group mb-3">
-          <label htmlFor="country">Country:</label>
-          <select
-            className={`form-control ${errors.country && 'is-invalid'}`}
-            id="country"
-            name="country"
-            value={formData.country}
-            onChange={handleChange}
-            multiple // Enable multiple selection
-          >
-            <option key="default" value="">Select country...</option>
-            {Array.isArray(countries) && countries.map(country => (
-              <option key={country.id} value={country.id}>{country.name}</option>
-            ))}
-          </select>
-
-          {errors.region && <div className="invalid-feedback">{errors.region}</div>}
-        </div>
-
 
         <div className="d-flex justify-content-center">
           <button type="submit" className="btn btn-primary">Create Tournament</button>

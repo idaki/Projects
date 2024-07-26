@@ -77,6 +77,7 @@ export const logout = async () => {
     console.error('Logout failed:', error);
   }
   localStorage.removeItem('authData');
+  sessionStorage.clear();
   window.location.href = '/login'; // Redirect to login after clearing auth data
 };
 
