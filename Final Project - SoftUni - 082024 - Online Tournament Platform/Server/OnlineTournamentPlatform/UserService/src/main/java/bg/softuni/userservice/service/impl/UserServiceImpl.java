@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
 
         UserProfile userProfile = createUserProfile(user);
 
-        user.setUserProfile(userProfile); 
+        user.setUserProfile(userProfile);
 
         UserSecurity userSecurity = new UserSecurity();
         userSecurity.setUser(user);
