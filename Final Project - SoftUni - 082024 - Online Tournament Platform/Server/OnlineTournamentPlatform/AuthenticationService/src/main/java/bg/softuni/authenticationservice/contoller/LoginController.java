@@ -31,7 +31,6 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO, HttpServletRequest request) {
         CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-
         if (token != null) {
             LOGGER.debug("CSRF Token in request: {}", token.getToken());
             LOGGER.info("Attempting login with CSRF Token - {}={}", token.getHeaderName(), token.getToken());

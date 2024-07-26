@@ -3,17 +3,15 @@ package bg.softuni.userservice.models.entity.user;
 import bg.softuni.userservice.models.entity.Token;
 import bg.softuni.userservice.models.entity.password.Password;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "user_security")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

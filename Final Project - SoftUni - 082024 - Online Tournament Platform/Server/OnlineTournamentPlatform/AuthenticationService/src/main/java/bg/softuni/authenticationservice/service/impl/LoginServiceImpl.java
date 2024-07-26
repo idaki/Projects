@@ -35,7 +35,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public boolean login(LoginDTO loginDTO) {
-        Optional<User> userOptional = userRepository.findByEmail(loginDTO.getUsernameOrEmail());
+        Optional<User> userOptional = userRepository.findByUsernameOrEmail(loginDTO.getUsernameOrEmail(), loginDTO.getPassword());
         if (userOptional.isEmpty()) {
             userOptional = userRepository.findByUsername(loginDTO.getUsernameOrEmail());
         }
@@ -45,6 +45,7 @@ public class LoginServiceImpl implements LoginService {
         }
 
         User user = userOptional.get();
+     
         if (!passwordEncoder.matches(loginDTO.getPassword(), user.getUserSecurity().getPassword().getPasswordHash())) {
             return false; // Password does not match
         }

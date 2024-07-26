@@ -3,10 +3,7 @@ package bg.softuni.userservice.models.entity.user;
 import bg.softuni.userservice.models.entity.Friend;
 import bg.softuni.userservice.models.entity.authorisation.Role;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +11,8 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
