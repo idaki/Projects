@@ -1,7 +1,7 @@
 package bg.softuni.webservice.config;
 
 import bg.softuni.userservice.service.UserService;
-import bg.softuni.webservice.SuperAdminInit;
+import bg.softuni.webservice.InitUsers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.modelmapper.Converter;
@@ -27,7 +27,7 @@ public class AppConfig {
     }
     @Bean
     public CommandLineRunner commandLineRunner(UserService userService) {
-        return new SuperAdminInit(userService);
+        return new InitUsers(userService);
     }
     @Bean
     public Gson gson() {

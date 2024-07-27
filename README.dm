@@ -8,6 +8,18 @@ The repository is used to store and share code related to the SoftUni Java Web D
 Project Idea:
 Develop an online platform where users can create, join, and manage video game tournaments.
 
+CREDENTIALS to platform:
+ 
+SUPER_ADMIN:
+username: admin
+password: admin
+
+USER: 
+username: user
+password: user
+
+
+
 Scope:
 
 User Management:

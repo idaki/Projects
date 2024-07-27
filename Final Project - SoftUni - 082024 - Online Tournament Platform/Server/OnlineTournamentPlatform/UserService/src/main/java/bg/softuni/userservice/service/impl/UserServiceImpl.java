@@ -103,6 +103,8 @@ public class UserServiceImpl implements UserService {
 
     private static User getNewUser(String username, String email) {
         User user = new User();
+        UserProfile userProfile = createUserProfile(user);
+
         user.setUsername(username);
         user.setEmail(email);
         return user;
@@ -152,20 +154,54 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createSuperAdmin() {
-        Optional<User> userOpt = userRepository.findByUsername("super_admin");
+    public void InitUser(String roleInput, String password, String username) {
+        Optional<User> userOpt = userRepository.findByUsername(username);
         if (userOpt.isPresent()) {
+            System.out.println("User " + username + " already exists.");
             return;
         }
-        User user = getNewUser("super_admin", "super_admin@serdicagrid.com");
-        Role role = roleRepository.findByName(RoleEnum.ADMIN_SUPER);
+
+        String email = username.toLowerCase() + "@serdicagrid.com";
+        if (userRepository.findByEmail(email).isPresent()) {
+            System.out.println("Email " + email + " already exists.");
+            return;
+        }
+
+        User user = getNewUser(username, email);
+
+        // Create and set UserSecurity
+        UserSecurity userSecurity = new UserSecurity();
+        userSecurity.setUser(user);
+        user.setUserSecurity(userSecurity);
+
+        // Create and set UserProfile
+        UserProfile userProfile = new UserProfile();
+        userProfile.setFirstName("");
+        userProfile.setLastName("");
+        userProfile.setUser(user); // Set the user reference in UserProfile
+        user.setUserProfile(userProfile);
+
+        // Save user first to generate ID and establish relationships
+        user = userRepository.save(user);
+
+        // Save UserSecurity and UserProfile
+        userSecurityRepository.save(userSecurity);
+        userProfileRepository.save(userProfile);
+
+        // Assign role and hashed password
+        Role role = roleRepository.findByName(RoleEnum.valueOf(roleInput));
         if (role == null) {
-            role = new Role(RoleEnum.ADMIN_SUPER);
+            role = new Role(RoleEnum.valueOf(roleInput));
             roleRepository.save(role);
         }
         user.setRoles(Set.of(role));
+        createHashedPassword(password, user);
+
+        // Finally, save the user again to update references
         userRepository.save(user);
     }
+
+
 
     @Override
     public User findUserByToken(String jwt) {

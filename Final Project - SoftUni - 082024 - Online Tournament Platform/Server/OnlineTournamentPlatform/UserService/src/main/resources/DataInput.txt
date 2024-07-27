@@ -175,17 +175,16 @@ INSERT INTO assets (name, url_asset, game_id) VALUES ('Torchlight III Image', 'C
 
 -- Insert tournaments
 INSERT INTO tournaments (id, name, category, summary, start_date, end_date, number_of_teams, team_size, manager_id, game_id) VALUES
-                                                                                                                                 (1, 'Forsaken World Tournament', 'RPG', 'Tournament Summary', '2024-01-01', '2024-01-02', 7, 4, 1, 1),
-                                                                                                                                 (2, 'Gigantic Tournament', 'Action', 'Tournament Summary', '2024-02-01', '2024-02-02', 4, 5, 2, 2),
-                                                                                                                                 (3, 'Hob Tournament', 'Adventure', 'Tournament Summary', '2024-03-01', '2024-03-02', 4, 6, 3, 3),
-                                                                                                                                 (4, 'Neverwinter Tournament', 'RPG', 'Tournament Summary', '2024-04-01', '2024-04-02', 4, 7, 4, 4),
-                                                                                                                                 (5, 'PWI Tournament', 'RPG', 'Tournament Summary', '2024-05-01', '2024-05-02', 4, 8, 5, 5),
-                                                                                                                                 (6, 'Remnant: From The Ashes Tournament', 'Shooter', 'Tournament Summary', '2024-06-01', '2024-06-02', 4, 9, 6, 6),
-                                                                                                                                 (7, 'Star Trek Online Tournament', 'Sci-Fi', 'Tournament Summary', '2024-07-01', '2024-07-02', 4, 10, 7, 7),
-                                                                                                                                 (8, 'Subnautica Tournament', 'Survival', 'Tournament Summary', '2024-08-01', '2024-08-02', 4, 11, 8, 8),
-                                                                                                                                 (9, 'Torchlight II Tournament', 'RPG', 'Tournament Summary', '2024-09-01', '2024-09-02', 4, 12, 9, 9),
-                                                                                                                                 (10, 'Torchlight III Tournament', 'RPG', 'Tournament Summary', '2024-10-01', '2024-10-02', 4, 13, 10, 10);
-
+                                                                                                                                 (1, 'Forsaken World Tournament', 'MMORPG', 'A grand tournament in the world of Forsaken', '2024-08-01', '2024-08-10', 10, 5, 1, 1),
+                                                                                                                                 (2, 'Gigantic Tournament', 'Action', 'A competitive event for Gigantic players', '2024-08-15', '2024-08-20', 8, 4, 2, 2),
+                                                                                                                                 (3, 'Hob Tournament', 'Adventure', 'Explore and compete in the world of Hob', '2024-08-25', '2024-08-30', 6, 3, 3, 3),
+                                                                                                                                 (4, 'Neverwinter Tournament', 'RPG', 'Battle it out in Neverwinter', '2024-09-01', '2024-09-07', 12, 6, 4, 4),
+                                                                                                                                 (5, 'PWI Tournament', 'MMORPG', 'Perfect World International competition', '2024-09-10', '2024-09-15', 10, 5, 5, 5),
+                                                                                                                                 (6, 'Remnant: From The Ashes Tournament', 'Shooter', 'Survive and win in Remnant', '2024-09-20', '2024-09-25', 8, 4, 6, 6),
+                                                                                                                                 (7, 'Star Trek Online Tournament', 'MMORPG', 'Command your ship to victory', '2024-09-28', '2024-10-02', 10, 5, 7, 7),
+                                                                                                                                 (8, 'Subnautica Tournament', 'Survival', 'Dive deep and compete', '2024-10-05', '2024-10-10', 6, 3, 8, 8),
+                                                                                                                                 (9, 'Torchlight II Tournament', 'RPG', 'Torchlight II adventurers face off', '2024-10-15', '2024-10-20', 8, 4, 9, 9),
+                                                                                                                                 (10, 'Torchlight III Tournament', 'RPG', 'Torchlight III heroes clash', '2024-10-25', '2024-10-30', 10, 5, 10, 10);
 
 -- You can use any naming convention for teams
 INSERT INTO teams (name, team_size, tournament_id) VALUES
@@ -240,21 +239,13 @@ INSERT INTO teams (name, team_size, tournament_id) VALUES
                                                        ('Team 4', 4, 10),
                                                        ('Team 5', 4, 10);
 
--- Assigning managers to tournaments
-UPDATE tournaments SET manager_id = 1 WHERE id = 1;   -- Assigning user 1 as manager for Forsaken World Tournament
-UPDATE tournaments SET manager_id = 2 WHERE id = 2;   -- Assigning user 2 as manager for Gigantic Tournament
-UPDATE tournaments SET manager_id = 3 WHERE id = 3;   -- Assigning user 3 as manager for Hob Tournament
-UPDATE tournaments SET manager_id = 4 WHERE id = 4;   -- Assigning user 4 as manager for Neverwinter Tournament
-UPDATE tournaments SET manager_id = 5 WHERE id = 5;   -- Assigning user 5 as manager for PWI Tournament
-UPDATE tournaments SET manager_id = 6 WHERE id = 6;   -- Assigning user 6 as manager for Remnant: From The Ashes Tournament
-UPDATE tournaments SET manager_id = 7 WHERE id = 7;   -- Assigning user 7 as manager for Star Trek Online Tournament
 
 
 -- Upate Tournament User Relation
 -- Forsaken World Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
                                               -- For Teams 1-5 of Forsaken World Tournament
-                                              (1, 41), (1, 42), (1, 43), (1, 44),
+                                              (1, 41), (1, 42), (1, 43), (1, 2),
                                               (2, 45), (2, 46), (2, 47), (2, 48),
                                               (3, 49), (3, 50), (3, 51), (3, 52),
                                               (4, 53), (4, 54), (4, 55), (4, 56),
@@ -267,7 +258,7 @@ INSERT INTO team_users (team_id, user_id) VALUES
                                               (7, 45), (7, 46), (7, 47), (7, 48),
                                               (8, 49), (8, 50), (8, 51), (8, 52),
                                               (9, 53), (9, 54), (10, 55), (11, 56),
-                                              (12, 57), (12, 58), (12, 59), (12, 60);
+                                              (12, 57), (12, 58), (12, 59), (12, 2);
 
 -- Hob Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
@@ -283,7 +274,7 @@ INSERT INTO team_users (team_id, user_id) VALUES
                                               -- For Teams 1-5 of Neverwinter Tournament
                                               (18, 41), (18, 42), (18, 43), (18, 44),
                                               (19, 45), (19, 46), (19, 47), (19, 48),
-                                              (20, 49), (20, 50), (20, 51), (20, 52),
+                                              (20, 49), (20, 2), (20, 51), (20, 52),
                                               (21, 53), (21, 54), (21, 55), (21, 56),
                                               (22, 57), (22, 58), (22, 59), (22, 60);
 
@@ -294,7 +285,7 @@ INSERT INTO team_users (team_id, user_id) VALUES
                                               (24, 45), (24, 46), (24, 47), (24, 48),
                                               (25, 49), (25, 50), (25, 51), (25, 52),
                                               (26, 53), (26, 54), (26, 55), (26, 56),
-                                              (27, 57), (27, 58), (27, 59), (27, 60);
+                                              (27, 57), (27, 2), (27, 59), (27, 60);
 
 -- Remnant: From The Ashes Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
@@ -303,7 +294,7 @@ INSERT INTO team_users (team_id, user_id) VALUES
                                               (29, 45), (29, 46), (29, 47), (29, 48),
                                               (30, 49), (30, 50), (30, 51), (30, 52),
                                               (31, 53), (31, 54), (31, 55), (31, 56),
-                                              (32, 57), (32, 58), (32, 59), (32, 60);
+                                              (32, 2), (32, 58), (32, 59), (32, 60);
 
 -- Star Trek Online Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
@@ -312,21 +303,21 @@ INSERT INTO team_users (team_id, user_id) VALUES
                                               (34, 45), (34, 46), (34, 47), (34, 48),
                                               (35, 49), (35, 50), (35, 51), (35, 52),
                                               (36, 53), (36, 54), (36, 55), (36, 56),
-                                              (37, 57), (37, 58), (37, 59), (37, 60);
+                                              (37, 2), (37, 58), (37, 59), (37, 60);
 
 -- Subnautica Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
                                               -- For Teams 1-5 of Subnautica Tournament
                                               (38, 41), (38, 42), (38, 43), (38, 44),
                                               (39, 45), (39, 46), (39, 47), (39, 48),
-                                              (40, 49), (40, 50), (40, 51), (40, 52),
+                                              (40, 49), (40, 2), (40, 51), (40, 52),
                                               (41, 53), (41, 54), (41, 55), (41, 56),
                                               (42, 57), (42, 58), (42, 59), (42, 60);
 
 -- Torchlight II Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
                                               -- For Teams 1-5 of Torchlight II Tournament
-                                              (43, 41), (43, 42), (43, 43), (43, 44),
+                                              (43, 41), (43, 42), (43, 2), (43, 44),
                                               (44, 45), (44, 46), (44, 47), (44, 48),
                                               (45, 49), (45, 50), (45, 51), (45, 52),
                                               (46, 53), (46, 54), (46, 55), (46, 56),
@@ -335,7 +326,7 @@ INSERT INTO team_users (team_id, user_id) VALUES
 -- Torchlight III Tournament
 INSERT INTO team_users (team_id, user_id) VALUES
                                               -- For Teams 1-5 of Torchlight III Tournament
-                                              (48, 41), (48, 42), (48, 43), (48, 44),
+                                              (48, 41), (48, 2), (48, 43), (48, 44),
                                               (49, 45), (49, 46), (49, 47), (49, 48),
                                               (50, 49), (50, 54), (50, 55), (50, 56);
 

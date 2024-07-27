@@ -23,7 +23,10 @@ public interface UserService  {
 
     void deleteUserByUsername(String username);
 
-    void createSuperAdmin();
+
+
+
+    void InitUser(String roleInput, String password, String name);
 
     User findUserByToken(String jwt);
 }
