@@ -6,6 +6,7 @@ package bg.softuni.tournamentservice.model.viewDto;
 public class TournamentDTO {
     private Long id;
     private String name;
+    private String game;
     private String description;
     private String url;
 
@@ -23,6 +24,14 @@ public class TournamentDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getGame() {
+        return game;
+    }
+
+    public void setGame(String game) {
+        this.game = game;
     }
 
     public String getDescription() {

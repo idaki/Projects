@@ -95,7 +95,7 @@ User user = userService.findUserByToken(jwt);
         TournamentDTO dto = new TournamentDTO();
 
         dto.setId(tournament.getId());
-        dto.setName(tournament.getName());
+        dto.setName(tournament.getGame().getTitle());
 
         // Check if the game is null before accessing its properties
         Game game = tournament.getGame();
