@@ -12,7 +12,6 @@ import AuthContext from '../../context/authContext';
 import { getUserDetails } from '../../services/userDetailsService';
 
 
-
 const ProfileModal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -79,7 +78,7 @@ const ProfileModal = () => {
         </div>
         <div className="col-md-9">
           <SidebarModal isOpen={sidebarOpen} toggle={toggleSidebar} openSettings={openSettings} />
-          {!settingsOpen && <MainFeedModal currentView={mainContent} />}
+          {!settingsOpen && <MainFeedModal currentView={mainContent} setMainContent={setMainContent} />}
           <SettingsContainer isOpen={settingsOpen} toggle={closeSettings} />
         </div>
       </div>

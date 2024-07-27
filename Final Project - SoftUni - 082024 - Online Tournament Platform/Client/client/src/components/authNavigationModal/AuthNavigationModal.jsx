@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './AuthNavigationModal.module.css'; // Assuming NavigationModal.module.css is in the same directory
+import styles from './AuthNavigationModal.module.css';
 
 export default function AuthNavigationModal({ setMainContent }) {
   return (
@@ -7,10 +7,9 @@ export default function AuthNavigationModal({ setMainContent }) {
       <div className="nav flex-column">
         <a className="nav-link active" href="#" onClick={() => setMainContent('friends')}>Friends</a>
         <a className="nav-link" href="#" onClick={() => setMainContent('tournaments')}>My Tournaments</a>
-        <a className="nav-link" href="#"onClick={() => setMainContent('teams')}>My Teams</a>
-        <a className="nav-link" href="#"onClick={() => setMainContent('watchlist')}>Watchlist</a>
-        <a className="nav-link" href="#"onClick={() => setMainContent('create-tournament')}>Create Tournament</a>
-        
+        <a className="nav-link" href="#" onClick={() => setMainContent('teams')}>My Teams</a>
+        <a className="nav-link" href="#" onClick={() => setMainContent('watchlist')}>Watchlist</a>
+        <a className="nav-link" href="#" onClick={() => setMainContent('create-tournament')}>Create Tournament</a>
       </div>
     </div>
   );

@@ -116,3 +116,26 @@ export const createTournament = async (tournamentData) => {
     throw error;
   }
 };
+
+export const getTournamentById = async (id) => {
+  try {
+    const response = await fetch(`${BASE_URL}/tournaments/${id}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${getJwtToken()}`,
+        'X-XSRF-TOKEN': getCsrfToken()
+      },
+      credentials: 'include'
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Failed to fetch tournament:', error);
+    throw error;
+  }
+};

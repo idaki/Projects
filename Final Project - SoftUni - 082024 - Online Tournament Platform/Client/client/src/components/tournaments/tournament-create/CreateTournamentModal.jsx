@@ -18,6 +18,7 @@ export default function CreateTournamentModal({ onClose, onCreate }) {
 
   const [errors, setErrors] = useState({});
   const [games, setGames] = useState([]);
+  const [serverError, setServerError] = useState(''); // State to store server error message
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,6 +52,7 @@ export default function CreateTournamentModal({ onClose, onCreate }) {
         onClose(); // Close the modal
       } catch (error) {
         console.error('Failed to create tournament:', error);
+        setServerError(error.message); // Set the server error message
       }
     } else {
       setErrors(errors);
@@ -61,6 +63,8 @@ export default function CreateTournamentModal({ onClose, onCreate }) {
     <div className="container mt-5">
       <form onSubmit={handleSubmit}>
         <h1>Create Tournament</h1>
+
+        {serverError && <div className="alert alert-danger">{serverError}</div>} {/* Display server error message */}
 
         <div className="form-group mb-3">
           <label htmlFor="name">Tournament name:</label>
