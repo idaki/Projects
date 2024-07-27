@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './TournamentCard.module.css';
 
 export default function TournamentCard({ id, title, description, img, onLearnMore }) {
     return (

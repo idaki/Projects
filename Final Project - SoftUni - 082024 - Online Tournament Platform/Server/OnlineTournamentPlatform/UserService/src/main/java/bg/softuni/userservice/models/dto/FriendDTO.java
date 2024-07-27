@@ -10,10 +10,21 @@ public class FriendDTO {
     @JsonProperty("last_name")
     private String lastName;
 
-    public FriendDTO(long id, String firstName, String lastName) {
+    private String avatar;
+
+    public FriendDTO(long id, String firstName, String lastName, String avatar) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.avatar = avatar;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public long getId() {

@@ -22,6 +22,9 @@ public class UserProfile {
     @Column
     private String lastName;
 
+    @Column
+    private String avatar;
+
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;

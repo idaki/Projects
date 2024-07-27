@@ -56,7 +56,7 @@ const ProfileModal = () => {
       <div className={`row align-items-center ${styles.profileHeader}`}>
         <div className="col text-center">
           <img
-            src="https://static.wikia.nocookie.net/felixthecat/images/4/49/Poindexter.gif/revision/latest?cb=20100428191852"
+             src={userProfile ? userProfile.avatar : "https://static.wikia.nocookie.net/felixthecat/images/4/49/Poindexter.gif/revision/latest?cb=20100428191852"}
             alt="Profile"
             className="rounded-circle"
             height="100"

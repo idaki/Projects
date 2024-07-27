@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FriendCard from './FriendCard';
+import FriendCard from './friend-card/FriendCard';
 import * as friendsService from '../../services/friendsService';
 import Pagination from '../pagination/PaginationModal';
 
@@ -56,7 +56,7 @@ export default function FriendsContainer({ reload }) {
                     id={friend.id}
                     first_name={friend.first_name}
                     last_name={friend.last_name}
-                    img={friend.img} // Assuming img is a part of the friend's data
+                    avatar={friend.avatar} // Assuming avatar is a part of the friend's data
                   />
                 </div>
               ))}

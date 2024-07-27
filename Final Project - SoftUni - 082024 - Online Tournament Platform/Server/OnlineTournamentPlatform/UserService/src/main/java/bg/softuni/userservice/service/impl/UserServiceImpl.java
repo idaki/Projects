@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
         userProfile.setFirstName("");
         userProfile.setLastName("");
         userProfile.setUser(user);
-
+        userProfile.setAvatar("/assets/avatars/dexter.png");
         user.setUserProfile(userProfile);
         user = userRepository.save(user);
         UserSecurity userSecurity = new UserSecurity();
@@ -141,6 +141,7 @@ public class UserServiceImpl implements UserService {
         userDetails.setFirstName(user.getUserProfile().getFirstName());
         userDetails.setLastName(user.getUserProfile().getLastName());
         userDetails.setEmail(user.getEmail());
+        userDetails.setAvatar(user.getUserProfile().getAvatar());
         return userDetails;
     }
 
@@ -178,6 +179,7 @@ public class UserServiceImpl implements UserService {
         UserProfile userProfile = new UserProfile();
         userProfile.setFirstName("");
         userProfile.setLastName("");
+        userProfile.setAvatar("/assets/avatars/dexter.png");
         userProfile.setUser(user); // Set the user reference in UserProfile
         user.setUserProfile(userProfile);
 

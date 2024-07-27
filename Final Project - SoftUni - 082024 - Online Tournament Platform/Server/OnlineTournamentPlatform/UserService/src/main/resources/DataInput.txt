@@ -64,68 +64,67 @@ INSERT INTO users (username, email) VALUES
                                         ('user60', 'user60@example.com');
 
 -- Insert into user_profiles table
-INSERT INTO user_profiles (user_id, first_name, last_name) VALUES
+INSERT INTO user_profiles (user_id, first_name, last_name, avatar) VALUES
 
-                                                               ((SELECT id FROM users WHERE username = 'user2'), 'User2FirstName', 'User2LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user3'), 'User3FirstName', 'User3LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user4'), 'User4FirstName', 'User4LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user5'), 'User5FirstName', 'User5LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user6'), 'User6FirstName', 'User6LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user7'), 'User7FirstName', 'User7LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user8'), 'User8FirstName', 'User8LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user9'), 'User9FirstName', 'User9LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user10'), 'User10FirstName', 'User10LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user11'), 'User11FirstName', 'User11LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user12'), 'User12FirstName', 'User12LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user13'), 'User13FirstName', 'User13LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user14'), 'User14FirstName', 'User14LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user15'), 'User15FirstName', 'User15LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user16'), 'User16FirstName', 'User16LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user17'), 'User17FirstName', 'User17LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user18'), 'User18FirstName', 'User18LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user19'), 'User19FirstName', 'User19LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user20'), 'User20FirstName', 'User20LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user21'), 'User21FirstName', 'User21LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user22'), 'User22FirstName', 'User22LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user23'), 'User23FirstName', 'User23LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user24'), 'User24FirstName', 'User24LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user25'), 'User25FirstName', 'User25LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user26'), 'User26FirstName', 'User26LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user27'), 'User27FirstName', 'User27LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user28'), 'User28FirstName', 'User28LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user29'), 'User29FirstName', 'User29LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user30'), 'User30FirstName', 'User30LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user31'), 'User31FirstName', 'User31LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user32'), 'User32FirstName', 'User32LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user33'), 'User33FirstName', 'User33LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user34'), 'User34FirstName', 'User34LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user35'), 'User35FirstName', 'User35LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user36'), 'User36FirstName', 'User36LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user37'), 'User37FirstName', 'User37LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user38'), 'User38FirstName', 'User38LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user39'), 'User39FirstName', 'User39LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user40'), 'User40FirstName', 'User40LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user41'), 'User41FirstName', 'User41LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user42'), 'User42FirstName', 'User42LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user43'), 'User43FirstName', 'User43LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user44'), 'User44FirstName', 'User44LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user45'), 'User45FirstName', 'User45LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user46'), 'User46FirstName', 'User46LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user47'), 'User47FirstName', 'User47LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user48'), 'User48FirstName', 'User48LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user49'), 'User49FirstName', 'User49LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user50'), 'User50FirstName', 'User50LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user51'), 'User51FirstName', 'User51LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user52'), 'User52FirstName', 'User52LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user53'), 'User53FirstName', 'User53LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user54'), 'User54FirstName', 'User54LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user55'), 'User55FirstName', 'User55LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user56'), 'User56FirstName', 'User56LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user57'), 'User57FirstName', 'User57LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user58'), 'User58FirstName', 'User58LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user59'), 'User59FirstName', 'User59LastName'),
-                                                               ((SELECT id FROM users WHERE username = 'user60'), 'User60FirstName', 'User60LastName');
-
+                                                                       ((SELECT id FROM users WHERE username = 'user2'), 'User2FirstName', 'User2LastName', '/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user3'), 'User3FirstName', 'User3LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user4'), 'User4FirstName', 'User4LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user5'), 'User5FirstName', 'User5LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user6'), 'User6FirstName', 'User6LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user7'), 'User7FirstName', 'User7LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user8'), 'User8FirstName', 'User8LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user9'), 'User9FirstName', 'User9LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user10'), 'User10FirstName', 'User10LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user11'), 'User11FirstName', 'User11LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user12'), 'User12FirstName', 'User12LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user13'), 'User13FirstName', 'User13LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user14'), 'User14FirstName', 'User14LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user15'), 'User15FirstName', 'User15LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user16'), 'User16FirstName', 'User16LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user17'), 'User17FirstName', 'User17LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user18'), 'User18FirstName', 'User18LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user19'), 'User19FirstName', 'User19LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user20'), 'User20FirstName', 'User20LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user21'), 'User21FirstName', 'User21LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user22'), 'User22FirstName', 'User22LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user23'), 'User23FirstName', 'User23LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user24'), 'User24FirstName', 'User24LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user25'), 'User25FirstName', 'User25LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user26'), 'User26FirstName', 'User26LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user27'), 'User27FirstName', 'User27LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user28'), 'User28FirstName', 'User28LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user29'), 'User29FirstName', 'User29LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user30'), 'User30FirstName', 'User30LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user31'), 'User31FirstName', 'User31LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user32'), 'User32FirstName', 'User32LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user33'), 'User33FirstName', 'User33LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user34'), 'User34FirstName', 'User34LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user35'), 'User35FirstName', 'User35LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user36'), 'User36FirstName', 'User36LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user37'), 'User37FirstName', 'User37LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user38'), 'User38FirstName', 'User38LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user39'), 'User39FirstName', 'User39LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user40'), 'User40FirstName', 'User40LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user41'), 'User41FirstName', 'User41LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user42'), 'User42FirstName', 'User42LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user43'), 'User43FirstName', 'User43LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user44'), 'User44FirstName', 'User44LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user45'), 'User45FirstName', 'User45LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user46'), 'User46FirstName', 'User46LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user47'), 'User47FirstName', 'User47LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user48'), 'User48FirstName', 'User48LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user49'), 'User49FirstName', 'User49LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user50'), 'User50FirstName', 'User50LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user51'), 'User51FirstName', 'User51LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user52'), 'User52FirstName', 'User52LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user53'), 'User53FirstName', 'User53LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user54'), 'User54FirstName', 'User54LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user55'), 'User55FirstName', 'User55LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user56'), 'User56FirstName', 'User56LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user57'), 'User57FirstName', 'User57LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user58'), 'User58FirstName', 'User58LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user59'), 'User59FirstName', 'User59LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user60'), 'User60FirstName', 'User60LastName' ,'/public/assets/avatars/dexter.png');
 
 
 INSERT INTO games (title) VALUES
@@ -142,33 +141,33 @@ INSERT INTO games (title) VALUES
 
 -- Insert assets for each game
 -- Gigantic
-INSERT INTO assets (name, url_asset, game_id) VALUES ('Gigantic Image', '/assets/games/gig.jpg', 1);
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Gigantic Image', '/public/assets/games/gig.jpg', 1);
 
 -- Neverwinter
-INSERT INTO assets (name, url_asset, game_id) VALUES ('Neverwinter Image', '/assets/games/nw.jpg', 2);
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Neverwinter Image', '/public/assets/games/nw.jpg', 2);
 
 -- Star Trek Online
-INSERT INTO assets (name, url_asset, game_id) VALUES ('Star Trek Online Image', '/assets/games/sto.jpg', 3);
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Star Trek Online Image', '/public/assets/games/sto.jpg', 3);
 
 -- PWI
-INSERT INTO assets (name, url_asset, game_id) VALUES ('PWI Image', '/assets/games/pwi.jpg', 4);
+INSERT INTO assets (name, url_asset, game_id) VALUES ('PWI Image', '/public/assets/games/pwi.jpg', 4);
 
 -- Subnautica
-INSERT INTO assets (name, url_asset, game_id) VALUES ('Subnautica Image', '/assets/games/sub.jpg', 5);
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Subnautica Image', '/public/assets/games/sub.jpg', 5);
 
 -- Remnant: From The Ashes
-INSERT INTO assets (name, url_asset, game_id) VALUES ('Remnant: From The Ashes Image', '/assets/games/rem.jpg', 6);
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Remnant: From The Ashes Image', '/public/assets/games/rem.jpg', 6);
 
 -- Forsaken World
-INSERT INTO assets (name, url_asset, game_id) VALUES ('Forsaken World Image', '/assets/games/fw.jpg', 7;
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Forsaken World Image', '/public/assets/games/fw.jpg', 7);
 
 -- Hob
-INSERT INTO assets (name, url_asset, game_id) VALUES ('Hob Image', 'client/public/assets/games/hob.jpg', 8);
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Hob Image', '/public/assets/games/hob.jpg', 8);
 -- Torchlight II
 
-INSERT INTO assets (name, url_asset, game_id) VALUES ('Torchlight II Image', '/assets/games/tl2.jpg', 9;
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Torchlight II Image', '/public/assets/games/tl2.jpg', 9);
 -- Torchlight III
-INSERT INTO assets (name, url_asset, game_id) VALUES ('Torchlight II Image', '/assets/games/t3.jpg', 10 ;
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Torchlight III Image', '/public/assets/games/tl3.jpg', 10) ;
 
 -- Insert Tournaments and Teams
 
