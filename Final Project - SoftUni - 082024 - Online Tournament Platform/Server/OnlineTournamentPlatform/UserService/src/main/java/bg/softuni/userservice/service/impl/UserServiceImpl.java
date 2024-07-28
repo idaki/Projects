@@ -138,6 +138,11 @@ public class UserServiceImpl implements UserService {
 
     public UserDetailsExportDTO getUserDetails(String username) {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
+        UserDetailsExportDTO userDetails = getUserDetailsExportDTO(user);
+        return userDetails;
+    }
+
+    private static UserDetailsExportDTO getUserDetailsExportDTO(User user) {
         UserDetailsExportDTO userDetails = new UserDetailsExportDTO();
         userDetails.setUsername(user.getUsername());
         userDetails.setFirstName(user.getUserProfile().getFirstName());
@@ -222,5 +227,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public UserDetailsExportDTO searchUser(String query) {
+        Optional<User> userOpt = userRepository.findByUsername(query);
+        if (userOpt.isPresent()){
+            UserDetailsExportDTO userDetails = getUserDetailsExportDTO(userOpt.get());
+            return userDetails;
+        }
+        return null;
     }
 }

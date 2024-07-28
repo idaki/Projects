@@ -1,7 +1,7 @@
 package bg.softuni.userservice.service;
 
 
-;
+
 import bg.softuni.userservice.models.dto.gson.UserDetailsExportDTO;
 import bg.softuni.userservice.models.entity.user.User;
 
@@ -34,4 +34,6 @@ public interface UserService  {
     List<User> findAllUsers();
 
     void deleteUserById(Long id);
+
+    UserDetailsExportDTO searchUser(String query);
 }

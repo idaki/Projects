@@ -5,10 +5,11 @@ import bg.softuni.userservice.models.dto.gson.UserDetailsExportDTO;
 import bg.softuni.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api")
 public class UserDetailsController {
 
     private final UserService userService;
@@ -19,7 +20,7 @@ public class UserDetailsController {
         this.userService = userService;
         this.jwtService = jwtService;
     }
-    @GetMapping("/details")
+    @GetMapping("/user/details")
     public ResponseEntity<UserDetailsExportDTO> getUserDetails(@RequestHeader("Authorization") String token) {
         // Extract the JWT token from the Bearer string
 
@@ -31,6 +32,25 @@ public class UserDetailsController {
         UserDetailsExportDTO userDetails = userService.getUserDetails(username);
         return ResponseEntity.ok(userDetails);
     }
+
+
+
+    @GetMapping("/admin/search")
+    public ResponseEntity<UserDetailsExportDTO> searchUsers(@RequestHeader("Authorization") String token,
+                                                            @RequestParam("query") String query) {
+        // Extract the JWT token from the Bearer string
+        String jwt = token.substring(7).trim();
+
+        // Extract username from JWT to validate the request
+        String username = jwtService.extractAllClaims(jwt).getSubject();
+
+        // Fetch users based on search query
+        UserDetailsExportDTO userDetails = userService.searchUser(query);
+
+        return ResponseEntity.ok(userDetails);
+    }
+
+
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteUser(@RequestHeader("Authorization") String token) {
         try {
