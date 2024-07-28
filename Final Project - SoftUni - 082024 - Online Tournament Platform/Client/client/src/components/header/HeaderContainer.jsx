@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import CreateTournamentModal from '../tournaments/tournament-create/CreateTournamentModal';
 
 Modal.setAppElement('#root');
 

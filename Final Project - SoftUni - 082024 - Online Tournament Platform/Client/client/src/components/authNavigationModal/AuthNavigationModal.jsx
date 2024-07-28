@@ -1,7 +1,12 @@
-import React from 'react';
-import styles from './AuthNavigationModal.module.css';
+// src/components/authNavigationModal/AuthNavigationModal.jsx
 
-export default function AuthNavigationModal({ setMainContent }) {
+import React, { useContext } from 'react';
+import styles from './AuthNavigationModal.module.css';
+import ViewContext from '../../context/viewContext'; // Ensure correct import path
+
+export default function AuthNavigationModal() {
+  const { setMainContent } = useContext(ViewContext);
+
   return (
     <div className={styles.navigation}>
       <div className="nav flex-column">

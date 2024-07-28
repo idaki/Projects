@@ -1,24 +1,23 @@
+// src/components/profile/ProfileModal.jsx
+
 import React, { useState, useEffect, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
-import styles from '../profile/ProfileModal.module.css';
-
-import AuthNavigationModal from '../authNavigationModal/AuthNavigationModal';
+import styles from './ProfileModal.module.css';
+import AuthContext from '../../context/authContext';
+import ViewContext from '../../context/viewContext'; // Ensure correct import path
+import { getUserDetails } from '../../services/userDetailsService';
 import SidebarModal from '../sidebar/SidebarModal';
 import MainFeedModal from '../mainfeed/MainFeedModal';
 import SettingsContainer from '../settings/settings-container/SettingsModal';
-
-import AuthContext from '../../context/authContext';
-import { getUserDetails } from '../../services/userDetailsService';
-
+import AuthNavigationModal from '../authNavigationModal/AuthNavigationModal';
 
 const ProfileModal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
   const [error, setError] = useState(null);
-  const [mainContent, setMainContent] = useState('tournaments'); // Default to 'tournaments'
   const { auth } = useContext(AuthContext);
+  const { mainContent, setMainContent } = useContext(ViewContext);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -56,7 +55,7 @@ const ProfileModal = () => {
       <div className={`row align-items-center ${styles.profileHeader}`}>
         <div className="col text-center">
           <img
-             src={userProfile ? userProfile.avatar : "https://static.wikia.nocookie.net/felixthecat/images/4/49/Poindexter.gif/revision/latest?cb=20100428191852"}
+            src="https://static.wikia.nocookie.net/felixthecat/images/4/49/Poindexter.gif/revision/latest?cb=20100428191852"
             alt="Profile"
             className="rounded-circle"
             height="100"
@@ -74,7 +73,7 @@ const ProfileModal = () => {
 
       <div className="row">
         <div className="col-md-3">
-          <AuthNavigationModal setMainContent={setMainContent} />
+          <AuthNavigationModal />
         </div>
         <div className="col-md-9">
           <SidebarModal isOpen={sidebarOpen} toggle={toggleSidebar} openSettings={openSettings} />

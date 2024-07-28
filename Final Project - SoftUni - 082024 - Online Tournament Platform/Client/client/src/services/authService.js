@@ -1,4 +1,3 @@
-// authService.js
 import { fetchWithSettings, getCsrfToken, getJwtToken } from '../utils/utils';
 import { BASE_URL } from '../config/config';
 

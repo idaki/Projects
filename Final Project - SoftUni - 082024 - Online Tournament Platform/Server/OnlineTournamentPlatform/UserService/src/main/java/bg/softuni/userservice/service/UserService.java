@@ -5,6 +5,7 @@ package bg.softuni.userservice.service;
 import bg.softuni.userservice.models.dto.gson.UserDetailsExportDTO;
 import bg.softuni.userservice.models.entity.user.User;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -29,4 +30,8 @@ public interface UserService  {
     void InitUser(String roleInput, String password, String name);
 
     User findUserByToken(String jwt);
+
+    List<User> findAllUsers();
+
+    void deleteUserById(Long id);
 }

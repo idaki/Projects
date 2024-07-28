@@ -10,32 +10,47 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class JwtServiceImpl implements JwtService {
 
     private final UserRepository userRepository;
     private final TokenRepository tokenRepository;
+    private final UserDetailsService userDetailsService;
     @Value("${jwt.secretkey}")
     private String secretKey;
 
     private long expirationTime = 1000 * 60 * 60*1; // 1h min in milliseconds
 
-    public JwtServiceImpl(UserRepository userRepository, TokenRepository tokenRepository) {
+    public JwtServiceImpl(UserRepository userRepository, TokenRepository tokenRepository, UserDetailsService userDetailsService) {
         this.userRepository = userRepository;
         this.tokenRepository = tokenRepository;
+        this.userDetailsService = userDetailsService;
     }
 
     @Override
     public String generateToken(String username) {
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
         String token = Jwts.builder().
                 subject(username)
+                 .claim("roles", userDetails.getAuthorities().stream()
+                .filter(grantedAuthority -> grantedAuthority.getAuthority().startsWith("ROLE_"))
+                .map(Object::toString)
+                .collect(Collectors.joining(",")))
+                .claim("permissions", userDetails.getAuthorities().stream()
+                        .filter(grantedAuthority -> !grantedAuthority.getAuthority().startsWith("ROLE_"))
+                        .map(Object::toString)
+                        .collect(Collectors.joining(",")))
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + expirationTime))
                 .signWith(getSigninKey())

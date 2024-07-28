@@ -64,6 +64,8 @@ public class SecurityConfig {
                                 "/api/teams/my-teams",
                                 "/api/user/details"
                         ).permitAll()
+                        .requestMatchers("/api/admin/**").hasRole("SUPER_ADMIN")
+                        .requestMatchers("/api/user/**").hasAnyRole("SUPER_ADMIN", "ADMIN_USER")
                         .anyRequest().authenticated()
                 )
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
