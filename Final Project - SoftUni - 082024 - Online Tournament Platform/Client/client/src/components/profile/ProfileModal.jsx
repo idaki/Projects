@@ -2,17 +2,16 @@
 
 import React, { useState, useEffect, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from './UserProfileModal.module.css';
-import AuthContext from '../../../context/authContext';
-import ViewContext from '../../../context/viewContext'; // Ensure correct import path
-import { getUserDetails } from '../../../services/userDetailsService';
-import SidebarModal from '../../sidebar/SidebarModal';
-import MainFeedModal from '../../mainfeed/MainFeedModal';
-import SettingsContainer from '../../settings/settings-container/SettingsModal';
-import AuthNavigationModal from '../../authNavigationModal/AuthNavigationModal';
+import styles from './ProfileModal.module.css';
+import AuthContext from '../../context/authContext';
+import ViewContext from '../../context/viewContext'; // Ensure correct import path
+import { getUserDetails } from '../../services/userDetailsService';
+import SidebarModal from '../sidebar/SidebarModal';
+import MainFeedModal from '../mainfeed/MainFeedModal';
+import SettingsContainer from '../settings/settings-container/SettingsModal';
+import AuthNavigationModal from '../authNavigationModal/AuthNavigationModal';
 
-
-const UserProfileModal = () => {
+const ProfileModal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
@@ -52,11 +51,11 @@ const UserProfileModal = () => {
   }
 
   return (
-    <div className={`container-fluid ${styles.containerFluid}`}>
+    <div className="container-fluid">
       <div className={`row align-items-center ${styles.profileHeader}`}>
         <div className="col text-center">
           <img
-             src={userProfile ? userProfile.avatar : "https://static.wikia.nocookie.net/felixthecat/images/4/49/Poindexter.gif/revision/latest?cb=20100428191852"}
+            src={userProfile ? userProfile.avatar : "https://static.wikia.nocookie.net/felixthecat/images/4/49/Poindexter.gif/revision/latest?cb=20100428191852"}
             alt="Profile"
             className="rounded-circle"
             height="100"
@@ -72,10 +71,11 @@ const UserProfileModal = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-md-3 col-12  bg-light" >
+        
+        <div className="col-md-3 bg-light">
           <AuthNavigationModal />
         </div>
-        <div className="col-md-9 col-12">
+        <div className="col-md-9">
           <SidebarModal isOpen={sidebarOpen} toggle={toggleSidebar} openSettings={openSettings} />
           {!settingsOpen && <MainFeedModal currentView={mainContent} setMainContent={setMainContent} />}
           <SettingsContainer isOpen={settingsOpen} toggle={closeSettings} />
@@ -85,4 +85,4 @@ const UserProfileModal = () => {
   );
 };
 
-export default UserProfileModal;
+export default ProfileModal;
