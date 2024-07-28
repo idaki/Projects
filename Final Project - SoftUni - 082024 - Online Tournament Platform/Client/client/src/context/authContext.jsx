@@ -1,11 +1,28 @@
-import React, { createContext, useCallback } from 'react';
+import React, { createContext, useCallback, useEffect } from 'react';
 import { login, logout, registerConsumer, resetPassword, updatePasswordAndLogin } from '../services/authService';
-import usePersistedState from '../hooks/usePersistedState'; // Ensure correct import path
+import usePersistedState from '../hooks/usePersistedState';
+import {jwtDecode} from 'jwt-decode';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = usePersistedState('authData', null);
+
+  useEffect(() => {
+    const checkTokenExpiration = () => {
+      if (auth && auth.expiresAt && Date.now() >= auth.expiresAt) {
+        setAuth(null);
+        localStorage.removeItem('authData');
+        console.warn('Session expired, please log in again.');
+      }
+    };
+
+    checkTokenExpiration();
+
+    const interval = setInterval(checkTokenExpiration, 60000); // Check every minute
+
+    return () => clearInterval(interval);
+  }, [auth]);
 
   const loginHandler = async (username, password) => {
     try {
@@ -21,6 +38,7 @@ export const AuthProvider = ({ children }) => {
     try {
       await logout();
       setAuth(null);
+      localStorage.removeItem('authData');
     } catch (error) {
       console.error('Logout failed', error);
     }

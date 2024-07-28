@@ -9,6 +9,8 @@ export function getCsrfToken() {
   return match ? match[2] : '';
 }
 
+
+
 export async function fetchWithSettings(url, options) {
   const defaultHeaders = {
       'Content-Type': 'application/json',

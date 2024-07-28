@@ -1,16 +1,26 @@
 import { fetchWithSettings, getCsrfToken, getJwtToken } from '../utils/utils';
 import { BASE_URL } from '../config/config';
+import { jwtDecode } from "jwt-decode";
 
-// Login function
+
 export const login = async (username, password) => {
   try {
-    const result = await fetchWithSettings(`${BASE_URL}/login`, {
+    const response = await fetchWithSettings(`${BASE_URL}/login`, {
       method: 'POST',
       body: JSON.stringify({ usernameOrEmail: username, password }),
     });
 
-    console.log('Login successful, received token:', result);
-    const authData = { accessToken: result };
+    console.log('Login successful, received token:', response);
+
+    const decoded = jwtDecode(response);
+    console.log('Decoded token:', decoded);
+
+    const authData = {
+      accessToken: response,
+      roles: decoded.roles || [], // Ensure roles is always an array
+      expiresAt: decoded.exp * 1000, // Convert to milliseconds
+    };
+
     localStorage.setItem('authData', JSON.stringify(authData));
     return authData;
   } catch (error) {
@@ -18,6 +28,7 @@ export const login = async (username, password) => {
     throw error;
   }
 };
+
 
 // Register function
 export const registerConsumer = async (username, password, email) => {
