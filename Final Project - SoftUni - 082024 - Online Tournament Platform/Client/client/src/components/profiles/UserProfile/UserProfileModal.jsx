@@ -11,7 +11,7 @@ import MainFeedModal from '../../mainfeed/MainFeedModal';
 import SettingsContainer from '../../settings/settings-container/SettingsModal';
 import AuthNavigationModal from '../../authNavigationModal/AuthNavigationModal';
 
-const AdminProfileModal = () => {
+const UserProfileModal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
@@ -85,4 +85,4 @@ const AdminProfileModal = () => {
   );
 };
 
-export default AdminProfileModal;
+export default UserProfileModal;

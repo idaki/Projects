@@ -9,7 +9,7 @@ export default function AuthNavigationModal() {
 
   return (
     <div className={styles.navigation}>
-      <div className="nav flex-column">
+      <div className="nav flex-column ">
         <a className="nav-link active" href="#" onClick={() => setMainContent('friends')}>Friends</a>
         <a className="nav-link" href="#" onClick={() => setMainContent('tournaments')}>My Tournaments</a>
         <a className="nav-link" href="#" onClick={() => setMainContent('teams')}>My Teams</a>
