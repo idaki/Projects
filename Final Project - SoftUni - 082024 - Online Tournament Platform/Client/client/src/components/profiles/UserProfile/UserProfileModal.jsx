@@ -11,6 +11,7 @@ import MainFeedModal from '../../mainfeed/MainFeedModal';
 import SettingsContainer from '../../settings/settings-container/SettingsModal';
 import AuthNavigationModal from '../../authNavigationModal/AuthNavigationModal';
 
+
 const UserProfileModal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -51,7 +52,7 @@ const UserProfileModal = () => {
   }
 
   return (
-    <div className="container-fluid">
+    <div className={`container-fluid ${styles.containerFluid}`}>
       <div className={`row align-items-center ${styles.profileHeader}`}>
         <div className="col text-center">
           <img
@@ -71,11 +72,10 @@ const UserProfileModal = () => {
         </div>
       </div>
       <div className="row">
-        
-        <div className="col-md-3">
+        <div className="col-md-3 col-12  bg-light" >
           <AuthNavigationModal />
         </div>
-        <div className="col-md-9">
+        <div className="col-md-9 col-12">
           <SidebarModal isOpen={sidebarOpen} toggle={toggleSidebar} openSettings={openSettings} />
           {!settingsOpen && <MainFeedModal currentView={mainContent} setMainContent={setMainContent} />}
           <SettingsContainer isOpen={settingsOpen} toggle={closeSettings} />

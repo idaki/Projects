@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "i18next": "^23.12.2",
     "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^15.0.0",
     "react-modal": "^3.16.1"
   },
   "devDependencies": {

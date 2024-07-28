@@ -72,7 +72,7 @@ const AdminProfileModal = () => {
       </div>
       <div className="row">
         
-        <div className="col-md-3">
+        <div className="col-md-3 bg-light">
           <AuthNavigationModal />
         </div>
         <div className="col-md-9">
