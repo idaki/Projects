@@ -1,5 +1,3 @@
-// src/context/viewContext.jsx
-
 import React, { createContext, useState } from 'react';
 
 const ViewContext = createContext();

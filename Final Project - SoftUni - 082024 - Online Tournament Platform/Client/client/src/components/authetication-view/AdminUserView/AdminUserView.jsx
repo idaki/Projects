@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import MainFeedModal from '../../mainfeed/MainFeedModal';
 import ViewContext from './../../../context/viewContext';
 
+import UserProfileModal from '../../profiles/UserProfile/UserProfileModal';
+
 export default function AdminUserView() {
   const { mainContent, setMainContent } = useContext(ViewContext);
   const [reload, setReload] = useState(false);
@@ -13,14 +15,8 @@ export default function AdminUserView() {
   }, [mainContent]);
 
   return (
-    <div className={`col-md-9`}>
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">{mainContent.toUpperCase()}</h5>
-        </div>
-      </div>
-      <MainFeedModal />
-      <h1>Hello Admin User</h1>
+    <div >
+   <UserProfileModal/>
     </div>
   );
 }

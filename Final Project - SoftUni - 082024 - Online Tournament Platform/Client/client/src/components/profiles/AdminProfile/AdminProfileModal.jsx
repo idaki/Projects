@@ -2,16 +2,16 @@
 
 import React, { useState, useEffect, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from './ProfileModal.module.css';
-import AuthContext from '../../context/authContext';
-import ViewContext from '../../context/viewContext'; // Ensure correct import path
-import { getUserDetails } from '../../services/userDetailsService';
-import SidebarModal from '../sidebar/SidebarModal';
-import MainFeedModal from '../mainfeed/MainFeedModal';
-import SettingsContainer from '../settings/settings-container/SettingsModal';
-import AuthNavigationModal from '../authNavigationModal/AuthNavigationModal';
+import styles from './AdminProfileModal.module.css';
+import AuthContext from '../../../context/authContext';
+import ViewContext from '../../../context/viewContext'; // Ensure correct import path
+import { getUserDetails } from '../../../services/userDetailsService';
+import SidebarModal from '../../sidebar/SidebarModal';
+import MainFeedModal from '../../mainfeed/MainFeedModal';
+import SettingsContainer from '../../settings/settings-container/SettingsModal';
+import AuthNavigationModal from '../../authNavigationModal/AuthNavigationModal';
 
-const ProfileModal = () => {
+const AdminProfileModal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
@@ -55,7 +55,7 @@ const ProfileModal = () => {
       <div className={`row align-items-center ${styles.profileHeader}`}>
         <div className="col text-center">
           <img
-            src="https://static.wikia.nocookie.net/felixthecat/images/4/49/Poindexter.gif/revision/latest?cb=20100428191852"
+            src={userProfile ? userProfile.avatar : "https://static.wikia.nocookie.net/felixthecat/images/4/49/Poindexter.gif/revision/latest?cb=20100428191852"}
             alt="Profile"
             className="rounded-circle"
             height="100"
@@ -70,8 +70,8 @@ const ProfileModal = () => {
           {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
       </div>
-
       <div className="row">
+        
         <div className="col-md-3">
           <AuthNavigationModal />
         </div>
@@ -85,4 +85,4 @@ const ProfileModal = () => {
   );
 };
 
-export default ProfileModal;
+export default AdminProfileModal;
