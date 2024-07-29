@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
         user = userRepository.save(user);
 
         // Assign role and hashed password
-        Role role = roleRepository.findByName(RoleEnum.ADMIN_PROFILE);
+        Role role = roleRepository.findByName(RoleEnum.ADMIN_USER);
         if (role == null) {
             throw new RuntimeException("Role not found");
         }

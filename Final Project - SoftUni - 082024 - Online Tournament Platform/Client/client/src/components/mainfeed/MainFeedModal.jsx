@@ -9,17 +9,18 @@ import WatchlistContainer from '../tournaments/watchlist/WatchListContainer';
 import CreateTournamentModal from '../tournaments/tournament-create/CreateTournamentModal';
 import TournamentProductPageContainer from '../tournaments/tournament-product-page/TournamentProductPageContainer/TournamentProducPageContainer';
 import ViewContext from '../../context/viewContext'; // Ensure correct import path
-import EditUser from '../admin-panel/edit-users/EditUserModal';
-
+import EditUserContainer from '../admin-panel/edit-users/EditUserModal';
+import SettingsContainer from '../settings/settings-container/SettingsModal'; // Adjust the import path as necessary
 
 export default function MainFeedModal() {
   const { mainContent, setMainContent } = useContext(ViewContext);
   const [reload, setReload] = useState(false);
   const [selectedTournament, setSelectedTournament] = useState(null);
+  const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
     if (mainContent === 'friends') {
-      setReload(prevReload => !prevReload); // Toggle reload state when 'friends' view is selected
+      setReload(prevReload => !prevReload);
     }
   }, [mainContent]);
 
@@ -30,7 +31,7 @@ export default function MainFeedModal() {
   };
 
   const handleClose = () => {
-    setMainContent('tournaments'); // Switch to the tournament view
+    setMainContent('tournaments');
   };
 
   const handleLearnMore = (tournament) => {
@@ -49,7 +50,8 @@ export default function MainFeedModal() {
       {mainContent === 'friends' && <FriendsContainer reload={reload} />}
       {mainContent === 'teams' && <TeamContainer />}
       {mainContent === 'watchlist' && <WatchlistContainer />}
-      {mainContent === 'edit-users' && <EditUser />}
+      {mainContent === 'edit-users' && <EditUserContainer setUserDetails={setUserDetails} />}
+      {userDetails && <SettingsContainer userDetails={userDetails} />}
       {mainContent === 'create-tournament' && (
         <CreateTournamentModal onCreate={handleCreate} onClose={handleClose} />
       )}

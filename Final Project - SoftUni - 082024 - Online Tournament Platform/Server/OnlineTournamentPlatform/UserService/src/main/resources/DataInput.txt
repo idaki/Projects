@@ -338,8 +338,8 @@ INSERT INTO roles (name) VALUES
                              ('USER_TEAM'),
                              ('USER_TOURNAMENT'),
                              ('MANAGER_TEAM'),
-                             ('MANAGER_TOURNAMENT'),
-                             ('ADMIN_PROFILE');
+                             ('MANAGER_TOURNAMENT');
+
 
 -- Insert Permissions (if not already present)
 INSERT INTO permissions (name) VALUES

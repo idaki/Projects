@@ -1,17 +1,16 @@
-import React, { createContext, useState, useEffect, useContext } from 'react'; // Ensure correct import
-import AuthContext from './authContext'; // Ensure correct import
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import AuthContext from './authContext';
 
 const ViewContext = createContext();
 
 export const ViewProvider = ({ children }) => {
-  const { auth } = useContext(AuthContext); // Access auth context
-
-  const [mainContent, setMainContent] = useState('tournaments'); // Default value
+  const { auth } = useContext(AuthContext);
+  const [mainContent, setMainContent] = useState('tournaments');
 
   useEffect(() => {
     if (auth) {
       if (auth.roles.includes('ROLE_ADMIN_SUPER')) {
-        setMainContent('edit_users');
+        setMainContent('edit-users');
       } else {
         setMainContent('tournaments');
       }

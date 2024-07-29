@@ -5,7 +5,7 @@ import AuthContext from '../../../context/authContext';
 import { deleteUser } from '../../../services/userDetailsService';
 import { Modal, Button } from 'react-bootstrap'; // Correctly import Modal and Button
 
-const SettingsContainer = ({ isOpen, toggle, userDetails }) => {
+const SettingsContainer = ({ userDetails }) => {
   const { setAuth } = useContext(AuthContext);
 
   const handleDelete = async () => {
@@ -20,26 +20,24 @@ const SettingsContainer = ({ isOpen, toggle, userDetails }) => {
   };
 
   return (
-    <Modal show={isOpen} onHide={toggle}>
-      <Modal.Header closeButton>
-        <Modal.Title>My Profile</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <form className="file-upload">
-          <div className="row mb-5 gx-5">
-            {userDetails && <ContactDetailsModal userDetails={userDetails} />}
-          </div>
-          <div className="row mb-5 gx-5">
-            <ChangePasswordModal />
-          </div>
-          <div className="gap-3 d-flex justify-content-center text-center">
-            <Button variant="danger" onClick={handleDelete}>Delete profile</Button>
-            <Button variant="primary">Update profile</Button>
-            <Button variant="primary" onClick={toggle}>Close</Button>
-          </div>
-        </form>
-      </Modal.Body>
-    </Modal>
+    <div className="settings-container">
+      <div className="my-5">
+        <h3>My Profile</h3>
+        <hr />
+      </div>
+      <form className="file-upload">
+        <div className="row mb-5 gx-5">
+          {userDetails && <ContactDetailsModal userDetails={userDetails} />}
+        </div>
+        <div className="row mb-5 gx-5">
+          <ChangePasswordModal />
+        </div>
+        <div className="gap-3 d-flex justify-content-center text-center">
+          <Button variant="danger" onClick={handleDelete}>Delete profile</Button>
+          <Button variant="primary">Update profile</Button>
+        </div>
+      </form>
+    </div>
   );
 };
 
