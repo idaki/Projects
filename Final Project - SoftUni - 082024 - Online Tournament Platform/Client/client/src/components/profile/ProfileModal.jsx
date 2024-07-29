@@ -1,22 +1,21 @@
-// src/components/profile/ProfileModal.jsx
-
 import React, { useState, useEffect, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './ProfileModal.module.css';
 import AuthContext from '../../context/authContext';
-import ViewContext from '../../context/viewContext'; // Ensure correct import path
+import ViewContext from '../../context/viewContext';
 import { getUserDetails } from '../../services/userDetailsService';
 import SidebarModal from '../sidebar/SidebarModal';
 import MainFeedModal from '../mainfeed/MainFeedModal';
 import SettingsContainer from '../settings/settings-container/SettingsModal';
 import AuthNavigationModal from '../authNavigationModal/AuthNavigationModal';
 
+
 const ProfileModal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [settingsOpen, setSettingsOpen] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
+  const [userDetails, setUserDetails] = useState(null);
   const [error, setError] = useState(null);
-  const { auth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
   const { mainContent, setMainContent } = useContext(ViewContext);
 
   useEffect(() => {
@@ -38,12 +37,18 @@ const ProfileModal = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  const openSettings = () => {
-    setSettingsOpen(true);
+  const openSettings = async () => {
+    try {
+      const details = await getUserDetails();
+      setUserDetails(details);
+      setMainContent('settings');
+    } catch (error) {
+      console.error('Failed to fetch user details:', error);
+    }
   };
 
-  const closeSettings = () => {
-    setSettingsOpen(false);
+  const handleLogout = () => {
+    setAuth(null);
   };
 
   if (!auth) {
@@ -59,8 +64,8 @@ const ProfileModal = () => {
             alt="Profile"
             className="rounded-circle"
             height="100"
-            onClick={toggleSidebar}
             style={{ cursor: 'pointer' }}
+            onClick={openSettings}
           />
           {userProfile ? (
             <h2>{userProfile.username}</h2>
@@ -71,14 +76,12 @@ const ProfileModal = () => {
         </div>
       </div>
       <div className="row">
-        
         <div className="col-md-3 bg-light">
           <AuthNavigationModal />
         </div>
         <div className="col-md-9">
           <SidebarModal isOpen={sidebarOpen} toggle={toggleSidebar} openSettings={openSettings} />
-          {!settingsOpen && <MainFeedModal currentView={mainContent} setMainContent={setMainContent} />}
-          <SettingsContainer isOpen={settingsOpen} toggle={closeSettings} />
+          <MainFeedModal userDetails={userDetails} />
         </div>
       </div>
     </div>
