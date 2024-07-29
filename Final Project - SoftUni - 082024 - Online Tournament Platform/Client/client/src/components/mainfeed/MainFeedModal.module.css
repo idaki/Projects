@@ -1,6 +1,7 @@
 /* MainFeedModal.module.css */
 .mainFeed {
   padding: 20px;
+  min-height: 70vh;
 }
 
 .card {
