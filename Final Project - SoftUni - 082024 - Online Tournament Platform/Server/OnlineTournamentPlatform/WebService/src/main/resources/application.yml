@@ -31,16 +31,17 @@ spring:
 
 logging:
   level:
+    root: INFO
     org:
-      hibernate:
-        type:
-          descriptor: TRACE
-        SQL: WARN
       springframework:
-        security: DEBUG
-        web: DEBUG
-      nodeValue: WARN
-    blog: DEBUG
+        jdbc:
+          datasource:
+            init: WARN
+      hibernate:
+        SQL: WARN
+        type:
+          descriptor:
+            sql: WARN
 
 
 

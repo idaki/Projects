@@ -1,0 +1,383 @@
+use tournament_db;
+
+-- Insert into users table
+INSERT INTO users (username, email) VALUES
+
+                                        ('user2', 'user2@example.com'),
+                                        ('user3', 'user3@example.com'),
+                                        ('user4', 'user4@example.com'),
+                                        ('user5', 'user5@example.com'),
+                                        ('user6', 'user6@example.com'),
+                                        ('user7', 'user7@example.com'),
+                                        ('user8', 'user8@example.com'),
+                                        ('user9', 'user9@example.com'),
+                                        ('user10', 'user10@example.com'),
+                                        ('user11', 'user11@example.com'),
+                                        ('user12', 'user12@example.com'),
+                                        ('user13', 'user13@example.com'),
+                                        ('user14', 'user14@example.com'),
+                                        ('user15', 'user15@example.com'),
+                                        ('user16', 'user16@example.com'),
+                                        ('user17', 'user17@example.com'),
+                                        ('user18', 'user18@example.com'),
+                                        ('user19', 'user19@example.com'),
+                                        ('user20', 'user20@example.com'),
+                                        ('user21', 'user21@example.com'),
+                                        ('user22', 'user22@example.com'),
+                                        ('user23', 'user23@example.com'),
+                                        ('user24', 'user24@example.com'),
+                                        ('user25', 'user25@example.com'),
+                                        ('user26', 'user26@example.com'),
+                                        ('user27', 'user27@example.com'),
+                                        ('user28', 'user28@example.com'),
+                                        ('user29', 'user29@example.com'),
+                                        ('user30', 'user30@example.com'),
+                                        ('user31', 'user31@example.com'),
+                                        ('user32', 'user32@example.com'),
+                                        ('user33', 'user33@example.com'),
+                                        ('user34', 'user34@example.com'),
+                                        ('user35', 'user35@example.com'),
+                                        ('user36', 'user36@example.com'),
+                                        ('user37', 'user37@example.com'),
+                                        ('user38', 'user38@example.com'),
+                                        ('user39', 'user39@example.com'),
+                                        ('user40', 'user40@example.com'),
+                                        ('user41', 'user41@example.com'),
+                                        ('user42', 'user42@example.com'),
+                                        ('user43', 'user43@example.com'),
+                                        ('user44', 'user44@example.com'),
+                                        ('user45', 'user45@example.com'),
+                                        ('user46', 'user46@example.com'),
+                                        ('user47', 'user47@example.com'),
+                                        ('user48', 'user48@example.com'),
+                                        ('user49', 'user49@example.com'),
+                                        ('user50', 'user50@example.com'),
+                                        ('user51', 'user51@example.com'),
+                                        ('user52', 'user52@example.com'),
+                                        ('user53', 'user53@example.com'),
+                                        ('user54', 'user54@example.com'),
+                                        ('user55', 'user55@example.com'),
+                                        ('user56', 'user56@example.com'),
+                                        ('user57', 'user57@example.com'),
+                                        ('user58', 'user58@example.com'),
+                                        ('user59', 'user59@example.com'),
+                                        ('user60', 'user60@example.com');
+
+-- Insert into user_profiles table
+INSERT INTO user_profiles (user_id, first_name, last_name, avatar) VALUES
+
+                                                                       ((SELECT id FROM users WHERE username = 'user2'), 'User2FirstName', 'User2LastName', '/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user3'), 'User3FirstName', 'User3LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user4'), 'User4FirstName', 'User4LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user5'), 'User5FirstName', 'User5LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user6'), 'User6FirstName', 'User6LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user7'), 'User7FirstName', 'User7LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user8'), 'User8FirstName', 'User8LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user9'), 'User9FirstName', 'User9LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user10'), 'User10FirstName', 'User10LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user11'), 'User11FirstName', 'User11LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user12'), 'User12FirstName', 'User12LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user13'), 'User13FirstName', 'User13LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user14'), 'User14FirstName', 'User14LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user15'), 'User15FirstName', 'User15LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user16'), 'User16FirstName', 'User16LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user17'), 'User17FirstName', 'User17LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user18'), 'User18FirstName', 'User18LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user19'), 'User19FirstName', 'User19LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user20'), 'User20FirstName', 'User20LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user21'), 'User21FirstName', 'User21LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user22'), 'User22FirstName', 'User22LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user23'), 'User23FirstName', 'User23LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user24'), 'User24FirstName', 'User24LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user25'), 'User25FirstName', 'User25LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user26'), 'User26FirstName', 'User26LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user27'), 'User27FirstName', 'User27LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user28'), 'User28FirstName', 'User28LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user29'), 'User29FirstName', 'User29LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user30'), 'User30FirstName', 'User30LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user31'), 'User31FirstName', 'User31LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user32'), 'User32FirstName', 'User32LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user33'), 'User33FirstName', 'User33LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user34'), 'User34FirstName', 'User34LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user35'), 'User35FirstName', 'User35LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user36'), 'User36FirstName', 'User36LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user37'), 'User37FirstName', 'User37LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user38'), 'User38FirstName', 'User38LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user39'), 'User39FirstName', 'User39LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user40'), 'User40FirstName', 'User40LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user41'), 'User41FirstName', 'User41LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                       ((SELECT id FROM users WHERE username = 'user42'), 'User42FirstName', 'User42LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user43'), 'User43FirstName', 'User43LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user44'), 'User44FirstName', 'User44LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user45'), 'User45FirstName', 'User45LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user46'), 'User46FirstName', 'User46LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user47'), 'User47FirstName', 'User47LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user48'), 'User48FirstName', 'User48LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user49'), 'User49FirstName', 'User49LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user50'), 'User50FirstName', 'User50LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user51'), 'User51FirstName', 'User51LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user52'), 'User52FirstName', 'User52LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user53'), 'User53FirstName', 'User53LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user54'), 'User54FirstName', 'User54LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user55'), 'User55FirstName', 'User55LastName' ,'/public/assets/avatars/dexter.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user56'), 'User56FirstName', 'User56LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user57'), 'User57FirstName', 'User57LastName' ,'/public/assets/avatars/supercow.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user58'), 'User58FirstName', 'User58LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user59'), 'User59FirstName', 'User59LastName' ,'/public/assets/avatars/scrooge.png'),
+                                                                        ((SELECT id FROM users WHERE username = 'user60'), 'User60FirstName', 'User60LastName' ,'/public/assets/avatars/dexter.png');
+
+
+INSERT INTO games (title) VALUES
+                              ('Gigantic'),
+                              ('Neverwinter'),
+                              ('Star Trek Online'),
+                              ('PWI'),
+                              ('Subnautica'),
+                              ('Remnant: From The Ashes'),
+                              ('Forsaken World'),
+                              ('Hob'),
+                              ('Torchlight II'),
+                              ('Torchlight III');
+
+-- Insert assets for each game
+-- Gigantic
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Gigantic Image', '/public/assets/games/gig.jpg', 1);
+
+-- Neverwinter
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Neverwinter Image', '/public/assets/games/nw.jpg', 2);
+
+-- Star Trek Online
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Star Trek Online Image', '/public/assets/games/sto.jpg', 3);
+
+-- PWI
+INSERT INTO assets (name, url_asset, game_id) VALUES ('PWI Image', '/public/assets/games/pwi.jpg', 4);
+
+-- Subnautica
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Subnautica Image', '/public/assets/games/sub.jpg', 5);
+
+-- Remnant: From The Ashes
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Remnant: From The Ashes Image', '/public/assets/games/rem.jpg', 6);
+
+-- Forsaken World
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Forsaken World Image', '/public/assets/games/fw.jpg', 7);
+
+-- Hob
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Hob Image', '/public/assets/games/hob.jpg', 8);
+-- Torchlight II
+
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Torchlight II Image', '/public/assets/games/tl2.jpg', 9);
+-- Torchlight III
+INSERT INTO assets (name, url_asset, game_id) VALUES ('Torchlight III Image', '/public/assets/games/tl3.jpg', 10) ;
+
+-- Insert Tournaments and Teams
+
+-- Insert tournaments
+INSERT INTO tournaments (id, name, category, summary, start_date, end_date, number_of_teams, team_size, manager_id, game_id) VALUES
+                                                                                                                                 (1, 'Forsaken World Tournament', 'MMORPG', 'A grand tournament in the world of Forsaken', '2024-08-01', '2024-08-10', 10, 5, 1, 1),
+                                                                                                                                 (2, 'Gigantic Tournament', 'Action', 'A competitive event for Gigantic players', '2024-08-15', '2024-08-20', 8, 4, 2, 2),
+                                                                                                                                 (3, 'Hob Tournament', 'Adventure', 'Explore and compete in the world of Hob', '2024-08-25', '2024-08-30', 6, 3, 3, 3),
+                                                                                                                                 (4, 'Neverwinter Tournament', 'RPG', 'Battle it out in Neverwinter', '2024-09-01', '2024-09-07', 12, 6, 4, 4),
+                                                                                                                                 (5, 'PWI Tournament', 'MMORPG', 'Perfect World International competition', '2024-09-10', '2024-09-15', 10, 5, 5, 5),
+                                                                                                                                 (6, 'Remnant: From The Ashes Tournament', 'Shooter', 'Survive and win in Remnant', '2024-09-20', '2024-09-25', 8, 4, 6, 6),
+                                                                                                                                 (7, 'Star Trek Online Tournament', 'MMORPG', 'Command your ship to victory', '2024-09-28', '2024-10-02', 10, 5, 7, 7),
+                                                                                                                                 (8, 'Subnautica Tournament', 'Survival', 'Dive deep and compete', '2024-10-05', '2024-10-10', 6, 3, 8, 8),
+                                                                                                                                 (9, 'Torchlight II Tournament', 'RPG', 'Torchlight II adventurers face off', '2024-10-15', '2024-10-20', 8, 4, 9, 9),
+                                                                                                                                 (10, 'Torchlight III Tournament', 'RPG', 'Torchlight III heroes clash', '2024-10-25', '2024-10-30', 10, 5, 10, 10);
+
+-- You can use any naming convention for teams
+INSERT INTO teams (name, team_size, tournament_id) VALUES
+                                                       ('Team 1', 4, 1),
+                                                       ('Team 2', 4, 1),
+                                                       ('Team 3', 4, 1),
+                                                       ('Team 4', 4, 1),
+                                                       ('Team 5', 4, 1),
+                                                       ('Team 1', 4, 2),
+                                                       ('Team 2', 4, 2),
+                                                       ('Team 3', 4, 2),
+                                                       ('Team 4', 4, 2),
+                                                       ('Team 5', 4, 2),
+                                                       ('Team 1', 4, 3),
+                                                       ('Team 2', 4, 3),
+                                                       ('Team 3', 4, 3),
+                                                       ('Team 4', 4, 3),
+                                                       ('Team 5', 4, 3),
+                                                       ('Team 1', 4, 4),
+                                                       ('Team 2', 4, 4),
+                                                       ('Team 3', 4, 4),
+                                                       ('Team 4', 4, 4),
+                                                       ('Team 5', 4, 4),
+                                                       ('Team 1', 4, 5),
+                                                       ('Team 2', 4, 5),
+                                                       ('Team 3', 4, 5),
+                                                       ('Team 4', 4, 5),
+                                                       ('Team 5', 4, 5),
+                                                       ('Team 1', 4, 6),
+                                                       ('Team 2', 4, 6),
+                                                       ('Team 3', 4, 6),
+                                                       ('Team 4', 4, 6),
+                                                       ('Team 5', 4, 6),
+                                                       ('Team 1', 4, 7),
+                                                       ('Team 2', 4, 7),
+                                                       ('Team 3', 4, 7),
+                                                       ('Team 4', 4, 7),
+                                                       ('Team 5', 4, 7),
+                                                       ('Team 1', 4, 8),
+                                                       ('Team 2', 4, 8),
+                                                       ('Team 3', 4, 8),
+                                                       ('Team 4', 4, 8),
+                                                       ('Team 5', 4, 8),
+                                                       ('Team 1', 4, 9),
+                                                       ('Team 2', 4, 9),
+                                                       ('Team 3', 4, 9),
+                                                       ('Team 4', 4, 9),
+                                                       ('Team 5', 4, 9),
+                                                       ('Team 1', 4, 10),
+                                                       ('Team 2', 4, 10),
+                                                       ('Team 3', 4, 10),
+                                                       ('Team 4', 4, 10),
+                                                       ('Team 5', 4, 10);
+
+
+
+-- Upate Tournament User Relation
+-- Forsaken World Tournament
+INSERT INTO team_users (team_id, user_id) VALUES
+                                              -- For Teams 1-5 of Forsaken World Tournament
+                                              (1, 41), (1, 42), (1, 43), (1, 2),
+                                              (2, 45), (2, 46), (2, 47), (2, 48),
+                                              (3, 49), (3, 50), (3, 51), (3, 52),
+                                              (4, 53), (4, 54), (4, 55), (4, 56),
+                                              (5, 57), (5, 58), (5, 59), (5, 60);
+
+-- Gigantic Tournament
+INSERT INTO team_users (team_id, user_id) VALUES
+                                              -- For Teams 1-5 of Gigantic Tournament
+                                              (6, 41), (6, 42), (6, 43), (6, 44),
+                                              (7, 45), (7, 46), (7, 47), (7, 48),
+                                              (8, 49), (8, 50), (8, 51), (8, 52),
+                                              (9, 53), (9, 54), (10, 55), (11, 56),
+                                              (12, 57), (12, 58), (12, 59), (12, 2);
+
+-- Hob Tournament
+INSERT INTO team_users (team_id, user_id) VALUES
+                                              -- For Teams 1-5 of Hob Tournament
+                                              (13, 41), (13, 42), (13, 43), (13, 44),
+                                              (14, 45), (14, 46), (14, 47), (14, 48),
+                                              (15, 49), (15, 50), (15, 51), (15, 52),
+                                              (16, 53), (16, 54), (16, 55), (16, 56),
+                                              (17, 57), (17, 58), (17, 59), (17, 60);
+
+-- Neverwinter Tournament
+INSERT INTO team_users (team_id, user_id) VALUES
+                                              -- For Teams 1-5 of Neverwinter Tournament
+                                              (18, 41), (18, 42), (18, 43), (18, 44),
+                                              (19, 45), (19, 46), (19, 47), (19, 48),
+                                              (20, 49), (20, 2), (20, 51), (20, 52),
+                                              (21, 53), (21, 54), (21, 55), (21, 56),
+                                              (22, 57), (22, 58), (22, 59), (22, 60);
+
+-- PWI Tournament
+INSERT INTO team_users (team_id, user_id) VALUES
+                                              -- For Teams 1-5 of PWI Tournament
+                                              (23, 41), (23, 42), (23, 43), (23, 44),
+                                              (24, 45), (24, 46), (24, 47), (24, 48),
+                                              (25, 49), (25, 50), (25, 51), (25, 52),
+                                              (26, 53), (26, 54), (26, 55), (26, 56),
+                                              (27, 57), (27, 2), (27, 59), (27, 60);
+
+-- Remnant: From The Ashes Tournament
+INSERT INTO team_users (team_id, user_id) VALUES
+                                              -- For Teams 1-5 of Remnant: From The Ashes Tournament
+                                              (28, 41), (28, 42), (28, 43), (28, 44),
+                                              (29, 45), (29, 46), (29, 47), (29, 48),
+                                              (30, 49), (30, 50), (30, 51), (30, 52),
+                                              (31, 53), (31, 54), (31, 55), (31, 56),
+                                              (32, 2), (32, 58), (32, 59), (32, 60);
+
+-- Star Trek Online Tournament
+INSERT INTO team_users (team_id, user_id) VALUES
+                                              -- For Teams 1-5 of Star Trek Online Tournament
+                                              (33, 41), (33, 42), (33, 43), (33, 44),
+                                              (34, 45), (34, 46), (34, 47), (34, 48),
+                                              (35, 49), (35, 50), (35, 51), (35, 52),
+                                              (36, 53), (36, 54), (36, 55), (36, 56),
+                                              (37, 2), (37, 58), (37, 59), (37, 60);
+
+-- Subnautica Tournament
+INSERT INTO team_users (team_id, user_id) VALUES
+                                              -- For Teams 1-5 of Subnautica Tournament
+                                              (38, 41), (38, 42), (38, 43), (38, 44),
+                                              (39, 45), (39, 46), (39, 47), (39, 48),
+                                              (40, 49), (40, 2), (40, 51), (40, 52),
+                                              (41, 53), (41, 54), (41, 55), (41, 56),
+                                              (42, 57), (42, 58), (42, 59), (42, 60);
+
+-- Torchlight II Tournament
+INSERT INTO team_users (team_id, user_id) VALUES
+                                              -- For Teams 1-5 of Torchlight II Tournament
+                                              (43, 41), (43, 42), (43, 2), (43, 44),
+                                              (44, 45), (44, 46), (44, 47), (44, 48),
+                                              (45, 49), (45, 50), (45, 51), (45, 52),
+                                              (46, 53), (46, 54), (46, 55), (46, 56),
+                                              (47, 57), (47, 58), (47, 59), (47, 60);
+
+-- Torchlight III Tournament
+INSERT INTO team_users (team_id, user_id) VALUES
+                                              -- For Teams 1-5 of Torchlight III Tournament
+                                              (48, 41), (48, 2), (48, 43), (48, 44),
+                                              (49, 45), (49, 46), (49, 47), (49, 48),
+                                              (50, 49), (50, 54), (50, 55), (50, 56);
+
+
+-- Roles And Permissions
+
+-- Insert Roles
+INSERT INTO roles (name) VALUES
+                             ('ADMIN_TEAM'),
+                             ('ADMIN_TOURNAMENT'),
+                             ('USER_TEAM'),
+                             ('USER_TOURNAMENT'),
+                             ('MANAGER_TEAM'),
+                             ('MANAGER_TOURNAMENT'),
+                             ('ADMIN_PROFILE');
+
+-- Insert Permissions (if not already present)
+INSERT INTO permissions (name) VALUES
+                                   ('MANAGE_ALL_TEAMS'),
+                                   ('MANAGE_ALL_USERS'),
+                                   ('MANAGE_ALL_TOURNAMENTS'),
+                                   ('VIEW_TEAM'),
+                                   ('VIEW_TOURNAMENT'),
+                                   ('MANAGE_TEAM'),
+                                   ('MANAGE_TOURNAMENT'),
+                                   ('CHANGE_USERNAME'),
+                                   ('CHANGE_PASSWORD'),
+                                   ('CHANGE_FIRST_NAME'),
+                                   ('CHANGE_LAST_NAME'),
+                                   ('CHANGE_EMAIL'),
+                                   ('MANAGE_FRIENDS'),
+                                   ('MANAGE_OWN_PROFILE');
+
+-- Insert Role-Permission Mappings
+INSERT INTO role_permissions (role_id, permission_id) VALUES
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_TEAM'), (SELECT id FROM permissions WHERE name = 'MANAGE_ALL_TEAMS')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_TOURNAMENT'), (SELECT id FROM permissions WHERE name = 'MANAGE_ALL_TOURNAMENTS')),
+                                                          ((SELECT id FROM roles WHERE name = 'USER_TEAM'), (SELECT id FROM permissions WHERE name = 'VIEW_TEAM')),
+                                                          ((SELECT id FROM roles WHERE name = 'USER_TOURNAMENT'), (SELECT id FROM permissions WHERE name = 'VIEW_TOURNAMENT')),
+                                                          ((SELECT id FROM roles WHERE name = 'MANAGER_TEAM'), (SELECT id FROM permissions WHERE name = 'MANAGE_TEAM')),
+                                                          ((SELECT id FROM roles WHERE name = 'MANAGER_TOURNAMENT'), (SELECT id FROM permissions WHERE name = 'MANAGE_TOURNAMENT')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_USERNAME')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_FIRST_NAME')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_LAST_NAME')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_PASSWORD')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'CHANGE_EMAIL')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'MANAGE_FRIENDS')),
+                                                          ((SELECT id FROM roles WHERE name = 'ADMIN_PROFILE'), (SELECT id FROM permissions WHERE name = 'MANAGE_OWN_PROFILE'));
+
+-- Insert friends in one direction
+INSERT INTO friends (user_id, friend_id)
+SELECT u1.id, u2.id FROM users u1, users u2 WHERE u1.id != u2.id;
+
+-- Insert friends in the reciprocal direction
+INSERT INTO friends (user_id, friend_id)
+SELECT u2.id, u1.id FROM users u1, users u2 WHERE u1.id != u2.id;

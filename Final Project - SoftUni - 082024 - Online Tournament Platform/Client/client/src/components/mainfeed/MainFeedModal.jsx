@@ -9,7 +9,8 @@ import WatchlistContainer from '../tournaments/watchlist/WatchListContainer';
 import CreateTournamentModal from '../tournaments/tournament-create/CreateTournamentModal';
 import TournamentProductPageContainer from '../tournaments/tournament-product-page/TournamentProductPageContainer/TournamentProducPageContainer';
 import ViewContext from '../../context/viewContext'; // Ensure correct import path
-import EditUsersModal from '../../admin-panel/edit-users/EditUsersContainer';
+import EditUser from '../admin-panel/edit-users/EditUserModal';
+
 
 export default function MainFeedModal() {
   const { mainContent, setMainContent } = useContext(ViewContext);
@@ -48,7 +49,7 @@ export default function MainFeedModal() {
       {mainContent === 'friends' && <FriendsContainer reload={reload} />}
       {mainContent === 'teams' && <TeamContainer />}
       {mainContent === 'watchlist' && <WatchlistContainer />}
-      {mainContent === 'edit-users' && <EditUsersModal />}
+      {mainContent === 'edit-users' && <EditUser />}
       {mainContent === 'create-tournament' && (
         <CreateTournamentModal onCreate={handleCreate} onClose={handleClose} />
       )}

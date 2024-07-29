@@ -8,10 +8,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="CrudService" />
         <module name="LocationService" />
-        <module name="CommunicationService" />
         <module name="GameService" />
-        <module name="TournamentService" />
+        <module name="CommunicationService" />
         <module name="UserService" />
+        <module name="TournamentService" />
         <module name="WebService" />
         <module name="TeamService" />
         <module name="AuthenticationService" />
