@@ -149,6 +149,7 @@ public class UserServiceImpl implements UserService {
         userDetails.setLastName(user.getUserProfile().getLastName());
         userDetails.setEmail(user.getEmail());
         userDetails.setAvatar(user.getUserProfile().getAvatar());
+         userDetails.setId(user.getId());
         return userDetails;
     }
 
