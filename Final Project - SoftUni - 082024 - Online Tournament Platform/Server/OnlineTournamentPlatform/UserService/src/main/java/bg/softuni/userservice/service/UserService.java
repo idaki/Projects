@@ -34,4 +34,7 @@ public interface UserService  {
     List<User> findAllUsers();
 
     void deleteUserById(Long id);
+
+
+    UserDetailsExportDTO findUserByDetails(String username, String firstName, String lastName);
 }

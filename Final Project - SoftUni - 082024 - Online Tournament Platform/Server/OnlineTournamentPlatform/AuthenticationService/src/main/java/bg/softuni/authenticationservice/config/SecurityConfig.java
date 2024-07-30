@@ -66,7 +66,7 @@ public class SecurityConfig {
                                 "/api/teams/my-teams",
                                 "/api/user/details"
                         ).permitAll()
-                        .requestMatchers("/api/admin/**").hasRole("SUPER_ADMIN")
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN_SUPER")
                         .requestMatchers("/api/user/**").hasRole("ADMIN_USER")
                         .anyRequest().authenticated()
                 )

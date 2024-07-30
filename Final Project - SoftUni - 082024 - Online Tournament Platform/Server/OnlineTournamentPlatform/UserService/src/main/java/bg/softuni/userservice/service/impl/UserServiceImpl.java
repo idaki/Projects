@@ -139,12 +139,17 @@ public class UserServiceImpl implements UserService {
 
     public UserDetailsExportDTO getUserDetails(String username) {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
+        return getUserDetailsExportDTO(user);
+    }
+
+    private static UserDetailsExportDTO getUserDetailsExportDTO(User user) {
         UserDetailsExportDTO userDetails = new UserDetailsExportDTO();
         userDetails.setUsername(user.getUsername());
         userDetails.setFirstName(user.getUserProfile().getFirstName());
         userDetails.setLastName(user.getUserProfile().getLastName());
         userDetails.setEmail(user.getEmail());
         userDetails.setAvatar(user.getUserProfile().getAvatar());
+        userDetails.setId(user.getId());
         return userDetails;
     }
 
@@ -224,4 +229,28 @@ public class UserServiceImpl implements UserService {
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }
+
+    @Override
+    public UserDetailsExportDTO findUserByDetails(String username, String firstName, String lastName) {
+        Optional<User> user = Optional.empty();
+
+        if (username != null) {
+            user = userRepository.findByUsername(username);
+        } else if (firstName != null) {
+            user = userRepository.findByUserProfile_FirstName(firstName);
+        } else if (lastName != null) {
+            user = userRepository.findByUserProfile_LastName(lastName);
+        }
+
+        if (user.isPresent()) {
+            User foundUser = user.get();
+            // Convert the found user to UserDetailsExportDTO
+            UserDetailsExportDTO userDetails = getUserDetailsExportDTO(foundUser);
+            return userDetails;
+        } else {
+            return null;
+        }
+    }
+
+
 }

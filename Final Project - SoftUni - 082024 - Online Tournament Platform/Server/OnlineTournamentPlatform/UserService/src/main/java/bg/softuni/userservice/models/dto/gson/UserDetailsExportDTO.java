@@ -1,15 +1,25 @@
 package bg.softuni.userservice.models.dto.gson;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 
 public class UserDetailsExportDTO {
+   private Long id;
     private String username;
-    @Column(name="first_name")
+    @JsonProperty("first_name")
     private String firstName;
-    @Column(name="last_name")
+    @JsonProperty("last_name")
     private String lastName;
     private String email;
     private String avatar;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;

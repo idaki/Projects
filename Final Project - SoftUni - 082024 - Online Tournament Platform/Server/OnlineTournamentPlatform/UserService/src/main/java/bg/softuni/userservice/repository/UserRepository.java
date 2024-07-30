@@ -18,5 +18,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByUserSecurity_Password_ResetPasswordToken(String resetPasswordToken);
 
+    @Query("SELECT u FROM User u WHERE u.username = :username OR u.userProfile.firstName = :firstName OR u.userProfile.lastName = :lastName")
+    Optional<User> findByUsernameOrFirstNameOrLastName(@Param("username") String username,
+                                                       @Param("firstName") String firstName,
+                                                       @Param("lastName") String lastName);
 
+    Optional<User> findByUserProfile_FirstName(String firstName);
+
+    Optional<User> findByUserProfile_LastName(String lastName);
 }

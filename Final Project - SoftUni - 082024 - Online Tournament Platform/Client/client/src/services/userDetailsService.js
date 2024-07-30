@@ -17,22 +17,7 @@ export const getUserDetails = async () => {
     }
 };
 
-export async function getUserDetailsByProfileInfo(query) {
-    try {
-      const url = new URL(`${BASE_URL}/admin/search`);
-      url.searchParams.append('query', query);
-  
-      const result = await fetchWithSettings(url.toString(), {
-        method: 'GET',
-      });
-  
-      console.log('User details retrieved:', result);
-      return result;
-    } catch (error) {
-      console.error('Failed to get user details:', error);
-      throw error;
-    }
-  }
+
 
 export const deleteUser = async () => {
     try {

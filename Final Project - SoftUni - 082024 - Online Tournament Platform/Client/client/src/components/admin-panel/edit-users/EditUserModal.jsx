@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import SearchBar from '../../Search/SearchBar';
-import { getUserDetailsByProfileInfo } from '../../../services/userDetailsService';
+import { getUserDetailsByProfileInfo } from '../../../services/adminService';
 import SettingsContainer from '../../settings/settings-container/SettingsModal';
-
 
 function EditUserContainer() {
   const [searchTerm, setSearchTerm] = useState('');
