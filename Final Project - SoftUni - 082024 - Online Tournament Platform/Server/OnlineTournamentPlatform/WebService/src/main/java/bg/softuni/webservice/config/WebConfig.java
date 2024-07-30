@@ -1,4 +1,4 @@
-//package bg.softuni.webservice.config;
+package bg.softuni.webservice.config;//package bg.softuni.webservice.config;
 //
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;

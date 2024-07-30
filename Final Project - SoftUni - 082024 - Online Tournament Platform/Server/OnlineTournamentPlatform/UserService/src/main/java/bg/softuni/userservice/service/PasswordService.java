@@ -11,6 +11,4 @@ public interface PasswordService {
     String getUserIdByResetToken(String token);
 
     Password getUserByResetToken(String token);
-
-    void updatePasswordByAdmin(Long userId, String newPassword);
 }

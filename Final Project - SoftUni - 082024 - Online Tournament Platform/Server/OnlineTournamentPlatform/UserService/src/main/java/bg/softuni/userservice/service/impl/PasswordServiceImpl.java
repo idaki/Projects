@@ -104,18 +104,4 @@ public class PasswordServiceImpl implements PasswordService {
 
         return passwordOptional.get();
     }
-
-    @Override
-    public void updatePasswordByAdmin(Long userId, String newPassword) {
-        Optional<User> userOptional = userRepository.findById(userId);
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            Password password = user.getUserSecurity().getPassword();
-            password.setPasswordHash(passwordEncoder.encode(newPassword));
-            password.setPasswordSetDate(LocalDateTime.now());
-            passwordRepository.save(password);
-        } else {
-            throw new IllegalArgumentException("User not found");
-        }
-    }
 }

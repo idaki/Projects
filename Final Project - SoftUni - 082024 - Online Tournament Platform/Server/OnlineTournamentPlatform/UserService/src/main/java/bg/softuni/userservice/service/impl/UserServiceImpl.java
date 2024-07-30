@@ -79,6 +79,7 @@ public class UserServiceImpl implements UserService {
         user.setUserProfile(userProfile);
         user = userRepository.save(user);
 
+
         // Create and set UserSecurity
         UserSecurity userSecurity = new UserSecurity();
         userSecurity.setUser(user);
@@ -138,18 +139,12 @@ public class UserServiceImpl implements UserService {
 
     public UserDetailsExportDTO getUserDetails(String username) {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
-        UserDetailsExportDTO userDetails = getUserDetailsExportDTO(user);
-        return userDetails;
-    }
-
-    private static UserDetailsExportDTO getUserDetailsExportDTO(User user) {
         UserDetailsExportDTO userDetails = new UserDetailsExportDTO();
         userDetails.setUsername(user.getUsername());
         userDetails.setFirstName(user.getUserProfile().getFirstName());
         userDetails.setLastName(user.getUserProfile().getLastName());
         userDetails.setEmail(user.getEmail());
         userDetails.setAvatar(user.getUserProfile().getAvatar());
-         userDetails.setId(user.getId());
         return userDetails;
     }
 
@@ -228,15 +223,5 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
-    }
-
-    @Override
-    public UserDetailsExportDTO searchUser(String query) {
-        Optional<User> userOpt = userRepository.findByUsername(query);
-        if (userOpt.isPresent()){
-            UserDetailsExportDTO userDetails = getUserDetailsExportDTO(userOpt.get());
-            return userDetails;
-        }
-        return null;
     }
 }

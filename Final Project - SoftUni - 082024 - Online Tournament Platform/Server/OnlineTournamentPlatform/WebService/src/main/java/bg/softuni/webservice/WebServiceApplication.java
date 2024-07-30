@@ -14,6 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ComponentScan(basePackages = {
         "bg.softuni.tournamentservice.*",
         "bg.softuni.userservice.*",
+        "bg.softuni.locationservice.*",
         "bg.softuni.communicationservice.*",
         "bg.softuni.authenticationservice.*",
         "bg.softuni.webservice.*"

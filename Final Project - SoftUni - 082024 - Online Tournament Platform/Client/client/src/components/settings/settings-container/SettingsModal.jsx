@@ -3,7 +3,7 @@ import ContactDetailsModal from '../contact-details/ContactDetailsModal';
 import ChangePasswordModal from '../change-password/ChangePasswordModal';
 import AuthContext from '../../../context/authContext';
 import { deleteUser } from '../../../services/userDetailsService';
-import {  Button } from 'react-bootstrap'; // Correctly import Modal and Button
+import { Modal, Button } from 'react-bootstrap'; // Correctly import Modal and Button
 
 const SettingsContainer = ({ isOpen, toggle, userDetails }) => {
   const { setAuth } = useContext(AuthContext);
