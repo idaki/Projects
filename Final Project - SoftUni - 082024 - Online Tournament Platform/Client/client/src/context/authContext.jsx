@@ -1,3 +1,4 @@
+// src/context/authContext.js
 import React, { createContext, useCallback, useEffect } from 'react';
 import { login, logout, registerConsumer, resetPassword, updatePasswordAndLogin } from '../services/authService';
 import usePersistedState from '../hooks/usePersistedState';

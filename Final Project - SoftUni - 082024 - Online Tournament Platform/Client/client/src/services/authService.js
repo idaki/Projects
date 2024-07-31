@@ -1,7 +1,6 @@
-import { fetchWithSettings, getCsrfToken, getJwtToken } from '../utils/utils';
+import { fetchWithSettings, getCsrfToken, getJwtToken, setCsrfTokenInMetaTags } from '../utils/utils';
 import { BASE_URL } from '../config/config';
 import { jwtDecode } from "jwt-decode";
-
 
 export const login = async (username, password) => {
   try {
@@ -21,14 +20,21 @@ export const login = async (username, password) => {
       expiresAt: decoded.exp * 1000, // Convert to milliseconds
     };
 
+    // Save auth data to localStorage
     localStorage.setItem('authData', JSON.stringify(authData));
+
+    // Set the CSRF token in meta tags
+    const XSRFTOKEN = getCsrfToken();
+    console.log(XSRFTOKEN);
+
+    setCsrfTokenInMetaTags(XSRFTOKEN);
+
     return authData;
   } catch (error) {
     console.error('Login failed:', error);
     throw error;
   }
 };
-
 
 // Register function
 export const registerConsumer = async (username, password, email) => {

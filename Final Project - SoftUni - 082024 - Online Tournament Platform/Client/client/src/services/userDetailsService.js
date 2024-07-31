@@ -1,11 +1,11 @@
 // userDetailsService.js
-import { fetchWithSettings, getJwtToken, getCsrfToken } from '../utils/utils';
+import { fetchWithSettings, getJwtToken, getCsrfToken, fetchWithSettingsForMetadata , } from '../utils/utils';
 import { BASE_URL } from '../config/config';
 
 // API interaction function to get user details
 export const getUserDetails = async () => {
     try {
-        const result = await fetchWithSettings(`${BASE_URL}/user/details`, {
+        const result = await fetchWithSettingsForMetadata(`${BASE_URL}/user/details`, {
             method: 'GET'
         });
 
