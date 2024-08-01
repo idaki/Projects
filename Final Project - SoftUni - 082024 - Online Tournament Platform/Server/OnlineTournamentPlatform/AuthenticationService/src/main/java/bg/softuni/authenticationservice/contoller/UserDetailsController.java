@@ -19,7 +19,7 @@ public class UserDetailsController {
         this.userService = userService;
         this.jwtService = jwtService;
     }
-    @GetMapping("/details")
+    @PostMapping("/details")
     public ResponseEntity<UserDetailsExportDTO> getUserDetails(@RequestHeader("Authorization") String token) {
         // Extract the JWT token from the Bearer string
 
