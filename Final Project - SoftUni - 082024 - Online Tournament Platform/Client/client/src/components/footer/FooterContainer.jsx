@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import styles from '../user-auth/user-auth-container/UserAuthContainerModal'; 
 import modalStyles from '../footer/FooterContainer.module.css';
+import LanguageSelectorModal from '../language/languuageSelectorContainer';
+import { useTranslation } from 'react-i18next'; 
 
 Modal.setAppElement('#root');
 
 export default function Footer() {
+    const { t } = useTranslation();
     const [showCookiePolicy, setShowCookiePolicy] = useState(false);
     const [showTermsOfService, setShowTermsOfService] = useState(false);
     const [cookiePolicyContent, setCookiePolicyContent] = useState('');
@@ -53,16 +56,22 @@ export default function Footer() {
         <footer className="py-5 bg-dark">
             <div className="container d-flex justify-content-between align-items-center">
                 <div>
-                    <button className="btn btn-link text-white" onClick={toggleCookiePolicyModal}>Cookie Policy</button>
-                    <button className="btn btn-link text-white" onClick={toggleTermsOfServiceModal}>Terms of Service</button>
+                    <button className="btn btn-link text-white" onClick={toggleCookiePolicyModal}>
+                        {t('footer.cookiePolicy')}
+                    </button>
+                    <button className="btn btn-link text-white" onClick={toggleTermsOfServiceModal}>
+                        {t('footer.termsOfService')}
+                    </button>
                 </div>
-                <p className="m-0 text-white">Copyright &copy; YourCompany 2024</p>
+                
+                <p className="m-0 text-white">{t('footer.copyright')}</p>
+                <LanguageSelectorModal/>
             </div>
 
             <Modal
                 isOpen={showCookiePolicy}
                 onRequestClose={handleClose}
-                contentLabel="Cookie Policy"
+                contentLabel={t('modals.cookiePolicyTitle')}
                 className={styles.modalContent}
                 overlayClassName={modalStyles.overlay}
                 shouldCloseOnOverlayClick={true}
@@ -70,16 +79,16 @@ export default function Footer() {
                 <div onClick={handleOverlayClick} className={modalStyles.overlay}>
                     <div className={modalStyles.modalContent}>
                         <span className={styles.close} onClick={handleClose}>&times;</span>
-                        <h2>Cookie Policy</h2>
+                        <h2>{t('modals.cookiePolicyTitle')}</h2>
                         <pre>{cookiePolicyContent}</pre>
                     </div>
                 </div>
             </Modal>
-
+           
             <Modal
                 isOpen={showTermsOfService}
                 onRequestClose={handleClose}
-                contentLabel="Terms of Service"
+                contentLabel={t('modals.termsOfServiceTitle')}
                 className={styles.modalContent}
                 overlayClassName={modalStyles.overlay}
                 shouldCloseOnOverlayClick={true}
@@ -87,7 +96,7 @@ export default function Footer() {
                 <div onClick={handleOverlayClick} className={modalStyles.overlay}>
                     <div className={modalStyles.modalContent}>
                         <span className={styles.close} onClick={handleClose}>&times;</span>
-                        <h2>Terms of Service</h2>
+                        <h2>{t('modals.termsOfServiceTitle')}</h2>
                         <pre>{termsOfServiceContent}</pre>
                     </div>
                 </div>

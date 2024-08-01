@@ -13,15 +13,15 @@ function App() {
 
   return (
     <Router>
-    <NavigationModal />
-    <BodyModal />
-    <FooterModal />
-    <Routes>
-      <Route path="/newpassword" element={<UpdatePasswordModal />} />
-      {/* Define other routes here */}
-    </Routes>
-  </Router>
-);
+      <NavigationModal />
+      <BodyModal />
+      <FooterModal />
+      <Routes>
+        <Route path="/newpassword" element={<UpdatePasswordModal />} />
+        {/* Define other routes here */}
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

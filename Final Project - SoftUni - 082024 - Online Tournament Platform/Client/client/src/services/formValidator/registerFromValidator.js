@@ -1,27 +1,31 @@
-// validation.js
+import i18next from 'i18next'; // Import i18next
+
 export const validateField = (name, value) => {
   let errorMessage = '';
+
+  // Get the translation function
+  const t = i18next.t;
 
   switch (name) {
     case 'username':
       if (value.trim() === '') {
-        errorMessage = 'Username is required';
+        errorMessage = t('errors.usernameRequired');
       } else if (value.length < 3) {
-        errorMessage = 'Username must be at least 3 characters long';
+        errorMessage = t('errors.usernameMinLength');
       }
       break;
     case 'email':
       if (value.trim() === '') {
-        errorMessage = 'Email is required';
+        errorMessage = t('errors.emailRequired');
       } else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(value)) {
-        errorMessage = 'Invalid email address';
+        errorMessage = t('errors.emailInvalid');
       }
       break;
     case 'password':
       if (value.trim() === '') {
-        errorMessage = 'Password is required';
+        errorMessage = t('errors.passwordRequired');
       } else if (value.length < 6) {
-        errorMessage = 'Password must be at least 6 characters long';
+        errorMessage = t('errors.passwordMinLength');
       }
       break;
     default:

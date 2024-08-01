@@ -1,7 +1,10 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../../../context/authContext';
+import { useTranslation } from 'react-i18next';
+
 
 export default function RegisterModal({ onClose }) {
+  const { t } = useTranslation(); // Use the useTranslation hook
   const { registerHandler } = useContext(AuthContext);
 
   const [registerFormData, setRegisterFormData] = useState({
@@ -26,14 +29,14 @@ export default function RegisterModal({ onClose }) {
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     if (!registerFormData.username || !registerFormData.password || !registerFormData.email) {
-      setLocalError('All fields are required');
+      setLocalError(t('errors.allFieldsRequired'));
       return;
     }
     try {
       await registerHandler(registerFormData.username, registerFormData.password, registerFormData.email);
       onClose();
     } catch (err) {
-      setLocalError(err.message || 'An error occurred during registration. Please try again.');
+      setLocalError(err.message || t('errors.registrationError'));
     }
   };
 
@@ -48,7 +51,7 @@ export default function RegisterModal({ onClose }) {
             name="username"
             value={registerFormData.username}
             onChange={handleRegisterChange}
-            placeholder="Username"
+            placeholder={t('forms.username')}
           />
         </div>
 
@@ -60,7 +63,7 @@ export default function RegisterModal({ onClose }) {
             name="password"
             value={registerFormData.password}
             onChange={handleRegisterChange}
-            placeholder="Password"
+            placeholder={t('forms.password')}
           />
         </div>
 
@@ -72,7 +75,7 @@ export default function RegisterModal({ onClose }) {
             name="email"
             value={registerFormData.email}
             onChange={handleRegisterChange}
-            placeholder="Email"
+            placeholder={t('forms.email')}
           />
         </div>
 
@@ -80,7 +83,7 @@ export default function RegisterModal({ onClose }) {
 
         <div className="d-flex justify-content-center">
           <button type="submit" className="btn btn-primary mb-4">
-            Register
+            {t('buttons.register')}
           </button>
         </div>
       </form>

@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';  // Ensure this import path is correct
 import { AuthProvider } from './context/authContext';  // Ensure this path is correct
+import './config/i18next'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

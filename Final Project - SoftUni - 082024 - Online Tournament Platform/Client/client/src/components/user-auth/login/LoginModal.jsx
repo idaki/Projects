@@ -1,7 +1,10 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../../../context/authContext'; // Adjust the import path as necessary
+import { useTranslation } from 'react-i18next';
+
 
 export default function LoginModal({ onClose, onRegisterClick, onForgotPasswordClick }) {
+  const { t } = useTranslation(); // Use the useTranslation hook
   const { loginHandler } = useContext(AuthContext);
 
   const [loginFormData, setLoginFormData] = useState({
@@ -25,14 +28,14 @@ export default function LoginModal({ onClose, onRegisterClick, onForgotPasswordC
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     if (!loginFormData.username || !loginFormData.password) {
-      setLocalError('Username and password are required');
+      setLocalError(t('errors.usernameAndPasswordRequired'));
       return;
     }
     try {
       await loginHandler(loginFormData.username, loginFormData.password);
       onClose();
     } catch (err) {
-      setLocalError(err.message || 'An error occurred during login. Please try again.');
+      setLocalError(err.message || t('errors.loginError'));
     }
   };
 
@@ -47,7 +50,7 @@ export default function LoginModal({ onClose, onRegisterClick, onForgotPasswordC
             name="username"
             value={loginFormData.username}
             onChange={handleLoginChange}
-            placeholder="Username"
+            placeholder={t('forms.username')}
           />
         </div>
 
@@ -59,7 +62,7 @@ export default function LoginModal({ onClose, onRegisterClick, onForgotPasswordC
             name="password"
             value={loginFormData.password}
             onChange={handleLoginChange}
-            placeholder="Password"
+            placeholder={t('forms.password')}
           />
         </div>
 
@@ -67,23 +70,20 @@ export default function LoginModal({ onClose, onRegisterClick, onForgotPasswordC
 
         <div className="d-flex justify-content-center">
           <button type="submit" className="btn btn-primary mb-4">
-            Login
+            {t('buttons.login')}
           </button>
         </div>
       </form>
 
       <div className="text-center mb-3">
         <a href="#!" onClick={onForgotPasswordClick}>
-          Forgot password?
+          {t('links.forgotPassword')}
         </a>
       </div>
 
       <div className="text-center">
         <p>
-          Not a member?{' '}
-          <a href="#!" onClick={onRegisterClick}>
-            Register
-          </a>
+          {t('links.notAMember')} <a href="#!" onClick={onRegisterClick}>{t('links.register')}</a>
         </p>
       </div>
     </div>

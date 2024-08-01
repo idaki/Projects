@@ -1,7 +1,9 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../../../context/authContext'; // Adjust the import path as necessary
+import { useTranslation } from 'react-i18next'; 
 
 export default function ResetPasswordModal({ onClose }) {
+  const { t } = useTranslation(); // Use the useTranslation hook
   const { resetPasswordHandler } = useContext(AuthContext);
 
   const [email, setEmail] = useState('');
@@ -17,14 +19,14 @@ export default function ResetPasswordModal({ onClose }) {
   const handleResetSubmit = async (e) => {
     e.preventDefault();
     if (!email) {
-      setLocalError('Email is required');
+      setLocalError(t('errors.emailRequired'));
       return;
     }
     try {
       await resetPasswordHandler(email);
       onClose();
     } catch (err) {
-      setLocalError(err.message || 'An error occurred while resetting password. Please try again.');
+      setLocalError(err.message || t('errors.resetPasswordError'));
     }
   };
 
@@ -39,7 +41,7 @@ export default function ResetPasswordModal({ onClose }) {
             name="email"
             value={email}
             onChange={handleEmailChange}
-            placeholder="Email"
+            placeholder={t('forms.email')}
           />
         </div>
 
@@ -47,7 +49,7 @@ export default function ResetPasswordModal({ onClose }) {
 
         <div className="d-flex justify-content-center">
           <button type="submit" className="btn btn-primary mb-4">
-            Reset Password
+            {t('buttons.resetPassword')}
           </button>
         </div>
       </form>
