@@ -1,36 +1,38 @@
-// userDetailsService.js
-import { fetchWithSettings, getJwtToken, getCsrfTokenFromMeta    } from '../utils/utils';
+// import { fetchCsrfToken } from '../utils/csrfUtil'; // Adjust the path as needed
 import { BASE_URL } from '../config/config';
-
-//API interaction function to get user details
-// export const getUserDetails = async () => {
-//     try {
-//         const result = await fetchWithSettingsForMetadata(`${BASE_URL}/user/details`, {
-//             method: 'POST'
-//         });
-
-//         console.log('User details retrieved:', result);
-//         return result;
-//     } catch (error) {
-//         console.error("Failed to get user details:", error);
-//         throw error;
-//     }
-// };
+import { getJwtToken, getCsrfToken } from '../utils/utils';
+import {getCsrfTokenFromMeta} from '../utils/metaUtils';
+import {fetchCsrfToken} from '../utils/csrfUtil';
+// API interaction function to get user details
 
 export const getUserDetails = async () => {
     try {
-        const { token: csrfToken, header: csrfHeader } = getCsrfTokenFromMeta();
-        console.log('Fetching user details with CSRF token:', csrfToken);
+      
+        let csrfToken = getCsrfToken();
+    if (!csrfToken) {
+      csrfToken = await fetchCsrfToken();
+      if (!csrfToken) {
+        throw new Error('Failed to fetch CSRF token');
+      }
+    }
+
+     
 
         const response = await fetch(`${BASE_URL}/user/details`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${getJwtToken()}`,
-                'X-XSRF-TOKEN': csrfToken // CSRF token header
+                'Authorization': `Bearer ${getJwtToken()}`, // JWT token for authentication
+                'X-XSRF-TOKEN': csrfToken
             },
             credentials: 'include'
         });
+
+        if (!response) {
+            throw new Error('No response from server');
+        }
+
+        console.log('Response received:', response);
 
         if (!response.ok) {
             const errorText = await response.text();
@@ -38,18 +40,23 @@ export const getUserDetails = async () => {
             throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
         }
 
-        const data = await response.json();
+        const contentType = response.headers.get('Content-Type');
+        let data;
+        if (contentType && contentType.includes('application/json')) {
+            data = await response.json();
+        } else {
+            const textData = await response.text();
+            console.error('Unexpected response format:', textData);
+            throw new Error('Unexpected response format');
+        }
+
         console.log('Fetched user details:', data);
         return data;
-
     } catch (error) {
         console.error('Failed to fetch user details:', error);
         throw error;
     }
 };
-
-
-
 
 export const deleteUser = async () => {
     try {

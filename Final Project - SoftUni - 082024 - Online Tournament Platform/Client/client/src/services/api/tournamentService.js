@@ -1,7 +1,7 @@
 import { getJwtToken, getCsrfToken } from '../../utils/utils';
 import { BASE_URL } from '../../config/config';
-
-
+import {getCsrfTokenFromMeta} from '../../utils/metaUtils'; 
+import {fetchCsrfToken} from '../../utils/metaUtils';
 
 export const getAll = async () => {
     const response = await fetch(`${BASE_URL}/tournaments/all`);
@@ -18,12 +18,20 @@ export const getAll = async () => {
 
 export const getMyTournaments = async () => {
   try {
+    let csrfToken = getCsrfToken();
+    if (!csrfToken) {
+      csrfToken = await fetchCsrfToken();
+      if (!csrfToken) {
+        throw new Error('Failed to fetch CSRF token');
+      }
+    }
+        
     const response = await fetch(`${BASE_URL}/tournaments/managed`, {
       method: 'POST', // Ensure the API requires POST for fetching data
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${getJwtToken()}`,
-        'X-XSRF-TOKEN': getCsrfToken() // Include CSRF token in the headers
+        'X-XSRF-TOKEN': csrfToken // Include CSRF token in the headers
       },
       credentials: 'include'
     });
@@ -68,12 +76,13 @@ export const getMyTournaments = async () => {
 
 export const getMyWatchList = async () => {
   try {
+    const { token: csrfToken, header: csrfHeader } = getCsrfTokenFromMeta();
     const response = await fetch(`${BASE_URL}/tournaments/watchlist`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${getJwtToken()}`,
-        'X-XSRF-TOKEN': getCsrfToken()
+        'X-XSRF-TOKEN': csrfToken
       },
       credentials: 'include'
     });

@@ -37,14 +37,14 @@ public class SecurityConfig {
         this.userDetailsService = userDetailsService;
         this.jwtRequestFilter = jwtRequestFilter;
     }
-//https://docs.spring.io/spring-security/reference/servlet/exploits/csrf.html#csrf-integration-javascript-spa
+    //https://docs.spring.io/spring-security/reference/servlet/exploits/csrf.html#csrf-integration-javascript-spa
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                         .csrfTokenRequestHandler(new SpaCsrfTokenRequestHandler())
-                        .ignoringRequestMatchers("/api/login")
+                        .ignoringRequestMatchers("/api/login", "/api/admin/csrf")
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -68,8 +68,9 @@ public class SecurityConfig {
                                 "/api/user/details"
                         ).permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN_SUPER")
-                        .requestMatchers("/api/user/**").hasRole("ADMIN_USER")
+                        .requestMatchers("/api/user/**").hasAnyRole("ADMIN_USER" , "ADMIN_SUPER")
                         .anyRequest().authenticated()
+
                 )
                 .addFilterAfter(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)

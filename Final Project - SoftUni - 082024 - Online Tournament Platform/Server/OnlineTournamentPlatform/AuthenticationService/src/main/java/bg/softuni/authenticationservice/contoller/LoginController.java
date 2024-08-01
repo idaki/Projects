@@ -27,25 +27,12 @@ public class LoginController {
         this.loginService = loginService;
         this.jwtService = jwtService;
     }
-
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO, HttpServletRequest request) {
-        CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-        if (token != null) {
-            LOGGER.debug("CSRF Token in request: {}", token.getToken());
-            LOGGER.info("Attempting login with CSRF Token - {}={}", token.getHeaderName(), token.getToken());
-        } else {
-            LOGGER.warn("CSRF Token is missing in request");
-        }
+    public ResponseEntity<String> login(@RequestBody LoginDTO loginDTO, HttpServletRequest request) {
 
-        if (!loginService.login(loginDTO)) {
-            LOGGER.error("Invalid login attempt for username: {}", loginDTO.getUsernameOrEmail());
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username/email or password");
-        }
 
         String jwt = jwtService.generateToken(loginDTO.getUsernameOrEmail());
-        LOGGER.info("Login successful, JWT Token generated");
-
         return ResponseEntity.ok(jwt);
     }
+
 }

@@ -19,10 +19,10 @@ public class UserDetailsController {
         this.userService = userService;
         this.jwtService = jwtService;
     }
+
     @PostMapping("/details")
     public ResponseEntity<UserDetailsExportDTO> getUserDetails(@RequestHeader("Authorization") String token) {
         // Extract the JWT token from the Bearer string
-
         String jwt = token.substring(7).trim();
 
         // Extract username from JWT
@@ -31,6 +31,7 @@ public class UserDetailsController {
         UserDetailsExportDTO userDetails = userService.getUserDetails(username);
         return ResponseEntity.ok(userDetails);
     }
+
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteUser(@RequestHeader("Authorization") String token) {
         try {

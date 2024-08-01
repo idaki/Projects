@@ -3,10 +3,13 @@ export function getJwtToken() {
     return authData?.accessToken || '';
 }
 
-export function getCsrfToken() {
+export const getCsrfToken = () => {
     const match = document.cookie.match(new RegExp('(^| )XSRF-TOKEN=([^;]+)'));
-    return match ? match[2] : '';
-}
+    if (match) {
+        return match[2];
+    }
+    return null;
+};
 
 export function fetchCsrfToken() {
     const token = document.querySelector('meta[name="_csrf"]').getAttribute('content');

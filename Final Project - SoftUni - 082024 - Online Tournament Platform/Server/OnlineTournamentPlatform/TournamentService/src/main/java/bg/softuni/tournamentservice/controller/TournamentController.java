@@ -5,6 +5,7 @@ import bg.softuni.tournamentservice.model.Tournament;
 import bg.softuni.tournamentservice.model.viewDto.TournamentCreateDTO;
 import bg.softuni.tournamentservice.model.viewDto.TournamentDTO;
 import bg.softuni.tournamentservice.service.TournamentService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +39,10 @@ public class TournamentController {
         }
         return ResponseEntity.ok(tournamentService.getManagedTournaments(jwt));
     }
+
+
+
+
     @PostMapping("/watchlist")
     public ResponseEntity<List<TournamentDTO>> getWatchlist(@RequestHeader("Authorization") String authorizationHeader) {
         String jwt = authorizationHeader.substring(7); // Remove "Bearer " prefix
