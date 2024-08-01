@@ -1,8 +1,9 @@
 // import { fetchCsrfToken } from '../utils/csrfUtil'; // Adjust the path as needed
 import { BASE_URL } from '../config/config';
-import { getJwtToken, getCsrfToken } from '../utils/utils';
+import { getJwtToken, getCsrfToken , fetchWithSettings} from '../utils/utils';
 import {getCsrfTokenFromMeta} from '../utils/metaUtils';
 import {fetchCsrfToken} from '../utils/csrfUtil';
+
 // API interaction function to get user details
 
 export const getUserDetails = async () => {

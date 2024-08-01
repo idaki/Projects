@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import styles from '../user-auth/user-auth-container/UserAuthContainerModal'; 
 import modalStyles from '../footer/FooterContainer.module.css';
-import LanguageSelectorModal from '../language/languuageSelectorContainer';
+import LanguageSelectorModal from '../language/LanguageSelectorModal';
 import { useTranslation } from 'react-i18next'; 
 
 Modal.setAppElement('#root');
