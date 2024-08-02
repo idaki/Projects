@@ -10,11 +10,10 @@ export const getUserDetails = async () => {
     try {
       
         let csrfToken = getCsrfToken();
+        console.log(csrfToken);
     if (!csrfToken) {
       csrfToken = await fetchCsrfToken();
-      if (!csrfToken) {
-        throw new Error('Failed to fetch CSRF token');
-      }
+      
     }
 
      
@@ -59,15 +58,24 @@ export const getUserDetails = async () => {
     }
 };
 
-export const deleteUser = async () => {
+export const deleteUserById = async (userId) => {
     try {
-        const result = await fetchWithSettings(`${BASE_URL}/user/delete`, {
+        let csrfToken = getCsrfToken();
+        const url = new URL(`${BASE_URL}/user/delete/${userId}`);
+
+        const result = await fetchWithSettings(url.toString(), {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${getJwtToken()}`,
-                'X-XSRF-TOKEN': getCsrfToken() // Include CSRF token in the headers
+                'X-XSRF-TOKEN': csrfToken // Include CSRF token in the headers
             }
         });
+
+        if (!result.ok) {
+            const errorText = await result.text();
+            console.error(`HTTP error! status: ${result.status}, message: ${errorText}`);
+            throw new Error(`HTTP error! status: ${result.status}, message: ${errorText}`);
+        }
 
         console.log('User deleted successfully:', result);
         localStorage.removeItem('authData');
@@ -77,3 +85,4 @@ export const deleteUser = async () => {
         throw error;
     }
 };
+

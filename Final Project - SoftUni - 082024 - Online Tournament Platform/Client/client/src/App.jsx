@@ -22,10 +22,7 @@ function App() {
       <FooterModal />
       <Routes>
         <Route path="/newpassword" element={<UpdatePasswordModal />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/register" element={<RegisterModal />} />
-        <Route path="/reset-password" element={<ResetPasswordModal />} />
-        {/* Add other routes as needed */}
+      
       </Routes>
     </Router>
   );

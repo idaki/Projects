@@ -1,15 +1,34 @@
+import { jwtDecode } from "jwt-decode";
+
 export function getJwtToken() {
     const authData = JSON.parse(localStorage.getItem('authData'));
     return authData?.accessToken || '';
 }
 
+// Utility to store authentication data in localStorage
+export const storeAuthData = (token) => {
+  const decoded = jwtDecode(token);
+  console.log('Decoded token:', decoded);
+
+  const authData = {
+    accessToken: token,
+    roles: decoded.roles || [], // Ensure roles is always an array
+    expiresAt: decoded.exp * 1000, // Convert to milliseconds
+  };
+
+  // Save auth data to localStorage
+  localStorage.setItem('authData', JSON.stringify(authData));
+
+  return authData;
+};
 export const getCsrfToken = () => {
     const match = document.cookie.match(new RegExp('(^| )XSRF-TOKEN=([^;]+)'));
     if (match) {
-        return match[2];
+      return match[2];
     }
     return null;
-};
+  };
+
 
 export function fetchCsrfToken() {
     const token = document.querySelector('meta[name="_csrf"]').getAttribute('content');

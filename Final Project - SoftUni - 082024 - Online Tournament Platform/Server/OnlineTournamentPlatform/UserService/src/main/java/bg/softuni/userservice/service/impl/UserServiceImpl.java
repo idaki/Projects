@@ -14,10 +14,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,6 +27,7 @@ public class UserServiceImpl implements UserService {
     private final UserSecurityRepository userSecurityRepository;
     private final UserProfileRepository userProfileRepository;
 
+
     @Autowired
     public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository, ApplicationEventPublisher eventPublisher, TokenRepository tokenRepository, UserSecurityRepository userSecurityRepository, UserProfileRepository userProfileRepository) {
         this.userRepository = userRepository;
@@ -39,6 +37,7 @@ public class UserServiceImpl implements UserService {
         this.tokenRepository = tokenRepository;
         this.userSecurityRepository = userSecurityRepository;
         this.userProfileRepository = userProfileRepository;
+
     }
 
     @Override
@@ -252,5 +251,26 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public boolean isAdminSuper(String username) {
+User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
+
+        return  user.getRoles().stream()
+                .anyMatch(role -> role.getName() == RoleEnum.ADMIN_SUPER);
+    }
+
+    @Override
+    public boolean isOwnAccount(String username, Long userId) {
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
+        return userId.equals(user.getId());
+    }
+
+    @Override
+    public boolean isAdminUser(String username) {
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
+
+        return  user.getRoles().stream()
+                .anyMatch(role -> role.getName() == RoleEnum.ADMIN_USER);
+    }
 
 }

@@ -1,41 +1,40 @@
-import { fetchWithSettings, getCsrfToken, getJwtToken, setCsrfTokenInMetaTags } from '../utils/utils';
-import {fetchCsrfToken} from '../utils/csrfUtil';
+import { fetchWithSettings, storeAuthData   } from '../utils/utils';
+import {fetchCsrfToken, captureCsrfTokenFromResponse} from '../utils/csrfUtil';
 import { BASE_URL } from '../config/config';
 import { jwtDecode } from "jwt-decode";
 
 export const login = async (username, password) => {
   try {
-    const response = await fetchWithSettings(`${BASE_URL}/login`, {
+    const response = await fetch(`${BASE_URL}/login`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({ usernameOrEmail: username, password }),
+      credentials: 'include' // Include credentials for CSRF protection
     });
 
-    console.log('Login successful, received token:', response);
+    if (!response.ok) {
+      await handleHttpError(response);
+    }
 
-    const decoded = jwtDecode(response);
-    console.log('Decoded token:', decoded);
+    // Capture CSRF token from the response
+    captureCsrfTokenFromResponse(response);
 
-    const authData = {
-      accessToken: response,
-      roles: decoded.roles || [], // Ensure roles is always an array
-      expiresAt: decoded.exp * 1000, // Convert to milliseconds
-    };
+    // Get the token as plain text
+    const token = await response.text();
+    console.log('Login successful, received token:', token);
 
-    // Save auth data to localStorage
-    localStorage.setItem('authData', JSON.stringify(authData));
+    // Store authentication data
+    const authData = storeAuthData(token);
 
-
-  
-    const XSRFTOKEN = getCsrfToken();
-    
-  
-  
     return authData;
   } catch (error) {
     console.error('Login failed:', error);
     throw error;
   }
 };
+
 
 // Register function
 export const registerConsumer = async (username, password, email) => {

@@ -1,16 +1,15 @@
-import { fetchWithSettings, getJwtToken, getCsrfToken } from '../utils/utils';
+import { fetchWithSettings, storeAuthData, getCsrfToken } from '../utils/utils';
 import { BASE_URL } from '../config/config';
 import {fetchCsrfToken} from '../utils/csrfUtil';
 
 export async function getUserDetailsByProfileInfo(query) {
     try {
         let csrfToken = getCsrfToken();
-        if (!csrfToken) {
+         if (!csrfToken) {
           csrfToken = await fetchCsrfToken();
-          if (!csrfToken) {
-            throw new Error('Failed to fetch CSRF token');
+          getUserDetailsByProfileInfo(query) 
           }
-        }
+         
 
         const url = new URL(`${BASE_URL}/admin/search`);
         

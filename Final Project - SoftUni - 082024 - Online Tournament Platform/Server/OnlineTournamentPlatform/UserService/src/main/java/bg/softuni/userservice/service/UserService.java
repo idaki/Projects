@@ -37,4 +37,12 @@ public interface UserService  {
 
 
     UserDetailsExportDTO findUserByDetails(String username, String firstName, String lastName);
+
+
+
+    boolean isAdminSuper(String username);
+
+    boolean isOwnAccount(String username, Long userId);
+
+    boolean isAdminUser(String username);
 }

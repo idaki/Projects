@@ -6,8 +6,10 @@ import ViewContext from '../../context/viewContext';
 import { getUserDetails } from '../../services/userDetailsService';
 import SidebarModal from '../sidebar/SidebarModal';
 import MainFeedModal from '../mainfeed/MainFeedModal';
-import SettingsContainer from '../settings/settings-container/SettingsModal';
 import AuthNavigationModal from '../authNavigationModal/AuthNavigationModal';
+import {  getCsrfToken } from '../../utils/utils';
+
+import {fetchCsrfToken} from '../../utils/csrfUtil';
 
 
 const ProfileModal = () => {
@@ -39,6 +41,13 @@ const ProfileModal = () => {
 
   const openSettings = async () => {
     try {
+
+      let csrfToken = getCsrfToken();
+      console.log(csrfToken);
+   if (!csrfToken) {
+    csrfToken = await fetchCsrfToken();
+    
+  }
       const details = await getUserDetails();
       setUserDetails(details);
       setMainContent('settings');
@@ -49,6 +58,8 @@ const ProfileModal = () => {
 
   const handleLogout = () => {
     setAuth(null);
+    setUserProfile(null);
+    setUserDetails(null);
   };
 
   if (!auth) {

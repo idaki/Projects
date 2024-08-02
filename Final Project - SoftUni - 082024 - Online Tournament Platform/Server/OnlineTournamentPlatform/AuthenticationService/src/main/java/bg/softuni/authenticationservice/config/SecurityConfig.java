@@ -20,6 +20,7 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 
 import java.util.Arrays;
@@ -44,7 +45,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                         .csrfTokenRequestHandler(new SpaCsrfTokenRequestHandler())
-                        .ignoringRequestMatchers("/api/login", "/api/admin/csrf")
+                        .ignoringRequestMatchers( "/api/login","api/csrf")
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -58,14 +59,12 @@ public class SecurityConfig {
                                 "/api/update-password",
                                 "/api/tournaments",
                                 "/api/tournaments/all",
-                                "/api/tournaments/managed",
                                 "/api/tournaments/watchlist",
                                 "/api/tournaments/create",
                                 "/api/games",
                                 "/api/friends",
                                 "/api/register-consumer",
-                                "/api/teams/my-teams",
-                                "/api/user/details"
+                                "/api/login"
                         ).permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN_SUPER")
                         .requestMatchers("/api/user/**").hasAnyRole("ADMIN_USER", "ADMIN_SUPER")
@@ -102,8 +101,21 @@ public class SecurityConfig {
         return auth.build();
     }
 
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));  // Adjust as necessary
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-XSRF-TOKEN"));
+        configuration.setExposedHeaders(Arrays.asList("Authorization", "Content-Type"));
+        configuration.setAllowCredentials(true);
+        configuration.setMaxAge(3600L); // Cache preflight response for 1 hour
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
+
+}

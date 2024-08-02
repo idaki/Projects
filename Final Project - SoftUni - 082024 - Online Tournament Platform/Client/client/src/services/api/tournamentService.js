@@ -14,24 +14,28 @@ export const getAll = async () => {
 };
 
 
-;
 
 export const getMyTournaments = async () => {
   try {
-    let csrfToken = getCsrfToken();
+    const csrfToken = getCsrfToken();
     if (!csrfToken) {
-      csrfToken = await fetchCsrfToken();
-      if (!csrfToken) {
-        throw new Error('Failed to fetch CSRF token');
-      }
+      throw new Error('CSRF token not found in cookies');
     }
-        
+
+    const authData = JSON.parse(localStorage.getItem('authData'));
+    if (!authData || !authData.accessToken) {
+      throw new Error('Auth data or access token not found in localStorage');
+    }
+
+    // // Prepend 'csrf_' to the csrfToken
+    // const csrfTokenWithPrefix = `csrf_${csrfToken}`;
+
     const response = await fetch(`${BASE_URL}/tournaments/managed`, {
-      method: 'POST', // Ensure the API requires POST for fetching data
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${getJwtToken()}`,
-        'X-XSRF-TOKEN': csrfToken // Include CSRF token in the headers
+        'Authorization': `Bearer ${authData.accessToken}`,
+        'x-xsrf-token': csrfToken // Include CSRF token in the headers
       },
       credentials: 'include'
     });
@@ -58,25 +62,25 @@ export const getMyTournaments = async () => {
       throw new Error('Unexpected response format');
     }
 
-    console.log('Fetched friends data:', data); // Log the fetched friends data
+    console.log('Fetched tournaments data:', data);
 
-    // Check if the data is an array and contains objects with expected keys
     if (!Array.isArray(data) || data.some(item => typeof item !== 'object' || !item.id)) {
       console.error('Expected data to be an array of objects but received:', data);
       throw new Error('Invalid data format from server');
     }
 
-    localStorage.setItem('friendsList', JSON.stringify(data));
-    return data; // Assume data is an array of FriendDTOs
+    localStorage.setItem('tournamentsList', JSON.stringify(data));
+    return data;
   } catch (error) {
-    console.error('Failed to fetch friends:', error);
+    console.error('Failed to fetch tournaments:', error);
     throw error;
   }
 };
 
+
 export const getMyWatchList = async () => {
   try {
-    const { token: csrfToken, header: csrfHeader } = getCsrfTokenFromMeta();
+    const csrfToken = getCsrfToken();
     const response = await fetch(`${BASE_URL}/tournaments/watchlist`, {
       method: 'POST',
       headers: {

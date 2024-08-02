@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserDetailsController {
 
     private final UserService userService;
-    private final JwtService jwtService;
+    private final JwtService jwtService;;
 
 @Autowired
     public UserDetailsController(UserService userService, JwtService jwtService) {
@@ -32,21 +32,22 @@ public class UserDetailsController {
         return ResponseEntity.ok(userDetails);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteUser(@RequestHeader("Authorization") String token) {
-        try {
+    @DeleteMapping("/delete/{userId}")
+    public ResponseEntity<String> deleteUserById(@PathVariable Long userId, @RequestHeader("Authorization") String token) {
+        if (token == null || !token.startsWith("Bearer ")) {
+            return ResponseEntity.badRequest().body("Invalid token");
+        }
 
-            if (token != null && token.startsWith("Bearer ")) {
-                token = token.substring(7);
-                String username = jwtService.extractUsername(token);
+        token = token.substring(7);  // Remove the "Bearer " prefix
+        String username = jwtService.extractUsername(token);  // Extract the username from the token
 
-                userService.deleteUserByUsername(username);
-                return ResponseEntity.ok().body("User deleted successfully.");
-            } else {
-                return ResponseEntity.badRequest().body("Invalid token");
-            }
-        } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error deleting user: " + e.getMessage());
+        if (userService.isAdminSuper(username) ||
+                (userService.isAdminUser(username) && userService.isOwnAccount(username, userId))) {
+
+            userService.deleteUserById(userId);
+            return ResponseEntity.ok("User deleted successfully.");
+        } else {
+            return ResponseEntity.status(403).body("Forbidden: Insufficient permissions");
         }
     }
 
