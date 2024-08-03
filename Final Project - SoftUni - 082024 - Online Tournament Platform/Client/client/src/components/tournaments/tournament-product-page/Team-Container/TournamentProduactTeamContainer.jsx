@@ -4,11 +4,11 @@ export default function TournamentProductPageTeamContainer({ teams }) {
   return (
     <div>
       <h3>Teams</h3>
-      {/* <ul>
-        {teams.map((team, index) => (
-          <li key={index}>{team.name}</li>
-        ))}
-      </ul> */}
+      <ul>
+        <li>Team 1</li>
+        <li>Team 2</li>
+        <li>Team 3</li>
+      </ul>
     </div>
   );
 }

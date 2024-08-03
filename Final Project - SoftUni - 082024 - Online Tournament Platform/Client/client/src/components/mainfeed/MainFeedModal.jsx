@@ -6,7 +6,7 @@ import FriendsContainer from '../friends/FriendsContainer';
 import TeamContainer from '../teams/TeamContainer';
 import WatchlistContainer from '../tournaments/watchlist/WatchListContainer';
 import CreateTournamentModal from '../tournaments/tournament-create/CreateTournamentModal';
-import TournamentProductPageContainer from '../tournaments/tournament-product-page/TournamentProductPageContainer/TournamentProducPageContainer';
+import TournamentProductPageContainer from '../tournaments/tournament-product-page/Product-Page-Container/TournamentProducPageContainer';
 import EditUserContainer from '../admin-panel/edit-users/EditUserModal';
 import SettingsContainer from '../settings/settings-container/SettingsModal';
 

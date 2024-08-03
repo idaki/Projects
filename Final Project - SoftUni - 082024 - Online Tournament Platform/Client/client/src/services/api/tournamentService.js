@@ -169,3 +169,4 @@ export const getTournamentById = async (id) => {
     throw error;
   }
 };
+
