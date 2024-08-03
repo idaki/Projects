@@ -1,5 +1,5 @@
 import { fetchWithSettings, storeAuthData   } from '../utils/utils';
-import {fetchCsrfToken, captureCsrfTokenFromResponse} from '../utils/csrfUtil';
+import {fetchCsrfToken, captureCsrfTokenFromResponse} from '../utils/csrfUtils';
 import { BASE_URL } from '../config/config';
 import { jwtDecode } from "jwt-decode";
 

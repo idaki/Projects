@@ -1,5 +1,5 @@
 import { BASE_URL } from '../config/config';
-import { getJwtToken } from '../utils/utils';
+import { getJwtToken } from './utils';
 
 // Utility function to fetch CSRF token
 // Utility function to fetch CSRF token
@@ -54,4 +54,21 @@ export const captureCsrfTokenFromResponse = (response) => {
     } else {
       console.warn('CSRF token not found in response headers');
     }
+  };
+  
+ export  const ValidityStateCsrfToken = async () => {
+    let csrfToken = getCsrfToken();
+    console.log(csrfToken);
+
+    if (!csrfToken) {
+        csrfToken = await fetchCsrfToken();
+        console.log(csrfToken);
+    }
+};
+export const getCsrfToken = () => {
+    const match = document.cookie.match(new RegExp('(^| )XSRF-TOKEN=([^;]+)'));
+    if (match) {
+      return match[2];
+    }
+    return null;
   };

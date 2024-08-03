@@ -3,11 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { getAllGames } from '../../../services/api/gameService';
 import { createTournament } from '../../../services/api/tournamentService';
 import { validateCreateTournamentForm } from '../../../services/formValidator/createTournamentFormValidator';
+import { getCsrfToken , fetchCsrfToken} from '../../../utils/csrfUtils';
+ 
 
 export default function CreateTournamentModal({ onClose, onCreate }) {
   const [formData, setFormData] = useState({
     name: '',
-    title: '',
+    game: '',
     category: '',
     summary: '',
     startDate: '',
@@ -43,9 +45,18 @@ export default function CreateTournamentModal({ onClose, onCreate }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Form submitted with data:', formData); // Debugging line
     const { valid, errors } = validateCreateTournamentForm(formData);
     if (valid) {
       try {
+        let csrfToken = getCsrfToken();
+        console.log(csrfToken);
+    
+        if (!csrfToken) {
+            csrfToken = await fetchCsrfToken();
+            console.log(csrfToken);
+        }
+        console.log('Form is valid, creating tournament...'); // Debugging line
         const createdTournament = await createTournament(formData);
         console.log('Tournament created successfully:', createdTournament);
         onCreate(); // Call the onCreate prop to refresh the tournament list
@@ -55,6 +66,7 @@ export default function CreateTournamentModal({ onClose, onCreate }) {
         setServerError(error.message); // Set the server error message
       }
     } else {
+      console.log('Form is invalid with errors:', errors); // Debugging line
       setErrors(errors);
     }
   };
@@ -81,12 +93,12 @@ export default function CreateTournamentModal({ onClose, onCreate }) {
         </div>
 
         <div className="form-group mb-3">
-          <label htmlFor="title">Legendary title:</label>
+          <label htmlFor="game">Legendary title:</label>
           <select
-            className={`form-control ${errors.title && 'is-invalid'}`}
-            id="title"
-            name="title"
-            value={formData.title}
+            className={`form-control ${errors.game && 'is-invalid'}`}
+            id="game"
+            name="game"
+            value={formData.game}
             onChange={handleChange}
           >
             <option key="default" value="">Select a game...</option>
@@ -94,7 +106,7 @@ export default function CreateTournamentModal({ onClose, onCreate }) {
               <option key={game.id} value={game.title}>{game.title}</option>
             ))}
           </select>
-          {errors.title && <div className="invalid-feedback">{errors.title}</div>}
+          {errors.game && <div className="invalid-feedback">{errors.game}</div>}
         </div>
 
         <div className="form-group mb-3">

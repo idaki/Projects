@@ -2,42 +2,50 @@ package bg.softuni.tournamentservice.model;
 
 import bg.softuni.userservice.models.entity.user.User;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="tournaments")
+@Table(name = "tournaments", uniqueConstraints = @UniqueConstraint(columnNames = "name"))
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Tournament {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private String category;
 
-    @Column
+    @Column(nullable = false)
     private String summary;
 
-    @Column
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date startDate;
 
-    @Column
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    @Column
+    @Column(nullable = false)
     private int numberOfTeams;
 
-    @Column
+    @Column(nullable = false)
     private int teamSize;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "manager_id")
+    @JoinColumn(name = "manager_id", nullable = false)
     private User manager;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -48,99 +56,10 @@ public class Tournament {
     )
     private Set<User> followers = new HashSet<>();
 
-    @OneToOne
-    @JoinColumn(name = "game_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "game_id", nullable = false)
     private Game game;
 
-    @OneToMany(mappedBy = "tournament")
+    @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Team> teams = new HashSet<>();
-
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public int getNumberOfTeams() {
-        return numberOfTeams;
-    }
-
-    public void setNumberOfTeams(int numberOfTeams) {
-        this.numberOfTeams = numberOfTeams;
-    }
-
-    public int getTeamSize() {
-        return teamSize;
-    }
-
-    public void setTeamSize(int teamSize) {
-        this.teamSize = teamSize;
-    }
-
-    public User getManager() {
-        return manager;
-    }
-
-    public void setManager(User manager) {
-        this.manager = manager;
-    }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
-    public Set<Team> getTeams() {
-        return teams;
-    }
-
-    public void setTeams(Set<Team> teams) {
-        this.teams = teams;
-    }
 }

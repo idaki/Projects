@@ -1,6 +1,6 @@
 import { fetchWithSettings, storeAuthData, getCsrfToken } from '../utils/utils';
 import { BASE_URL } from '../config/config';
-import {fetchCsrfToken} from '../utils/csrfUtil';
+import {fetchCsrfToken} from '../utils/csrfUtils';
 
 export async function getUserDetailsByProfileInfo(query) {
     try {

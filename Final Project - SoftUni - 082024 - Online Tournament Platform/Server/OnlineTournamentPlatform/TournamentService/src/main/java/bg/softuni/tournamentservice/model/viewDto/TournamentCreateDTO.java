@@ -1,97 +1,49 @@
 package bg.softuni.tournamentservice.model.viewDto;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class TournamentCreateDTO {
-    @NotNull
-    private String name;     //Tournament title
 
-    @NotNull
-    private String title;    //Game title
+    @NotNull(message = "Name cannot be null")
+    @NotBlank(message = "Name cannot be blank")
+    private String name;     // Tournament title
 
-    @NotNull
+    @NotNull(message = "Game title cannot be null")
+    @NotBlank(message = "Game title cannot be blank")
+    private String game;    // Game title
+
+    @NotNull(message = "Category cannot be null")
+    @NotBlank(message = "Category cannot be blank")
     private String category;
 
-    @NotNull
+    @NotNull(message = "Summary cannot be null")
+    @NotBlank(message = "Summary cannot be blank")
     private String summary;
 
-    @NotNull
+    @NotNull(message = "Start date cannot be null")
+    @FutureOrPresent(message = "Start date must be in the present or future")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
 
-    @NotNull
+    @NotNull(message = "End date cannot be null")
+    @Future(message = "End date must be in the future")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
 
-    @NotNull
-    @Positive
+    @NotNull(message = "Number of teams cannot be null")
+    @Positive(message = "Number of teams must be positive")
     private int numberOfTeams;
 
-    @Positive
+    @NotNull(message = "Team size cannot be null")
+    @Positive(message = "Team size must be positive")
     private int teamSize;
-
-    // Getters and Setters
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public int getNumberOfTeams() {
-        return numberOfTeams;
-    }
-
-    public void setNumberOfTeams(int numberOfTeams) {
-        this.numberOfTeams = numberOfTeams;
-    }
-
-    public int getTeamSize() {
-        return teamSize;
-    }
-
-    public void setTeamSize(int teamSize) {
-        this.teamSize = teamSize;
-    }
 }

@@ -1,8 +1,8 @@
 export const validateCreateTournamentForm = (formData) => {
   const errors = {};
 
-  if (!formData.title || formData.title.length === 0) {
-    errors.title = 'Title is required';
+  if (!formData.game || formData.game.length === 0) {
+    errors.game = 'Game is required';
   }
 
   if (!formData.category || formData.category.length === 0) {

@@ -2,12 +2,14 @@ package bg.softuni.tournamentservice.service.impl;
 
 
 import bg.softuni.tournamentservice.model.Asset;
+
 import bg.softuni.tournamentservice.model.Game;
 import bg.softuni.tournamentservice.model.Tournament;
 import bg.softuni.tournamentservice.model.viewDto.TournamentCreateDTO;
 import bg.softuni.tournamentservice.model.viewDto.TournamentDTO;
 import bg.softuni.tournamentservice.repository.GameRepository;
 import bg.softuni.tournamentservice.repository.TournamentRepository;
+import bg.softuni.tournamentservice.service.DuplicateTournamentException;
 import bg.softuni.tournamentservice.service.TournamentService;
 
 
@@ -17,6 +19,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -75,18 +78,37 @@ public class TournamentServiceImpl implements TournamentService {
     @Override
     public boolean createTournament(String jwt, TournamentCreateDTO tournamentCreateDTO) {
 
-User user = userService.findUserByToken(jwt);
+            // Find the user by token
+            User user = userService.findUserByToken(jwt);
+            if (user == null) {
+                throw new IllegalArgumentException("Invalid user token");
+            }
 
-        // Map the tournamentDTO to a Tournament entity
-        Tournament tournament = modelMapper.map(tournamentCreateDTO, Tournament.class);
+            // Find the game by name
+            Game game = gameRepository.findByName(tournamentCreateDTO.getGame())
+                    .orElseThrow(() -> new IllegalArgumentException("Game not found"));
 
-        // Set the manager of the tournament
-        tournament.setManager(user);
+            // Check if a tournament with the same unique fields already exists
+            Optional<Tournament> existingTournament = tournamentRepository.findByGameAndManagerAndName(
+                    game, user, tournamentCreateDTO.getName()
+            );
 
-        // Save the tournament and return true if successful
-        tournamentRepository.save(tournament);
-        return true;
-    }
+            if (existingTournament.isPresent()) {
+                throw new DuplicateTournamentException("A tournament with these unique fields already exists.");
+            }
+
+            // Map the tournamentDTO to a Tournament entity
+            Tournament tournament = modelMapper.map(tournamentCreateDTO, Tournament.class);
+
+            // Set the manager and game of the tournament
+            tournament.setManager(user);
+            tournament.setGame(game);
+
+            // Save the tournament
+            tournamentRepository.save(tournament);
+
+            return true;
+        }
 
 
 
@@ -95,7 +117,7 @@ User user = userService.findUserByToken(jwt);
         TournamentDTO dto = new TournamentDTO();
 
         dto.setId(tournament.getId());
-        dto.setName(tournament.getGame().getTitle());
+        dto.setName(tournament.getGame().getName());
 
         // Check if the game is null before accessing its properties
         Game game = tournament.getGame();

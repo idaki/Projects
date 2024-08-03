@@ -6,7 +6,7 @@ import { deleteUserById } from '../../../services/userDetailsService';
 
 import { Modal, Button } from 'react-bootstrap'; // Correctly import Modal and Button
 import {getCsrfToken} from '../../../utils/utils';
-import {fetchCsrfToken} from '../../../utils/csrfUtil';
+import {fetchCsrfToken} from '../../../utils/csrfUtils';
 import { logout } from '../../../services/authService';
 
 const SettingsContainer = ({ isOpen, toggle, userDetails }) => {

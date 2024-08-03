@@ -37,7 +37,7 @@ public class GameServiceImpl implements GameService {
 
         for (Game game : games) {
             GameDTO gameTitleDTO = new GameDTO();
-            gameTitleDTO.setTitle(game.getTitle());
+            gameTitleDTO.setTitle(game.getName());
             gameTitleDTO.setId(game.getId());
             gameTitleListDTOs.add(gameTitleDTO);
         }

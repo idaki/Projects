@@ -1,9 +1,15 @@
 package bg.softuni.tournamentservice.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "assets")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Asset {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,62 +18,20 @@ public class Asset {
     @Column(nullable = false)
     private String name;
 
-    @Column(columnDefinition = "Text")
+    @Column(columnDefinition = "TEXT")
     private String description;
-
 
     @Column(name = "url_asset")
     private String url;
 
-    @ManyToOne
-    @JoinColumn(name = "game_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "game_id", nullable = false)
     private Game game;
 
-    public Asset() {
-        this.id = id;
+    public Asset(String name, String description, String url, Game game) {
         this.name = name;
         this.description = description;
         this.url = url;
-        this.game = game;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
         this.game = game;
     }
 }

@@ -9,7 +9,7 @@ import MainFeedModal from '../mainfeed/MainFeedModal';
 import AuthNavigationModal from '../authNavigationModal/AuthNavigationModal';
 import {  getCsrfToken } from '../../utils/utils';
 
-import {fetchCsrfToken} from '../../utils/csrfUtil';
+import {fetchCsrfToken} from '../../utils/csrfUtils';
 
 
 const ProfileModal = () => {

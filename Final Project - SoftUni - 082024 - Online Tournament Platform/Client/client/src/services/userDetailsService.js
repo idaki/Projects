@@ -2,7 +2,7 @@
 import { BASE_URL } from '../config/config';
 import { getJwtToken, getCsrfToken , fetchWithSettings} from '../utils/utils';
 import {getCsrfTokenFromMeta} from '../utils/metaUtils';
-import {fetchCsrfToken} from '../utils/csrfUtil';
+import {fetchCsrfToken} from '../utils/csrfUtils';
 
 // API interaction function to get user details
 

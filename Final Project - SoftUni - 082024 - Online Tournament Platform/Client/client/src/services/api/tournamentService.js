@@ -1,7 +1,6 @@
-import { getJwtToken, getCsrfToken } from '../../utils/utils';
-import { BASE_URL } from '../../config/config';
-import {getCsrfTokenFromMeta} from '../../utils/metaUtils'; 
-import {fetchCsrfToken} from '../../utils/metaUtils';
+import { getJwtToken } from '../../utils/utils';
+import { BASE_URL } from '../../config/config'; 
+import {getCsrfToken, fetchCsrfToken } from '../../utils/csrfUtils';
 
 export const getAll = async () => {
     const response = await fetch(`${BASE_URL}/tournaments/all`);
@@ -17,9 +16,12 @@ export const getAll = async () => {
 
 export const getMyTournaments = async () => {
   try {
-    const csrfToken = getCsrfToken();
+    let csrfToken = getCsrfToken();
+    console.log(csrfToken);
+
     if (!csrfToken) {
-      throw new Error('CSRF token not found in cookies');
+        csrfToken = await fetchCsrfToken();
+        console.log(csrfToken);
     }
 
     const authData = JSON.parse(localStorage.getItem('authData'));
@@ -80,7 +82,13 @@ export const getMyTournaments = async () => {
 
 export const getMyWatchList = async () => {
   try {
-    const csrfToken = getCsrfToken();
+    let csrfToken = getCsrfToken();
+    console.log(csrfToken);
+
+    if (!csrfToken) {
+        csrfToken = await fetchCsrfToken();
+        console.log(csrfToken);
+    }
     const response = await fetch(`${BASE_URL}/tournaments/watchlist`, {
       method: 'POST',
       headers: {
@@ -107,12 +115,21 @@ export const getMyWatchList = async () => {
 
 export const createTournament = async (tournamentData) => {
   try {
+    let csrfToken = getCsrfToken();
+    console.log(csrfToken);
+
+    if (!csrfToken) {
+        csrfToken = await fetchCsrfToken();
+        console.log(csrfToken);
+    }
+
+
     const response = await fetch(`${BASE_URL}/tournaments/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${getJwtToken()}`,
-        'X-XSRF-TOKEN': getCsrfToken()
+        'X-XSRF-TOKEN': csrfToken
       },
       credentials: 'include',
       body: JSON.stringify(tournamentData)
