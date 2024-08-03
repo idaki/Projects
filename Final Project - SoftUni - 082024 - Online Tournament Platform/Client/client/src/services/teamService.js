@@ -2,7 +2,11 @@ import { getJwtToken, getCsrfToken } from '../utils/utils';
 import { BASE_URL } from '../config/config';
 
 export const getAll = async () => {
-    try {
+    try {   let csrfToken = getCsrfToken();
+        console.log(csrfToken);
+    if (!csrfToken) {
+      csrfToken = await fetchCsrfToken();}
+        
         const response = await fetch(`${BASE_URL}/teams/my-teams`, {
             method: 'POST',
             headers: {

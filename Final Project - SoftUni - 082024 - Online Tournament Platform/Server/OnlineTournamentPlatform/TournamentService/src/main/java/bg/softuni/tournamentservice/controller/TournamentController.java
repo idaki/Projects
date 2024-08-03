@@ -61,4 +61,17 @@ public class TournamentController {
         boolean isCreated = tournamentService.createTournament(jwt, tournamentCreateDTO);
         return ResponseEntity.ok(isCreated);
     }
+
+    @PostMapping("/details")
+    public ResponseEntity<TournamentDTO> getTournamentById(@RequestBody Long id, @RequestHeader("Authorization") String authorizationHeader) {
+        String jwt = authorizationHeader.substring(7); // Remove "Bearer " prefix
+        if (jwt.isEmpty()) {
+            return ResponseEntity.badRequest().build(); // Return bad request if JWT is empty
+        }
+        TournamentDTO tournament = tournamentService.getTournamentById(id, jwt);
+        if (tournament == null) {
+            return ResponseEntity.notFound().build(); // Return 404 if tournament is not found
+        }
+        return ResponseEntity.ok(tournament);
+    }
 }

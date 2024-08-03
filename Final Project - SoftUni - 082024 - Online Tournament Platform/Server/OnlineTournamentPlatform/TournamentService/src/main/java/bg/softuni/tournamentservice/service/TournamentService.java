@@ -17,4 +17,6 @@ public interface TournamentService  {
     List<TournamentDTO> getWatchlistTournaments(String jwt);
 
     boolean createTournament(String jwt, TournamentCreateDTO tournamentCreateDTO);
+
+    TournamentDTO getTournamentById(Long id, String jwt);
 }

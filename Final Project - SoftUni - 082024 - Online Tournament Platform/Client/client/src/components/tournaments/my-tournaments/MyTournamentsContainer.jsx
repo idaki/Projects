@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import TournamentCard from '../tournament-card/TournamentCard';
 import * as tournamentService from '../../../services/api/tournamentService';
-export default function MyTournamentsContainer({ onLearnMore }) {
+import TournamentProductPageContainer from '../tournament-product-page/Product-Page-Container/TournamentProducPageContainer';
+
+export default function MyTournamentsContainer() {
   const [tournaments, setTournaments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [reload, setReload] = useState(false);
+  const [selectedTournament, setSelectedTournament] = useState(null);
 
   useEffect(() => {
     const fetchTournaments = async () => {
       try {
         const storedTournaments = sessionStorage.getItem('myTournamentsList');
-        if (storedTournaments && !reload) {
+        if (storedTournaments) {
           setTournaments(JSON.parse(storedTournaments));
           setIsLoading(false);
         } else {
@@ -26,7 +28,20 @@ export default function MyTournamentsContainer({ onLearnMore }) {
     };
 
     fetchTournaments();
-  }, [reload]);
+  }, []);
+
+  const handleLearnMore = async (tournamentId) => {
+    try {
+      const tournamentData = await tournamentService.getTournamentById(tournamentId);
+      setSelectedTournament(tournamentData);
+    } catch (error) {
+      console.error('Failed to fetch tournament:', error);
+    }
+  };
+
+  if (selectedTournament) {
+    return <TournamentProductPageContainer tournament={selectedTournament} />;
+  }
 
   return (
     <section className="py-5 min-vh-100 d-flex align-items-center justify-content-center">
@@ -48,7 +63,7 @@ export default function MyTournamentsContainer({ onLearnMore }) {
                   title={tournament.name}
                   description={tournament.description}
                   img={tournament.url}
-                  onLearnMore={() => onLearnMore(tournament)}
+                  onLearnMore={() => handleLearnMore(tournament.id)}
                 />
               </div>
             ))}

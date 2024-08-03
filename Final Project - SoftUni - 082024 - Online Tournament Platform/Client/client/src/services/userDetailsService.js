@@ -1,8 +1,8 @@
 // import { fetchCsrfToken } from '../utils/csrfUtil'; // Adjust the path as needed
 import { BASE_URL } from '../config/config';
-import { getJwtToken, getCsrfToken , fetchWithSettings} from '../utils/utils';
+import { getJwtToken , fetchWithSettings} from '../utils/utils';
 import {getCsrfTokenFromMeta} from '../utils/metaUtils';
-import {fetchCsrfToken} from '../utils/csrfUtils';
+import {fetchCsrfToken, getCsrfToken} from '../utils/csrfUtils';
 
 // API interaction function to get user details
 
@@ -86,3 +86,38 @@ export const deleteUserById = async (userId) => {
     }
 };
 
+export const getMyTeams = async () => {
+    try {
+        let csrfToken = getCsrfToken();
+        if (!csrfToken) {
+            csrfToken = await fetchCsrfToken();
+        }
+
+        const response = await fetch(`${BASE_URL}/api/teams/my-teams`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${getJwtToken()}`,
+                'X-XSRF-TOKEN': csrfToken
+            },
+            credentials: 'include'
+        });
+
+        if (!response) {
+            throw new Error('No response from server');
+        }
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        }
+
+        const data = await response.json();
+        console.log('Fetched teams:', data);
+        return data;
+    } catch (error) {
+        console.error('Failed to fetch teams:', error);
+        throw error;
+    }
+};

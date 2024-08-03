@@ -1,13 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './TournamentCard.module.css';
-import ViewContext from '../../../context/viewContext';
+import {getCsrfToken, fetchCsrfToken} from  '../../../utils/csrfUtils';
+export default function TournamentCard({ id, title, description, img, onLearnMore }) {
+  const handleLearnMoreClick = async () => {
+    if (onLearnMore) {
+      let csrfToken = getCsrfToken();
 
-export default function TournamentCard({ id, title, description, img }) {
-  const { setMainContent } = useContext(ViewContext);
+      if (!csrfToken) {
+        csrfToken = await fetchCsrfToken();
+      }
 
-  const onLearnMore = (e) => {
-    e.preventDefault();
-    setMainContent('tournament-page');
+      onLearnMore(id); // Pass the tournament ID to the onLearnMore function
+    }
   };
 
   return (
@@ -21,7 +25,7 @@ export default function TournamentCard({ id, title, description, img }) {
       </div>
       <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
         <div className="text-center">
-          <a className="btn btn-outline-dark mt-auto" href="#" onClick={onLearnMore}>Learn More</a>
+          <button className="btn btn-outline-dark mt-auto" onClick={handleLearnMoreClick}>Learn More</button>
         </div>
       </div>
     </div>

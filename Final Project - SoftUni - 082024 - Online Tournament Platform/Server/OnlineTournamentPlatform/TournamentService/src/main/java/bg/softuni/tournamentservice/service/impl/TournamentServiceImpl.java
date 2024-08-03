@@ -137,4 +137,14 @@ public class TournamentServiceImpl implements TournamentService {
 
         return dto;
     }
+
+    @Override
+    public TournamentDTO getTournamentById(Long id, String jwt) {
+        Tournament tournament = tournamentRepository.findById(id).orElse(null);
+        if (tournament != null) {
+            return convertToDto(tournament);
+        }
+        return null;
+    }
+
 }

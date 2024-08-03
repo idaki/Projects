@@ -84,11 +84,10 @@ export const getMyWatchList = async () => {
   try {
     let csrfToken = getCsrfToken();
     console.log(csrfToken);
-
-    if (!csrfToken) {
-        csrfToken = await fetchCsrfToken();
-        console.log(csrfToken);
-    }
+if (!csrfToken) {
+  csrfToken = await fetchCsrfToken();
+  
+}
     const response = await fetch(`${BASE_URL}/tournaments/watchlist`, {
       method: 'POST',
       headers: {
@@ -149,13 +148,20 @@ export const createTournament = async (tournamentData) => {
 
 export const getTournamentById = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}/tournaments/${id}`, {
-      method: 'GET',
+    let csrfToken = getCsrfToken();
+    if (!csrfToken) {
+      csrfToken = await fetchCsrfToken();
+    }
+
+    const response = await fetch(`${BASE_URL}/tournaments/details`, {
+      method: 'POST',
       headers: {
         'Authorization': `Bearer ${getJwtToken()}`,
-        'X-XSRF-TOKEN': getCsrfToken()
+        'X-XSRF-TOKEN': csrfToken,
+        'Content-Type': 'application/json'
       },
-      credentials: 'include'
+      credentials: 'include',
+      body: JSON.stringify(id) // Send the ID in the body
     });
 
     if (!response.ok) {
@@ -169,4 +175,3 @@ export const getTournamentById = async (id) => {
     throw error;
   }
 };
-

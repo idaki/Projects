@@ -1,16 +1,18 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+export default function TournamentProductPageGameContainer({ tournament }) {
+  if (!tournament) {
+    return <div>Loading...</div>;
+  }
 
-
-export default function TournamentProductPageGameContainer({ game }) {
-    return (
-        <div className="card">
-            <img src={game.imageUrl} className="card-img-top" alt={game.title} />
-            <div className="card-body">
-                <h5 className="card-title">{game.title}</h5>
-                <p className="card-text">{game.description}</p>
-            </div>
-        </div>
-    );
+  return (
+    <div className="card mb-4">
+      <img src={tournament.url} className="card-img-top" alt={tournament.name} />
+      <div className="card-body">
+        <h5 className="card-title">{tournament.name}</h5>
+        <p className="card-text">{tournament.description}</p>
+      </div>
+    </div>
+  );
 }
