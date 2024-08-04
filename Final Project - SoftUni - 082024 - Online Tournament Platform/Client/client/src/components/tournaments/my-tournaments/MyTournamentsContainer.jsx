@@ -1,26 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+
 import TournamentCard from '../tournament-card/TournamentCard';
 import * as tournamentService from '../../../services/api/tournamentService';
 import TournamentProductPageContainer from '../tournament-product-page/Product-Page-Container/TournamentProducPageContainer';
+import {getCsrfToken , fetchCsrfToken } from '../../../utils/csrfUtils';
+import ViewContext from '../../../context/viewContext';
 
 export default function MyTournamentsContainer() {
+  const { mainContent } = useContext(ViewContext); // Access the mainContent from ViewContext
   const [tournaments, setTournaments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedTournament, setSelectedTournament] = useState(null);
 
   useEffect(() => {
+    if (mainContent !== 'tournaments') return; // Only fetch if mainContent is 'tournaments'
+
     const fetchTournaments = async () => {
       try {
-        const storedTournaments = sessionStorage.getItem('myTournamentsList');
-        if (storedTournaments) {
-          setTournaments(JSON.parse(storedTournaments));
-          setIsLoading(false);
-        } else {
-          const result = await tournamentService.getMyTournaments();
-          setTournaments(result);
-          sessionStorage.setItem('myTournamentsList', JSON.stringify(result));
-          setIsLoading(false);
+        let csrfToken = getCsrfToken();
+        if (!csrfToken) {
+          csrfToken = await fetchCsrfToken();
         }
+
+        const result = await tournamentService.getMyTournaments();
+        setTournaments(result);
+        setIsLoading(false);
       } catch (error) {
         console.error('Failed to fetch tournaments:', error);
         setIsLoading(false);
@@ -28,7 +32,7 @@ export default function MyTournamentsContainer() {
     };
 
     fetchTournaments();
-  }, []);
+  }, [mainContent]);
 
   const handleLearnMore = async (tournamentId) => {
     try {

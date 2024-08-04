@@ -3,7 +3,7 @@ import TeamCard from './TeamCard';
 import * as teamService from '../../services/teamService';
 import Pagination from '../pagination/PaginationModal';
 
-export default function TeamContainer({ reload }) {
+export default function TeamContainer() {
   const [teams, setTeams] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,15 +12,9 @@ export default function TeamContainer({ reload }) {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const storedTeams = sessionStorage.getItem('teamsList');
-        if (storedTeams && !reload) {
-          setTeams(JSON.parse(storedTeams));
-          setIsLoading(false);
-        } else {
-          const result = await teamService.getAll();
-          setTeams(result);
-          setIsLoading(false);
-        }
+        const result = await teamService.getAll();
+        setTeams(result);
+        setIsLoading(false);
       } catch (error) {
         console.error('Failed to fetch teams:', error);
         setIsLoading(false);
@@ -28,7 +22,7 @@ export default function TeamContainer({ reload }) {
     };
 
     fetchTeams();
-  }, [reload]);
+  }, []);
 
   // Get current teams
   const indexOfLastTeam = currentPage * teamsPerPage;
@@ -57,7 +51,9 @@ export default function TeamContainer({ reload }) {
                   <TeamCard
                     id={team.id}
                     name={team.name}
-                    img={team.img} // Assuming img is a part of the team's data
+                    img={team.img} 
+                    members={team.members} 
+                    userIds={team.userIds} 
                   />
                 </div>
               ))}
@@ -76,10 +72,10 @@ export default function TeamContainer({ reload }) {
                 onChange={(e) => setTeamsPerPage(Number(e.target.value))}
                 className="form-select w-auto"
               >
-                <option value={6}>6</option>
-                <option value={12}>12</option>
-                <option value={18}>18</option>
-                <option value={24}>24</option>
+            
+                <option value={25}>25</option>
+                <option value={50}>50</option>
+                <option value={100}>100</option>
               </select>
             </div>
           </>

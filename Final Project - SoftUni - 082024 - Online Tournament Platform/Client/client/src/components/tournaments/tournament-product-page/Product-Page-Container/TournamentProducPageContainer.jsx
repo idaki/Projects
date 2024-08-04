@@ -6,7 +6,6 @@ import TournamentProductPageTeamContainer from '../Team-Container/TournamentProd
 import { getAll as getTeams, getTeamsByTournamentId } from '../../../../services/teamService';
 import { getCsrfToken, fetchCsrfToken } from '../../../../utils/csrfUtils';  
 
-
 export default function TournamentProductPageContainer({ tournament }) {
   const [mainContent, setMainContent] = useState('info');
   const [teams, setTeams] = useState([]);

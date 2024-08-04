@@ -4,7 +4,7 @@ import jakarta.persistence.Column;
 
 import java.util.Date;
 
-public class TournamentExportDTO {
+public class TournamentInfoExportDTO {
     private Long id;
 
     @Column

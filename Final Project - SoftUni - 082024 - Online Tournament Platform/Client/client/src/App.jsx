@@ -10,6 +10,7 @@ import AuthContext from './context/authContext';
 import RegisterModal from './components/user-auth/register/RegisterModal';
 import LoginModal from './components/user-auth/login/LoginModal';
 import ResetPasswordModal from './components/user-auth/reset-password/ResetPasswordModal';
+import ViewContext from './context/viewContext';
 
 
 function App() {
@@ -22,7 +23,6 @@ function App() {
       <FooterModal />
       <Routes>
         <Route path="/newpassword" element={<UpdatePasswordModal />} />
-      
       </Routes>
     </Router>
   );

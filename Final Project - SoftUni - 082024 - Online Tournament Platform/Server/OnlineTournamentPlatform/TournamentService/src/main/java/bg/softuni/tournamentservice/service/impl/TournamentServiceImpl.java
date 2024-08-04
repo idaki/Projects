@@ -114,12 +114,8 @@ public class TournamentServiceImpl implements TournamentService {
 
 
     private TournamentDTO convertToDto(Tournament tournament) {
-        TournamentDTO dto = new TournamentDTO();
-
-        dto.setId(tournament.getId());
-        dto.setName(tournament.getGame().getName());
-
-        // Check if the game is null before accessing its properties
+        TournamentDTO dto = modelMapper.map(tournament, TournamentDTO.class);
+        
         Game game = tournament.getGame();
         if (game != null) {
             String description = "PLACEHOLDER TEXT"; // Replace this with actual logic if necessary

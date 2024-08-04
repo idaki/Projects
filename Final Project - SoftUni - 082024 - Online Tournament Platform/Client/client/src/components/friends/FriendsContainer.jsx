@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FriendCard from './friend-card/FriendCard';
 import * as friendsService from '../../services/friendsService';
 import Pagination from '../pagination/PaginationModal';
+import { getCsrfToken, fetchCsrfToken } from '../../utils/csrfUtils';
 
 export default function FriendsContainer({ reload }) {
   const [friends, setFriends] = useState([]);
@@ -10,22 +11,25 @@ export default function FriendsContainer({ reload }) {
   const [friendsPerPage, setFriendsPerPage] = useState(6); // Initial number of friends per page
 
   useEffect(() => {
-    const storedFriends = sessionStorage.getItem('friendsList');
-    if (storedFriends && !reload) {
-      setFriends(JSON.parse(storedFriends));
-      setIsLoading(false);
-    } else {
+    const fetchFriends = async () => {
+      let csrfToken = getCsrfToken();
+      if (!csrfToken) {
+        csrfToken = await fetchCsrfToken();
+      }
+
+      setIsLoading(true);
       friendsService.getAll()
         .then(result => {
           setFriends(result);
-          sessionStorage.setItem('friendsList', JSON.stringify(result));
           setIsLoading(false);
         })
         .catch(err => {
-          console.log(err);
+          console.error('Failed to fetch friends:', err);
           setIsLoading(false);
         });
-    }
+    };
+
+    fetchFriends();
   }, [reload]);
 
   // Get current friends
