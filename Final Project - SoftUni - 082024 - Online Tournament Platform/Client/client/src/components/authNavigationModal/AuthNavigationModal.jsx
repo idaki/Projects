@@ -12,7 +12,7 @@ export default function AuthNavigationModal() {
   }
 
   const handleLinkClick = (content) => {
-    console.log(`Navigating to: ${content}`); // Debugging: log the navigation content
+
     setMainContent(content);
   };
 

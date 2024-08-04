@@ -3,11 +3,14 @@ package bg.softuni.tournamentservice.service.impl;
 
 import bg.softuni.tournamentservice.model.Asset;
 
+import bg.softuni.tournamentservice.model.ExportDto.TournamentSignupDTO;
 import bg.softuni.tournamentservice.model.Game;
+import bg.softuni.tournamentservice.model.Team;
 import bg.softuni.tournamentservice.model.Tournament;
 import bg.softuni.tournamentservice.model.viewDto.TournamentCreateDTO;
 import bg.softuni.tournamentservice.model.viewDto.TournamentDTO;
 import bg.softuni.tournamentservice.repository.GameRepository;
+import bg.softuni.tournamentservice.repository.TeamRepository;
 import bg.softuni.tournamentservice.repository.TournamentRepository;
 import bg.softuni.tournamentservice.service.DuplicateTournamentException;
 import bg.softuni.tournamentservice.service.TournamentService;
@@ -31,14 +34,16 @@ public class TournamentServiceImpl implements TournamentService {
     private final UserService userService;
     private final GameRepository gameRepository;
     private final ModelMapper modelMapper;
+    private final TeamRepository teamRepository;
 
-    public TournamentServiceImpl(TournamentRepository tournamentRepository, UserService userService, GameRepository gameRepository, ModelMapper modelMapper) {
+    public TournamentServiceImpl(TournamentRepository tournamentRepository, UserService userService, GameRepository gameRepository, ModelMapper modelMapper, TeamRepository teamRepository) {
         this.tournamentRepository = tournamentRepository;
 
 
         this.userService = userService;
         this.gameRepository = gameRepository;
         this.modelMapper = modelMapper;
+        this.teamRepository = teamRepository;
     }
 
 
@@ -141,6 +146,32 @@ public class TournamentServiceImpl implements TournamentService {
             return convertToDto(tournament);
         }
         return null;
+    }
+
+    public boolean signupForTournament(String jwt, TournamentSignupDTO signupDTO) {
+        User user = userService.findUserByToken(jwt);
+        if (user == null) {
+            throw new IllegalArgumentException("Invalid user token");
+        }
+
+        // Find the tournament by ID
+        Tournament tournament = tournamentRepository.findById(signupDTO.getTournamentId()).orElse(null);
+        if (tournament == null) {
+            return false; // Tournament not found
+        }
+
+        // Create a new team
+        Team team = new Team(signupDTO.getTeamName(), 5); // Assuming a default capacity of 5
+        team.setTournament(tournament);
+        team.getUsers().add(user); // Add the user to the team
+
+        teamRepository.save(team);
+
+        // Optionally add the team to the tournament's team list
+        tournament.getTeams().add(team);
+        tournamentRepository.save(tournament);
+
+        return true;
     }
 
 }

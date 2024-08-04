@@ -1,6 +1,7 @@
 package bg.softuni.tournamentservice.controller;
 
 
+import bg.softuni.tournamentservice.model.ExportDto.TournamentSignupDTO;
 import bg.softuni.tournamentservice.model.Tournament;
 import bg.softuni.tournamentservice.model.viewDto.TournamentCreateDTO;
 import bg.softuni.tournamentservice.model.viewDto.TournamentDTO;
@@ -64,5 +65,14 @@ public class TournamentController {
             return ResponseEntity.notFound().build(); // Return 404 if tournament is not found
         }
         return ResponseEntity.ok(tournament);
+    }
+    @PostMapping("/tournaments/signup")
+    public ResponseEntity<Boolean> signupForTournament(@RequestHeader("Authorization") String authorizationHeader, @RequestBody TournamentSignupDTO signupDTO) {
+        String jwt = authorizationHeader.substring(7); // Remove "Bearer " prefix
+        if (jwt.isEmpty()) {
+            return ResponseEntity.badRequest().build(); // Return bad request if JWT is empty
+        }
+        boolean isSignedUp = tournamentService.signupForTournament(jwt, signupDTO);
+        return ResponseEntity.ok(isSignedUp);
     }
 }

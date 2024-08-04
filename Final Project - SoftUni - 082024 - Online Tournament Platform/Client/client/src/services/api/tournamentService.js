@@ -174,3 +174,38 @@ export const getTournamentById = async (id) => {
     throw error;
   }
 };
+
+export const signupForTournament = async (tournamentId, teamName) => {
+  try {
+    let csrfToken = getCsrfToken();
+    if (!csrfToken) {
+      csrfToken = await fetchCsrfToken();
+    }
+
+    const authData = JSON.parse(localStorage.getItem('authData'));
+    if (!authData || !authData.accessToken) {
+      throw new Error('Auth data or access token not found in localStorage');
+    }
+
+    const response = await fetch(`${BASE_URL}/tournaments/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authData.accessToken}`,
+        'X-XSRF-TOKEN': csrfToken
+      },
+      credentials: 'include',
+      body: JSON.stringify({ tournamentId, teamName })
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Failed to sign up for tournament:', error);
+    throw error;
+  }
+};

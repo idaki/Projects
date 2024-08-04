@@ -1,6 +1,7 @@
 package bg.softuni.tournamentservice.service;
 
 
+import bg.softuni.tournamentservice.model.ExportDto.TournamentSignupDTO;
 import bg.softuni.tournamentservice.model.Tournament;
 import bg.softuni.tournamentservice.model.viewDto.TournamentCreateDTO;
 import bg.softuni.tournamentservice.model.viewDto.TournamentDTO;
@@ -19,4 +20,6 @@ public interface TournamentService  {
     boolean createTournament(String jwt, TournamentCreateDTO tournamentCreateDTO);
 
     TournamentDTO getTournamentById(Long id, String jwt);
+
+    boolean signupForTournament(String jwt, TournamentSignupDTO signupDTO);
 }

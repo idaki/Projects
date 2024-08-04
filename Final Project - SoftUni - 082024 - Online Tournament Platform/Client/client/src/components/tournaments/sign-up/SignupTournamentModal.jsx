@@ -4,11 +4,9 @@ import TournamentProductPageInfoContainer from '../Info-Container/TournamentProd
 import TournamentProductPageGameContainer from '../Game-Container/TournamentProductPageGameContainer';
 import TournamentProductPageTeamContainer from '../Team-Container/TournamentProductTeamContainer';
 import { getTeamsByTournamentId } from '../../../../services/teamService';
+import { signupForTournament } from '../../../../services/tournamentService';
 import { getCsrfToken, fetchCsrfToken } from '../../../../utils/csrfUtils';
 import AuthContext from '../../../../context/authContext';
-import { signupForTournament } from '../../../../services/api/tournamentService';
-
-
 
 export default function TournamentProductPageContainer({ tournament }) {
   const [mainContent, setMainContent] = useState('info');

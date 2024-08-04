@@ -4,11 +4,12 @@ import * as tournamentService from '../../../services/api/tournamentService';
 import { getCsrfToken, fetchCsrfToken } from '../../../utils/csrfUtils';
 import TournamentProductPageContainer from '../tournament-product-page/Product-Page-Container/TournamentProducPageContainer';
 
+
 export default function AllTournamentsContainer() {
     const [tournaments, setTournaments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [selectedTournament, setSelectedTournament] = useState(null);
-
+  
     useEffect(() => {
         tournamentService.getAll()
             .then(result => {
