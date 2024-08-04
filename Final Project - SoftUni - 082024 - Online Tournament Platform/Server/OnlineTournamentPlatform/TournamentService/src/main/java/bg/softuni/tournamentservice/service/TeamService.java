@@ -1,16 +1,12 @@
 package bg.softuni.tournamentservice.service;
 
-
-import bg.softuni.tournamentservice.model.viewDto.TeamDTO;
-import org.springframework.transaction.annotation.Transactional;
+import bg.softuni.tournamentservice.model.ExportDto.TeamExportDTO;
 
 import java.util.List;
 
 public interface TeamService {
-    @Transactional
     void addPlayer();
-
     void removePlayer();
-
-    List<TeamDTO> getMyTeams(String jwt);
+    List<TeamExportDTO> getMyTeams(String token);
+    List<TeamExportDTO> getTeamsByTournamentId(Long tournamentId, String jwt);
 }

@@ -1,5 +1,6 @@
 import { getJwtToken, getCsrfToken } from '../utils/utils';
 import { BASE_URL } from '../config/config';
+import{fetchCsrfToken } from '../utils/csrfUtils';
 
 export const getAll = async () => {
     try {   let csrfToken = getCsrfToken();
@@ -51,6 +52,43 @@ export const getAll = async () => {
         return data;
     } catch (error) {
         console.error('Failed to fetch teams:', error);
+        throw error;
+    }
+};
+
+
+export const getTeamsByTournamentId = async (tournamentId) => {
+    try {
+        let csrfToken = getCsrfToken();
+        if (!csrfToken) {
+            csrfToken = await fetchCsrfToken();
+        }
+
+        const response = await fetch(`${BASE_URL}/teams/by-tournament`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${getJwtToken()}`,
+                'X-XSRF-TOKEN': csrfToken
+            },
+            credentials: 'include',
+            body: JSON.stringify({ tournamentId })
+        });
+
+        if (!response) {
+            throw new Error('No response from server');
+        }
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Failed to fetch teams by tournament ID:', error);
         throw error;
     }
 };
