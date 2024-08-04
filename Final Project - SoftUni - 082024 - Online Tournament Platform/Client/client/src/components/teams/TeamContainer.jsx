@@ -50,7 +50,7 @@ export default function TeamContainer() {
                 <div key={team.id} className="col">
                   <TeamCard
                     id={team.id}
-                    name={team.name}
+                    name={team.teamName}
                     img={team.img} 
                     members={team.members} 
                     userIds={team.userIds} 

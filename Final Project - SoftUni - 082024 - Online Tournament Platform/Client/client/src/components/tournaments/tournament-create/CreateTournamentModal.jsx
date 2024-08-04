@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getAllGames } from '../../../services/api/gameService';
 import { createTournament } from '../../../services/api/tournamentService';
 import { validateCreateTournamentForm } from '../../../services/formValidator/createTournamentFormValidator';
-import { getCsrfToken , fetchCsrfToken} from '../../../utils/csrfUtils';
- 
+import { getCsrfToken, fetchCsrfToken } from '../../../utils/csrfUtils';
+import ViewContext from '../../../context/viewContext';
 
 export default function CreateTournamentModal({ onClose, onCreate }) {
+  const { setMainContent } = useContext(ViewContext);
   const [formData, setFormData] = useState({
     name: '',
     game: '',
@@ -20,7 +21,7 @@ export default function CreateTournamentModal({ onClose, onCreate }) {
 
   const [errors, setErrors] = useState({});
   const [games, setGames] = useState([]);
-  const [serverError, setServerError] = useState(''); // State to store server error message
+  const [serverError, setServerError] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,28 +46,36 @@ export default function CreateTournamentModal({ onClose, onCreate }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted with data:', formData); // Debugging line
     const { valid, errors } = validateCreateTournamentForm(formData);
     if (valid) {
       try {
         let csrfToken = getCsrfToken();
-        console.log(csrfToken);
-    
+
         if (!csrfToken) {
-            csrfToken = await fetchCsrfToken();
-            console.log(csrfToken);
+          csrfToken = await fetchCsrfToken();
         }
-        console.log('Form is valid, creating tournament...'); // Debugging line
+
         const createdTournament = await createTournament(formData);
-        console.log('Tournament created successfully:', createdTournament);
-        onCreate(); // Call the onCreate prop to refresh the tournament list
-        onClose(); // Close the modal
+
+        if (typeof onCreate === 'function') {
+          onCreate();
+        } else {
+          console.error('onCreate is not a function');
+        }
+
+        if (typeof onClose === 'function') {
+          onClose();
+        } else {
+          console.error('onClose is not a function');
+        }
+
+        // Switch view to "My Tournaments" after successful creation
+        setMainContent('tournaments');
       } catch (error) {
         console.error('Failed to create tournament:', error);
-        setServerError(error.message); // Set the server error message
+        setServerError(error.message);
       }
     } else {
-      console.log('Form is invalid with errors:', errors); // Debugging line
       setErrors(errors);
     }
   };
@@ -76,7 +85,7 @@ export default function CreateTournamentModal({ onClose, onCreate }) {
       <form onSubmit={handleSubmit}>
         <h1>Create Tournament</h1>
 
-        {serverError && <div className="alert alert-danger">{serverError}</div>} {/* Display server error message */}
+        {serverError && <div className="alert alert-danger">{serverError}</div>}
 
         <div className="form-group mb-3">
           <label htmlFor="name">Tournament name:</label>
