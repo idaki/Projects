@@ -9,6 +9,7 @@ import CreateTournamentModal from '../tournaments/tournament-create/CreateTourna
 import TournamentProductPageContainer from '../tournaments/tournament-product-page/Product-Page-Container/TournamentProducPageContainer';
 import EditUserContainer from '../admin-panel/edit-users/EditUserModal';
 import SettingsContainer from '../settings/settings-container/SettingsModal';
+import AllTournamentsContainer from '../tournaments/all-tournaments/AllTournamentsContainer';
 
 export default function MainFeedModal({ userDetails }) {
   const { mainContent } = useContext(ViewContext);
@@ -28,6 +29,7 @@ export default function MainFeedModal({ userDetails }) {
       {mainContent === 'settings' && <SettingsContainer userDetails={userDetails} isOpen={true} toggle={() => {}} />}
       {mainContent === 'create-tournament' && <CreateTournamentModal />}
       {mainContent === 'tournament-page' && <TournamentProductPageContainer />}
+      {mainContent === 'find-tournament' && <AllTournamentsContainer />}
     </div>
   );
 }

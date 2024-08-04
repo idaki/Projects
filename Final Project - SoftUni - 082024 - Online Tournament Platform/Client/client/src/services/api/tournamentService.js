@@ -153,10 +153,9 @@ export const getTournamentById = async (id) => {
       csrfToken = await fetchCsrfToken();
     }
 
-    const response = await fetch(`${BASE_URL}/tournaments/details`, {
+    const response = await fetch(`${BASE_URL}/public/tournaments/details`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${getJwtToken()}`,
         'X-XSRF-TOKEN': csrfToken,
         'Content-Type': 'application/json'
       },

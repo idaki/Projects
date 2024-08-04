@@ -12,7 +12,7 @@ export default function TournamentProductPageTeamContainer({ teams }) {
                       <TeamCard
                           id={team.id}
                           name={team.teamName}
-                          img={team.imageUrl} // Assuming the team object has an imageUrl property
+                          img={team.imageUrl} 
                           members={team.members}
                       />
                   </div>

@@ -7,7 +7,7 @@ import ViewContext from '../../../context/viewContext';
 import CreateTournamentModal from '../tournament-create/CreateTournamentModal';
 
 export default function MyTournamentsContainer() {
-  const { mainContent, setMainContent } = useContext(ViewContext);
+  const { mainContent } = useContext(ViewContext);
   const [tournaments, setTournaments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedTournament, setSelectedTournament] = useState(null);
@@ -37,6 +37,10 @@ export default function MyTournamentsContainer() {
 
   const handleLearnMore = async (tournamentId) => {
     try {
+      let csrfToken = getCsrfToken();
+        if (!csrfToken) {
+          csrfToken = await fetchCsrfToken();
+        }
       const tournamentData = await tournamentService.getTournamentById(tournamentId);
       setSelectedTournament(tournamentData);
     } catch (error) {
@@ -46,21 +50,23 @@ export default function MyTournamentsContainer() {
 
   const handleCreateTournament = async () => {
     setShowCreateModal(false);
-    setMainContent('tournaments');
     setIsLoading(true);
-    try {
-      let csrfToken = getCsrfToken();
-      if (!csrfToken) {
-        csrfToken = await fetchCsrfToken();
-      }
+    const fetchTournaments = async () => {
+      try {
+        let csrfToken = getCsrfToken();
+        if (!csrfToken) {
+          csrfToken = await fetchCsrfToken();
+        }
 
-      const result = await tournamentService.getMyTournaments();
-      setTournaments(result);
-      setIsLoading(false);
-    } catch (error) {
-      console.error('Failed to fetch tournaments:', error);
-      setIsLoading(false);
-    }
+        const result = await tournamentService.getMyTournaments();
+        setTournaments(result);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Failed to fetch tournaments:', error);
+        setIsLoading(false);
+      }
+    };
+    await fetchTournaments();
   };
 
   if (selectedTournament) {
@@ -70,7 +76,9 @@ export default function MyTournamentsContainer() {
   return (
     <section className="py-5 min-vh-100 d-flex align-items-center justify-content-center">
       <div className="container">
-     
+        <button className="btn btn-primary mb-3" onClick={() => setShowCreateModal(true)}>
+          Create Tournament
+        </button>
         {showCreateModal && (
           <CreateTournamentModal
             onClose={() => setShowCreateModal(false)}

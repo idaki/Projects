@@ -23,6 +23,7 @@ export default function AuthNavigationModal() {
       <a className={`nav-link ${styles.navLink}`} href="#" onClick={() => handleLinkClick('teams')}>My Teams</a>
       <a className={`nav-link ${styles.navLink}`} href="#" onClick={() => handleLinkClick('watchlist')}>Watchlist</a>
       <a className={`nav-link ${styles.navLink}`} href="#" onClick={() => handleLinkClick('create-tournament')}>Create Tournament</a>
+      <a className={`nav-link ${styles.navLink}`} href="#" onClick={() => handleLinkClick('find-tournament')}>Find Tournament</a>
     </>
   );
 

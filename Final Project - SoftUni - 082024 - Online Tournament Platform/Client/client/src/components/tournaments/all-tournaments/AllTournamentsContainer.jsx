@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import TournamentCard from '../tournament-card/TournamentCard';
 import * as tournamentService from '../../../services/api/tournamentService';
+import { getCsrfToken, fetchCsrfToken } from '../../../utils/csrfUtils';
+import TournamentProductPageContainer from '../tournament-product-page/Product-Page-Container/TournamentProducPageContainer';
 
-export default function PublicTournamentsContainer() {
+export default function AllTournamentsContainer() {
     const [tournaments, setTournaments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [selectedTournament, setSelectedTournament] = useState(null);
 
     useEffect(() => {
         tournamentService.getAll()
@@ -18,6 +21,23 @@ export default function PublicTournamentsContainer() {
             });
     }, []);
 
+    const handleLearnMore = async (tournamentId) => {
+      try {
+        let csrfToken = getCsrfToken();
+          if (!csrfToken) {
+            csrfToken = await fetchCsrfToken();
+          }
+        const tournamentData = await tournamentService.getTournamentById(tournamentId);
+        setSelectedTournament(tournamentData);
+      } catch (error) {
+        console.error('Failed to fetch tournament:', error);
+      }
+    };
+  
+    if (selectedTournament) {
+      return <TournamentProductPageContainer tournament={selectedTournament} />;
+    }
+  
     return (
         <section className="py-5 min-vh-100 d-flex align-items-center justify-content-center">
             <div className="container">
@@ -38,6 +58,7 @@ export default function PublicTournamentsContainer() {
                                     title={tournament.name}
                                     description={tournament.description}
                                     img={tournament.url}
+                                    onLearnMore={() => handleLearnMore(tournament.id)}
                                 />
                             </div>
                         ))}

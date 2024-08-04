@@ -1,5 +1,5 @@
 import React from 'react';
-import PublicTournamentsContainer from '../tournaments/public-tournaments/PublicTournamentsContainer';
+import PublicTournamentsContainer from '../tournaments/all-tournaments/AllTournamentsContainer';
 import HeaderContainer from '../header/HeaderContainer';
 
 export default function PublicContainer() {
