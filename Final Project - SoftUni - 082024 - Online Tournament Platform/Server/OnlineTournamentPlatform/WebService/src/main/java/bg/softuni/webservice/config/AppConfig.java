@@ -1,8 +1,6 @@
 package bg.softuni.webservice.config;
 
-import bg.softuni.userservice.service.UserService;
-import bg.softuni.webservice.Init;
-import bg.softuni.webservice.contoller.InitController;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.modelmapper.Converter;
@@ -55,8 +53,5 @@ public class AppConfig {
         return modelMapper;
     }
 
-    @Bean
-    public CommandLineRunner commandLineRunner(InitController initController) {
-        return new Init(initController);
-    }
+
 }

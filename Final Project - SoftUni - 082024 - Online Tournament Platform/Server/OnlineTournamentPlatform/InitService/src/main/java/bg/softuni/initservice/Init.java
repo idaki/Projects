@@ -1,12 +1,9 @@
-package bg.softuni.webservice;
+package bg.softuni.initservice;
 
-import bg.softuni.userservice.service.UserService;
-import bg.softuni.webservice.contoller.InitController;
+
+import bg.softuni.initservice.contoller.InitController;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.stereotype.Component;
-
-import javax.sql.DataSource;
 
 @Component
 public class Init implements CommandLineRunner {

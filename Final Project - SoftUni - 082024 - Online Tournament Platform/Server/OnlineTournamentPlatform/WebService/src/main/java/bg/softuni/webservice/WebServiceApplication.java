@@ -1,6 +1,6 @@
 package bg.softuni.webservice;
 
-import bg.softuni.authenticationservice.service.LoginService;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -14,9 +14,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ComponentScan(basePackages = {
         "bg.softuni.tournamentservice.*",
         "bg.softuni.userservice.*",
-        "bg.softuni.locationservice.*",
         "bg.softuni.communicationservice.*",
-        "bg.softuni.authenticationservice.*",
+        "bg.softuni.initservice.*",
+        "bg.softuni.authenticationService.*",
         "bg.softuni.webservice.*"
 
 })
@@ -24,12 +24,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class WebServiceApplication {
 
-    private final LoginService loginService;
 
-    @Autowired
-    public WebServiceApplication(LoginService loginService) {
-        this.loginService = loginService;
-    }
+
+
 
     public static void main(String[] args) {
         SpringApplication.run(WebServiceApplication.class, args);

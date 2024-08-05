@@ -78,6 +78,7 @@
           <module>CommunicationService</module>
         <module>TournamentService</module>
         <module>LocationService</module>
+        <module>InitService</module>
     </modules>
 
     <build>

@@ -33,6 +33,7 @@
         <option value="$PROJECT_DIR$/OnlineTournamentPlatform/LocationService/pom.xml" />
         <option value="$PROJECT_DIR$/OnlineTournamentPlatform/UserService/pom.xml" />
         <option value="$PROJECT_DIR$/OnlineTournamentPlatform/AuthenticationService/pom.xml" />
+        <option value="$PROJECT_DIR$/OnlineTournamentPlatform/InitService/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

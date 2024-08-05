@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -15,6 +16,7 @@
         <module name="WebService" />
         <module name="TeamService" />
         <module name="AuthenticationService" />
+        <module name="InitService" />
       </profile>
     </annotationProcessing>
   </component>
@@ -24,6 +26,7 @@
       <module name="CommunicationService" options="-parameters" />
       <module name="CrudService" options="-parameters" />
       <module name="GameService" options="-parameters" />
+      <module name="InitService" options="-parameters" />
       <module name="LocationService" options="-parameters" />
       <module name="OnlineTournamentPlatform" options="-parameters" />
       <module name="TeamService" options="-parameters" />

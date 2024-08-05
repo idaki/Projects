@@ -1,7 +1,7 @@
-package bg.softuni.webservice.contoller;
+package bg.softuni.initservice.contoller;
 
-import bg.softuni.webservice.service.InitService;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import bg.softuni.initservice.service.InitService;
 import org.springframework.stereotype.Controller;
 
 @Controller

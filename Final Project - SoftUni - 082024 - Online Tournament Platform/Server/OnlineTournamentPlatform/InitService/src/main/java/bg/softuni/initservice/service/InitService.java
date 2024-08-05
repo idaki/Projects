@@ -1,4 +1,4 @@
-package bg.softuni.webservice.service;
+package bg.softuni.initservice.service;
 
 public interface InitService {
     void initUser(String role, String username, String password );

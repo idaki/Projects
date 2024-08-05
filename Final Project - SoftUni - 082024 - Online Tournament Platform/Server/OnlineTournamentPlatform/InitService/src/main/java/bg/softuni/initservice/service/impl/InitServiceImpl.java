@@ -1,9 +1,9 @@
-package bg.softuni.webservice.service.impl;
+package bg.softuni.initservice.service.impl;
 
+import bg.softuni.initservice.service.InitService;
 import bg.softuni.userservice.repository.RoleRepository;
 import bg.softuni.userservice.service.UserService;
-import bg.softuni.webservice.service.InitService;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
