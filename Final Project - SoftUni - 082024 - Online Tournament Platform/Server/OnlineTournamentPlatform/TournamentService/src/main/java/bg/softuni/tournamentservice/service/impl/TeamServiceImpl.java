@@ -70,7 +70,7 @@ public class TeamServiceImpl implements TeamService {
 
         return TeamExportDTO.builder()
                 .id(team.getId())
-                .teamName(team.getName())
+                .name(team.getName())
                 .members(members)
                 .userIds(userIds)
                 .build();
