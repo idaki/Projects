@@ -204,21 +204,24 @@ public class UserServiceImpl implements UserService {
         userProfile.setUser(user);
         user.setUserProfile(userProfile);
 
-        // Save UserSecurity and UserProfile first
+        // Save user first to generate ID and establish relationships
+        user = userRepository.save(user);
+
+        // Save UserSecurity and UserProfile
         userSecurityRepository.save(userSecurity);
         userProfileRepository.save(userProfile);
 
-        // Save user to generate ID, assign role, and hashed password
+        // Assign role and hashed password
         Role role = roleRepository.findByName(RoleEnum.valueOf(roleInput));
         if (role == null) {
             role = new Role(RoleEnum.valueOf(roleInput));
             roleRepository.save(role);
         }
         user.setRoles(Set.of(role));
-
-        // Only save user once with all modifications
-        user = userRepository.save(user);
         createHashedPassword(password, user);
+
+        // Finally, save the user again to update references
+        userRepository.save(user);
     }
 
 

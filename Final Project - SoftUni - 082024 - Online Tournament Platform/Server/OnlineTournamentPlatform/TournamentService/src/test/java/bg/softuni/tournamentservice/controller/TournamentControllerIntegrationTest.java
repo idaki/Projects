@@ -20,7 +20,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -42,19 +42,23 @@ public class TournamentControllerIntegrationTest {
     private TournamentService tournamentService;
 
     private String jwtToken;
+    private SimpleDateFormat dateFormat;
 
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         jwtToken = "Bearer mock-jwt-token";
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
     }
 
     @Test
     void testGetAllTournaments() throws Exception {
-        TournamentDTO tournament = TournamentDTO.builder()
-                .id(1L)
-                .name("Tournament A")
-                .build();
+        Date now = new Date();
+        TournamentDTO tournament = new TournamentDTO()
+                .setId(1L)
+                .setName("Tournament A")
+                .setStartDate(now)
+                .setEndDate(now);
 
         Mockito.when(tournamentService.getAllTournaments()).thenReturn(List.of(tournament));
 
@@ -68,10 +72,12 @@ public class TournamentControllerIntegrationTest {
     @Test
     @WithMockUser(username = "testuser", roles = {"USER"})
     void testGetManagedTournaments() throws Exception {
-        TournamentDTO tournament = TournamentDTO.builder()
-                .id(1L)
-                .name("Tournament A")
-                .build();
+        Date now = new Date();
+        TournamentDTO tournament = new TournamentDTO()
+                .setId(1L)
+                .setName("Tournament A")
+                .setStartDate(now)
+                .setEndDate(now);
 
         Mockito.when(tournamentService.getManagedTournaments("mock-jwt-token")).thenReturn(List.of(tournament));
 
@@ -85,10 +91,12 @@ public class TournamentControllerIntegrationTest {
     @Test
     @WithMockUser(username = "testuser", roles = {"USER"})
     void testGetWatchlist() throws Exception {
-        TournamentDTO tournament = TournamentDTO.builder()
-                .id(1L)
-                .name("Tournament A")
-                .build();
+        Date now = new Date();
+        TournamentDTO tournament = new TournamentDTO()
+                .setId(1L)
+                .setName("Tournament A")
+                .setStartDate(now)
+                .setEndDate(now);
 
         Mockito.when(tournamentService.getWatchlistTournaments("mock-jwt-token")).thenReturn(List.of(tournament));
 
@@ -102,18 +110,14 @@ public class TournamentControllerIntegrationTest {
     @Test
     @WithMockUser(username = "testuser", roles = {"USER"})
     void testCreateTournament() throws Exception {
-        // Create a TournamentCreateDTO object with LocalDate
-        LocalDate startDate = LocalDate.now();
-        LocalDate endDate = startDate.plusDays(1);
+        Date now = new Date();
+        Date tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 1 day later
 
-        // Create JSON string with correct date format
         String jsonContent = String.format("{\"name\":\"New Tournament\",\"game\":\"Soccer\",\"category\":\"Sports\",\"summary\":\"A new exciting soccer tournament\",\"startDate\":\"%s\",\"endDate\":\"%s\",\"numberOfTeams\":16,\"teamSize\":5}",
-                startDate.toString(), endDate.toString());
+                dateFormat.format(now), dateFormat.format(tomorrow));
 
-        // Mock the service call
         Mockito.when(tournamentService.createTournament(Mockito.eq("mock-jwt-token"), Mockito.any(TournamentCreateDTO.class))).thenReturn(true);
 
-        // Perform the POST request and assert the response
         mockMvc.perform(post("/api/tournaments/create")
                         .header(HttpHeaders.AUTHORIZATION, jwtToken)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -124,10 +128,12 @@ public class TournamentControllerIntegrationTest {
 
     @Test
     void testGetTournamentById() throws Exception {
-        TournamentDTO tournament = TournamentDTO.builder()
-                .id(1L)
-                .name("Tournament A")
-                .build();
+        Date now = new Date();
+        TournamentDTO tournament = new TournamentDTO()
+                .setId(1L)
+                .setName("Tournament A")
+                .setStartDate(now)
+                .setEndDate(now);
 
         Mockito.when(tournamentService.getTournamentById(1L, null)).thenReturn(tournament);
 
@@ -146,18 +152,17 @@ public class TournamentControllerIntegrationTest {
                 .tournamentId(1L)
                 .build();
 
-        // Mock the service call to return true
         Mockito.when(tournamentService.signupForTournament(Mockito.eq("mock-jwt-token"), Mockito.any(TournamentSignupDTO.class)))
                 .thenReturn(true);
 
-        // Perform the POST request and assert the response
         mockMvc.perform(post("/api/tournaments/signup")
                         .header(HttpHeaders.AUTHORIZATION, jwtToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"tournamentId\":1}"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", is(true)));  // Ensure the response is expected as true
+                .andExpect(jsonPath("$", is(true)));
     }
+
     @Test
     @WithMockUser(username = "testuser", roles = {"USER"})
     void testGetManagedTournamentsWithEmptyJwt() throws Exception {

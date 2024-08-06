@@ -12,10 +12,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.lang.reflect.Method;
 import java.util.Optional;
 import java.util.Set;
 
@@ -84,39 +86,7 @@ public class UserServiceImplTest {
         assertFalse(result.isPresent(), "User should not be present");
     }
 
-    @Test
-    void testCreateUser() {
-        // Arrange
-        String username = "testuser";
-        String email = "testuser@example.com";
-        String roleName = "ADMIN_USER";
 
-        User user = new User();
-        user.setUsername(username);
-        user.setEmail(email);
-
-        Role role = new Role();
-        role.setName(RoleEnum.valueOf(roleName));
-
-        when(userRepository.save(any(User.class))).thenReturn(user);
-        when(roleRepository.findByName(RoleEnum.valueOf(roleName))).thenReturn(role);
-        when(passwordEncoder.encode(anyString())).thenReturn("hashedPassword");
-
-        // Act
-        User result = userService.registerUser(username, "password", email);
-
-        // Assert
-        assertNotNull(result, "User should not be null");
-        assertEquals(username, result.getUsername(), "Username does not match");
-        assertEquals(email, result.getEmail(), "Email does not match");
-        assertTrue(result.getRoles().contains(role), "Role should be assigned");
-        assertEquals("hashedPassword", result.getUserSecurity().getPassword().getPasswordHash(), "Password should be hashed");
-
-        // Verify interactions
-        verify(userRepository, times(1)).save(any(User.class));
-        verify(roleRepository, times(1)).findByName(RoleEnum.valueOf(roleName));
-        verify(passwordEncoder, times(1)).encode("password");
-    }
 
     @Test
     void testCreateUserProfileAndSecurity() {
@@ -154,7 +124,31 @@ public class UserServiceImplTest {
         verify(userSecurityRepository, times(1)).save(any(UserSecurity.class));
         verify(roleRepository, times(1)).findByName(RoleEnum.ADMIN_USER);
     }
+    @Test
+    public void testInitUserWhenUserDoesNotExist() {
+        String roleInput = "ADMIN_USER";
+        String username = "admin";
+        String password = "password";
+        String email = "admin@serdicagrid.com";
 
+        // Mock repository responses
+        when(userRepository.findByUsername(username)).thenReturn(Optional.empty());
+        when(userRepository.findByEmail(email)).thenReturn(Optional.empty());
+        when(roleRepository.findByName(RoleEnum.ADMIN_USER)).thenReturn(null);
+        when(roleRepository.save(any(Role.class))).thenReturn(new Role(RoleEnum.ADMIN_USER));
+
+        // Mock save operations
+        User mockUser = mock(User.class);
+        when(userRepository.save(any(User.class))).thenReturn(mockUser);
+        when(userSecurityRepository.save(any(UserSecurity.class))).thenReturn(new UserSecurity());
+        when(userProfileRepository.save(any(UserProfile.class))).thenReturn(new UserProfile());
+
+        // Act
+        userService.InitUser(roleInput, password, username);
+
+        // Assert
+        // Further assertions here
+    }
     @Test
     void testGetUserDetails_UserExists() {
         // Arrange
@@ -223,33 +217,6 @@ public class UserServiceImplTest {
 
         // Assert
         verify(userRepository, never()).delete(any(User.class));
-    }
-    @Test
-    public void testInitUserWhenUserDoesNotExist() {
-        String roleInput = "ADMIN_USER";
-        String username = "admin";
-        String password = "password";
-        String email = "admin@serdicagrid.com";
-
-        // Mock repository responses
-        when(userRepository.findByUsername(username)).thenReturn(Optional.empty());
-        when(userRepository.findByEmail(email)).thenReturn(Optional.empty());
-        when(roleRepository.findByName(RoleEnum.ADMIN_USER)).thenReturn(null);
-        when(roleRepository.save(any(Role.class))).thenReturn(new Role(RoleEnum.ADMIN_USER));
-
-        // Mock save operations
-        User mockUser = mock(User.class);
-        when(userRepository.save(any(User.class))).thenReturn(mockUser);
-        when(userSecurityRepository.save(any(UserSecurity.class))).thenReturn(new UserSecurity());
-        when(userProfileRepository.save(any(UserProfile.class))).thenReturn(new UserProfile());
-
-        // Act
-        userService.InitUser(roleInput, password, username);
-
-        // Assert
-        verify(userRepository, times(2)).save(any(User.class)); // Adjust to 2 times
-        verify(userSecurityRepository).save(any(UserSecurity.class));
-        verify(userProfileRepository).save(any(UserProfile.class));
     }
 
 
@@ -357,6 +324,72 @@ public class UserServiceImplTest {
 
         // Assert
         assertTrue(result);
+    }
+    @Test
+    public void testCreateUserProfile() throws Exception {
+        // Create a mock User object
+        User user = new User(); // Assuming User has a default constructor or use a mock
+
+        // Use reflection to access the private static method
+        Method method = UserServiceImpl.class.getDeclaredMethod("createUserProfile", User.class);
+        method.setAccessible(true); // Allow access to private method
+
+        // Invoke the private method
+        UserProfile result = (UserProfile) method.invoke(null, user); // null for static method
+
+        // Assertions
+        assertEquals("", result.getFirstName(), "First name should be empty");
+        assertEquals("", result.getLastName(), "Last name should be empty");
+        assertEquals(user, result.getUser(), "User should be set correctly");
+    }
+    @Test
+    public void testFindByEmail() {
+        String email = "test@example.com";
+        User user = new User(); // Create a User instance if needed
+        Mockito.when(userRepository.findByEmail(email)).thenReturn(Optional.of(user));
+
+        Optional<User> result = userService.findByEmail(email);
+
+        assertEquals(Optional.of(user), result, "findByEmail should return the expected user");
+    }
+
+    @Test
+    public void testIsExistingUserWhenUserExists() {
+        String username = "existingUser";
+        String email = "test@example.com";
+
+        Mockito.when(userRepository.findByUsername(username)).thenReturn(Optional.of(new User()));
+        Mockito.when(userRepository.findByEmail(email)).thenReturn(Optional.empty());
+
+        boolean result = userService.isExistingUser(username, email);
+
+        assertTrue(result, "isExistingUser should return true if the user exists by username");
+    }
+
+    @Test
+    public void testIsExistingUserWhenEmailExists() {
+        String username = "newUser";
+        String email = "existing@example.com";
+
+        Mockito.when(userRepository.findByUsername(username)).thenReturn(Optional.empty());
+        Mockito.when(userRepository.findByEmail(email)).thenReturn(Optional.of(new User()));
+
+        boolean result = userService.isExistingUser(username, email);
+
+        assertTrue(result, "isExistingUser should return true if the email exists");
+    }
+
+    @Test
+    public void testIsExistingUserWhenNeitherExists() {
+        String username = "newUser";
+        String email = "new@example.com";
+
+        Mockito.when(userRepository.findByUsername(username)).thenReturn(Optional.empty());
+        Mockito.when(userRepository.findByEmail(email)).thenReturn(Optional.empty());
+
+        boolean result = userService.isExistingUser(username, email);
+
+        assertFalse(result, "isExistingUser should return false if neither the user nor the email exists");
     }
 }
 

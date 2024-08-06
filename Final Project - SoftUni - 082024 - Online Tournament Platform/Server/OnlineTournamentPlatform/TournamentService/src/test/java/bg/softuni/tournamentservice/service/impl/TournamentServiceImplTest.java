@@ -56,7 +56,8 @@ public class TournamentServiceImplTest {
         // Arrange
         Long tournamentId = 1L;
         Tournament tournament = new Tournament();
-        TournamentDTO tournamentDTO = TournamentDTO.builder().id(tournamentId).build();
+        TournamentDTO tournamentDTO =  new TournamentDTO();
+        tournamentDTO.setId(tournamentId);
         when(tournamentRepository.findById(tournamentId)).thenReturn(Optional.of(tournament));
         when(modelMapper.map(tournament, TournamentDTO.class)).thenReturn(tournamentDTO);
 
@@ -103,7 +104,7 @@ public class TournamentServiceImplTest {
         User user = new User();
         user.setId(1L);
         List<Tournament> tournaments = List.of(new Tournament());
-        List<TournamentDTO> tournamentDTOs = List.of(TournamentDTO.builder().build());
+        List<TournamentDTO> tournamentDTOs = List.of(new TournamentDTO());
 
         when(userService.findUserByToken(jwt)).thenReturn(user);
         when(tournamentRepository.findByManagerId(user.getId())).thenReturn(tournaments);
@@ -124,7 +125,7 @@ public class TournamentServiceImplTest {
         User user = new User();
         user.setId(1L);
         List<Tournament> tournaments = List.of(new Tournament());
-        List<TournamentDTO> tournamentDTOs = List.of(TournamentDTO.builder().build());
+        List<TournamentDTO> tournamentDTOs = List.of(new TournamentDTO());
 
         when(userService.findUserByToken(jwt)).thenReturn(user);
         when(tournamentRepository.findByFollowerId(user.getId())).thenReturn(tournaments);

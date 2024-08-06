@@ -304,6 +304,24 @@ INSERT INTO team_users (team_id, user_id) VALUES
                                               (49, 45), (49, 46), (49, 47), (49, 48),
                                               (50, 49), (50, 54), (50, 55), (50, 56);
 
+
+-- Tournament- Followers
+
+INSERT INTO tournament_followers (tournament_id, user_id) VALUES
+    (1,2),
+    (2,2),
+    (3,2),
+    (4,2),
+    (5,2),
+    (6,2),
+    (7,2),
+    (8,2),
+    (9,2),
+    (10,2);
+
+
+
+
 -- Roles And Permissions
 
 -- Insert Roles
