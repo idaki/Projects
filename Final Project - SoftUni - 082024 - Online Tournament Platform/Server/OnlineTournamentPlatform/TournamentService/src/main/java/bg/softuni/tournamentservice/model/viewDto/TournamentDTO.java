@@ -3,10 +3,16 @@ package bg.softuni.tournamentservice.model.viewDto;
 
 
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
+@Builder
 public class TournamentDTO {
     private Long id;
     private String name;

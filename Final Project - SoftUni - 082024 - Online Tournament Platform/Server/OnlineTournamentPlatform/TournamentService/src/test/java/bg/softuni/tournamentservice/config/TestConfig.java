@@ -70,12 +70,12 @@ public class TestConfig {
         return Mockito.mock(JavaMailSender.class);
     }
 
-    @Bean
-    public TournamentServiceImpl tournamentService(TournamentRepository tournamentRepository, UserService userService,
-                                                   GameRepository gameRepository, ModelMapper modelMapper,
-                                                   TeamRepository teamRepository) {
-        return new TournamentServiceImpl(tournamentRepository, userService, gameRepository, modelMapper, teamRepository);
-    }
+//    @Bean
+//    public TournamentServiceImpl tournamentService(TournamentRepository tournamentRepository, UserService userService,
+//                                                   GameRepository gameRepository, ModelMapper modelMapper,
+//                                                   TeamRepository teamRepository) {
+//        return new TournamentServiceImpl(tournamentRepository, userService, gameRepository, modelMapper, teamRepository);
+//    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {

@@ -29,17 +29,22 @@ public class TeamServiceImpl implements TeamService {
         this.tokenService = tokenService;
     }
 
-    @Override
-    @Transactional
-    public void addPlayer() {
-        // Implementation for adding a player to a team
-    }
+
+
+
+
 
     @Override
-    public void removePlayer() {
-        // Implementation for removing a player from a team
-    }
+    public void removePlayer(Long teamId, Long userId) {
+        Team team = teamRepository.findById(teamId)
+                .orElseThrow(() -> new RuntimeException("Team not found"));
 
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        team.getUsers().remove(user);
+        teamRepository.save(team);
+    }
     @Override
     public List<TeamExportDTO> getMyTeams(String token) {
         User user = tokenService.getUserByToken(token);

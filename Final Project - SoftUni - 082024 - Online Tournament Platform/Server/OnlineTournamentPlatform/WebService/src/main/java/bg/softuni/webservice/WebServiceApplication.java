@@ -16,7 +16,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
         "bg.softuni.userservice.*",
         "bg.softuni.communicationservice.*",
         "bg.softuni.initservice.*",
-        "bg.softuni.authenticationService.*",
+        "bg.softuni.authenticationservice*",
         "bg.softuni.webservice.*"
 
 })

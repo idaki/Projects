@@ -2,6 +2,7 @@ package bg.softuni.authenticationservice.config;
 
 import bg.softuni.authenticationservice.service.impl.UserDetailsServiceImpl;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-
 import java.util.Arrays;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -34,6 +34,7 @@ public class SecurityConfig {
     private final UserDetailsServiceImpl userDetailsService;
     private final JwtRequestFilter jwtRequestFilter;
 
+    @Autowired
     public SecurityConfig(UserDetailsServiceImpl userDetailsService, JwtRequestFilter jwtRequestFilter) {
         this.userDetailsService = userDetailsService;
         this.jwtRequestFilter = jwtRequestFilter;
@@ -45,7 +46,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                         .csrfTokenRequestHandler(new SpaCsrfTokenRequestHandler())
-                        .ignoringRequestMatchers( "/api/login","api/csrf")
+                        .ignoringRequestMatchers("/api/login", "/api/csrf")
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -63,8 +64,7 @@ public class SecurityConfig {
                                 "/api/tournaments/create",
                                 "/api/games",
                                 "/api/friends",
-                                "/api/register-consumer",
-                                "/api/login"
+                                "/api/register-consumer"
                         ).permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN_SUPER")
                         .requestMatchers("/api/user/**").hasAnyRole("ADMIN_USER", "ADMIN_SUPER")
@@ -101,7 +101,6 @@ public class SecurityConfig {
         return auth.build();
     }
 
-
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -116,6 +115,4 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-
-
 }
