@@ -34,11 +34,7 @@
         </dependency>
 
         <!-- Project Dependencies -->
-        <dependency>
-            <groupId>bg.softuni</groupId>
-            <artifactId>LocationService</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
 
         <dependency>
             <groupId>bg.softuni</groupId>
@@ -106,6 +102,7 @@
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
         </dependency>
+
 
     </dependencies>
 

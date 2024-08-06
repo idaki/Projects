@@ -8,7 +8,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="CrudService" />
-        <module name="LocationService" />
         <module name="CommunicationService" />
         <module name="GameService" />
         <module name="TournamentService" />
@@ -19,6 +18,9 @@
         <module name="InitService" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="LocationService" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

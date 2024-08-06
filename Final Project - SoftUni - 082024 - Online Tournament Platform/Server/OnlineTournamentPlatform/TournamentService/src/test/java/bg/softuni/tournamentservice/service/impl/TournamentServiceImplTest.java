@@ -5,7 +5,6 @@ import static org.mockito.Mockito.*;
 
 import bg.softuni.tournamentservice.model.*;
 import bg.softuni.tournamentservice.model.ExportDto.TournamentSignupDTO;
-import bg.softuni.tournamentservice.model.viewDto.TournamentCreateDTO;
 import bg.softuni.tournamentservice.model.viewDto.TournamentDTO;
 import bg.softuni.tournamentservice.repository.*;
 import bg.softuni.userservice.models.entity.user.User;

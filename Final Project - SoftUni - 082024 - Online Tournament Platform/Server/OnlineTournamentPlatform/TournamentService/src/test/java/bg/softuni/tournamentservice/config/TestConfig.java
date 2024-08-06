@@ -1,9 +1,5 @@
 package bg.softuni.tournamentservice.config;
 
-import bg.softuni.tournamentservice.repository.GameRepository;
-import bg.softuni.tournamentservice.repository.TeamRepository;
-import bg.softuni.tournamentservice.repository.TournamentRepository;
-import bg.softuni.tournamentservice.service.impl.TournamentServiceImpl;
 import bg.softuni.userservice.service.UserService;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
@@ -14,7 +10,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;

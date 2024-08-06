@@ -137,8 +137,22 @@ public class UserServiceImpl implements UserService {
     }
 
     public UserDetailsExportDTO getUserDetails(String username) {
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
-        return getUserDetailsExportDTO(user);
+        User user = userRepository.findByUsername(username)
+                .orElse(null);
+
+        if (user == null) {
+            return null; // or handle it according to your requirements
+        }
+
+        UserProfile profile = user.getUserProfile();
+
+        UserDetailsExportDTO dto = new UserDetailsExportDTO();
+        dto.setUsername(user.getUsername());
+        dto.setFirstName(profile.getFirstName());
+        dto.setLastName(profile.getLastName());
+        dto.setAvatar(profile.getAvatar());
+
+        return dto;
     }
 
     private static UserDetailsExportDTO getUserDetailsExportDTO(User user) {
@@ -190,25 +204,23 @@ public class UserServiceImpl implements UserService {
         userProfile.setUser(user);
         user.setUserProfile(userProfile);
 
-        // Save user first to generate ID and establish relationships
-        user = userRepository.save(user);
-
-        // Save UserSecurity and UserProfile
+        // Save UserSecurity and UserProfile first
         userSecurityRepository.save(userSecurity);
         userProfileRepository.save(userProfile);
 
-        // Assign role and hashed password
+        // Save user to generate ID, assign role, and hashed password
         Role role = roleRepository.findByName(RoleEnum.valueOf(roleInput));
         if (role == null) {
             role = new Role(RoleEnum.valueOf(roleInput));
             roleRepository.save(role);
         }
         user.setRoles(Set.of(role));
-        createHashedPassword(password, user);
 
-        // Finally, save the user again to update references
-        userRepository.save(user);
+        // Only save user once with all modifications
+        user = userRepository.save(user);
+        createHashedPassword(password, user);
     }
+
 
     @Override
     public User findUserByToken(String jwt) {

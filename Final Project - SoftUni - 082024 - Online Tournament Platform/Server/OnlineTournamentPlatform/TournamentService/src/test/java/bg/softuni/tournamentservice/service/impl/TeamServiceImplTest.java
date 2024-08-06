@@ -3,7 +3,6 @@ package bg.softuni.tournamentservice.service.impl;
 import bg.softuni.tournamentservice.model.ExportDto.TeamExportDTO;
 import bg.softuni.tournamentservice.model.Team;
 import bg.softuni.tournamentservice.repository.TeamRepository;
-import bg.softuni.tournamentservice.service.TeamService;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.UserRepository;
 import bg.softuni.userservice.service.TokenService;
