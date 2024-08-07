@@ -1,6 +1,6 @@
 package bg.softuni.tournamentservice.service.impl;
 
-import bg.softuni.tournamentservice.model.ExportDto.GameDTO;
+import bg.softuni.tournamentservice.model.dto.GameDTO;
 import bg.softuni.tournamentservice.model.Game;
 import bg.softuni.tournamentservice.repository.AssetRepository;
 import bg.softuni.tournamentservice.repository.GameRepository;

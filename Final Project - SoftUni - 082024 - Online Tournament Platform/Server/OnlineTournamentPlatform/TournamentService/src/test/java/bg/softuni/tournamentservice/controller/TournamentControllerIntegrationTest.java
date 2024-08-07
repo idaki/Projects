@@ -2,9 +2,9 @@ package bg.softuni.tournamentservice.controller;
 
 import bg.softuni.tournamentservice.config.TestConfig;
 import bg.softuni.tournamentservice.config.TestSecurityConfig;
-import bg.softuni.tournamentservice.model.ExportDto.TournamentSignupDTO;
-import bg.softuni.tournamentservice.model.viewDto.TournamentCreateDTO;
-import bg.softuni.tournamentservice.model.viewDto.TournamentDTO;
+import bg.softuni.tournamentservice.model.dto.TournamentSignupDTO;
+import bg.softuni.tournamentservice.model.dto.TournamentCreateDTO;
+import bg.softuni.tournamentservice.model.dto.TournamentDTO;
 import bg.softuni.tournamentservice.service.TournamentService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

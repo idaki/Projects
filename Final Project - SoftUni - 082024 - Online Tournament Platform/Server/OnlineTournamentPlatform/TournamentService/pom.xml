@@ -43,9 +43,15 @@
         </dependency>
         <dependency>
             <groupId>bg.softuni</groupId>
+            <artifactId>ExceptionHandlerService</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>bg.softuni</groupId>
             <artifactId>AuthenticationService</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-test -->
         <dependency>
             <groupId>org.springframework.security</groupId>

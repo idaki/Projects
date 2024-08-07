@@ -1,6 +1,6 @@
 package bg.softuni.tournamentservice.service.impl;
 
-import bg.softuni.tournamentservice.model.ExportDto.TeamExportDTO;
+import bg.softuni.tournamentservice.model.dto.TeamExportDTO;
 import bg.softuni.tournamentservice.model.Team;
 import bg.softuni.tournamentservice.repository.TeamRepository;
 import bg.softuni.userservice.models.entity.user.User;

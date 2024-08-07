@@ -12,13 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableJpaRepositories("bg.softuni.*")
 @ComponentScan(basePackages = {
-        "bg.softuni.tournamentservice.*",
-        "bg.softuni.userservice.*",
-        "bg.softuni.communicationservice.*",
-        "bg.softuni.initservice.*",
-        "bg.softuni.authenticationservice*",
-        "bg.softuni.webservice.*"
-
+        "bg.softuni.*",
 })
 @EntityScan("bg.softuni.*")
 @EnableScheduling

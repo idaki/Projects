@@ -3,16 +3,23 @@ package bg.softuni.tournamentservice.service.impl;
 import bg.softuni.exceptionhandlerservice.DuplicateTournamentException;
 import bg.softuni.exceptionhandlerservice.ValidationException;
 import bg.softuni.exceptionhandlerservice.utils.ValidationUtil;
-import bg.softuni.tournamentservice.model.*;
-import bg.softuni.tournamentservice.model.dto.*;
-import bg.softuni.tournamentservice.repository.*;
+import bg.softuni.tournamentservice.model.Asset;
+import bg.softuni.tournamentservice.model.Game;
+import bg.softuni.tournamentservice.model.Team;
+import bg.softuni.tournamentservice.model.Tournament;
+import bg.softuni.tournamentservice.model.dto.TournamentCreateDTO;
+import bg.softuni.tournamentservice.model.dto.TournamentDTO;
+import bg.softuni.tournamentservice.model.dto.TournamentSignupDTO;
+import bg.softuni.tournamentservice.repository.GameRepository;
+import bg.softuni.tournamentservice.repository.TeamRepository;
+import bg.softuni.tournamentservice.repository.TournamentRepository;
 import bg.softuni.tournamentservice.service.TournamentService;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import jakarta.validation.ConstraintViolation;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -76,10 +83,8 @@ public class TournamentServiceImpl implements TournamentService {
     }
 
     public boolean createTournament(String jwt, TournamentCreateDTO tournamentCreateDTO) {
-        Set<ConstraintViolation<TournamentCreateDTO>> violations = validationUtil.getViolations(tournamentCreateDTO);
-        if (!violations.isEmpty()) {
-            String errorMessage = validationUtil.getFormattedErrorMessage(violations);
-            throw new ValidationException(errorMessage);
+        if (!isValidTournamentData(tournamentCreateDTO)) {
+            throw new ValidationException("Invalid tournament data");
         }
 
         // Validate JWT and find the user

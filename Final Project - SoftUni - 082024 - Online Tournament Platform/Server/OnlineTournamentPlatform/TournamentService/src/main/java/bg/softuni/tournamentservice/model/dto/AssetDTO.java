@@ -1,4 +1,4 @@
-package bg.softuni.tournamentservice.model.ExportDto;
+package bg.softuni.tournamentservice.model.dto;
 
 public class AssetDTO {
     private Long id;

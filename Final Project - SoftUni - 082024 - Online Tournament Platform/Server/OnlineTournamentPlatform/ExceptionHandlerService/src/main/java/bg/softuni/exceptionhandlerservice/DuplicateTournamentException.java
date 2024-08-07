@@ -1,4 +1,4 @@
-package bg.softuni.tournamentservice.service;
+package bg.softuni.exceptionhandlerservice;
 
 
 public class DuplicateTournamentException extends RuntimeException {

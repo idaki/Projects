@@ -1,6 +1,7 @@
 import { getJwtToken } from '../../utils/utils';
 import { BASE_URL } from '../../config/config'; 
 import {getCsrfToken, fetchCsrfToken } from '../../utils/csrfUtils';
+import {isJsonResponse} from '../../utils/errorsUtil';
 
 export const getAll = async () => {
     const response = await fetch(`${BASE_URL}/tournaments/all`);
@@ -112,16 +113,16 @@ if (!csrfToken) {
 };
 
 
+
 export const createTournament = async (tournamentData) => {
   try {
     let csrfToken = getCsrfToken();
     console.log(csrfToken);
 
     if (!csrfToken) {
-        csrfToken = await fetchCsrfToken();
-        console.log(csrfToken);
+      csrfToken = await fetchCsrfToken();
+      console.log(csrfToken);
     }
-
 
     const response = await fetch(`${BASE_URL}/tournaments/create`, {
       method: 'POST',
@@ -135,16 +136,21 @@ export const createTournament = async (tournamentData) => {
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+      const isJson = isJsonResponse(response);
+      const responseBody = isJson ? await response.json() : await response.text();
+      const errorMessage = isJson ? responseBody.message : responseBody;
+      throw new Error(errorMessage || 'Network response was not ok');
     }
 
-    return await response.json();
+    const isJson = isJsonResponse(response);
+    return isJson ? await response.json() : await response.text();
   } catch (error) {
     console.error('Failed to create tournament:', error);
     throw error;
   }
 };
+
+
 
 export const getTournamentById = async (id) => {
   try {

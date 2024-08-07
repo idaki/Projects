@@ -1,7 +1,6 @@
 package bg.softuni.tournamentservice.service;
 
-import bg.softuni.tournamentservice.model.ExportDto.TeamExportDTO;
-import org.springframework.transaction.annotation.Transactional;
+import bg.softuni.tournamentservice.model.dto.TeamExportDTO;
 
 import java.util.List;
 

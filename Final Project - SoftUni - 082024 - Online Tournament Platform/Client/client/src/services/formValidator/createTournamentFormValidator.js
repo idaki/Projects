@@ -1,6 +1,10 @@
 export const validateCreateTournamentForm = (formData) => {
   const errors = {};
 
+  if (!formData.name || formData.name.length === 0) {
+    errors.name = 'Name is required';
+  }
+
   if (!formData.game || formData.game.length === 0) {
     errors.game = 'Game is required';
   }
@@ -15,10 +19,14 @@ export const validateCreateTournamentForm = (formData) => {
 
   if (!formData.startDate) {
     errors.startDate = 'Start date is required';
+  } else if (new Date(formData.startDate) < new Date()) {
+    errors.startDate = 'Start date must be in the present or future';
   }
 
   if (!formData.endDate) {
     errors.endDate = 'End date is required';
+  } else if (new Date(formData.endDate) <= new Date(formData.startDate)) {
+    errors.endDate = 'End date must be later than or equal to start date';
   }
 
   if (!formData.numberOfTeams || formData.numberOfTeams <= 0) {

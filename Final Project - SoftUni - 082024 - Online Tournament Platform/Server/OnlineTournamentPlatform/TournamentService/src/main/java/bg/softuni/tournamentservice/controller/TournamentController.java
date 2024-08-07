@@ -1,12 +1,11 @@
 package bg.softuni.tournamentservice.controller;
 
-
-import bg.softuni.tournamentservice.model.ExportDto.TournamentSignupDTO;
-import bg.softuni.tournamentservice.model.Tournament;
-import bg.softuni.tournamentservice.model.viewDto.TournamentCreateDTO;
-import bg.softuni.tournamentservice.model.viewDto.TournamentDTO;
+import bg.softuni.exceptionhandlerservice.DuplicateTournamentException;
+import bg.softuni.exceptionhandlerservice.ValidationException;
+import bg.softuni.tournamentservice.model.dto.TournamentSignupDTO;
+import bg.softuni.tournamentservice.model.dto.TournamentCreateDTO;
+import bg.softuni.tournamentservice.model.dto.TournamentDTO;
 import bg.softuni.tournamentservice.service.TournamentService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,13 +48,25 @@ public class TournamentController {
     }
 
     @PostMapping("/tournaments/create")
-    public ResponseEntity<Boolean> createTournament(@RequestHeader("Authorization") String jwt, @RequestBody TournamentCreateDTO tournamentCreateDTO) {
-        jwt = jwt.substring(7);
-        if (jwt.isEmpty()) {
-            return ResponseEntity.badRequest().build(); // Return bad request if JWT is empty
+    public ResponseEntity<String> createTournament(@RequestHeader("Authorization") String jwt, @RequestBody TournamentCreateDTO tournamentCreateDTO) {
+        if (jwt == null || jwt.length() < 8) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid JWT token");
         }
-        boolean isCreated = tournamentService.createTournament(jwt, tournamentCreateDTO);
-        return ResponseEntity.ok(isCreated);
+
+        jwt = jwt.substring(7);
+
+        try {
+            tournamentService.createTournament(jwt, tournamentCreateDTO);
+            return ResponseEntity.ok("Tournament created successfully");
+        } catch (ValidationException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (DuplicateTournamentException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred");
+        }
     }
 
     @PostMapping("/public/tournaments/details")
@@ -66,6 +77,7 @@ public class TournamentController {
         }
         return ResponseEntity.ok(tournament);
     }
+
     @PostMapping("/tournaments/signup")
     public ResponseEntity<Boolean> signupForTournament(@RequestHeader("Authorization") String authorizationHeader, @RequestBody TournamentSignupDTO signupDTO) {
         String jwt = authorizationHeader.substring(7); // Remove "Bearer " prefix

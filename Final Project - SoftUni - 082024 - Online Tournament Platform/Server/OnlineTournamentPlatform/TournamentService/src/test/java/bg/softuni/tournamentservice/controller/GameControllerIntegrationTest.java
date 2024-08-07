@@ -2,8 +2,8 @@ package bg.softuni.tournamentservice.controller;
 
 import bg.softuni.tournamentservice.config.TestConfig;
 import bg.softuni.tournamentservice.config.TestSecurityConfig;
-import bg.softuni.tournamentservice.model.ExportDto.AssetDTO;
-import bg.softuni.tournamentservice.model.ExportDto.GameDTO;
+import bg.softuni.tournamentservice.model.dto.AssetDTO;
+import bg.softuni.tournamentservice.model.dto.GameDTO;
 import bg.softuni.tournamentservice.service.GameService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

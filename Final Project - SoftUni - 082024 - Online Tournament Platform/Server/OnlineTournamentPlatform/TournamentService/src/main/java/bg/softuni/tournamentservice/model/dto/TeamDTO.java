@@ -1,4 +1,4 @@
-package bg.softuni.tournamentservice.model.viewDto;
+package bg.softuni.tournamentservice.model.dto;
 
 public class TeamDTO {
     private long id;

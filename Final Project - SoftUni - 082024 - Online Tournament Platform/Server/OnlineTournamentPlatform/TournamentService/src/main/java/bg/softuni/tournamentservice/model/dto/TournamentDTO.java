@@ -1,9 +1,7 @@
-package bg.softuni.tournamentservice.model.viewDto;
+package bg.softuni.tournamentservice.model.dto;
 
 
 
-
-import lombok.*;
 
 import java.util.Date;
 

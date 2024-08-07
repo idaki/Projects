@@ -1,6 +1,6 @@
 package bg.softuni.tournamentservice.service.impl;
 
-import bg.softuni.tournamentservice.model.ExportDto.TeamExportDTO;
+import bg.softuni.tournamentservice.model.dto.TeamExportDTO;
 import bg.softuni.tournamentservice.model.Team;
 
 import bg.softuni.tournamentservice.repository.TeamRepository;
@@ -10,7 +10,6 @@ import bg.softuni.userservice.repository.UserRepository;
 import bg.softuni.userservice.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,7 +1,7 @@
 package bg.softuni.tournamentservice.controller;
 
 
-import bg.softuni.tournamentservice.model.ExportDto.TeamExportDTO;
+import bg.softuni.tournamentservice.model.dto.TeamExportDTO;
 import bg.softuni.tournamentservice.service.TeamService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

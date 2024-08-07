@@ -9,10 +9,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>bg.sofftuni</artifactId>
+    <artifactId>ExceptionHandlerService</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ExceptionHandlerService</name>
-    <description>UserService</description>
+    <description>ExceptionHandlerService</description>
     <properties>
         <java.version>21</java.version>
     </properties>

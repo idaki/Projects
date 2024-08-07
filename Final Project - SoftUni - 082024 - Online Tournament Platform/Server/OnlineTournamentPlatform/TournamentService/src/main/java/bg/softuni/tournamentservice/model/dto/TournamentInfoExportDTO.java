@@ -1,4 +1,4 @@
-package bg.softuni.tournamentservice.model.ExportDto;
+package bg.softuni.tournamentservice.model.dto;
 
 import jakarta.persistence.Column;
 import lombok.Builder;

@@ -1,7 +1,7 @@
 package bg.softuni.tournamentservice.controller;
 
 
-import bg.softuni.tournamentservice.model.ExportDto.GameDTO;
+import bg.softuni.tournamentservice.model.dto.GameDTO;
 import bg.softuni.tournamentservice.service.GameService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
