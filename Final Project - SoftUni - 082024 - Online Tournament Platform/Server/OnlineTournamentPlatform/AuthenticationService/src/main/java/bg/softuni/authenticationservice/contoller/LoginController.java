@@ -28,10 +28,15 @@ public class LoginController {
         this.jwtService = jwtService;
     }
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginDTO loginDTO, HttpServletRequest request) {
-
+    public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO, HttpServletRequest request) {
+        CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
+        
+        if (!loginService.login(loginDTO)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username/email or password");
+        }
 
         String jwt = jwtService.generateToken(loginDTO.getUsernameOrEmail());
+
         return ResponseEntity.ok(jwt);
     }
 

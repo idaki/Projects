@@ -1,6 +1,7 @@
 package bg.softuni.userservice.service.impl;
 
-import bg.softuni.userservice.models.dto.gson.UserDetailsExportDTO;
+import bg.softuni.userservice.models.dto.UserDetailsExportDTO;
+import bg.softuni.userservice.models.dto.UserRegisterDTO;
 import bg.softuni.userservice.models.entity.Token;
 import bg.softuni.userservice.models.entity.authorisation.Role;
 import bg.softuni.userservice.models.entity.password.Password;
@@ -9,12 +10,15 @@ import bg.softuni.userservice.models.enums.RoleEnum;
 
 import bg.softuni.userservice.repository.*;
 import bg.softuni.userservice.service.UserService;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,22 +26,20 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
-    private final ApplicationEventPublisher eventPublisher;
     private final TokenRepository tokenRepository;
     private final UserSecurityRepository userSecurityRepository;
     private final UserProfileRepository userProfileRepository;
-
+    private final Validator validator;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository, ApplicationEventPublisher eventPublisher, TokenRepository tokenRepository, UserSecurityRepository userSecurityRepository, UserProfileRepository userProfileRepository) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository,TokenRepository tokenRepository, UserSecurityRepository userSecurityRepository, UserProfileRepository userProfileRepository, Validator validator) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
-        this.eventPublisher = eventPublisher;
         this.tokenRepository = tokenRepository;
         this.userSecurityRepository = userSecurityRepository;
         this.userProfileRepository = userProfileRepository;
-
+        this.validator = validator;
     }
 
     @Override
@@ -59,10 +61,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void register(String username, String password, String email) {
-        if (!isExistingUser(username, email)) {
-            registerUser(username, password, email);
+    public void register(UserRegisterDTO registerDTO) {
+        Set<ConstraintViolation<UserRegisterDTO>> violations = validator.validate(registerDTO);
+        if (!violations.isEmpty()) {
+            String errorMessage = violations.stream()
+                    .map(ConstraintViolation::getMessage)
+                    .collect(Collectors.joining("; "));
+            throw new IllegalArgumentException("Validation failed: " + errorMessage);
         }
+
+        if (isExistingUser(registerDTO.getUsername(), registerDTO.getEmail())) {
+            throw new IllegalArgumentException("User already exists with the given username or email.");
+        }
+
+        registerUser(registerDTO.getUsername(), registerDTO.getPassword(), registerDTO.getEmail());
     }
 
     public User registerUser(String username, String password, String email) {

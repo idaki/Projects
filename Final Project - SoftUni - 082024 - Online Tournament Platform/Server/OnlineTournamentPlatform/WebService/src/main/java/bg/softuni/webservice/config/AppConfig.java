@@ -3,6 +3,8 @@ package bg.softuni.webservice.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.spi.MappingContext;
@@ -52,6 +54,12 @@ public class AppConfig {
 
         return modelMapper;
     }
+
+    @Bean
+    public Validator validator() {
+        return Validation.buildDefaultValidatorFactory().getValidator();
+    }
+
 
 
 }

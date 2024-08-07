@@ -1,0 +1,63 @@
+{
+    "header": {
+        "title": "SerdicaGrid",
+        "subtitle": "Where every pixel sparks a possibility. Join the community for epic online tournaments!"
+    },
+    "footer": {
+        "cookiePolicy": "Cookie Policy",
+        "termsOfService": "Terms of Service",
+        "copyright": "Copyright © YourCompany 2024"
+    },
+    "modals": {
+        "cookiePolicyTitle": "Cookie Policy",
+        "termsOfServiceTitle": "Terms of Service",
+        "loginTitle": "Login",
+        "registerTitle": "Register",
+        "resetPasswordTitle": "Reset Password",
+        "updatePasswordTitle": "Update Password"
+    },
+    "buttons": {
+        "login": "Login",
+        "register": "Register",
+        "resetPassword": "Reset Password",
+        "changePassword": "Change Password"
+    },
+    "forms": {
+        "username": "Username",
+        "password": "Password",
+        "email": "Email",
+        "newPassword": "New Password",
+        "confirmPassword": "Confirm New Password"
+    },
+    "errors": {
+        "allFieldsRequired": "All fields are required",
+        "usernameRequired": "Username is required",
+        "usernameMinLength": "Username must be at least 3 characters long",
+        "passwordRequired": "Password is required",
+        "passwordMinLength": "Password must be at least 6 characters long",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email address",
+        "passwordMismatch": "Passwords do not match",
+        "registrationError": "An error occurred during registration. Please try again.",
+        "loginError": "An error occurred during login. Please try again.",
+        "resetPasswordError": "An error occurred while resetting password. Please try again."
+    },
+    "links": {
+        "forgotPassword": "Forgot password?",
+        "notAMember": "Not a member?",
+        "register": "Register"
+    },
+    "nav": {
+        "tournaments": "Tournaments",
+        "ranking": "Ranking",
+        "news": "News",
+        "login": "Login",
+        "logout": "Logout"
+    },
+    "changePassword": {
+        "title": "Change Password",
+        "oldPassword": "Old password",
+        "newPassword": "New password",
+        "confirmPassword": "Confirm Password"
+    }
+}

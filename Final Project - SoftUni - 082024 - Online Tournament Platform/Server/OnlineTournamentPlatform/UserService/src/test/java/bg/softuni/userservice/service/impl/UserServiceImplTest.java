@@ -1,6 +1,6 @@
 package bg.softuni.userservice.service.impl;
 
-import bg.softuni.userservice.models.dto.gson.UserDetailsExportDTO;
+import bg.softuni.userservice.models.dto.UserDetailsExportDTO;
 import bg.softuni.userservice.models.entity.Token;
 import bg.softuni.userservice.models.entity.authorisation.Role;
 import bg.softuni.userservice.models.entity.user.User;
@@ -23,7 +23,6 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class UserServiceImplTest {
