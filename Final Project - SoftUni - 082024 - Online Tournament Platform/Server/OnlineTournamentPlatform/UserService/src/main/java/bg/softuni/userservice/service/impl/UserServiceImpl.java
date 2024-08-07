@@ -188,8 +188,8 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOpt = userRepository.findByUsername(username);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
+            eventPublisher.publishEvent(new UserDeleteEvent(this, user));  // Publish event before deletion
             userRepository.delete(user);
-            eventPublisher.publishEvent(new UserDeleteEvent(this, user));
         }
     }
 
@@ -259,7 +259,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUserById(Long id) {
+
+        Optional<User> userOpt = userRepository.findById(id);
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            eventPublisher.publishEvent(new UserDeleteEvent(this, user));
+
         userRepository.deleteById(id);
+    }
     }
 
     @Override
