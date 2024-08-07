@@ -20,4 +20,6 @@ public interface TournamentRepository extends JpaRepository<Tournament, Long> {
     List<Tournament> findByFollowerId(@Param("userId") Long userId);
 
     Optional<Tournament> findByGameAndManagerAndName(Game game, User user, String name);
+
+    List<Tournament> findByFollowersUsername(String username);
 }

@@ -10,11 +10,14 @@ import bg.softuni.userservice.models.enums.RoleEnum;
 
 import bg.softuni.userservice.repository.*;
 import bg.softuni.userservice.service.UserService;
+import bg.softuni.userservice.utils.events.UserDeleteEvent;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -29,9 +32,10 @@ public class UserServiceImpl implements UserService {
     private final UserSecurityRepository userSecurityRepository;
     private final UserProfileRepository userProfileRepository;
     private final Validator validator;
+    private final ApplicationEventPublisher eventPublisher;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository,TokenRepository tokenRepository, UserSecurityRepository userSecurityRepository, UserProfileRepository userProfileRepository, Validator validator) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository, TokenRepository tokenRepository, UserSecurityRepository userSecurityRepository, UserProfileRepository userProfileRepository, Validator validator, ApplicationEventPublisher eventPublisher) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
@@ -39,6 +43,7 @@ public class UserServiceImpl implements UserService {
         this.userSecurityRepository = userSecurityRepository;
         this.userProfileRepository = userProfileRepository;
         this.validator = validator;
+        this.eventPublisher = eventPublisher;
     }
 
     @Override
@@ -178,12 +183,13 @@ public class UserServiceImpl implements UserService {
         return userDetails;
     }
 
-    @Override
+    @Transactional
     public void deleteUserByUsername(String username) {
         Optional<User> userOpt = userRepository.findByUsername(username);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
             userRepository.delete(user);
+            eventPublisher.publishEvent(new UserDeleteEvent(this, user));
         }
     }
 
