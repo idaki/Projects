@@ -1,4 +1,5 @@
 import { jwtDecode } from "jwt-decode";
+import {isJsonResponse} from '../utils/errorsUtil';
 
 export function getJwtToken() {
     const authData = JSON.parse(localStorage.getItem('authData'));
@@ -75,6 +76,7 @@ export async function fetchWithSettings(url, options) {
             throw new Error(errorMessage);
         }
 
+        const isJsonResponse = response.headers.get('Content-Type')?.includes('application/json');
         return isJsonResponse ? await response.json() : await response.text();
     } catch (error) {
         console.error("Fetch failed:", error);

@@ -36,7 +36,6 @@ export const login = async (username, password) => {
   }
 };
 
-
 export const registerConsumer = async (username, password, email) => {
   try {
     const registrationResult = await fetchWithSettings(`${BASE_URL}/register-consumer`, {

@@ -41,11 +41,11 @@ public class ResetPasswordController {
     public ResponseEntity<?> updatePassword(@RequestBody UpdatePasswordDTO updatePasswordDTO) {
         try {
             passwordService.updatePassword(updatePasswordDTO.getToken(), updatePasswordDTO.getNewPassword());
-            // Retrieve the user based on the token
+
             User user = passwordService.getUserByResetToken(updatePasswordDTO.getToken()).getUserSecurity().getUser();
-            // Generate a new JWT token
+
             String jwt = jwtService.generateToken(user.getUsername());
-            // Return the new JWT token in the response
+
             return ResponseEntity.ok(Collections.singletonMap("accessToken", jwt));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(Collections.singletonMap("error", e.getMessage()));

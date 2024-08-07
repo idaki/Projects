@@ -33,7 +33,7 @@ export default function TeamContainer() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <section className="py-5 min-vh-100 d-flex align-items-center justify-content-center">
+    <section className="py-5 min-vh-100 d-flex align-items-center justify-content-top">
       <div className="container">
         {isLoading ? (
           <div className="d-flex justify-content-center align-items-center h-70">
@@ -50,7 +50,7 @@ export default function TeamContainer() {
                 <div key={team.id} className="col">
                   <TeamCard
                     id={team.id}
-                    name={team.teamName}
+                    name={team.name}
                     img={team.img} 
                     members={team.members} 
                     userIds={team.userIds} 
