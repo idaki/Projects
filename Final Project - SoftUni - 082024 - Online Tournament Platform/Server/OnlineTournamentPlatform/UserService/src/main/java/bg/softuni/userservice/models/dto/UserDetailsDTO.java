@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 
-public class UserDetailsExportDTO {
+public class UserDetailsDTO {
    private Long id;
     private String username;
     @JsonProperty("first_name")

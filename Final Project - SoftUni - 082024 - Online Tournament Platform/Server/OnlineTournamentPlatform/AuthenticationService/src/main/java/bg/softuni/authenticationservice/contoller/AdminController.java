@@ -1,6 +1,7 @@
 package bg.softuni.authenticationservice.contoller;
 
 
+
 import bg.softuni.userservice.models.dto.UserDetailsDTO;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.service.UserService;
@@ -44,7 +45,7 @@ public class AdminController {
             return ResponseEntity.badRequest().body(null); // Return 400 Bad Request if all parameters are null
         }
 
-        UserDetailsDTO userDetails = userService.findUserByDetails(username, firstName, lastName);
+        UserDetailsDTO userDetails = userService.findUserByDetails(username, firstName,lastName ) ;
 
         if (userDetails == null) {
             return ResponseEntity.notFound().build();

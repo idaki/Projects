@@ -1,6 +1,6 @@
 package bg.softuni.userservice.service.impl;
 
-import bg.softuni.userservice.models.dto.UserDetailsExportDTO;
+import bg.softuni.userservice.models.dto.UserDetailsDTO;
 import bg.softuni.userservice.models.entity.Token;
 import bg.softuni.userservice.models.entity.authorisation.Role;
 import bg.softuni.userservice.models.entity.user.User;
@@ -165,7 +165,7 @@ public class UserServiceImplTest {
         when(userRepository.findByUsername(username)).thenReturn(Optional.of(user));
 
         // Act
-        UserDetailsExportDTO dto = userService.getUserDetails(username);
+        UserDetailsDTO dto = userService.getUserDetails(username);
 
         // Assert
         assertNotNull(dto, "UserDetailsExportDTO should not be null");
@@ -182,7 +182,7 @@ public class UserServiceImplTest {
         when(userRepository.findByUsername(username)).thenReturn(Optional.empty());
 
         // Act
-        UserDetailsExportDTO dto = userService.getUserDetails(username);
+        UserDetailsDTO dto = userService.getUserDetails(username);
 
         // Assert
         assertNull(dto, "UserDetailsExportDTO should be null if user is not found");
@@ -258,14 +258,14 @@ public class UserServiceImplTest {
         when(userRepository.findByUsername(username)).thenReturn(Optional.of(mockUser));
 
         // Create a UserDetailsExportDTO with expected values
-        UserDetailsExportDTO expectedDTO = UserDetailsExportDTO.builder()
+        UserDetailsDTO expectedDTO = UserDetailsDTO.builder()
                 .username(username)
                 .firstName("FirstName")
                 .lastName("LastName")
                 .build();
 
         // Act
-        UserDetailsExportDTO result = userService.findUserByDetails(username, null, null);
+        UserDetailsDTO result = userService.findUserByDetails(username, null, null);
 
         // Assert
         assertNotNull(result, "Result should not be null");

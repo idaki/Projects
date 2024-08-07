@@ -1,6 +1,6 @@
 package bg.softuni.userservice.service.impl;
 
-import bg.softuni.userservice.models.dto.UserDetailsExportDTO;
+import bg.softuni.userservice.models.dto.UserDetailsDTO;
 import bg.softuni.userservice.models.dto.UserRegisterDTO;
 import bg.softuni.userservice.models.entity.Token;
 import bg.softuni.userservice.models.entity.authorisation.Role;
@@ -13,7 +13,6 @@ import bg.softuni.userservice.service.UserService;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -148,7 +147,7 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-    public UserDetailsExportDTO getUserDetails(String username) {
+    public UserDetailsDTO getUserDetails(String username) {
         User user = userRepository.findByUsername(username)
                 .orElse(null);
 
@@ -158,17 +157,18 @@ public class UserServiceImpl implements UserService {
 
         UserProfile profile = user.getUserProfile();
 
-        UserDetailsExportDTO dto = new UserDetailsExportDTO();
+        UserDetailsDTO dto = new UserDetailsDTO();
         dto.setUsername(user.getUsername());
         dto.setFirstName(profile.getFirstName());
         dto.setLastName(profile.getLastName());
         dto.setAvatar(profile.getAvatar());
+        dto.setId(user.getId());
 
         return dto;
     }
 
-    private static UserDetailsExportDTO getUserDetailsExportDTO(User user) {
-        UserDetailsExportDTO userDetails = new UserDetailsExportDTO();
+    private static UserDetailsDTO getUserDetailsExportDTO(User user) {
+        UserDetailsDTO userDetails = new UserDetailsDTO();
         userDetails.setUsername(user.getUsername());
         userDetails.setFirstName(user.getUserProfile().getFirstName());
         userDetails.setLastName(user.getUserProfile().getLastName());
@@ -257,7 +257,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDetailsExportDTO findUserByDetails(String username, String firstName, String lastName) {
+    public UserDetailsDTO findUserByDetails(String username, String firstName, String lastName) {
         Optional<User> user = Optional.empty();
 
         if (username != null) {
@@ -271,7 +271,7 @@ public class UserServiceImpl implements UserService {
         if (user.isPresent()) {
             User foundUser = user.get();
             // Convert the found user to UserDetailsExportDTO
-            UserDetailsExportDTO userDetails = getUserDetailsExportDTO(foundUser);
+            UserDetailsDTO userDetails = getUserDetailsExportDTO(foundUser);
             return userDetails;
         } else {
             return null;

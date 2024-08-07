@@ -1,8 +1,8 @@
 package bg.softuni.userservice.service;
 
 
-;
-import bg.softuni.userservice.models.dto.UserDetailsExportDTO;
+
+import bg.softuni.userservice.models.dto.UserDetailsDTO;
 import bg.softuni.userservice.models.dto.UserRegisterDTO;
 import bg.softuni.userservice.models.entity.user.User;
 
@@ -21,7 +21,7 @@ public interface UserService  {
     void register(UserRegisterDTO registerDTO);
 
 
-    UserDetailsExportDTO getUserDetails(String username);
+    UserDetailsDTO getUserDetails(String username);
 
     void deleteUserByUsername(String username);
 
@@ -37,7 +37,7 @@ public interface UserService  {
     void deleteUserById(Long id);
 
 
-    UserDetailsExportDTO findUserByDetails(String username, String firstName, String lastName);
+    UserDetailsDTO findUserByDetails(String username, String firstName, String lastName);
 
 
 
