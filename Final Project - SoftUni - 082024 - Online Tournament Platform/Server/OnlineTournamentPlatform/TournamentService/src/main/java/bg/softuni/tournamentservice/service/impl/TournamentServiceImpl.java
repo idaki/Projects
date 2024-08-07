@@ -134,38 +134,27 @@ public class TournamentServiceImpl implements TournamentService {
         return dto;
     }
 
-    @Override
     public TournamentDTO getTournamentById(Long id, String jwt) {
-        Tournament tournament = tournamentRepository.findById(id).orElse(null);
-        if (tournament != null) {
-            return convertToDto(tournament);
-        }
-        return null;
+        Tournament tournament = tournamentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Tournament not found"));
+
+        return modelMapper.map(tournament, TournamentDTO.class);
     }
+
 
     public boolean signupForTournament(String jwt, TournamentSignupDTO signupDTO) {
         User user = userService.findUserByToken(jwt);
-        if (user == null) {
-            throw new IllegalArgumentException("Invalid user token");
-        }
+        Tournament tournament = tournamentRepository.findById(signupDTO.getTournamentId())
+                .orElseThrow(() -> new RuntimeException("Tournament not found"));
 
-        // Find the tournament by ID
-        Tournament tournament = tournamentRepository.findById(signupDTO.getTournamentId()).orElse(null);
-        if (tournament == null) {
-            return false; // Tournament not found
-        }
-
-        // Create a new team
-        Team team = new Team(signupDTO.getTeamName(), 5); // Assuming a default capacity of 5
+        Team team = new Team(signupDTO.getTeamName(), 10); // Assume capacity is 10 for this example
+        team.setManager(user);
         team.setTournament(tournament);
-        team.getUsers().add(user); // Add the user to the team
 
         teamRepository.save(team);
-
-        // Optionally add the team to the tournament's team list
         tournament.getTeams().add(team);
-        tournamentRepository.save(tournament);
 
+        tournamentRepository.save(tournament);
         return true;
     }
 }

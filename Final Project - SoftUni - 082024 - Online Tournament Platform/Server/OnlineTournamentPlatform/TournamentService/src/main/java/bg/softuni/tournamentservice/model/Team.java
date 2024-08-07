@@ -24,6 +24,10 @@ public class Team implements Serializable {
     @Column(nullable = false)
     private String name;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager_id", nullable = false)
+    private User manager;
+
     @Column(name = "team_size", nullable = false)
     private int capacity;
 
