@@ -2,7 +2,6 @@ package bg.softuni.webservice.config;
 
 import bg.softuni.exceptionhandlerservice.utils.ValidationUtil;
 import bg.softuni.exceptionhandlerservice.utils.impl.ValidationUtilImpl;
-import bg.softuni.userservice.models.entity.user.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import jakarta.validation.Validation;
@@ -10,7 +9,6 @@ import jakarta.validation.Validator;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.spi.MappingContext;
-import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.SimpleApplicationEventMulticaster;
@@ -22,6 +20,12 @@ import java.time.format.DateTimeFormatter;
 @Configuration
 public class AppConfig {
 
+    @Bean(name = "applicationEventMulticaster")
+    public SimpleApplicationEventMulticaster simpleApplicationEventMulticaster() {
+        SimpleApplicationEventMulticaster eventMulticaster = new SimpleApplicationEventMulticaster();
+        eventMulticaster.setTaskExecutor(new SimpleAsyncTaskExecutor());
+        return eventMulticaster;
+    }
 
     @Bean
     public Gson gson() {
@@ -57,8 +61,4 @@ public class AppConfig {
     public Validator validator() {
         return Validation.buildDefaultValidatorFactory().getValidator();
     }
-
-
-
-
 }

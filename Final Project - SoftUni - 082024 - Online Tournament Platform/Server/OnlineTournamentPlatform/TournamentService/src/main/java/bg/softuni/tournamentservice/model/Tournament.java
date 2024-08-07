@@ -44,11 +44,11 @@ public class Tournament {
     @Column(nullable = false)
     private int teamSize;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "manager_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "manager_id", nullable = false)
     private User manager;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "tournament_followers",
             joinColumns = @JoinColumn(name = "tournament_id"),
