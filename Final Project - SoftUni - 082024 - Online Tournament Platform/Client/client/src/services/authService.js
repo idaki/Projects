@@ -2,6 +2,7 @@ import { fetchWithSettings, storeAuthData   } from '../utils/utils';
 import {fetchCsrfToken, captureCsrfTokenFromResponse} from '../utils/csrfUtils';
 import { BASE_URL } from '../config/config';
 import { jwtDecode } from "jwt-decode";
+import {handleHttpError, isJsonResponse} from '../utils/errorsUtil';
 
 export const login = async (username, password) => {
   try {
@@ -43,23 +44,37 @@ export const registerConsumer = async (username, password, email) => {
       body: JSON.stringify({ username, password, email }),
     });
 
-    console.log('Registration successful, attempting to log in...');
     const loginResult = await login(username, password);
-    console.log('Login successful after registration:', loginResult);
 
     return loginResult;
   } catch (error) {
-    console.error('Error during registration or login:', error);
-    throw error; // Ensure the error is thrown and caught by the calling function
+    throw error;
   }
 };
 
-// Reset password function
 export const resetPassword = async (email) => {
-  return fetchWithSettings(`${BASE_URL}/reset-password`, {
-    method: 'POST',
-    body: JSON.stringify({ email }),
-  });
+  try {
+    const response = await fetch(`${BASE_URL}/reset-password`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    if (!response.ok) {
+      const isJsonResponse = response.headers.get('Content-Type')?.includes('application/json');
+      const responseBody = isJsonResponse ? await response.json() : await response.text();
+      // Extract only the first error message
+      const firstErrorMessage = isJsonResponse ? responseBody.message : responseBody;
+      throw new Error(firstErrorMessage || 'Network response was not ok');
+    }
+
+    return isJsonResponse ? await response.json() : await response.text();
+  } catch (error) {
+    console.error('Reset password failed:', error);
+    throw error;
+  }
 };
 
 // Update password and login function

@@ -41,54 +41,50 @@ export function getCsrfTokenFromMeta() {
     const header = document.querySelector('meta[name="_csrf_header"]').getAttribute('content');
     return { token, header };
 }
-
-
 export async function fetchWithSettings(url, options) {
-  const defaultHeaders = {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${getJwtToken()}`,
-      'X-XSRF-TOKEN': getCsrfToken()
-  };
+    const defaultHeaders = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getJwtToken()}`,
+        'X-XSRF-TOKEN': getCsrfToken()
+    };
 
-  const mergedOptions = {
-      ...options,
-      headers: {
-          ...defaultHeaders,
-          ...options.headers
-      },
-      credentials: 'include'
-  };
+    const mergedOptions = {
+        ...options,
+        headers: {
+            ...defaultHeaders,
+            ...options.headers
+        },
+        credentials: 'include'
+    };
 
-  console.log('Making request to:', url);
-  console.log('Request method:', mergedOptions.method);
-  console.log('Request headers:', mergedOptions.headers);
-  if (mergedOptions.body) {
-      console.log('Request body:', mergedOptions.body);
-  }
+    console.log('Making request to:', url);
+    console.log('Request method:', mergedOptions.method);
+    console.log('Request headers:', mergedOptions.headers);
+    if (mergedOptions.body) {
+        console.log('Request body:', mergedOptions.body);
+    }
 
-  try {
-      const response = await fetch(url, mergedOptions);
+    try {
+        const response = await fetch(url, mergedOptions);
 
-      if (response.status === 401) {
-          localStorage.removeItem('authData');
-          window.location.href = '/';
-          return;
-      }
+        if (!response.ok) {
+            const isJsonResponse = response.headers.get('Content-Type')?.includes('application/json');
+            const responseBody = isJsonResponse ? await response.json() : await response.text();
+            // Directly throw the error message from the server response
+            const errorMessage = responseBody.message || responseBody;
+            throw new Error(errorMessage);
+        }
 
-      const isJsonResponse = response.headers.get('Content-Type')?.includes('application/json');
-      const responseBody = isJsonResponse ? await response.json() : await response.text();
-
-      if (!response.ok) {
-          throw new Error(responseBody.message || 'Network response was not ok');
-      }
-
-      return responseBody;
-  } catch (error) {
-      console.error("Fetch failed:", error);
-      throw error;
-  }
+        return isJsonResponse ? await response.json() : await response.text();
+    } catch (error) {
+        console.error("Fetch failed:", error);
+        throw error;
+    }
 }
 
+
+  
+  
 // Function to set CSRF token in meta tags
 export const setCsrfTokenInMetaTags = (token) => {
     let csrfMetaTag = document.querySelector('meta[name="_csrf"]');
