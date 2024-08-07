@@ -5,6 +5,7 @@ import bg.softuni.tournamentservice.config.TestSecurityConfig;
 import bg.softuni.tournamentservice.model.dto.AssetDTO;
 import bg.softuni.tournamentservice.model.dto.GameDTO;
 import bg.softuni.tournamentservice.service.GameService;
+import bg.softuni.exceptionhandlerservice.utils.ValidationUtil; // Add this import
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -38,6 +39,9 @@ public class GameControllerIntegrationTest {
     @MockBean
     private GameService gameService;
 
+    @MockBean
+    private ValidationUtil validationUtil; // Add this mock
+
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -46,11 +50,11 @@ public class GameControllerIntegrationTest {
     @Test
     void testGetAllGames() throws Exception {
         // Create sample AssetDTO objects
-        AssetDTO asset1 = new AssetDTO(); // Initialize with required fields
+        AssetDTO asset1 = new AssetDTO();
         asset1.setId(1L);
         asset1.setName("Ball");
 
-        AssetDTO asset2 = new AssetDTO(); // Initialize with required fields
+        AssetDTO asset2 = new AssetDTO();
         asset2.setId(2L);
         asset2.setName("Goal");
 
@@ -63,17 +67,17 @@ public class GameControllerIntegrationTest {
         GameDTO game2 = new GameDTO();
         game2.setId(2L);
         game2.setTitle("Basketball");
-        game2.setAssets(List.of(asset1)); // or other assets
+        game2.setAssets(List.of(asset1));
 
         // Mock the service call
         Mockito.when(gameService.getAllGames()).thenReturn(Set.of(game1, game2));
 
         // Perform the GET request and assert the response
         mockMvc.perform(get("/api/games")
-                        .header(HttpHeaders.AUTHORIZATION, "Bearer mock-jwt-token") // Adjust if necessary
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer mock-jwt-token")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(2))) // Check the size of the response list
+                .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[*].id", containsInAnyOrder(1, 2)))
                 .andExpect(jsonPath("$[*].title", containsInAnyOrder("Soccer", "Basketball")));
     }

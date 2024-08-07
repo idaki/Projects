@@ -1,5 +1,6 @@
 package bg.softuni.tournamentservice.controller;
 
+import bg.softuni.exceptionhandlerservice.utils.ValidationUtil;
 import bg.softuni.tournamentservice.config.TestConfig;
 import bg.softuni.tournamentservice.config.TestSecurityConfig;
 import bg.softuni.tournamentservice.model.dto.TeamExportDTO;
@@ -36,7 +37,8 @@ public class TeamControllerIntegrationTest {
     private TeamService teamService;
 
     private String jwtToken;
-
+    @MockBean
+    private ValidationUtil validationUtil;
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);

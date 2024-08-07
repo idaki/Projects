@@ -107,6 +107,7 @@ public class TournamentControllerIntegrationTest {
                 .andExpect(jsonPath("$[0].name", is("Tournament A")));
     }
 
+
     @Test
     @WithMockUser(username = "testuser", roles = {"USER"})
     void testCreateTournament() throws Exception {
@@ -116,15 +117,22 @@ public class TournamentControllerIntegrationTest {
         String jsonContent = String.format("{\"name\":\"New Tournament\",\"game\":\"Soccer\",\"category\":\"Sports\",\"summary\":\"A new exciting soccer tournament\",\"startDate\":\"%s\",\"endDate\":\"%s\",\"numberOfTeams\":16,\"teamSize\":5}",
                 dateFormat.format(now), dateFormat.format(tomorrow));
 
+        // Corrected to use Mockito.when for a non-void method
         Mockito.when(tournamentService.createTournament(Mockito.eq("mock-jwt-token"), Mockito.any(TournamentCreateDTO.class))).thenReturn(true);
 
         mockMvc.perform(post("/api/tournaments/create")
-                        .header(HttpHeaders.AUTHORIZATION, jwtToken)
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer mock-jwt-token")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonContent))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", is(true)));
+                .andExpect(jsonPath("$").value("Tournament created successfully"));
     }
+
+
+
+
+
+
 
     @Test
     void testGetTournamentById() throws Exception {
@@ -181,11 +189,11 @@ public class TournamentControllerIntegrationTest {
 
     @Test
     @WithMockUser(username = "testuser", roles = {"USER"})
-    void testCreateTournamentWithEmptyJwt() throws Exception {
+    void testCreateTournamentWithInvalidData() throws Exception {
+        // Perform the POST request with missing required fields and assert the response
         mockMvc.perform(post("/api/tournaments/create")
-                        .header(HttpHeaders.AUTHORIZATION, "Bearer ")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"name\":\"New Tournament\"}"))
+                        .content("{\"name\":\"New Tournament\"}")) // Missing fields
                 .andExpect(status().isBadRequest());
     }
 
