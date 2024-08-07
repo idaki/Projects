@@ -57,7 +57,8 @@ export const AuthProvider = ({ children }) => {
 
   const resetPasswordHandler = async (email) => {
     try {
-      await resetPassword(email);
+      const message = await resetPassword(email);
+      return message; 
     } catch (error) {
       console.error('Password reset failed', error);
       throw error;

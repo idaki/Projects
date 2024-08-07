@@ -34,7 +34,7 @@ public class ResetPasswordController {
     @PostMapping("/reset-password")
     public ResponseEntity<String> resetPassword(@RequestBody ResetPasswordDTO resetPasswordDTO) {
         passwordService.generateResetToken(resetPasswordDTO.getEmail());
-        return ResponseEntity.ok("Password reset token has been sent to your email.");
+        return ResponseEntity.ok("Please check your email address.");
     }
 
     @PostMapping("/update-password")

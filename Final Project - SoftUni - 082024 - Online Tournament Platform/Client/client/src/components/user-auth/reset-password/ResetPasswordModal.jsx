@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../../../context/authContext'; // Adjust the import path as necessary
-import { useTranslation } from 'react-i18next'; 
+import { useTranslation } from 'react-i18next';
 
 export default function ResetPasswordModal({ onClose }) {
   const { t } = useTranslation(); // Use the useTranslation hook
@@ -8,11 +8,15 @@ export default function ResetPasswordModal({ onClose }) {
 
   const [email, setEmail] = useState('');
   const [localError, setLocalError] = useState('');
+  const [serverMessage, setServerMessage] = useState(''); // New state for server message
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
     if (localError) {
       setLocalError('');
+    }
+    if (serverMessage) {
+      setServerMessage('');
     }
   };
 
@@ -23,8 +27,8 @@ export default function ResetPasswordModal({ onClose }) {
       return;
     }
     try {
-      await resetPasswordHandler(email);
-      onClose();
+      const message = await resetPasswordHandler(email);
+      setServerMessage(message); // Set the message from the server
     } catch (err) {
       setLocalError(err.message || t('errors.resetPasswordError'));
     }
@@ -46,6 +50,7 @@ export default function ResetPasswordModal({ onClose }) {
         </div>
 
         {localError && <div className="alert alert-danger">{localError}</div>}
+        {serverMessage && <div className="alert alert-success">{serverMessage}</div>} {/* Display server message */}
 
         <div className="d-flex justify-content-center">
           <button type="submit" className="btn btn-primary mb-4">

@@ -65,17 +65,18 @@ export const resetPassword = async (email) => {
     if (!response.ok) {
       const isJsonResponse = response.headers.get('Content-Type')?.includes('application/json');
       const responseBody = isJsonResponse ? await response.json() : await response.text();
-      // Extract only the first error message
       const firstErrorMessage = isJsonResponse ? responseBody.message : responseBody;
       throw new Error(firstErrorMessage || 'Network response was not ok');
     }
 
-    return isJsonResponse ? await response.json() : await response.text();
+    return await response.text(); // Return the response text directly
   } catch (error) {
     console.error('Reset password failed:', error);
     throw error;
   }
 };
+
+
 
 // Update password and login function
 export const updatePasswordAndLogin = async (token, newPassword) => {
