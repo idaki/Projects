@@ -1,0 +1,19 @@
+.modalContent {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 85%;
+    width: auto;
+    max-height: 85%;
+    overflow-y: auto;
+}
+
+.modalContent pre {
+    white-space: pre-wrap; /* This ensures that long lines wrap within the pre element */
+    word-wrap: break-word; /* This ensures that long words break if they exceed the width */
+}
