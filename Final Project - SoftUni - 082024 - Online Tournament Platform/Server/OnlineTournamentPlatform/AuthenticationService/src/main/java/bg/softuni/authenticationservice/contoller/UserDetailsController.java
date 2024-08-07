@@ -1,7 +1,8 @@
 package bg.softuni.authenticationservice.contoller;
 
 import bg.softuni.authenticationservice.service.JwtService;
-import bg.softuni.userservice.models.dto.gson.UserDetailsExportDTO;
+
+import bg.softuni.userservice.models.dto.UserDetailsDTO;
 import bg.softuni.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,14 +22,14 @@ public class UserDetailsController {
     }
 
     @PostMapping("/details")
-    public ResponseEntity<UserDetailsExportDTO> getUserDetails(@RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserDetailsDTO> getUserDetails(@RequestHeader("Authorization") String token) {
         // Extract the JWT token from the Bearer string
         String jwt = token.substring(7).trim();
 
         // Extract username from JWT
         String username = jwtService.extractAllClaims(jwt).getSubject();
 
-        UserDetailsExportDTO userDetails = userService.getUserDetails(username);
+        UserDetailsDTO userDetails = userService.getUserDetails(username);
         return ResponseEntity.ok(userDetails);
     }
 

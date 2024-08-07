@@ -43,7 +43,6 @@
 
 
 
-
 		<dependency>
 			<groupId>bg.softuni</groupId>
 			<artifactId>CommunicationService</artifactId>

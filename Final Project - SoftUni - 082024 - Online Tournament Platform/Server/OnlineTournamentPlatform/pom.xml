@@ -127,6 +127,7 @@
         <module>CommunicationService</module>
         <module>TournamentService</module>
         <module>InitService</module>
+        <module>ExceptionHandlerService</module>
     </modules>
 
     <build>

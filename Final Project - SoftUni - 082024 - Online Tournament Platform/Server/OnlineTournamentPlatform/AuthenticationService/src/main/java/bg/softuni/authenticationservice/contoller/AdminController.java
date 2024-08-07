@@ -1,11 +1,10 @@
 package bg.softuni.authenticationservice.contoller;
 
-import bg.softuni.userservice.models.dto.gson.UserDetailsExportDTO;
+
+import bg.softuni.userservice.models.dto.UserDetailsDTO;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public class AdminController {
     }
 
     @PostMapping("/search")
-    public ResponseEntity<UserDetailsExportDTO> searchUser(
+    public ResponseEntity<UserDetailsDTO> searchUser(
             @RequestParam(required = false) String username,
             @RequestParam(required = false) String firstName,
             @RequestParam(required = false) String lastName) {
@@ -45,7 +44,7 @@ public class AdminController {
             return ResponseEntity.badRequest().body(null); // Return 400 Bad Request if all parameters are null
         }
 
-        UserDetailsExportDTO userDetails = userService.findUserByDetails(username, firstName, lastName);
+        UserDetailsDTO userDetails = userService.findUserByDetails(username, firstName, lastName);
 
         if (userDetails == null) {
             return ResponseEntity.notFound().build();

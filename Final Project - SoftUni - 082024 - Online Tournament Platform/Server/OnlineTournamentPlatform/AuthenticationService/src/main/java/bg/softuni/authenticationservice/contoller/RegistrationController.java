@@ -3,6 +3,7 @@ package bg.softuni.authenticationservice.contoller;
 import bg.softuni.authenticationservice.model.DTO.LoginDTO;
 import bg.softuni.authenticationservice.model.DTO.UserRegisterDTO;
 import bg.softuni.authenticationservice.service.LoginService;
+import bg.softuni.userservice.models.dto.UserDetailsDTO;
 import bg.softuni.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,7 @@ public class RegistrationController {
     public ResponseEntity<String> registerConsumer(@RequestBody UserRegisterDTO registerDTO) {
         try {
             // Register the user first
-            userService.register(registerDTO.getUsername(), registerDTO.getPassword(), registerDTO.getEmail());
+            userService.register(registerDTO);
 
             // Attempt to log in the user automatically after registration
             boolean isAuthenticated = loginService.login(new LoginDTO(registerDTO.getUsername(), registerDTO.getPassword()));
