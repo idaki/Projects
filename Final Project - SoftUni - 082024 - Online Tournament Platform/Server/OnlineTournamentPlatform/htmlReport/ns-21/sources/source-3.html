@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > UserRepository</title>
+  <title>Coverage Report > UserSecurityRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,7 +22,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">bg.softuni.userservice.repository</a>
 </div>
 
-<h1>Coverage Summary for Class: UserRepository (bg.softuni.userservice.repository)</h1>
+<h1>Coverage Summary for Class: UserSecurityRepository (bg.softuni.userservice.repository)</h1>
 
 <table class="coverageStats">
 
@@ -30,31 +30,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">UserRepository$MockitoMock$bfo2P8N9</td>
+    <td class="name">UserSecurityRepository$MockitoMock$Zz28SzCD</td>
   </tr>
   <tr>
-    <td class="name">UserRepository$MockitoMock$bfo2P8N9$auxiliary$egKIsp8Q</td>
+    <td class="name">UserSecurityRepository$MockitoMock$Zz28SzCD$auxiliary$CxRZiXQZ</td>
   </tr>
   <tr>
-    <td class="name">UserRepository$MockitoMock$bfo2P8N9$auxiliary$P1SRd34G</td>
-  </tr>
-  <tr>
-    <td class="name">UserRepository$MockitoMock$BXi8tqCv</td>
-  </tr>
-  <tr>
-    <td class="name">UserRepository$MockitoMock$BXi8tqCv$auxiliary$CONlmoh9</td>
-  </tr>
-  <tr>
-    <td class="name">UserRepository$MockitoMock$BXi8tqCv$auxiliary$PKADVga5</td>
-  </tr>
-  <tr>
-    <td class="name">UserRepository$MockitoMock$S21goGnO</td>
-  </tr>
-  <tr>
-    <td class="name">UserRepository$MockitoMock$S21goGnO$auxiliary$rbFY3XpY</td>
-  </tr>
-  <tr>
-    <td class="name">UserRepository$MockitoMock$S21goGnO$auxiliary$zV7oM8Eu</td>
+    <td class="name">UserSecurityRepository$MockitoMock$Zz28SzCD$auxiliary$y6gWl82U</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -68,32 +50,12 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.userservice.repository;
 &nbsp;
-&nbsp;import bg.softuni.userservice.models.entity.user.User;
+&nbsp;import bg.softuni.userservice.models.entity.user.UserSecurity;
 &nbsp;import org.springframework.data.jpa.repository.JpaRepository;
-&nbsp;import org.springframework.data.jpa.repository.Query;
-&nbsp;import org.springframework.data.repository.query.Param;
 &nbsp;import org.springframework.stereotype.Repository;
 &nbsp;
-&nbsp;import java.util.Optional;
-&nbsp;
 &nbsp;@Repository
-&nbsp;public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
-&nbsp;    Optional&lt;User&gt; findByUsername(String username);
-&nbsp;
-&nbsp;    Optional&lt;User&gt; findByEmail(String email);
-&nbsp;
-&nbsp;    Optional&lt;User&gt; findByUsernameOrEmail(String username, String email);
-&nbsp;
-&nbsp;    Optional&lt;User&gt; findByUserSecurity_Password_ResetPasswordToken(String resetPasswordToken);
-&nbsp;
-&nbsp;    @Query(&quot;SELECT u FROM User u WHERE u.username = :username OR u.userProfile.firstName = :firstName OR u.userProfile.lastName = :lastName&quot;)
-&nbsp;    Optional&lt;User&gt; findByUsernameOrFirstNameOrLastName(@Param(&quot;username&quot;) String username,
-&nbsp;                                                       @Param(&quot;firstName&quot;) String firstName,
-&nbsp;                                                       @Param(&quot;lastName&quot;) String lastName);
-&nbsp;
-&nbsp;    Optional&lt;User&gt; findByUserProfile_FirstName(String firstName);
-&nbsp;
-&nbsp;    Optional&lt;User&gt; findByUserProfile_LastName(String lastName);
+&nbsp;public interface UserSecurityRepository extends JpaRepository&lt;UserSecurity, Long&gt; {
 &nbsp;}
 </code>
 </pre>
@@ -118,7 +80,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-08-11 10:10</div>
+    <div style="float:right;">generated on 2024-08-11 10:12</div>
 </div>
 </body>
 </html>

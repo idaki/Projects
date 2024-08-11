@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > TournamentService</title>
+  <title>Coverage Report > GameService</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,7 +22,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">bg.softuni.tournamentservice.service</a>
 </div>
 
-<h1>Coverage Summary for Class: TournamentService (bg.softuni.tournamentservice.service)</h1>
+<h1>Coverage Summary for Class: GameService (bg.softuni.tournamentservice.service)</h1>
 
 <table class="coverageStats">
 
@@ -30,22 +30,22 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">TournamentService$MockitoMock$DgkG3N71</td>
+    <td class="name">GameService$MockitoMock$5tY5AwbJ</td>
   </tr>
   <tr>
-    <td class="name">TournamentService$MockitoMock$DgkG3N71$auxiliary$2P3QbGkW</td>
+    <td class="name">GameService$MockitoMock$5tY5AwbJ$auxiliary$Ea70wNn1</td>
   </tr>
   <tr>
-    <td class="name">TournamentService$MockitoMock$DgkG3N71$auxiliary$vD2d18JQ</td>
+    <td class="name">GameService$MockitoMock$5tY5AwbJ$auxiliary$kWUA6IGj</td>
   </tr>
   <tr>
-    <td class="name">TournamentService$MockitoMock$VVD8QSCv</td>
+    <td class="name">GameService$MockitoMock$jJak4EQN</td>
   </tr>
   <tr>
-    <td class="name">TournamentService$MockitoMock$VVD8QSCv$auxiliary$mvsgzntC</td>
+    <td class="name">GameService$MockitoMock$jJak4EQN$auxiliary$8AjkYAdw</td>
   </tr>
   <tr>
-    <td class="name">TournamentService$MockitoMock$VVD8QSCv$auxiliary$U9Lh4o9e</td>
+    <td class="name">GameService$MockitoMock$jJak4EQN$auxiliary$rBIGkD1z</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -60,28 +60,17 @@ Current scope:     <a href="../../index.html">all classes</a>
 <code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.tournamentservice.service;
 &nbsp;
 &nbsp;
-&nbsp;import bg.softuni.tournamentservice.model.dto.TournamentSignupDTO;
-&nbsp;import bg.softuni.tournamentservice.model.dto.TournamentCreateDTO;
-&nbsp;import bg.softuni.tournamentservice.model.dto.TournamentDTO;
+&nbsp;import bg.softuni.tournamentservice.model.dto.GameDTO;
 &nbsp;
-&nbsp;import java.util.List;
+&nbsp;import java.util.Set;
 &nbsp;
-&nbsp;public interface TournamentService  {
-&nbsp;    List&lt;TournamentDTO&gt; getAllTournaments();
+&nbsp;public interface GameService  {
 &nbsp;
-&nbsp;    List&lt;TournamentDTO&gt; getSubscribedInTournaments(String jwt);
 &nbsp;
-&nbsp;    List&lt;TournamentDTO&gt; getManagedTournaments(String jwt);
 &nbsp;
-&nbsp;    List&lt;TournamentDTO&gt; getWatchlistTournaments(String jwt);
 &nbsp;
-&nbsp;    boolean createTournament(String jwt, TournamentCreateDTO tournamentCreateDTO);
+&nbsp;    Set&lt;GameDTO&gt; getAllGames();
 &nbsp;
-&nbsp;    TournamentDTO getTournamentById(Long id, String jwt);
-&nbsp;
-&nbsp;    boolean signupForTournament(String jwt, TournamentSignupDTO signupDTO);
-&nbsp;
-&nbsp;    boolean isValidTournamentData(TournamentCreateDTO tournamentCreateDTO);
 &nbsp;}
 </code>
 </pre>
@@ -106,7 +95,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-08-11 10:10</div>
+    <div style="float:right;">generated on 2024-08-11 10:12</div>
 </div>
 </body>
 </html>

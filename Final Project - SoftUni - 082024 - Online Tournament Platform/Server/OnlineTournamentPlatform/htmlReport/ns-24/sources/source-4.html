@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > TokenService</title>
+  <title>Coverage Report > PasswordService</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,7 +22,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">bg.softuni.userservice.service</a>
 </div>
 
-<h1>Coverage Summary for Class: TokenService (bg.softuni.userservice.service)</h1>
+<h1>Coverage Summary for Class: PasswordService (bg.softuni.userservice.service)</h1>
 
 <table class="coverageStats">
 
@@ -30,13 +30,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">TokenService$MockitoMock$kBYC5GBH</td>
+    <td class="name">PasswordService$MockitoMock$DXdDecWF</td>
   </tr>
   <tr>
-    <td class="name">TokenService$MockitoMock$kBYC5GBH$auxiliary$GS16GV3X</td>
+    <td class="name">PasswordService$MockitoMock$DXdDecWF$auxiliary$aQYssm4i</td>
   </tr>
   <tr>
-    <td class="name">TokenService$MockitoMock$kBYC5GBH$auxiliary$UfZ9uLMe</td>
+    <td class="name">PasswordService$MockitoMock$DXdDecWF$auxiliary$pEZTpVRS</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -50,10 +50,17 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.userservice.service;
 &nbsp;
-&nbsp;import bg.softuni.userservice.models.entity.user.User;
+&nbsp;import bg.softuni.userservice.models.entity.password.Password;
 &nbsp;
-&nbsp;public interface TokenService {
-&nbsp;    User getUserByToken(String token);
+&nbsp;public interface PasswordService {
+&nbsp;     void generateResetToken(String email) ;
+&nbsp;
+&nbsp;    void updatePassword(String userId, String newPassword);
+&nbsp;    void setResetToken(String userId, String token);
+&nbsp;    boolean isResetTokenValid(String token);
+&nbsp;    String getUserIdByResetToken(String token);
+&nbsp;
+&nbsp;    Password getUserByResetToken(String token);
 &nbsp;}
 </code>
 </pre>
@@ -78,7 +85,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-08-11 10:07</div>
+    <div style="float:right;">generated on 2024-08-11 10:12</div>
 </div>
 </body>
 </html>

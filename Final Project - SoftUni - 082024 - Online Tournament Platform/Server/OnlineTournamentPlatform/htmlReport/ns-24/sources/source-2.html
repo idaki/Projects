@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > JwtService</title>
+  <title>Coverage Report > UserService</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,19 +19,28 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">bg.softuni.authenticationservice.service</a>
+    <a href="../index.html">bg.softuni.userservice.service</a>
 </div>
 
-<h1>Coverage Summary for Class: JwtService (bg.softuni.authenticationservice.service)</h1>
+<h1>Coverage Summary for Class: UserService (bg.softuni.userservice.service)</h1>
 
 <table class="coverageStats">
+
 <tr>
   <th class="name">Class</th>
 </tr>
+  <tr>
+    <td class="name">UserService$MockitoMock$8qp6t2b0</td>
+  </tr>
+  <tr>
+    <td class="name">UserService$MockitoMock$8qp6t2b0$auxiliary$8cSAGMeN</td>
+  </tr>
+  <tr>
+    <td class="name">UserService$MockitoMock$8qp6t2b0$auxiliary$sSTovDsR</td>
+  </tr>
 <tr>
-  <td class="name">JwtService</td>
+  <td class="name"><strong>Total</strong></td>
 </tr>
-
 </table>
 
 <br/>
@@ -39,24 +48,54 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.authenticationservice.service;
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.userservice.service;
 &nbsp;
-&nbsp;import io.jsonwebtoken.Claims;
 &nbsp;
-&nbsp;import java.util.function.Function;
 &nbsp;
-&nbsp;public interface JwtService {
-&nbsp;    public abstract String generateToken(String username);
+&nbsp;import bg.softuni.userservice.models.dto.UserDetailsDTO;
+&nbsp;import bg.softuni.userservice.models.dto.UserRegisterDTO;
+&nbsp;import bg.softuni.userservice.models.entity.user.User;
 &nbsp;
-&nbsp;    public abstract Boolean validateToken(String token, String username);
+&nbsp;import java.util.List;
+&nbsp;import java.util.Optional;
 &nbsp;
-&nbsp;    public abstract &lt;T&gt; T extractClaim(String token, Function&lt;Claims, T&gt; claimsResolver);
 &nbsp;
-&nbsp;    public Claims extractAllClaims(String token);
+&nbsp;public interface UserService  {
 &nbsp;
-&nbsp;    String generateTokenAfterPasswordUpdate(String token);
+&nbsp;    Optional&lt;User&gt; findByUsername(String username);
 &nbsp;
-&nbsp;    String extractUsername(String token);
+&nbsp;    Optional&lt;User&gt; findByEmail(String email);
+&nbsp;
+&nbsp;    boolean isExistingUser(String username, String password);
+&nbsp;
+&nbsp;    void register(UserRegisterDTO registerDTO);
+&nbsp;
+&nbsp;
+&nbsp;    UserDetailsDTO getUserDetails(String username);
+&nbsp;
+&nbsp;    void deleteUserByUsername(String username);
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    void InitUser(String roleInput, String password, String name);
+&nbsp;
+&nbsp;    User findUserByToken(String jwt);
+&nbsp;
+&nbsp;    List&lt;User&gt; findAllUsers();
+&nbsp;
+&nbsp;    void deleteUserById(Long id);
+&nbsp;
+&nbsp;
+&nbsp;    UserDetailsDTO findUserByDetails(String username, String firstName, String lastName);
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    boolean isAdminSuper(String username);
+&nbsp;
+&nbsp;    boolean isOwnAccount(String username, Long userId);
+&nbsp;
+&nbsp;    boolean isAdminUser(String username);
 &nbsp;}
 </code>
 </pre>
@@ -81,7 +120,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-08-11 10:10</div>
+    <div style="float:right;">generated on 2024-08-11 10:12</div>
 </div>
 </body>
 </html>

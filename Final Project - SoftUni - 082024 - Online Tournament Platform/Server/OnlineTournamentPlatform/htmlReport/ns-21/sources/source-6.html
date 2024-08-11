@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > UserProfileRepository</title>
+  <title>Coverage Report > RoleRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,7 +22,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">bg.softuni.userservice.repository</a>
 </div>
 
-<h1>Coverage Summary for Class: UserProfileRepository (bg.softuni.userservice.repository)</h1>
+<h1>Coverage Summary for Class: RoleRepository (bg.softuni.userservice.repository)</h1>
 
 <table class="coverageStats">
 
@@ -30,13 +30,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">UserProfileRepository$MockitoMock$8UzZUwtg</td>
+    <td class="name">RoleRepository$MockitoMock$gcvnkNfB</td>
   </tr>
   <tr>
-    <td class="name">UserProfileRepository$MockitoMock$8UzZUwtg$auxiliary$3wHoa6Co</td>
+    <td class="name">RoleRepository$MockitoMock$gcvnkNfB$auxiliary$kT4y9G8I</td>
   </tr>
   <tr>
-    <td class="name">UserProfileRepository$MockitoMock$8UzZUwtg$auxiliary$UiQJK3ZZ</td>
+    <td class="name">RoleRepository$MockitoMock$gcvnkNfB$auxiliary$Uydci2jK</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -50,12 +50,20 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.userservice.repository;
 &nbsp;
-&nbsp;import bg.softuni.userservice.models.entity.user.UserProfile;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;import bg.softuni.userservice.models.entity.authorisation.Role;
+&nbsp;import bg.softuni.userservice.models.enums.RoleEnum;
 &nbsp;import org.springframework.data.jpa.repository.JpaRepository;
 &nbsp;import org.springframework.stereotype.Repository;
 &nbsp;
+&nbsp;import java.util.Optional;
+&nbsp;
 &nbsp;@Repository
-&nbsp;public interface UserProfileRepository extends JpaRepository&lt;UserProfile, Long&gt; {
+&nbsp;public interface RoleRepository extends JpaRepository&lt;Role, Long&gt; {
+&nbsp;
+&nbsp;    Role findByName(RoleEnum roleEnum);
 &nbsp;}
 </code>
 </pre>
@@ -80,7 +88,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-08-11 10:10</div>
+    <div style="float:right;">generated on 2024-08-11 10:12</div>
 </div>
 </body>
 </html>

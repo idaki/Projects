@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > TournamentRepository</title>
+  <title>Coverage Report > GameRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,7 +22,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">bg.softuni.tournamentservice.repository</a>
 </div>
 
-<h1>Coverage Summary for Class: TournamentRepository (bg.softuni.tournamentservice.repository)</h1>
+<h1>Coverage Summary for Class: GameRepository (bg.softuni.tournamentservice.repository)</h1>
 
 <table class="coverageStats">
 
@@ -30,22 +30,22 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">TournamentRepository$MockitoMock$1DQ5e2vx</td>
+    <td class="name">GameRepository$MockitoMock$GEKb4yLA</td>
   </tr>
   <tr>
-    <td class="name">TournamentRepository$MockitoMock$1DQ5e2vx$auxiliary$7yiQpRGs</td>
+    <td class="name">GameRepository$MockitoMock$GEKb4yLA$auxiliary$GsBvnKcP</td>
   </tr>
   <tr>
-    <td class="name">TournamentRepository$MockitoMock$1DQ5e2vx$auxiliary$h8bp6fx1</td>
+    <td class="name">GameRepository$MockitoMock$GEKb4yLA$auxiliary$iqrHPjsx</td>
   </tr>
   <tr>
-    <td class="name">TournamentRepository$MockitoMock$yFX3lkcr</td>
+    <td class="name">GameRepository$MockitoMock$YB2GRJC3</td>
   </tr>
   <tr>
-    <td class="name">TournamentRepository$MockitoMock$yFX3lkcr$auxiliary$DbktE2AI</td>
+    <td class="name">GameRepository$MockitoMock$YB2GRJC3$auxiliary$RMzsTjdb</td>
   </tr>
   <tr>
-    <td class="name">TournamentRepository$MockitoMock$yFX3lkcr$auxiliary$rq6tVSAa</td>
+    <td class="name">GameRepository$MockitoMock$YB2GRJC3$auxiliary$VcFFoQil</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -59,28 +59,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.tournamentservice.repository;
 &nbsp;
+&nbsp;
 &nbsp;import bg.softuni.tournamentservice.model.Game;
-&nbsp;import bg.softuni.tournamentservice.model.Tournament;
-&nbsp;import bg.softuni.userservice.models.entity.user.User;
 &nbsp;import org.springframework.data.jpa.repository.JpaRepository;
-&nbsp;import org.springframework.data.jpa.repository.Query;
-&nbsp;import org.springframework.data.repository.query.Param;
 &nbsp;import org.springframework.stereotype.Repository;
 &nbsp;
-&nbsp;import java.util.Date;
-&nbsp;import java.util.List;
 &nbsp;import java.util.Optional;
 &nbsp;
 &nbsp;@Repository
-&nbsp;public interface TournamentRepository extends JpaRepository&lt;Tournament, Long&gt; {
-&nbsp;    List&lt;Tournament&gt; findByManagerId(Long id);
+&nbsp;public interface GameRepository extends JpaRepository&lt;Game, Long&gt; {
 &nbsp;
-&nbsp;    @Query(&quot;SELECT t FROM Tournament t JOIN t.followers f WHERE f.id = :userId&quot;)
-&nbsp;    List&lt;Tournament&gt; findByFollowerId(@Param(&quot;userId&quot;) Long userId);
 &nbsp;
-&nbsp;    Optional&lt;Tournament&gt; findByGameAndManagerAndName(Game game, User user, String name);
-&nbsp;
-&nbsp;    List&lt;Tournament&gt; findByFollowersUsername(String username);
+&nbsp;    Optional&lt;Game&gt; findByName(String game);
 &nbsp;}
 </code>
 </pre>
@@ -105,7 +95,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-08-11 10:10</div>
+    <div style="float:right;">generated on 2024-08-11 10:12</div>
 </div>
 </body>
 </html>

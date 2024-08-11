@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > PasswordService</title>
+  <title>Coverage Report > JwtService</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,28 +19,19 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">bg.softuni.userservice.service</a>
+    <a href="../index.html">bg.softuni.authenticationservice.service</a>
 </div>
 
-<h1>Coverage Summary for Class: PasswordService (bg.softuni.userservice.service)</h1>
+<h1>Coverage Summary for Class: JwtService (bg.softuni.authenticationservice.service)</h1>
 
 <table class="coverageStats">
-
 <tr>
   <th class="name">Class</th>
 </tr>
-  <tr>
-    <td class="name">PasswordService$MockitoMock$DXdDecWF</td>
-  </tr>
-  <tr>
-    <td class="name">PasswordService$MockitoMock$DXdDecWF$auxiliary$aQYssm4i</td>
-  </tr>
-  <tr>
-    <td class="name">PasswordService$MockitoMock$DXdDecWF$auxiliary$pEZTpVRS</td>
-  </tr>
 <tr>
-  <td class="name"><strong>Total</strong></td>
+  <td class="name">JwtService</td>
 </tr>
+
 </table>
 
 <br/>
@@ -48,19 +39,24 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.userservice.service;
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.authenticationservice.service;
 &nbsp;
-&nbsp;import bg.softuni.userservice.models.entity.password.Password;
+&nbsp;import io.jsonwebtoken.Claims;
 &nbsp;
-&nbsp;public interface PasswordService {
-&nbsp;     void generateResetToken(String email) ;
+&nbsp;import java.util.function.Function;
 &nbsp;
-&nbsp;    void updatePassword(String userId, String newPassword);
-&nbsp;    void setResetToken(String userId, String token);
-&nbsp;    boolean isResetTokenValid(String token);
-&nbsp;    String getUserIdByResetToken(String token);
+&nbsp;public interface JwtService {
+&nbsp;    public abstract String generateToken(String username);
 &nbsp;
-&nbsp;    Password getUserByResetToken(String token);
+&nbsp;    public abstract Boolean validateToken(String token, String username);
+&nbsp;
+&nbsp;    public abstract &lt;T&gt; T extractClaim(String token, Function&lt;Claims, T&gt; claimsResolver);
+&nbsp;
+&nbsp;    public Claims extractAllClaims(String token);
+&nbsp;
+&nbsp;    String generateTokenAfterPasswordUpdate(String token);
+&nbsp;
+&nbsp;    String extractUsername(String token);
 &nbsp;}
 </code>
 </pre>
@@ -85,7 +81,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-08-11 10:10</div>
+    <div style="float:right;">generated on 2024-08-11 10:12</div>
 </div>
 </body>
 </html>

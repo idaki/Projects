@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > FriendService</title>
+  <title>Coverage Report > LoginService</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,17 +19,17 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">bg.softuni.userservice.service</a>
+    <a href="../index.html">bg.softuni.authenticationservice.service</a>
 </div>
 
-<h1>Coverage Summary for Class: FriendService (bg.softuni.userservice.service)</h1>
+<h1>Coverage Summary for Class: LoginService (bg.softuni.authenticationservice.service)</h1>
 
 <table class="coverageStats">
 <tr>
   <th class="name">Class</th>
 </tr>
 <tr>
-  <td class="name">FriendService</td>
+  <td class="name">LoginService</td>
 </tr>
 
 </table>
@@ -39,17 +39,19 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.userservice.service;
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.authenticationservice.service;
 &nbsp;
-&nbsp;import bg.softuni.userservice.models.dto.FriendDTO;
-&nbsp;import bg.softuni.userservice.models.entity.user.User;
+&nbsp;import bg.softuni.authenticationservice.model.DTO.LoginDTO;
+&nbsp;import bg.softuni.authenticationservice.model.DTO.UpdatePasswordDTO;
 &nbsp;
-&nbsp;import java.util.List;
-&nbsp;import java.util.Set;
+&nbsp;public interface LoginService {
+&nbsp;    boolean login(LoginDTO loginDTO);
 &nbsp;
-&nbsp;public interface FriendService {
 &nbsp;
-&nbsp;    List&lt;FriendDTO&gt; getAllFriends(String jwt);
+&nbsp;
+&nbsp;    boolean loginAfterPasswordUpdate(UpdatePasswordDTO updatePasswordDTO);
+&nbsp;
+&nbsp;
 &nbsp;}
 </code>
 </pre>
@@ -74,7 +76,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-08-11 10:10</div>
+    <div style="float:right;">generated on 2024-08-11 10:12</div>
 </div>
 </body>
 </html>

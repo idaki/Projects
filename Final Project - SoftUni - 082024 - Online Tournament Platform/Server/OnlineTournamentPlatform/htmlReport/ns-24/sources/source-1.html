@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > LoginService</title>
+  <title>Coverage Report > TokenService</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,19 +19,28 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">bg.softuni.authenticationservice.service</a>
+    <a href="../index.html">bg.softuni.userservice.service</a>
 </div>
 
-<h1>Coverage Summary for Class: LoginService (bg.softuni.authenticationservice.service)</h1>
+<h1>Coverage Summary for Class: TokenService (bg.softuni.userservice.service)</h1>
 
 <table class="coverageStats">
+
 <tr>
   <th class="name">Class</th>
 </tr>
+  <tr>
+    <td class="name">TokenService$MockitoMock$kBYC5GBH</td>
+  </tr>
+  <tr>
+    <td class="name">TokenService$MockitoMock$kBYC5GBH$auxiliary$GS16GV3X</td>
+  </tr>
+  <tr>
+    <td class="name">TokenService$MockitoMock$kBYC5GBH$auxiliary$UfZ9uLMe</td>
+  </tr>
 <tr>
-  <td class="name">LoginService</td>
+  <td class="name"><strong>Total</strong></td>
 </tr>
-
 </table>
 
 <br/>
@@ -39,19 +48,12 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.authenticationservice.service;
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.userservice.service;
 &nbsp;
-&nbsp;import bg.softuni.authenticationservice.model.DTO.LoginDTO;
-&nbsp;import bg.softuni.authenticationservice.model.DTO.UpdatePasswordDTO;
+&nbsp;import bg.softuni.userservice.models.entity.user.User;
 &nbsp;
-&nbsp;public interface LoginService {
-&nbsp;    boolean login(LoginDTO loginDTO);
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;    boolean loginAfterPasswordUpdate(UpdatePasswordDTO updatePasswordDTO);
-&nbsp;
-&nbsp;
+&nbsp;public interface TokenService {
+&nbsp;    User getUserByToken(String token);
 &nbsp;}
 </code>
 </pre>
@@ -76,7 +78,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-08-11 10:10</div>
+    <div style="float:right;">generated on 2024-08-11 10:12</div>
 </div>
 </body>
 </html>
