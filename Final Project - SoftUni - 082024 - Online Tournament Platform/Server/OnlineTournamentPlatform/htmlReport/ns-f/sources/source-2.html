@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Game</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bg.softuni.tournamentservice.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Game (bg.softuni.tournamentservice.model)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Game</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Game$HibernateInstantiator$A2XRhZkZ</td>
+  </tr>
+  <tr>
+    <td class="name">Game$HibernateInstantiator$djOzuVzf</td>
+  </tr>
+  <tr>
+    <td class="name">Game$HibernateInstantiator$Ii7k39sX</td>
+  </tr>
+  <tr>
+    <td class="name">Game$HibernateInstantiator$qqWu67FB</td>
+  </tr>
+  <tr>
+    <td class="name">Game$HibernateInstantiator$rAsj1BfP</td>
+  </tr>
+  <tr>
+    <td class="name">Game$HibernateInstantiator$xainMw2B</td>
+  </tr>
+  <tr>
+    <td class="name">Game$HibernateInstantiator$yvqprvls</td>
+  </tr>
+  <tr>
+    <td class="name">Game$HibernateProxy$89xOCdAN</td>
+  </tr>
+  <tr>
+    <td class="name">Game$HibernateProxy$clvvy3np</td>
+  </tr>
+  <tr>
+    <td class="name">Game$HibernateProxy$fONaEelH</td>
+  </tr>
+  <tr>
+    <td class="name">Game$HibernateProxy$noLaZgSu</td>
+  </tr>
+  <tr>
+    <td class="name">Game$HibernateProxy$oEjOEljx</td>
+  </tr>
+  <tr>
+    <td class="name">Game$HibernateProxy$oEVEsqdG</td>
+  </tr>
+  <tr>
+    <td class="name">Game$HibernateProxy$SFZ2AzfJ</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.tournamentservice.model;
+&nbsp;
+&nbsp;import jakarta.persistence.*;
+&nbsp;import lombok.Getter;
+&nbsp;import lombok.NoArgsConstructor;
+&nbsp;import lombok.Setter;
+&nbsp;
+&nbsp;import java.util.HashSet;
+&nbsp;import java.util.Set;
+&nbsp;
+&nbsp;@Entity
+&nbsp;@Table(name = &quot;games&quot;)
+&nbsp;@Getter
+<b class="fc">&nbsp;@Setter</b>
+<b class="fc">&nbsp;@NoArgsConstructor</b>
+&nbsp;public class Game {
+&nbsp;
+&nbsp;    @Id
+&nbsp;    @GeneratedValue(strategy = GenerationType.IDENTITY)
+<b class="fc">&nbsp;    private Long id;</b>
+&nbsp;
+&nbsp;    @Column(unique = true, nullable = false)
+<b class="fc">&nbsp;    private String name;</b>
+&nbsp;
+<b class="fc">&nbsp;    @OneToMany(mappedBy = &quot;game&quot;, cascade = CascadeType.ALL, orphanRemoval = true)</b>
+<b class="nc">&nbsp;    private Set&lt;Asset&gt; assets = new HashSet&lt;&gt;();</b>
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-08-11 10:10</div>
+</div>
+</body>
+</html>

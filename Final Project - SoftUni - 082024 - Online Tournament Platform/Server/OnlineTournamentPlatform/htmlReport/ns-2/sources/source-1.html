@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > AdminController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bg.softuni.authenticationservice.contoller</a>
+</div>
+
+<h1>Coverage Summary for Class: AdminController (bg.softuni.authenticationservice.contoller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AdminController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (1/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    16.7%
+  </span>
+  <span class="absValue">
+    (2/12)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.authenticationservice.contoller;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;import bg.softuni.userservice.models.dto.UserDetailsDTO;
+&nbsp;import bg.softuni.userservice.models.entity.user.User;
+&nbsp;import bg.softuni.userservice.service.UserService;
+&nbsp;import org.springframework.http.ResponseEntity;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;@RestController
+&nbsp;@RequestMapping(&quot;/api/admin&quot;)
+&nbsp;public class AdminController {
+&nbsp;
+&nbsp;
+&nbsp;    private final UserService userService; // Assuming you have a UserService to handle business logic
+&nbsp;
+<b class="fc">&nbsp;    public AdminController(UserService userService) {</b>
+<b class="fc">&nbsp;        this.userService = userService;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @GetMapping(&quot;/users&quot;)
+&nbsp;    public ResponseEntity&lt;List&lt;User&gt;&gt; getAllUsers() {
+<b class="nc">&nbsp;        List&lt;User&gt; users = userService.findAllUsers();</b>
+<b class="nc">&nbsp;        return ResponseEntity.ok(users);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @DeleteMapping(&quot;/user/delete/{id}&quot;)
+&nbsp;    public ResponseEntity&lt;Void&gt; deleteUser(@PathVariable Long id) {
+<b class="nc">&nbsp;        userService.deleteUserById(id);</b>
+<b class="nc">&nbsp;        return ResponseEntity.noContent().build(); // Return no content status</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/search&quot;)
+&nbsp;    public ResponseEntity&lt;UserDetailsDTO&gt; searchUser(
+&nbsp;            @RequestParam(required = false) String username,
+&nbsp;            @RequestParam(required = false) String firstName,
+&nbsp;            @RequestParam(required = false) String lastName) {
+&nbsp;
+<b class="nc">&nbsp;        if (username == null &amp;&amp; firstName == null &amp;&amp; lastName == null) {</b>
+<b class="nc">&nbsp;            return ResponseEntity.badRequest().body(null); // Return 400 Bad Request if all parameters are null</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        UserDetailsDTO userDetails = userService.findUserByDetails(username, firstName,lastName ) ;</b>
+&nbsp;
+<b class="nc">&nbsp;        if (userDetails == null) {</b>
+<b class="nc">&nbsp;            return ResponseEntity.notFound().build();</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        return ResponseEntity.ok(userDetails);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-08-11 10:10</div>
+</div>
+</body>
+</html>

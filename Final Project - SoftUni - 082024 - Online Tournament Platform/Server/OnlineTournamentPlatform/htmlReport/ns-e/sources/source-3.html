@@ -1,0 +1,206 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > TournamentController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bg.softuni.tournamentservice.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: TournamentController (bg.softuni.tournamentservice.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TournamentController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (9/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    69.7%
+  </span>
+  <span class="absValue">
+    (23/33)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.tournamentservice.controller;
+&nbsp;
+&nbsp;import bg.softuni.exceptionhandlerservice.DuplicateTournamentException;
+&nbsp;import bg.softuni.exceptionhandlerservice.ValidationException;
+&nbsp;import bg.softuni.tournamentservice.model.dto.TournamentSignupDTO;
+&nbsp;import bg.softuni.tournamentservice.model.dto.TournamentCreateDTO;
+&nbsp;import bg.softuni.tournamentservice.model.dto.TournamentDTO;
+&nbsp;import bg.softuni.tournamentservice.service.TournamentService;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.http.HttpStatus;
+&nbsp;import org.springframework.http.ResponseEntity;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;@RestController
+&nbsp;@RequestMapping(&quot;/api&quot;)
+&nbsp;public class TournamentController {
+&nbsp;
+&nbsp;    private final TournamentService tournamentService;
+&nbsp;
+&nbsp;    @Autowired
+<b class="fc">&nbsp;    public TournamentController(TournamentService tournamentService) {</b>
+<b class="fc">&nbsp;        this.tournamentService = tournamentService;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/tournaments/all&quot;)
+&nbsp;    public List&lt;TournamentDTO&gt; getAllTournaments() {
+<b class="fc">&nbsp;        return tournamentService.getAllTournaments();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/tournaments/managed&quot;)
+&nbsp;    public ResponseEntity&lt;List&lt;TournamentDTO&gt;&gt; getMyTournaments(@RequestHeader(&quot;Authorization&quot;) String authorizationHeader) {
+<b class="fc">&nbsp;        String jwt = authorizationHeader.substring(7); // Remove &quot;Bearer &quot; prefix</b>
+<b class="fc">&nbsp;        if (jwt.isEmpty()) {</b>
+<b class="fc">&nbsp;            return ResponseEntity.badRequest().build(); // Return bad request if JWT is empty</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return ResponseEntity.ok(tournamentService.getManagedTournaments(jwt));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/tournaments/watchlist&quot;)
+&nbsp;    public ResponseEntity&lt;List&lt;TournamentDTO&gt;&gt; getWatchlist(@RequestHeader(&quot;Authorization&quot;) String authorizationHeader) {
+<b class="fc">&nbsp;        String jwt = authorizationHeader.substring(7); // Remove &quot;Bearer &quot; prefix</b>
+<b class="fc">&nbsp;        if (jwt.isEmpty()) {</b>
+<b class="fc">&nbsp;            return ResponseEntity.badRequest().build(); // Return bad request if JWT is empty</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return ResponseEntity.ok(tournamentService.getWatchlistTournaments(jwt));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/tournaments/create&quot;)
+&nbsp;    public ResponseEntity&lt;String&gt; createTournament(@RequestHeader(&quot;Authorization&quot;) String jwt, @RequestBody TournamentCreateDTO tournamentCreateDTO) {
+<b class="pc">&nbsp;        if (jwt == null || jwt.length() &lt; 8) {</b>
+<b class="nc">&nbsp;            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(&quot;Invalid JWT token&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        jwt = jwt.substring(7);</b>
+&nbsp;
+&nbsp;        try {
+<b class="fc">&nbsp;            tournamentService.createTournament(jwt, tournamentCreateDTO);</b>
+<b class="fc">&nbsp;            return ResponseEntity.ok(&quot;Tournament created successfully&quot;);</b>
+<b class="nc">&nbsp;        } catch (ValidationException e) {</b>
+<b class="nc">&nbsp;            return ResponseEntity.badRequest().body(e.getMessage());</b>
+<b class="nc">&nbsp;        } catch (IllegalArgumentException e) {</b>
+<b class="nc">&nbsp;            return ResponseEntity.badRequest().body(e.getMessage());</b>
+<b class="nc">&nbsp;        } catch (DuplicateTournamentException e) {</b>
+<b class="nc">&nbsp;            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(&quot;An unexpected error occurred&quot;);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/public/tournaments/details&quot;)
+&nbsp;    public ResponseEntity&lt;TournamentDTO&gt; getTournamentById(@RequestBody Long id) {
+<b class="fc">&nbsp;        TournamentDTO tournament = tournamentService.getTournamentById(id, null); // Remove the JWT parameter</b>
+<b class="fc">&nbsp;        if (tournament == null) {</b>
+<b class="fc">&nbsp;            return ResponseEntity.notFound().build(); // Return 404 if tournament is not found</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return ResponseEntity.ok(tournament);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/tournaments/signup&quot;)
+&nbsp;    public ResponseEntity&lt;Boolean&gt; signupForTournament(@RequestHeader(&quot;Authorization&quot;) String authorizationHeader, @RequestBody TournamentSignupDTO signupDTO) {
+<b class="fc">&nbsp;        String jwt = authorizationHeader.substring(7); // Remove &quot;Bearer &quot; prefix</b>
+<b class="pc">&nbsp;        if (jwt.isEmpty()) {</b>
+<b class="nc">&nbsp;            return ResponseEntity.badRequest().build(); // Return bad request if JWT is empty</b>
+&nbsp;        }
+<b class="fc">&nbsp;        boolean isSignedUp = tournamentService.signupForTournament(jwt, signupDTO);</b>
+<b class="fc">&nbsp;        return ResponseEntity.ok(isSignedUp);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-08-11 10:10</div>
+</div>
+</body>
+</html>

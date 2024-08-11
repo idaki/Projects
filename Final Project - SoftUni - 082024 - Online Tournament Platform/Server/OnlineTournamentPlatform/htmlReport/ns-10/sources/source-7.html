@@ -1,0 +1,227 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > TournamentDTO</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bg.softuni.tournamentservice.model.dto</a>
+</div>
+
+<h1>Coverage Summary for Class: TournamentDTO (bg.softuni.tournamentservice.model.dto)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TournamentDTO</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    78.3%
+  </span>
+  <span class="absValue">
+    (18/23)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70.6%
+  </span>
+  <span class="absValue">
+    (24/34)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.tournamentservice.model.dto;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;import java.util.Date;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;public class TournamentDTO {</b>
+&nbsp;    private Long id;
+&nbsp;    private String name;
+&nbsp;    private String game;
+&nbsp;    private String description;
+&nbsp;    private String url;
+&nbsp;    private String category;
+&nbsp;    private String summary;
+&nbsp;    private Date startDate;
+&nbsp;    private Date endDate;
+&nbsp;    private int numberOfTeams;
+&nbsp;    private int teamSize;
+&nbsp;
+&nbsp;    public Long getId() {
+<b class="fc">&nbsp;        return id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TournamentDTO setId(Long id) {
+<b class="fc">&nbsp;        this.id = id;</b>
+<b class="fc">&nbsp;        return this;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getName() {
+<b class="fc">&nbsp;        return name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TournamentDTO setName(String name) {
+<b class="fc">&nbsp;        this.name = name;</b>
+<b class="fc">&nbsp;        return this;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getGame() {
+<b class="fc">&nbsp;        return game;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TournamentDTO setGame(String game) {
+<b class="nc">&nbsp;        this.game = game;</b>
+<b class="nc">&nbsp;        return this;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getDescription() {
+<b class="fc">&nbsp;        return description;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TournamentDTO setDescription(String description) {
+<b class="fc">&nbsp;        this.description = description;</b>
+<b class="fc">&nbsp;        return this;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getUrl() {
+<b class="fc">&nbsp;        return url;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TournamentDTO setUrl(String url) {
+<b class="fc">&nbsp;        this.url = url;</b>
+<b class="fc">&nbsp;        return this;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getCategory() {
+<b class="fc">&nbsp;        return category;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TournamentDTO setCategory(String category) {
+<b class="nc">&nbsp;        this.category = category;</b>
+<b class="nc">&nbsp;        return this;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getSummary() {
+<b class="fc">&nbsp;        return summary;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TournamentDTO setSummary(String summary) {
+<b class="nc">&nbsp;        this.summary = summary;</b>
+<b class="nc">&nbsp;        return this;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Date getStartDate() {
+<b class="fc">&nbsp;        return startDate;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TournamentDTO setStartDate(Date startDate) {
+<b class="fc">&nbsp;        this.startDate = startDate;</b>
+<b class="fc">&nbsp;        return this;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Date getEndDate() {
+<b class="fc">&nbsp;        return endDate;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TournamentDTO setEndDate(Date endDate) {
+<b class="fc">&nbsp;        this.endDate = endDate;</b>
+<b class="fc">&nbsp;        return this;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getNumberOfTeams() {
+<b class="fc">&nbsp;        return numberOfTeams;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TournamentDTO setNumberOfTeams(int numberOfTeams) {
+<b class="nc">&nbsp;        this.numberOfTeams = numberOfTeams;</b>
+<b class="nc">&nbsp;        return this;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getTeamSize() {
+<b class="fc">&nbsp;        return teamSize;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TournamentDTO setTeamSize(int teamSize) {
+<b class="nc">&nbsp;        this.teamSize = teamSize;</b>
+<b class="nc">&nbsp;        return this;</b>
+&nbsp;    }
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-08-11 10:10</div>
+</div>
+</body>
+</html>

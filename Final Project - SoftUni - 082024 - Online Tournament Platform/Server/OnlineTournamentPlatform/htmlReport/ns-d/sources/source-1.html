@@ -1,0 +1,157 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > InitServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bg.softuni.initservice.service.impl</a>
+</div>
+
+<h1>Coverage Summary for Class: InitServiceImpl (bg.softuni.initservice.service.impl)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">InitServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70%
+  </span>
+  <span class="absValue">
+    (7/10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.initservice.service.impl;
+&nbsp;
+&nbsp;import bg.softuni.initservice.service.InitService;
+&nbsp;import bg.softuni.userservice.repository.RoleRepository;
+&nbsp;import bg.softuni.userservice.service.UserService;
+&nbsp;
+&nbsp;import org.springframework.core.io.ClassPathResource;
+&nbsp;import org.springframework.core.io.Resource;
+&nbsp;import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import javax.sql.DataSource;
+&nbsp;
+&nbsp;
+&nbsp;@Service
+&nbsp;public class InitServiceImpl implements InitService {
+&nbsp;
+&nbsp;    private final UserService userService;
+&nbsp;    private final DataSource dataSource;
+&nbsp;    private final RoleRepository roleRepository;
+<b class="fc">&nbsp;    public InitServiceImpl(UserService userService, DataSource dataSource, RoleRepository roleRepository) {</b>
+<b class="fc">&nbsp;        this.userService = userService;</b>
+<b class="fc">&nbsp;        this.dataSource = dataSource;</b>
+<b class="fc">&nbsp;        this.roleRepository = roleRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void initUser(String role, String username, String password ) {
+<b class="fc">&nbsp;        userService.InitUser(role,username, password);</b>
+<b class="fc">&nbsp;        userService.InitUser(role,username, password);}</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void executeSqlScript(String databaseScriptName) {
+<b class="pc">&nbsp;          if (roleRepository.count()&lt;3){</b>
+<b class="nc">&nbsp;            Resource resource = new ClassPathResource(databaseScriptName);</b>
+<b class="nc">&nbsp;            ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator(resource);</b>
+<b class="nc">&nbsp;            databasePopulator.execute(dataSource);</b>
+&nbsp;}
+&nbsp;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-08-11 10:10</div>
+</div>
+</body>
+</html>

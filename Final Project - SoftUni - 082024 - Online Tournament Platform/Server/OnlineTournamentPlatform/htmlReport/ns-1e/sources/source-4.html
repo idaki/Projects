@@ -1,0 +1,109 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > TeamRepository</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bg.softuni.tournamentservice.repository</a>
+</div>
+
+<h1>Coverage Summary for Class: TeamRepository (bg.softuni.tournamentservice.repository)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">TeamRepository$MockitoMock$Swm6MGux</td>
+  </tr>
+  <tr>
+    <td class="name">TeamRepository$MockitoMock$Swm6MGux$auxiliary$5hE0yXpX</td>
+  </tr>
+  <tr>
+    <td class="name">TeamRepository$MockitoMock$Swm6MGux$auxiliary$A3lXWcmo</td>
+  </tr>
+  <tr>
+    <td class="name">TeamRepository$MockitoMock$WxQog4Sn</td>
+  </tr>
+  <tr>
+    <td class="name">TeamRepository$MockitoMock$WxQog4Sn$auxiliary$FI71qy1p</td>
+  </tr>
+  <tr>
+    <td class="name">TeamRepository$MockitoMock$WxQog4Sn$auxiliary$wCDt99QF</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.tournamentservice.repository;
+&nbsp;
+&nbsp;
+&nbsp;import bg.softuni.tournamentservice.model.Team;
+&nbsp;
+&nbsp;import bg.softuni.userservice.models.entity.user.User;
+&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
+&nbsp;
+&nbsp;import org.springframework.stereotype.Repository;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;
+&nbsp;@Repository
+&nbsp;public interface TeamRepository extends JpaRepository&lt;Team, Long&gt; {
+&nbsp;
+&nbsp;
+&nbsp;    List&lt;Team&gt; getAllByUsers(User user);
+&nbsp;
+&nbsp;    List&lt;Team&gt; findByTournamentId(Long tournamentId);
+&nbsp;
+&nbsp;    List&lt;Team&gt; findByUsersId(Long userId);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-08-11 10:10</div>
+</div>
+</body>
+</html>

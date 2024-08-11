@@ -1,0 +1,443 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > UserServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bg.softuni.userservice.service.impl</a>
+</div>
+
+<h1>Coverage Summary for Class: UserServiceImpl (bg.softuni.userservice.service.impl)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (18/21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    55.3%
+  </span>
+  <span class="absValue">
+    (21/38)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    86.6%
+  </span>
+  <span class="absValue">
+    (123/142)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">UserServiceImpl$$SpringCGLIB$$0</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (18/21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    55.3%
+  </span>
+  <span class="absValue">
+    (21/38)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    86.6%
+  </span>
+  <span class="absValue">
+    (123/142)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.userservice.service.impl;
+&nbsp;
+&nbsp;import bg.softuni.userservice.models.dto.UserDetailsDTO;
+&nbsp;import bg.softuni.userservice.models.dto.UserRegisterDTO;
+&nbsp;import bg.softuni.userservice.models.entity.Token;
+&nbsp;import bg.softuni.userservice.models.entity.authorisation.Role;
+&nbsp;import bg.softuni.userservice.models.entity.password.Password;
+&nbsp;import bg.softuni.userservice.models.entity.user.*;
+&nbsp;import bg.softuni.userservice.models.enums.RoleEnum;
+&nbsp;
+&nbsp;import bg.softuni.userservice.repository.*;
+&nbsp;import bg.softuni.userservice.service.UserService;
+&nbsp;import bg.softuni.userservice.utils.events.UserDeleteEvent;
+&nbsp;import jakarta.validation.ConstraintViolation;
+&nbsp;import jakarta.validation.Validator;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.context.ApplicationEventPublisher;
+&nbsp;import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import org.springframework.transaction.annotation.Transactional;
+&nbsp;
+&nbsp;import java.util.*;
+&nbsp;import java.util.stream.Collectors;
+&nbsp;
+&nbsp;@Service
+&nbsp;public class UserServiceImpl implements UserService {
+&nbsp;
+&nbsp;    private final UserRepository userRepository;
+&nbsp;    private final BCryptPasswordEncoder passwordEncoder;
+&nbsp;    private final RoleRepository roleRepository;
+&nbsp;    private final TokenRepository tokenRepository;
+&nbsp;    private final UserSecurityRepository userSecurityRepository;
+&nbsp;    private final UserProfileRepository userProfileRepository;
+&nbsp;    private final Validator validator;
+&nbsp;    private final ApplicationEventPublisher eventPublisher;
+&nbsp;
+&nbsp;    @Autowired
+<b class="fc">&nbsp;    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository, TokenRepository tokenRepository, UserSecurityRepository userSecurityRepository, UserProfileRepository userProfileRepository, Validator validator, ApplicationEventPublisher eventPublisher) {</b>
+<b class="fc">&nbsp;        this.userRepository = userRepository;</b>
+<b class="fc">&nbsp;        this.passwordEncoder = passwordEncoder;</b>
+<b class="fc">&nbsp;        this.roleRepository = roleRepository;</b>
+<b class="fc">&nbsp;        this.tokenRepository = tokenRepository;</b>
+<b class="fc">&nbsp;        this.userSecurityRepository = userSecurityRepository;</b>
+<b class="fc">&nbsp;        this.userProfileRepository = userProfileRepository;</b>
+<b class="fc">&nbsp;        this.validator = validator;</b>
+<b class="fc">&nbsp;        this.eventPublisher = eventPublisher;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Optional&lt;User&gt; findByUsername(String username) {
+<b class="fc">&nbsp;        return this.userRepository.findByUsername(username);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Optional&lt;User&gt; findByEmail(String email) {
+<b class="fc">&nbsp;        return this.userRepository.findByEmail(email);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean isExistingUser(String username, String email) {
+<b class="fc">&nbsp;        return findByUsername(username).isPresent()</b>
+<b class="fc">&nbsp;                || findByEmail(email).isPresent()</b>
+<b class="pc">&nbsp;                || findByUsername(email).isPresent()</b>
+<b class="fc">&nbsp;                || findByEmail(username).isPresent();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void register(UserRegisterDTO registerDTO) {
+<b class="nc">&nbsp;        Set&lt;ConstraintViolation&lt;UserRegisterDTO&gt;&gt; violations = validator.validate(registerDTO);</b>
+<b class="nc">&nbsp;        if (!violations.isEmpty()) {</b>
+<b class="nc">&nbsp;            String errorMessage = violations.stream()</b>
+<b class="nc">&nbsp;                    .map(ConstraintViolation::getMessage)</b>
+<b class="nc">&nbsp;                    .collect(Collectors.joining(&quot;; &quot;));</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Validation failed: &quot; + errorMessage);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        if (isExistingUser(registerDTO.getUsername(), registerDTO.getEmail())) {</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;User already exists with the given username or email.&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        registerUser(registerDTO.getUsername(), registerDTO.getPassword(), registerDTO.getEmail());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public User registerUser(String username, String password, String email) {
+&nbsp;        // Create new User
+<b class="fc">&nbsp;        User user = getNewUser(username, email);</b>
+&nbsp;
+&nbsp;        // Create and set UserProfile
+<b class="fc">&nbsp;        UserProfile userProfile = new UserProfile();</b>
+<b class="fc">&nbsp;        userProfile.setFirstName(&quot;&quot;);</b>
+<b class="fc">&nbsp;        userProfile.setLastName(&quot;&quot;);</b>
+<b class="fc">&nbsp;        userProfile.setAvatar(&quot;/assets/avatars/dexter.png&quot;);</b>
+<b class="fc">&nbsp;        userProfile.setUser(user);</b>
+<b class="fc">&nbsp;        user.setUserProfile(userProfile);</b>
+<b class="fc">&nbsp;        user = userRepository.save(user);</b>
+&nbsp;
+&nbsp;
+&nbsp;        // Create and set UserSecurity
+<b class="fc">&nbsp;        UserSecurity userSecurity = new UserSecurity();</b>
+<b class="fc">&nbsp;        userSecurity.setUser(user);</b>
+<b class="fc">&nbsp;        user.setUserSecurity(userSecurity);</b>
+<b class="fc">&nbsp;        userSecurity = userSecurityRepository.save(userSecurity);</b>
+&nbsp;
+&nbsp;        // Save user with updated userSecurity
+<b class="fc">&nbsp;        user = userRepository.save(user);</b>
+&nbsp;
+&nbsp;        // Assign role and hashed password
+<b class="fc">&nbsp;        Role role = roleRepository.findByName(RoleEnum.ADMIN_USER);</b>
+<b class="pc">&nbsp;        if (role == null) {</b>
+<b class="nc">&nbsp;            throw new RuntimeException(&quot;Role not found&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        setUserRole(role, user);</b>
+<b class="fc">&nbsp;        createHashedPassword(password, user);</b>
+&nbsp;
+<b class="fc">&nbsp;        return userRepository.save(user);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static UserProfile createUserProfile(User user) {
+<b class="fc">&nbsp;        UserProfile userProfile = new UserProfile();</b>
+<b class="fc">&nbsp;        userProfile.setFirstName(&quot;&quot;);</b>
+<b class="fc">&nbsp;        userProfile.setLastName(&quot;&quot;);</b>
+<b class="fc">&nbsp;        userProfile.setUser(user);</b>
+<b class="fc">&nbsp;        return userProfile;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static User getNewUser(String username, String email) {
+<b class="fc">&nbsp;        User user = new User();</b>
+<b class="fc">&nbsp;        user.setUsername(username);</b>
+<b class="fc">&nbsp;        user.setEmail(email);</b>
+<b class="fc">&nbsp;        return user;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static void setUserRole(Role role, User user) {
+<b class="fc">&nbsp;        Set&lt;Role&gt; roles = new HashSet&lt;&gt;();</b>
+<b class="fc">&nbsp;        roles.add(role);</b>
+<b class="fc">&nbsp;        user.setRoles(roles);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void createHashedPassword(String password, User user) {
+<b class="fc">&nbsp;        UserSecurity userSecurity = user.getUserSecurity();</b>
+<b class="fc">&nbsp;        if (userSecurity == null) {</b>
+<b class="fc">&nbsp;            userSecurity = new UserSecurity();</b>
+<b class="fc">&nbsp;            userSecurity.setUser(user);</b>
+<b class="fc">&nbsp;            user.setUserSecurity(userSecurity);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        Password passwordEntity = new Password();</b>
+<b class="fc">&nbsp;        passwordEntity.setPasswordHash(passwordEncoder.encode(password));</b>
+<b class="fc">&nbsp;        passwordEntity.setUserSecurity(userSecurity);</b>
+<b class="fc">&nbsp;        userSecurity.setPassword(passwordEntity);</b>
+&nbsp;
+<b class="fc">&nbsp;        userRepository.save(user);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public UserDetailsDTO getUserDetails(String username) {
+<b class="fc">&nbsp;        User user = userRepository.findByUsername(username)</b>
+<b class="fc">&nbsp;                .orElse(null);</b>
+&nbsp;
+<b class="fc">&nbsp;        if (user == null) {</b>
+<b class="fc">&nbsp;            return null; // or handle it according to your requirements</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        UserProfile profile = user.getUserProfile();</b>
+&nbsp;
+<b class="fc">&nbsp;        UserDetailsDTO dto = new UserDetailsDTO();</b>
+<b class="fc">&nbsp;        dto.setUsername(user.getUsername());</b>
+<b class="fc">&nbsp;        dto.setFirstName(profile.getFirstName());</b>
+<b class="fc">&nbsp;        dto.setLastName(profile.getLastName());</b>
+<b class="fc">&nbsp;        dto.setAvatar(profile.getAvatar());</b>
+<b class="fc">&nbsp;        dto.setId(user.getId());</b>
+&nbsp;
+<b class="fc">&nbsp;        return dto;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static UserDetailsDTO getUserDetailsExportDTO(User user) {
+<b class="fc">&nbsp;        UserDetailsDTO userDetails = new UserDetailsDTO();</b>
+<b class="fc">&nbsp;        userDetails.setUsername(user.getUsername());</b>
+<b class="fc">&nbsp;        userDetails.setFirstName(user.getUserProfile().getFirstName());</b>
+<b class="fc">&nbsp;        userDetails.setLastName(user.getUserProfile().getLastName());</b>
+<b class="fc">&nbsp;        userDetails.setEmail(user.getEmail());</b>
+<b class="fc">&nbsp;        userDetails.setAvatar(user.getUserProfile().getAvatar());</b>
+<b class="fc">&nbsp;        userDetails.setId(user.getId());</b>
+<b class="fc">&nbsp;        return userDetails;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Transactional
+&nbsp;    public void deleteUserByUsername(String username) {
+<b class="fc">&nbsp;        Optional&lt;User&gt; userOpt = userRepository.findByUsername(username);</b>
+<b class="fc">&nbsp;        if (userOpt.isPresent()) {</b>
+<b class="fc">&nbsp;            User user = userOpt.get();</b>
+<b class="fc">&nbsp;            userRepository.delete(user);</b>
+<b class="fc">&nbsp;            eventPublisher.publishEvent(new UserDeleteEvent(this, user));</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void InitUser(String roleInput, String password, String username) {
+<b class="fc">&nbsp;        Optional&lt;User&gt; userOpt = userRepository.findByUsername(username);</b>
+<b class="fc">&nbsp;        if (userOpt.isPresent()) {</b>
+<b class="fc">&nbsp;            System.out.println(&quot;User &quot; + username + &quot; already exists.&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        String email = username.toLowerCase() + &quot;@serdicagrid.com&quot;;</b>
+<b class="pc">&nbsp;        if (userRepository.findByEmail(email).isPresent()) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Email &quot; + email + &quot; already exists.&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        User user = getNewUser(username, email);</b>
+&nbsp;
+&nbsp;        // Create and set UserSecurity
+<b class="fc">&nbsp;        UserSecurity userSecurity = new UserSecurity();</b>
+<b class="fc">&nbsp;        userSecurity.setUser(user);</b>
+<b class="fc">&nbsp;        user.setUserSecurity(userSecurity);</b>
+&nbsp;
+&nbsp;        // Create and set UserProfile
+<b class="fc">&nbsp;        UserProfile userProfile = new UserProfile();</b>
+<b class="fc">&nbsp;        userProfile.setFirstName(&quot;&quot;);</b>
+<b class="fc">&nbsp;        userProfile.setLastName(&quot;&quot;);</b>
+<b class="fc">&nbsp;        userProfile.setAvatar(&quot;/assets/avatars/dexter.png&quot;);</b>
+<b class="fc">&nbsp;        userProfile.setUser(user);</b>
+<b class="fc">&nbsp;        user.setUserProfile(userProfile);</b>
+&nbsp;
+&nbsp;        // Save user first to generate ID and establish relationships
+<b class="fc">&nbsp;        user = userRepository.save(user);</b>
+&nbsp;
+&nbsp;        // Save UserSecurity and UserProfile
+<b class="fc">&nbsp;        userSecurityRepository.save(userSecurity);</b>
+<b class="fc">&nbsp;        userProfileRepository.save(userProfile);</b>
+&nbsp;
+&nbsp;        // Assign role and hashed password
+<b class="fc">&nbsp;        Role role = roleRepository.findByName(RoleEnum.valueOf(roleInput));</b>
+<b class="pc">&nbsp;        if (role == null) {</b>
+<b class="fc">&nbsp;            role = new Role(RoleEnum.valueOf(roleInput));</b>
+<b class="fc">&nbsp;            roleRepository.save(role);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        user.setRoles(Set.of(role));</b>
+<b class="fc">&nbsp;        createHashedPassword(password, user);</b>
+&nbsp;
+&nbsp;        // Finally, save the user again to update references
+<b class="fc">&nbsp;        userRepository.save(user);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public User findUserByToken(String jwt) {
+<b class="fc">&nbsp;        Optional&lt;Token&gt; tokenOpt = tokenRepository.findByToken(jwt);</b>
+<b class="pc">&nbsp;        if (tokenOpt.isEmpty()) {</b>
+<b class="nc">&nbsp;            throw new RuntimeException(&quot;Token not found&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return tokenOpt.get().getUserSecurity().getUser();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public List&lt;User&gt; findAllUsers() {
+<b class="nc">&nbsp;        return List.of();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void deleteUserById(Long id) {
+<b class="nc">&nbsp;        userRepository.deleteById(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public UserDetailsDTO findUserByDetails(String username, String firstName, String lastName) {
+<b class="fc">&nbsp;        Optional&lt;User&gt; user = Optional.empty();</b>
+&nbsp;
+<b class="pc">&nbsp;        if (username != null) {</b>
+<b class="fc">&nbsp;            user = userRepository.findByUsername(username);</b>
+<b class="nc">&nbsp;        } else if (firstName != null) {</b>
+<b class="nc">&nbsp;            user = userRepository.findByUserProfile_FirstName(firstName);</b>
+<b class="nc">&nbsp;        } else if (lastName != null) {</b>
+<b class="nc">&nbsp;            user = userRepository.findByUserProfile_LastName(lastName);</b>
+&nbsp;        }
+&nbsp;
+<b class="pc">&nbsp;        if (user.isPresent()) {</b>
+<b class="fc">&nbsp;            User foundUser = user.get();</b>
+&nbsp;            // Convert the found user to UserDetailsExportDTO
+<b class="fc">&nbsp;            UserDetailsDTO userDetails = getUserDetailsExportDTO(foundUser);</b>
+<b class="fc">&nbsp;            return userDetails;</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean isAdminSuper(String username) {
+<b class="fc">&nbsp;User user = userRepository.findByUsername(username).orElseThrow(() -&gt; new RuntimeException(&quot;User not found&quot;));</b>
+&nbsp;
+<b class="fc">&nbsp;        return  user.getRoles().stream()</b>
+<b class="pc">&nbsp;                .anyMatch(role -&gt; role.getName() == RoleEnum.ADMIN_SUPER);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean isOwnAccount(String username, Long userId) {
+<b class="fc">&nbsp;        User user = userRepository.findByUsername(username).orElseThrow(() -&gt; new RuntimeException(&quot;User not found&quot;));</b>
+<b class="fc">&nbsp;        return userId.equals(user.getId());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean isAdminUser(String username) {
+<b class="fc">&nbsp;        User user = userRepository.findByUsername(username).orElseThrow(() -&gt; new RuntimeException(&quot;User not found&quot;));</b>
+&nbsp;
+<b class="fc">&nbsp;        return  user.getRoles().stream()</b>
+<b class="pc">&nbsp;                .anyMatch(role -&gt; role.getName() == RoleEnum.ADMIN_USER);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-08-11 10:10</div>
+</div>
+</body>
+</html>

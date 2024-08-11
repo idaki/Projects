@@ -1,0 +1,186 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > TeamServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bg.softuni.tournamentservice.service.impl</a>
+</div>
+
+<h1>Coverage Summary for Class: TeamServiceImpl (bg.softuni.tournamentservice.service.impl)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TeamServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80.6%
+  </span>
+  <span class="absValue">
+    (25/31)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.tournamentservice.service.impl;
+&nbsp;
+&nbsp;import bg.softuni.tournamentservice.model.dto.TeamExportDTO;
+&nbsp;import bg.softuni.tournamentservice.model.Team;
+&nbsp;
+&nbsp;import bg.softuni.tournamentservice.repository.TeamRepository;
+&nbsp;import bg.softuni.tournamentservice.service.TeamService;
+&nbsp;import bg.softuni.userservice.models.entity.user.User;
+&nbsp;import bg.softuni.userservice.repository.UserRepository;
+&nbsp;import bg.softuni.userservice.service.TokenService;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;import java.util.stream.Collectors;
+&nbsp;
+&nbsp;@Service
+&nbsp;public class TeamServiceImpl implements TeamService {
+&nbsp;
+&nbsp;    private final UserRepository userRepository;
+&nbsp;    private final TeamRepository teamRepository;
+&nbsp;    private final TokenService tokenService;
+&nbsp;
+&nbsp;    @Autowired
+<b class="fc">&nbsp;    public TeamServiceImpl(UserRepository userRepository, TeamRepository teamRepository, TokenService tokenService) {</b>
+<b class="fc">&nbsp;        this.userRepository = userRepository;</b>
+<b class="fc">&nbsp;        this.teamRepository = teamRepository;</b>
+<b class="fc">&nbsp;        this.tokenService = tokenService;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void removePlayer(Long teamId, Long userId) {
+<b class="nc">&nbsp;        Team team = teamRepository.findById(teamId)</b>
+<b class="nc">&nbsp;                .orElseThrow(() -&gt; new RuntimeException(&quot;Team not found&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        User user = userRepository.findById(userId)</b>
+<b class="nc">&nbsp;                .orElseThrow(() -&gt; new RuntimeException(&quot;User not found&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        team.getUsers().remove(user);</b>
+<b class="nc">&nbsp;        teamRepository.save(team);</b>
+&nbsp;    }
+&nbsp;    @Override
+&nbsp;    public List&lt;TeamExportDTO&gt; getMyTeams(String token) {
+<b class="fc">&nbsp;        User user = tokenService.getUserByToken(token);</b>
+<b class="fc">&nbsp;        List&lt;Team&gt; teamList = teamRepository.getAllByUsers(user);</b>
+&nbsp;
+<b class="fc">&nbsp;        return teamList.stream()</b>
+<b class="fc">&nbsp;                .map(this::convertToTeamExportDTO)</b>
+<b class="fc">&nbsp;                .collect(Collectors.toList());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public List&lt;TeamExportDTO&gt; getTeamsByTournamentId(Long tournamentId, String jwt) {
+<b class="fc">&nbsp;        List&lt;Team&gt; teams = teamRepository.findByTournamentId(tournamentId);</b>
+&nbsp;
+<b class="fc">&nbsp;        return teams.stream()</b>
+<b class="fc">&nbsp;                .map(this::convertToTeamExportDTO)</b>
+<b class="fc">&nbsp;                .collect(Collectors.toList());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private TeamExportDTO convertToTeamExportDTO(Team team) {
+<b class="fc">&nbsp;        List&lt;String&gt; members = team.getUsers().stream()</b>
+<b class="fc">&nbsp;                .map(User::getUsername)</b>
+<b class="fc">&nbsp;                .collect(Collectors.toList());</b>
+<b class="fc">&nbsp;        List&lt;Long&gt; userIds = team.getUsers().stream()</b>
+<b class="fc">&nbsp;                .map(User::getId)</b>
+<b class="fc">&nbsp;                .collect(Collectors.toList());</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;        return TeamExportDTO.builder()</b>
+<b class="fc">&nbsp;                .id(team.getId())</b>
+<b class="fc">&nbsp;                .name(team.getName())</b>
+<b class="fc">&nbsp;                .members(members)</b>
+<b class="fc">&nbsp;                .userIds(userIds)</b>
+<b class="fc">&nbsp;                .build();</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-08-11 10:10</div>
+</div>
+</body>
+</html>

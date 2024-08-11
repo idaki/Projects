@@ -1,0 +1,236 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > JwtServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bg.softuni.authenticationservice.service.impl</a>
+</div>
+
+<h1>Coverage Summary for Class: JwtServiceImpl (bg.softuni.authenticationservice.service.impl)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">JwtServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    10%
+  </span>
+  <span class="absValue">
+    (1/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    11.1%
+  </span>
+  <span class="absValue">
+    (5/45)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.authenticationservice.service.impl;
+&nbsp;
+&nbsp;import bg.softuni.userservice.models.entity.Token;
+&nbsp;import bg.softuni.userservice.models.entity.user.UserSecurity;
+&nbsp;import bg.softuni.userservice.repository.TokenRepository;
+&nbsp;import bg.softuni.authenticationservice.service.JwtService;
+&nbsp;import bg.softuni.userservice.repository.UserRepository;
+&nbsp;import io.jsonwebtoken.Claims;
+&nbsp;import io.jsonwebtoken.Jwts;
+&nbsp;import io.jsonwebtoken.io.Decoders;
+&nbsp;import io.jsonwebtoken.security.Keys;
+&nbsp;import org.springframework.beans.factory.annotation.Value;
+&nbsp;import org.springframework.security.core.userdetails.UserDetails;
+&nbsp;import org.springframework.security.core.userdetails.UserDetailsService;
+&nbsp;import org.springframework.security.core.userdetails.UsernameNotFoundException;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import javax.crypto.SecretKey;
+&nbsp;import java.util.Date;
+&nbsp;import java.util.function.Function;
+&nbsp;import java.util.stream.Collectors;
+&nbsp;
+&nbsp;@Service
+&nbsp;public class JwtServiceImpl implements JwtService {
+&nbsp;
+&nbsp;    private final UserRepository userRepository;
+&nbsp;    private final TokenRepository tokenRepository;
+&nbsp;    private final UserDetailsService userDetailsService;
+&nbsp;    @Value(&quot;${jwt.secretkey}&quot;)
+&nbsp;    private String secretKey;
+&nbsp;
+<b class="fc">&nbsp;    private long expirationTime = 1000 * 60 * 60*1; // 1h min in milliseconds</b>
+&nbsp;
+<b class="fc">&nbsp;    public JwtServiceImpl(UserRepository userRepository, TokenRepository tokenRepository, UserDetailsService userDetailsService) {</b>
+<b class="fc">&nbsp;        this.userRepository = userRepository;</b>
+<b class="fc">&nbsp;        this.tokenRepository = tokenRepository;</b>
+<b class="fc">&nbsp;        this.userDetailsService = userDetailsService;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String generateToken(String username) {
+<b class="nc">&nbsp;        UserDetails userDetails = userDetailsService.loadUserByUsername(username);</b>
+&nbsp;
+<b class="nc">&nbsp;        String token = Jwts.builder().</b>
+<b class="nc">&nbsp;                subject(username)</b>
+<b class="nc">&nbsp;                 .claim(&quot;roles&quot;, userDetails.getAuthorities().stream()</b>
+<b class="nc">&nbsp;                .filter(grantedAuthority -&gt; grantedAuthority.getAuthority().startsWith(&quot;ROLE_&quot;))</b>
+<b class="nc">&nbsp;                .map(Object::toString)</b>
+<b class="nc">&nbsp;                .collect(Collectors.joining(&quot;,&quot;)))</b>
+<b class="nc">&nbsp;                .claim(&quot;permissions&quot;, userDetails.getAuthorities().stream()</b>
+<b class="nc">&nbsp;                        .filter(grantedAuthority -&gt; !grantedAuthority.getAuthority().startsWith(&quot;ROLE_&quot;))</b>
+<b class="nc">&nbsp;                        .map(Object::toString)</b>
+<b class="nc">&nbsp;                        .collect(Collectors.joining(&quot;,&quot;)))</b>
+<b class="nc">&nbsp;                .issuedAt(new Date())</b>
+<b class="nc">&nbsp;                .expiration(new Date(System.currentTimeMillis() + expirationTime))</b>
+<b class="nc">&nbsp;                .signWith(getSigninKey())</b>
+<b class="nc">&nbsp;                .compact();</b>
+&nbsp;
+<b class="nc">&nbsp;        saveTokenToDB(username, token);</b>
+&nbsp;
+<b class="nc">&nbsp;        return token;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void saveTokenToDB(String username, String token) {
+<b class="nc">&nbsp;        Token newToken = new Token();</b>
+<b class="nc">&nbsp;        newToken.setToken(token);</b>
+<b class="nc">&nbsp;        UserSecurity userSecurity = userRepository.findByUsername(username)</b>
+<b class="nc">&nbsp;                .orElseThrow(() -&gt; new UsernameNotFoundException(&quot;User not found&quot;))</b>
+<b class="nc">&nbsp;                .getUserSecurity();</b>
+<b class="nc">&nbsp;        newToken.setUserSecurity(userSecurity);</b>
+<b class="nc">&nbsp;        newToken.setExpired(false);</b>
+<b class="nc">&nbsp;        newToken.setRevoked(false);</b>
+<b class="nc">&nbsp;        tokenRepository.save(newToken);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Boolean validateToken(String token, String username) {
+<b class="nc">&nbsp;        final String usernameFromToken = extractClaim(token, Claims::getSubject);</b>
+<b class="nc">&nbsp;        return (usernameFromToken.equals(username) &amp;&amp; !isTokenExpired(token));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public &lt;T&gt; T extractClaim(String token, Function&lt;Claims, T&gt; claimsResolver) {
+<b class="nc">&nbsp;        final Claims claims = extractAllClaims(token);</b>
+<b class="nc">&nbsp;        return claimsResolver.apply(claims);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Claims extractAllClaims(String token) {
+&nbsp;
+<b class="nc">&nbsp;        return Jwts.parser()</b>
+<b class="nc">&nbsp;                .verifyWith(getSigninKey())</b>
+<b class="nc">&nbsp;                .build().parseSignedClaims(token)</b>
+<b class="nc">&nbsp;                .getPayload();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String generateTokenAfterPasswordUpdate(String token) {
+<b class="nc">&nbsp;        String username = extractClaim(token, Claims::getSubject);</b>
+<b class="nc">&nbsp;        return this.generateToken(username);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String extractUsername(String token) {
+&nbsp;
+<b class="nc">&nbsp;        return this.extractAllClaims(token).getSubject();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private Boolean isTokenExpired(String token) {
+<b class="nc">&nbsp;        return extractClaim(token, Claims::getExpiration).before(new Date());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private SecretKey getSigninKey() {
+<b class="nc">&nbsp;        byte[] keyBytes = Decoders.BASE64URL.decode(secretKey);</b>
+<b class="nc">&nbsp;        return Keys.hmacShaKeyFor(keyBytes);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-08-11 10:10</div>
+</div>
+</body>
+</html>

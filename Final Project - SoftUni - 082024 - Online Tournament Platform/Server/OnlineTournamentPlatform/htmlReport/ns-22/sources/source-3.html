@@ -1,0 +1,104 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > TeamService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bg.softuni.tournamentservice.service</a>
+</div>
+
+<h1>Coverage Summary for Class: TeamService (bg.softuni.tournamentservice.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">TeamService$MockitoMock$4l6HW8AH</td>
+  </tr>
+  <tr>
+    <td class="name">TeamService$MockitoMock$4l6HW8AH$auxiliary$7FDXHAwm</td>
+  </tr>
+  <tr>
+    <td class="name">TeamService$MockitoMock$4l6HW8AH$auxiliary$nMQSFBP0</td>
+  </tr>
+  <tr>
+    <td class="name">TeamService$MockitoMock$Yem9Upxp</td>
+  </tr>
+  <tr>
+    <td class="name">TeamService$MockitoMock$Yem9Upxp$auxiliary$41xebjbG</td>
+  </tr>
+  <tr>
+    <td class="name">TeamService$MockitoMock$Yem9Upxp$auxiliary$JHAlNqZy</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.tournamentservice.service;
+&nbsp;
+&nbsp;import bg.softuni.tournamentservice.model.dto.TeamExportDTO;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;public interface TeamService {
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    void removePlayer(Long teamId, Long userId);
+&nbsp;
+&nbsp;    List&lt;TeamExportDTO&gt; getMyTeams(String token);
+&nbsp;    List&lt;TeamExportDTO&gt; getTeamsByTournamentId(Long tournamentId, String jwt);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-08-11 10:10</div>
+</div>
+</body>
+</html>

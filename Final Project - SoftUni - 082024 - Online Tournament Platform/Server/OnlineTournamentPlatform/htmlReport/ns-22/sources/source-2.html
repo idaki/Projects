@@ -1,0 +1,112 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > TournamentService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bg.softuni.tournamentservice.service</a>
+</div>
+
+<h1>Coverage Summary for Class: TournamentService (bg.softuni.tournamentservice.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">TournamentService$MockitoMock$DgkG3N71</td>
+  </tr>
+  <tr>
+    <td class="name">TournamentService$MockitoMock$DgkG3N71$auxiliary$2P3QbGkW</td>
+  </tr>
+  <tr>
+    <td class="name">TournamentService$MockitoMock$DgkG3N71$auxiliary$vD2d18JQ</td>
+  </tr>
+  <tr>
+    <td class="name">TournamentService$MockitoMock$VVD8QSCv</td>
+  </tr>
+  <tr>
+    <td class="name">TournamentService$MockitoMock$VVD8QSCv$auxiliary$mvsgzntC</td>
+  </tr>
+  <tr>
+    <td class="name">TournamentService$MockitoMock$VVD8QSCv$auxiliary$U9Lh4o9e</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package bg.softuni.tournamentservice.service;
+&nbsp;
+&nbsp;
+&nbsp;import bg.softuni.tournamentservice.model.dto.TournamentSignupDTO;
+&nbsp;import bg.softuni.tournamentservice.model.dto.TournamentCreateDTO;
+&nbsp;import bg.softuni.tournamentservice.model.dto.TournamentDTO;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;public interface TournamentService  {
+&nbsp;    List&lt;TournamentDTO&gt; getAllTournaments();
+&nbsp;
+&nbsp;    List&lt;TournamentDTO&gt; getSubscribedInTournaments(String jwt);
+&nbsp;
+&nbsp;    List&lt;TournamentDTO&gt; getManagedTournaments(String jwt);
+&nbsp;
+&nbsp;    List&lt;TournamentDTO&gt; getWatchlistTournaments(String jwt);
+&nbsp;
+&nbsp;    boolean createTournament(String jwt, TournamentCreateDTO tournamentCreateDTO);
+&nbsp;
+&nbsp;    TournamentDTO getTournamentById(Long id, String jwt);
+&nbsp;
+&nbsp;    boolean signupForTournament(String jwt, TournamentSignupDTO signupDTO);
+&nbsp;
+&nbsp;    boolean isValidTournamentData(TournamentCreateDTO tournamentCreateDTO);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-08-11 10:10</div>
+</div>
+</body>
+</html>
