@@ -1,0 +1,139 @@
+//Display TM 1637
+#include <Arduino.h>
+#include <TM1637Display.h>
+ 
+// Module connection pins (Digital Pins)
+#define CLK 2
+#define DIO 4
+ 
+// The amount of time (in milliseconds) between tests
+#define TEST_DELAY   5000
+ 
+const uint8_t SEG_DONE[] = {
+	SEG_G,                                            // -
+	SEG_G,                                            // -
+  SEG_A | SEG_B | SEG_F | SEG_G,                    // o
+  SEG_A | SEG_D | SEG_E | SEG_F | SEG_A,            // C
+	};
+ 
+TM1637Display display(CLK, DIO);
+ 
+// Define the analog pin where the LM35 is connected
+const int Input = A5;
+const int OUTPUT_PIN_12 = 12; //rele pompa parno
+const int OUTPUT_PIN_13 = 13; // diod pokazvasht temperatyra nad 50
+const int OUTPUT_PIN_8 = 8;   // diod pokazvasht temperatyra pod 40
+const int INPUT_PIN_2 = 2;   //  diod pokazvasht bateriq nad 98%
+// Define the temperatures avalible
+const float temperatureArray[] = {
+  10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+  20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+  30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
+  40, 41, 42, 43, 44, 45, 46, 47, 48, 49,
+  50, 51, 52, 53, 54, 55, 56, 57, 58, 59,
+  60, 61, 62, 63, 64, 65, 66, 67, 68, 69,
+  70, 71, 72, 73, 74, 75, 76, 77, 78, 79,
+  80, 81, 82, 83, 84, 85
+};
+// Define the resistances for every degree from 10 degree to 85
+const float resistanceArray[] = {
+  9.25, 8.62, 8.40, 8.35, 8.20, 7.88, 7.00, 6.95, 6.80, 6.71, 6.45, 6.11, 6.00, 5.92, 5.48, 5.32, 
+  5.09, 4.93, 4.70, 4.65, 4.50, 4.31, 4.13, 4.05, 3.80, 3.72, 3.52, 3.46, 3.30, 3.26, 3.12, 3.05,
+  2.97, 2.86, 2.73, 2.71, 2.52, 2.45, 2.32, 2.29, 2.29, 2.19, 2.05, 2.00, 1.99, 1.94, 1.88, 1.75,
+  1.72, 1.64, 1.62, 1.61, 1.58, 1.55, 1.51, 1.48, 1.45, 1.44, 1.41, 1.40, 1.39, 1.37, 1.35, 1.33,
+  1.30, 1.29, 1.28, 1.25, 1.23, 1.22, 1.19, 1.15, 1.13, 1.11, 1.08, 1.05
+};
+void setup() {
+  // Initialize serial communication for debugging
+  Serial.begin(9600);
+    pinMode(LED_BUILTIN, OUTPUT);
+      digitalWrite(LED_BUILTIN, LOW);
+    pinMode(OUTPUT_PIN_12, OUTPUT);
+      digitalWrite(OUTPUT_PIN_12, LOW);
+    pinMode(OUTPUT_PIN_13, OUTPUT);
+      digitalWrite(OUTPUT_PIN_13, LOW);
+    pinMode(OUTPUT_PIN_8, OUTPUT);
+      digitalWrite(OUTPUT_PIN_8, LOW);
+    pinMode(INPUT_PIN_2, INPUT);
+}
+void loop() {
+ Serial.println("Beginning of program");
+ // Read the analog value from A5
+ int rawValue = analogRead(Input);
+ 
+ // Convert the raw value to voltage (in millivolts)
+  float voltage = rawValue*0.004883; // 5000 mV is 5V
+ // Find the resistance from voltage
+  float resistance = 10.0*(1023.0/(float)rawValue-1.0);
+ delay(1000);
+ 
+        int temperature = 0;
+ 
+       for (int i = 0; i < 76; i++) {
+         // Serial.print(i);
+         // delay(100);
+            if (resistanceArray[i] == resistance){
+                temperature = temperatureArray[i];
+                Serial.println(" Matched ohms");
+                break;
+            }
+            if (resistance > 10){
+            Serial.println("temperature too low");
+                break;
+            }  
+            if (resistance < 1.05){
+            Serial.println("temperature too high");
+                break;
+            }
+            if (resistance > resistanceArray[i+1]){
+            temperature = temperatureArray[i];
+            Serial.println("matched to nearby temperature");
+                break;
+            }  
+ 
+ 
+ 
+ 
+        }
+    // Print the temperature to the Serial Monitor
+ 
+  Serial.print("rawValue ");
+  Serial.println(rawValue);
+  Serial.print("voltage ");
+  Serial.println(voltage);
+  Serial.print("resistance ");
+  Serial.println(resistance);
+  //Serial.println(resistance);
+  Serial.print("Temperature (Celsius): ");
+  Serial.println(temperature);
+ delay(1000);
+  if (temperature > 50){
+    digitalWrite(OUTPUT_PIN_12, HIGH);
+    digitalWrite(OUTPUT_PIN_13, HIGH);
+  }
+      else{digitalWrite(OUTPUT_PIN_12, LOW);
+      digitalWrite(OUTPUT_PIN_13, LOW);
+      }
+  delay(1000);
+  if (temperature < 40){
+    digitalWrite(OUTPUT_PIN_8, HIGH);  
+  }
+      else{digitalWrite(OUTPUT_PIN_8, LOW);
+      }
+  delay (1000);
+    int inputValue = digitalRead(INPUT_PIN_2);
+    if (inputValue == HIGH){
+      Serial.println("Input Pin 2 'HIGH' - BATTERY MORE THAN 98%");
+    }
+  Serial.println("end");
+  Serial.println("");
+  // Delay for a moment to avoid rapid updates
+  delay(5000);
+  //kod za display test
+  display.setBrightness(1);
+  delay(TEST_DELAY);
+  // --oC!
+  display.setSegments(SEG_DONE);
+  //show temperature on display
+  display.showNumberDec(temperature, false, 2, 0);
+}
