@@ -1,16 +1,23 @@
-# SoftUni_JS_Front_End
+Smart Home Control System (IoT)
 
-<strong>Description:</strong> the repo is used to store and share accross devices the independently developed course-related code.
+Description: This repository contains code for an Arduino-based smart home control system that integrates temperature monitoring, WiFi connectivity, and control mechanisms for heating and battery status.
 
-## Course Themes
-- HTML & CSS - September 2023
-- Java OOP - October 2023
+Features
 
+Temperature Monitoring: Measures temperature using an LM35 sensor and displays it on a TM1637 7-segment display.
+Threshold-Based Control: Activates a heating pump and indicator LEDs based on temperature readings (e.g., pump on above 50°C, low-temperature LED on below 40°C).
+Battery Monitoring: Monitors battery status with a digital input to check if it’s above 98%.
+WiFi Connectivity: Uses an ESP8266 module to send data to a remote server and handle responses.
+Hardware Components
 
-### HTML & CSS Agenda
-![SoftUni_JS_Front_End](https://github.com/idaki/SoftUni_JS_Front_End_Course/blob/main/Images/HTML%20%26%20CSS.png)
+Arduino Board
+TM1637 Display
+LM35 Temperature Sensor
+ESP8266 WiFi Module
+Relay and LEDs
+Setup and Usage
 
-### JS Front-End Agenda
-
-![SoftUni_JS_Front_End](https://github.com/idaki/SoftUni_JS_Front_End_Course/blob/main/Images/JS%20Front-End.png)
-
+Hardware Setup: Connect the components as per the pin definitions in the code.
+Configuration: Update WiFi credentials and server settings in the code.
+Upload Code: Upload the code to the Arduino using the Arduino IDE.
+Monitor & Control: View temperature readings on the display, control heating, and check battery status.
