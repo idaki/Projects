@@ -1,6 +1,5 @@
-package bg.softuni.tournamentservice.model.builder.Impl;
+package bg.softuni.tournamentservice.utils.Builders.TeamExportBuilder;
 
-import bg.softuni.tournamentservice.model.builder.TeamExportDTOBuilder;
 import bg.softuni.tournamentservice.model.dto.TeamExportDTO;
 
 

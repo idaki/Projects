@@ -1,9 +1,7 @@
-package bg.softuni.tournamentservice.model.builder;
+package bg.softuni.tournamentservice.utils.Builders.TeamExportBuilder;
 
 
 
-import bg.softuni.tournamentservice.model.dto.MemberDTO;
-import bg.softuni.tournamentservice.model.dto.TeamDTO;
 import bg.softuni.tournamentservice.model.dto.TeamExportDTO;
 
 import java.util.List;
