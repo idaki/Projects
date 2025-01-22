@@ -10,8 +10,15 @@ import java.util.List;
 @Setter
 @Builder
 public class TeamExportDTO {
-    private final Long id;
-    private final String name;
-    private final List<String> members;
-    private final List<Long> userIds;
+    private  Long id;
+    private  String name;
+    private List<String> members;
+    private  List<Long> userIds;
+
+    public TeamExportDTO(Long id, String name, List<String> members, List<Long> userIds) {
+        this.id = id;
+        this.name = name;
+        this.members = members;
+        this.userIds = userIds;
+    }
 }

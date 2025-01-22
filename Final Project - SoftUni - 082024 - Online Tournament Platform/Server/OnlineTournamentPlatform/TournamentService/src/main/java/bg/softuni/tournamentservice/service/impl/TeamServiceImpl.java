@@ -1,10 +1,11 @@
 package bg.softuni.tournamentservice.service.impl;
 
+
 import bg.softuni.tournamentservice.model.dto.TeamExportDTO;
 import bg.softuni.tournamentservice.model.Team;
-
 import bg.softuni.tournamentservice.repository.TeamRepository;
 import bg.softuni.tournamentservice.service.TeamService;
+import bg.softuni.tournamentservice.utils.events.TeamMapper.TeamMapper;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.UserRepository;
 import bg.softuni.userservice.service.TokenService;
@@ -20,18 +21,16 @@ public class TeamServiceImpl implements TeamService {
     private final UserRepository userRepository;
     private final TeamRepository teamRepository;
     private final TokenService tokenService;
+    private final TeamMapper teamMapper;  //convertToTeamExportDTO
+
 
     @Autowired
-    public TeamServiceImpl(UserRepository userRepository, TeamRepository teamRepository, TokenService tokenService) {
+    public TeamServiceImpl(UserRepository userRepository, TeamRepository teamRepository, TokenService tokenService, TeamMapper teamMapper) {
         this.userRepository = userRepository;
         this.teamRepository = teamRepository;
         this.tokenService = tokenService;
+        this.teamMapper = teamMapper;
     }
-
-
-
-
-
 
     @Override
     public void removePlayer(Long teamId, Long userId) {
@@ -44,13 +43,14 @@ public class TeamServiceImpl implements TeamService {
         team.getUsers().remove(user);
         teamRepository.save(team);
     }
+
     @Override
     public List<TeamExportDTO> getMyTeams(String token) {
         User user = tokenService.getUserByToken(token);
         List<Team> teamList = teamRepository.getAllByUsers(user);
 
         return teamList.stream()
-                .map(this::convertToTeamExportDTO)
+                .map(teamMapper::convertToTeamExportDTO)
                 .collect(Collectors.toList());
     }
 
@@ -59,24 +59,7 @@ public class TeamServiceImpl implements TeamService {
         List<Team> teams = teamRepository.findByTournamentId(tournamentId);
 
         return teams.stream()
-                .map(this::convertToTeamExportDTO)
+                .map(teamMapper::convertToTeamExportDTO)
                 .collect(Collectors.toList());
-    }
-
-    private TeamExportDTO convertToTeamExportDTO(Team team) {
-        List<String> members = team.getUsers().stream()
-                .map(User::getUsername)
-                .collect(Collectors.toList());
-        List<Long> userIds = team.getUsers().stream()
-                .map(User::getId)
-                .collect(Collectors.toList());
-
-
-        return TeamExportDTO.builder()
-                .id(team.getId())
-                .name(team.getName())
-                .members(members)
-                .userIds(userIds)
-                .build();
     }
 }
