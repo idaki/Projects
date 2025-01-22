@@ -18,6 +18,7 @@ public class InitServiceImpl implements InitService {
     private final UserService userService;
     private final DataSource dataSource;
     private final RoleRepository roleRepository;
+
     public InitServiceImpl(UserService userService, DataSource dataSource, RoleRepository roleRepository) {
         this.userService = userService;
         this.dataSource = dataSource;

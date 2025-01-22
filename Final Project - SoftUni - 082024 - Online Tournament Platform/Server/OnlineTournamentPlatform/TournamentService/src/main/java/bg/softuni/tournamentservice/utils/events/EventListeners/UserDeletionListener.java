@@ -1,4 +1,4 @@
-package bg.softuni.tournamentservice.utils.events;
+package bg.softuni.tournamentservice.utils.events.EventListeners;
 
 import bg.softuni.userservice.models.entity.user.User;
 
