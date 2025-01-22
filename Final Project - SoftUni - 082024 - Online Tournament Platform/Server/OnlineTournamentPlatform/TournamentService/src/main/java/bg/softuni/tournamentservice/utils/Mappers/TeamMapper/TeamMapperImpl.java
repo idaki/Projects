@@ -1,8 +1,8 @@
-package bg.softuni.tournamentservice.utils.events.TeamMapper;
+package bg.softuni.tournamentservice.utils.Mappers.TeamMapper;
 
 
-import bg.softuni.tournamentservice.model.builder.Impl.TeamExportDTOBuilderImpl;
-import bg.softuni.tournamentservice.model.builder.TeamExportDTOBuilder;
+import bg.softuni.tournamentservice.utils.Builders.TeamExportBuilder.TeamExportDTOBuilderImpl;
+import bg.softuni.tournamentservice.utils.Builders.TeamExportBuilder.TeamExportDTOBuilder;
 import bg.softuni.tournamentservice.model.dto.TeamExportDTO;
 import bg.softuni.tournamentservice.model.Team;
 import bg.softuni.userservice.models.entity.user.User;

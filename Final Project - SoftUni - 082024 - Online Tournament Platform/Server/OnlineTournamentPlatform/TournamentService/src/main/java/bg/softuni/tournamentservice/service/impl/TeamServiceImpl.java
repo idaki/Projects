@@ -5,7 +5,7 @@ import bg.softuni.tournamentservice.model.dto.TeamExportDTO;
 import bg.softuni.tournamentservice.model.Team;
 import bg.softuni.tournamentservice.repository.TeamRepository;
 import bg.softuni.tournamentservice.service.TeamService;
-import bg.softuni.tournamentservice.utils.events.TeamMapper.TeamMapper;
+import bg.softuni.tournamentservice.utils.Mappers.TeamMapper.TeamMapper;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.UserRepository;
 import bg.softuni.userservice.service.TokenService;
@@ -39,7 +39,6 @@ public class TeamServiceImpl implements TeamService {
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
-
         team.getUsers().remove(user);
         teamRepository.save(team);
     }

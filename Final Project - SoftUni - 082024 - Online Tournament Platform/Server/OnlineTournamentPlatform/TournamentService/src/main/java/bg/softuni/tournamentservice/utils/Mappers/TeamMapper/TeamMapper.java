@@ -1,4 +1,4 @@
-package bg.softuni.tournamentservice.utils.events.TeamMapper;
+package bg.softuni.tournamentservice.utils.Mappers.TeamMapper;
 
 import bg.softuni.tournamentservice.model.Team;
 import bg.softuni.tournamentservice.model.dto.TeamExportDTO;
