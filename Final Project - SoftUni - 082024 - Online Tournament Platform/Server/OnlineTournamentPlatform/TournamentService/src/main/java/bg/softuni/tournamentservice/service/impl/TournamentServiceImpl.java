@@ -7,6 +7,8 @@ import bg.softuni.tournamentservice.model.*;
 import bg.softuni.tournamentservice.model.dto.*;
 import bg.softuni.tournamentservice.repository.*;
 import bg.softuni.tournamentservice.service.TournamentService;
+
+import bg.softuni.tournamentservice.utils.Factory.TournamentDTO.TournamentDTOConverterFactory;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -27,6 +29,7 @@ public class TournamentServiceImpl implements TournamentService {
     private final ModelMapper modelMapper;
     private final TeamRepository teamRepository;
     private final ValidationUtil validationUtil;
+
 
     public TournamentServiceImpl(TournamentRepository tournamentRepository, UserService userService,
                                  GameRepository gameRepository, ModelMapper modelMapper,
@@ -114,24 +117,10 @@ public class TournamentServiceImpl implements TournamentService {
     }
 
     private TournamentDTO convertToDto(Tournament tournament) {
-        TournamentDTO dto = modelMapper.map(tournament, TournamentDTO.class);
 
-        Game game = tournament.getGame();
-        if (game != null) {
-            String description = "PLACEHOLDER TEXT"; // Replace this with actual logic if necessary
-            Set<Asset> assets = game.getAssets();
-            String img = "";
-            if (assets != null && !assets.isEmpty()) {
-                img = assets.iterator().next().getUrl();
-            }
-            dto.setDescription(description);
-            dto.setUrl(img);
-        } else {
-            dto.setDescription("No game associated");
-            dto.setUrl(""); // Default or placeholder image URL if no game is associated
-        }
+        TournamentDTOConverterFactory factory = new TournamentDTOConverterFactory(modelMapper);
 
-        return dto;
+    return  factory.convert(tournament);
     }
 
     public TournamentDTO getTournamentById(Long id, String jwt) {
