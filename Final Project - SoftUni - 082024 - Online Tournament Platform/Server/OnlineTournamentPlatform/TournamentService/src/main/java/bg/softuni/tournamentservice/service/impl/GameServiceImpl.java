@@ -16,17 +16,13 @@ import java.util.*;
 public class GameServiceImpl implements GameService {
 
     private final GameRepository gameRepository;
-    private final AssetRepository assetRepository;
 
-    public GameServiceImpl(GameRepository gameRepository, AssetRepository assetRepository) {
+
+    public GameServiceImpl(GameRepository gameRepository) {
 
         this.gameRepository = gameRepository;
-        this.assetRepository = assetRepository;
+
     }
-
-
-
-
 
 
     @Override
