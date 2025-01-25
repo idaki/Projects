@@ -1,117 +1,72 @@
 package bg.softuni.tournamentservice.service.impl;
 
-import bg.softuni.exceptionhandlerservice.DuplicateTournamentException;
-import bg.softuni.exceptionhandlerservice.ValidationException;
-import bg.softuni.exceptionhandlerservice.utils.ValidationUtil;
+import bg.softuni.tournamentservice.utils.TouurnamentValidator.TournamentValidator;
 import bg.softuni.tournamentservice.model.*;
 import bg.softuni.tournamentservice.model.dto.*;
 import bg.softuni.tournamentservice.repository.*;
 import bg.softuni.tournamentservice.service.TournamentService;
-
 import bg.softuni.tournamentservice.utils.Factory.TournamentDTO.TournamentDTOConverterFactory;
 import bg.softuni.userservice.models.entity.user.User;
-import bg.softuni.userservice.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import jakarta.validation.ConstraintViolation;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
+
 @Service
 public class TournamentServiceImpl implements TournamentService {
 
     private final TournamentRepository tournamentRepository;
-    private final UserService userService;
-    private final GameRepository gameRepository;
     private final ModelMapper modelMapper;
     private final TeamRepository teamRepository;
-    private final ValidationUtil validationUtil;
+    private final TournamentValidator tournamentValidator;
 
-    public TournamentServiceImpl(TournamentRepository tournamentRepository, UserService userService,
-                                 GameRepository gameRepository, ModelMapper modelMapper,
-                                 TeamRepository teamRepository, ValidationUtil validationUtil) {
+    public TournamentServiceImpl(TournamentRepository tournamentRepository, ModelMapper modelMapper,
+                                 TeamRepository teamRepository, TournamentValidator tournamentValidator) {
         this.tournamentRepository = tournamentRepository;
-        this.userService = userService;
-        this.gameRepository = gameRepository;
         this.modelMapper = modelMapper;
         this.teamRepository = teamRepository;
-        this.validationUtil = validationUtil;
+        this.tournamentValidator = tournamentValidator;
     }
 
     @Override
     public List<TournamentDTO> getAllTournaments() {
-        List<Tournament> tournaments = tournamentRepository.findAll();
-        return tournaments.stream()
+        return tournamentRepository.findAll().stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<TournamentDTO> getSubscribedInTournaments(String jwt) {
-        User user = userService.findUserByToken(jwt);
-        // Implementation placeholder
-        return List.of(); // Return empty list as placeholder
+        User user = tournamentValidator.authenticateUser(jwt); // Authenticate user
+        // Placeholder for the actual subscribed logic
+        return List.of(); // Return an empty list for now
     }
 
     @Override
     public List<TournamentDTO> getManagedTournaments(String jwt) {
-        User user = userService.findUserByToken(jwt);
-        List<Tournament> tournaments = tournamentRepository.findByManagerId(user.getId());
-        return tournaments.stream()
+        User user = tournamentValidator.authenticateUser(jwt); // Authenticate user
+        return tournamentRepository.findByManagerId(user.getId()).stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<TournamentDTO> getWatchlistTournaments(String jwt) {
-        User user = userService.findUserByToken(jwt);
-        List<Tournament> tournaments = tournamentRepository.findByFollowerId(user.getId());
-        return tournaments.stream()
+        User user = tournamentValidator.authenticateUser(jwt); // Authenticate user
+        return tournamentRepository.findByFollowerId(user.getId()).stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
 
-    public boolean isValidTournamentData(TournamentCreateDTO tournamentCreateDTO) {
-        return validationUtil.isValid(tournamentCreateDTO);
-    }
-
+    @Override
     public boolean createTournament(String jwt, TournamentCreateDTO tournamentCreateDTO) {
-        validateTournamentData(tournamentCreateDTO);
-        User user = authenticateUser(jwt);
-        Game game = validateGameExistence(tournamentCreateDTO.getGame());
-        checkForDuplicateTournament(game, user, tournamentCreateDTO.getName());
-        Tournament tournament = createAndSaveTournament(tournamentCreateDTO, user, game);
+        tournamentValidator.validateTournamentData(tournamentCreateDTO);
+        User user = tournamentValidator.authenticateUser(jwt);
+        Game game = tournamentValidator.validateGameExistence(tournamentCreateDTO.getGame());
+        tournamentValidator.checkForDuplicateTournament(game, user, tournamentCreateDTO.getName());
+        createAndSaveTournament(tournamentCreateDTO, user, game);
         return true;
-    }
-
-    private void validateTournamentData(TournamentCreateDTO tournamentCreateDTO) {
-        Set<ConstraintViolation<TournamentCreateDTO>> violations = validationUtil.getViolations(tournamentCreateDTO);
-        if (!violations.isEmpty()) {
-            String errorMessage = validationUtil.getFormattedErrorMessage(violations);
-            throw new ValidationException(errorMessage);
-        }
-    }
-
-    private User authenticateUser(String jwt) {
-        User user = userService.findUserByToken(jwt);
-        if (user == null) {
-            throw new IllegalArgumentException("Invalid user token");
-        }
-        return user;
-    }
-
-    private Game validateGameExistence(String gameName) {
-        return gameRepository.findByName(gameName)
-                .orElseThrow(() -> new IllegalArgumentException("Game not found"));
-    }
-
-    private void checkForDuplicateTournament(Game game, User user, String tournamentName) {
-        Optional<Tournament> existingTournament = tournamentRepository.findByGameAndManagerAndName(game, user, tournamentName);
-        if (existingTournament.isPresent()) {
-            throw new DuplicateTournamentException("A tournament with these unique fields already exists.");
-        }
     }
 
     private Tournament createAndSaveTournament(TournamentCreateDTO tournamentCreateDTO, User user, Game game) {
@@ -127,22 +82,24 @@ public class TournamentServiceImpl implements TournamentService {
         return factory.convert(tournament);
     }
 
+    @Override
     public TournamentDTO getTournamentById(Long id, String jwt) {
         Tournament tournament = tournamentRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Tournament not found"));
         return modelMapper.map(tournament, TournamentDTO.class);
     }
 
+    @Override
     public boolean signupForTournament(String jwt, TournamentSignupDTO signupDTO) {
-        User user = userService.findUserByToken(jwt);
+        User user = tournamentValidator.authenticateUser(jwt); // Authenticate user
         Tournament tournament = tournamentRepository.findById(signupDTO.getTournamentId())
                 .orElseThrow(() -> new RuntimeException("Tournament not found"));
-        Team team = createAndSaveTeam(signupDTO, user, tournament);
+        createAndSaveTeam(signupDTO, user, tournament);
         return true;
     }
 
     private Team createAndSaveTeam(TournamentSignupDTO signupDTO, User user, Tournament tournament) {
-        Team team = new Team(signupDTO.getTeamName(), 10); // Assume capacity is 10
+        Team team = new Team(signupDTO.getTeamName(), 10); // Assume team capacity is 10
         team.setManager(user);
         team.setTournament(tournament);
         teamRepository.save(team);
