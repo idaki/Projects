@@ -20,7 +20,6 @@ public class Tournament {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false, unique = true)
     private String name;
 
@@ -43,6 +42,7 @@ public class Tournament {
 
     @Column(nullable = false)
     private int teamSize;
+
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "manager_id", nullable = false)
