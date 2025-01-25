@@ -9,9 +9,9 @@ import bg.softuni.tournamentservice.model.*;
 import bg.softuni.tournamentservice.model.dto.*;
 import bg.softuni.tournamentservice.repository.*;
 import bg.softuni.tournamentservice.service.TournamentService;
+import bg.softuni.tournamentservice.utils.Factory.TournamentDTO.TournamentDTOConverterFactory;
 import bg.softuni.tournamentservice.utils.TouurnamentValidator.TournamentValidator;
 import bg.softuni.userservice.models.entity.user.User;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,30 +21,32 @@ import java.util.stream.Collectors;
 public class TournamentServiceImpl implements TournamentService {
 
     private final TournamentRepository tournamentRepository;
-    private final ModelMapper modelMapper;
     private final TeamRepository teamRepository;
     private final TournamentValidator tournamentValidator;
+    private final TournamentDTOConverterFactory tournamentDTOConverterFactory;
 
-    public TournamentServiceImpl(TournamentRepository tournamentRepository, ModelMapper modelMapper,
-                                 TeamRepository teamRepository, TournamentValidator tournamentValidator) {
+    public TournamentServiceImpl(TournamentRepository tournamentRepository,
+                                 TeamRepository teamRepository,
+                                 TournamentValidator tournamentValidator,
+                                 TournamentDTOConverterFactory tournamentDTOConverterFactory) {
         this.tournamentRepository = tournamentRepository;
-        this.modelMapper = modelMapper;
         this.teamRepository = teamRepository;
         this.tournamentValidator = tournamentValidator;
+        this.tournamentDTOConverterFactory = tournamentDTOConverterFactory;
     }
 
     @Override
     public List<TournamentDTO> getAllTournaments() {
         return tournamentRepository.findAll().stream()
-                .map(this::convertToDto)
+                .map(tournamentDTOConverterFactory::convert)
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<TournamentDTO> getSubscribedInTournaments(String jwt) {
-        User user = tournamentValidator.authenticateUser(jwt);  // Authenticate the user
+        User user = tournamentValidator.authenticateUser(jwt);
         return tournamentRepository.findSubscribedTournaments(user.getId()).stream()
-                .map(this::convertToDto)
+                .map(tournamentDTOConverterFactory::convert)
                 .collect(Collectors.toList());
     }
 
@@ -52,7 +54,7 @@ public class TournamentServiceImpl implements TournamentService {
     public List<TournamentDTO> getManagedTournaments(String jwt) {
         User user = tournamentValidator.authenticateUser(jwt);
         return tournamentRepository.findByManagerId(user.getId()).stream()
-                .map(this::convertToDto)
+                .map(tournamentDTOConverterFactory::convert)
                 .collect(Collectors.toList());
     }
 
@@ -60,7 +62,7 @@ public class TournamentServiceImpl implements TournamentService {
     public List<TournamentDTO> getWatchlistTournaments(String jwt) {
         User user = tournamentValidator.authenticateUser(jwt);
         return tournamentRepository.findByFollowerId(user.getId()).stream()
-                .map(this::convertToDto)
+                .map(tournamentDTOConverterFactory::convert)
                 .collect(Collectors.toList());
     }
 
@@ -87,15 +89,13 @@ public class TournamentServiceImpl implements TournamentService {
         return true;
     }
 
-    private TournamentDTO convertToDto(Tournament tournament) {
-        return modelMapper.map(tournament, TournamentDTO.class);
-    }
+
 
     @Override
     public TournamentDTO getTournamentById(Long id, String jwt) {
         Tournament tournament = tournamentRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Tournament not found"));
-        return convertToDto(tournament);
+        return tournamentDTOConverterFactory.convert(tournament);
     }
 
     @Override

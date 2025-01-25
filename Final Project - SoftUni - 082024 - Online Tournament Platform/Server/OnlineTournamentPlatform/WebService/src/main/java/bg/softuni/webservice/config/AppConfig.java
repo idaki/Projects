@@ -2,6 +2,7 @@ package bg.softuni.webservice.config;
 
 import bg.softuni.exceptionhandlerservice.utils.ValidationUtil;
 import bg.softuni.exceptionhandlerservice.utils.impl.ValidationUtilImpl;
+import bg.softuni.tournamentservice.utils.Factory.TournamentDTO.TournamentDTOConverterFactory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import jakarta.validation.Validation;
@@ -60,5 +61,10 @@ public class AppConfig {
     @Bean
     public Validator validator() {
         return Validation.buildDefaultValidatorFactory().getValidator();
+    }
+
+    @Bean
+    public TournamentDTOConverterFactory tournamentDTOConverterFactory(ModelMapper modelMapper) {
+        return new TournamentDTOConverterFactory(modelMapper);
     }
 }
