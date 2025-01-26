@@ -23,14 +23,14 @@ public class TournamentServiceImpl implements TournamentService {
     private final TournamentRepository tournamentRepository;
     private final ModelMapper modelMapper;
     private final TeamRepository teamRepository;
-    private final TournamentValidator tournamentValidator;
+    private  TournamentValidator tournamentValidator;
 
     public TournamentServiceImpl(TournamentRepository tournamentRepository, ModelMapper modelMapper,
                                  TeamRepository teamRepository, TournamentValidator tournamentValidator) {
         this.tournamentRepository = tournamentRepository;
         this.modelMapper = modelMapper;
         this.teamRepository = teamRepository;
-        this.tournamentValidator = tournamentValidator;
+
     }
 
     @Override
