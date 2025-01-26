@@ -19,10 +19,13 @@ public class UserBuilderImpl implements UserBuilder {
     private final User user;
     private UserProfile userProfile;
     private UserSecurity userSecurity;
+    private final BCryptPasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
 
 
-    public UserBuilderImpl() {
-
+    public UserBuilderImpl(BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+        this.passwordEncoder = passwordEncoder;
+        this.roleRepository = roleRepository;
         this.user = new User();
         this.userProfile = new UserProfile();
         this.userSecurity = new UserSecurity();
@@ -57,11 +60,12 @@ public class UserBuilderImpl implements UserBuilder {
     }
 
     @Override
-    public UserBuilder withRole(RoleEnum roleInput) {
+    public UserBuilder withRole(String roleInput) {
         if (roleInput == null) {
-            throw new IllegalArgumentException("Role cannot be null.");
+            Role role = new Role(RoleEnum.valueOf(roleInput));
+            roleRepository.save(role);
         }
-        Role role = new Role(roleInput);
+            Role role = roleRepository.findByName(RoleEnum.valueOf(roleInput));
 
         Set<Role> roles = new HashSet<>();
         roles.add(role);
@@ -70,11 +74,10 @@ public class UserBuilderImpl implements UserBuilder {
     }
 
     @Override
-    public UserBuilder withPassword(String password, BCryptPasswordEncoder passwordEncoder) {
+    public UserBuilder withPassword(String password) {
         if (password == null || password.trim().isEmpty()) {
             throw new IllegalArgumentException("Password cannot be null or empty.");
         }
-
         Password passwordEntity = new Password();
         passwordEntity.setPasswordHash(passwordEncoder.encode(password));
 

@@ -80,35 +80,12 @@ public class UserServiceImpl implements UserService {
          User user =   userBuilder.withUsername(registerDTO.getUsername())
                     .withEmail(registerDTO.getEmail())
                     .withProfile("","","/assets/avatars/dexter.png")
-                    .withPassword(registerDTO.getPassword(), passwordEncoder).build();
+                    .withPassword(registerDTO.getPassword()).build();
 
         userRepository.save(user);
 
     }
 
-
-    private static User getNewUser(String username, String email) {
-        User user = new User();
-        user.setUsername(username);
-        user.setEmail(email);
-        return user;
-    }
-
-    private void createHashedPassword(String password, User user) {
-        UserSecurity userSecurity = user.getUserSecurity();
-        if (userSecurity == null) {
-            userSecurity = new UserSecurity();
-            userSecurity.setUser(user);
-            user.setUserSecurity(userSecurity);
-        }
-
-        Password passwordEntity = new Password();
-        passwordEntity.setPasswordHash(passwordEncoder.encode(password));
-        passwordEntity.setUserSecurity(userSecurity);
-        userSecurity.setPassword(passwordEntity);
-
-        userRepository.save(user);
-    }
 
     public UserDetailsDTO getUserDetails(String username) {
         User user = userRepository.findByUsername(username)
@@ -153,56 +130,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void InitUser( String username,String password, String roleInput) {
-        Optional<User> userOpt = userRepository.findByUsername(username);
-//        if (userOpt.isPresent()) {
-//            System.out.println("User " + username + " already exists.");
-//            return;
-//        }
-//
+
         String email = username.toLowerCase() + "@serdicagrid.com";
-//        if (userRepository.findByEmail(email).isPresent()) {
-//            System.out.println("Email " + email + " already exists.");
-//            return;
-//        }
 
         userExistenceValidator.checkIfUsernameExists(username);
         userExistenceValidator.checkIfEmailExists(email);
-        User user = getNewUser(username, email);
 
-        // Create and set UserSecurity
-        UserSecurity userSecurity = new UserSecurity();
-        userSecurity.setUser(user);
-        user.setUserSecurity(userSecurity);
+        User user = userBuilder
+                .withUsername(username)
+                .withEmail(email)
+                .withPassword(password)
+                .withProfile("","","/assets/avatars/dexter.png")
+                .withRole(roleInput)
+                .build();
 
-        // Create and set UserProfile
-        UserProfile userProfile = new UserProfile();
-        userProfile.setFirstName("");
-        userProfile.setLastName("");
-        userProfile.setAvatar("/assets/avatars/dexter.png");
-        userProfile.setUser(user);
-        user.setUserProfile(userProfile);
-
-        // Save user first to generate ID and establish relationships
         user = userRepository.save(user);
 
-        // Save UserSecurity and UserProfile
-        userSecurityRepository.save(userSecurity);
-        userProfileRepository.save(userProfile);
-
-        // Assign role and hashed password
-        Role role = roleRepository.findByName(RoleEnum.valueOf(roleInput));
-        if (role == null) {
-            role = new Role(RoleEnum.valueOf(roleInput));
-            roleRepository.save(role);
-        }
-        user.setRoles(Set.of(role));
-        createHashedPassword(password, user);
-
-        // Finally, save the user again to update references
         userRepository.save(user);
     }
-
-
 
 
     @Override

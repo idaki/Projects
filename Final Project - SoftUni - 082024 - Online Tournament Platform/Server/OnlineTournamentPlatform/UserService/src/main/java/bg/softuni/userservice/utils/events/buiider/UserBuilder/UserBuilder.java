@@ -9,7 +9,7 @@ public interface UserBuilder {
     UserBuilder withUsername(String username);
     UserBuilder withEmail(String email);
     UserBuilder withProfile(String firstName, String lastName, String avatar);
-    UserBuilder withRole(RoleEnum role);
-    UserBuilder withPassword(String password, BCryptPasswordEncoder passwordEncoder);
+    UserBuilder withRole(String  role);
+    UserBuilder withPassword(String password);
     User build();
 }
