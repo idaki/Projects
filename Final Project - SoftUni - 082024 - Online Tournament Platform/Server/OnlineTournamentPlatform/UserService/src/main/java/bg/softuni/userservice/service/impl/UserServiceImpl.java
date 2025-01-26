@@ -152,23 +152,51 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void InitUser(String username, String password,  String roleInput) {
+    public void InitUser( String username,String password, String roleInput) {
+        Optional<User> userOpt = userRepository.findByUsername(username);
+        if (userOpt.isPresent()) {
+            System.out.println("User " + username + " already exists.");
+            return;
+        }
+
         String email = username.toLowerCase() + "@serdicagrid.com";
+        if (userRepository.findByEmail(email).isPresent()) {
+            System.out.println("Email " + email + " already exists.");
+            return;
+        }
 
-        // Validate if username or email already exists
-       userExistenceValidator.checkIfUsernameExists(username);
-       userExistenceValidator.checkIfEmailExists(email);
+        User user = getNewUser(username, email);
 
-        // Create the user with provided details
-        User user = userBuilder
-                .withUsername(username)
-                .withEmail(email)
-                .withProfile("", "", "/assets/avatars/dexter.png") // Optional: Profile info
-                .withPassword(password, passwordEncoder) // Use password encoder
-                .build();
+        // Create and set UserSecurity
+        UserSecurity userSecurity = new UserSecurity();
+        userSecurity.setUser(user);
+        user.setUserSecurity(userSecurity);
 
+        // Create and set UserProfile
+        UserProfile userProfile = new UserProfile();
+        userProfile.setFirstName("");
+        userProfile.setLastName("");
+        userProfile.setAvatar("/assets/avatars/dexter.png");
+        userProfile.setUser(user);
+        user.setUserProfile(userProfile);
 
-        // Save user to the repository
+        // Save user first to generate ID and establish relationships
+        user = userRepository.save(user);
+
+        // Save UserSecurity and UserProfile
+        userSecurityRepository.save(userSecurity);
+        userProfileRepository.save(userProfile);
+
+        // Assign role and hashed password
+        Role role = roleRepository.findByName(RoleEnum.valueOf(roleInput));
+        if (role == null) {
+            role = new Role(RoleEnum.valueOf(roleInput));
+            roleRepository.save(role);
+        }
+        user.setRoles(Set.of(role));
+        createHashedPassword(password, user);
+
+        // Finally, save the user again to update references
         userRepository.save(user);
     }
 

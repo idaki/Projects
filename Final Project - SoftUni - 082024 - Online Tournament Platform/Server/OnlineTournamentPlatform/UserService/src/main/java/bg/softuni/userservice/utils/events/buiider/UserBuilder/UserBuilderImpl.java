@@ -5,6 +5,8 @@ import bg.softuni.userservice.models.entity.password.Password;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.models.entity.user.UserProfile;
 import bg.softuni.userservice.models.entity.user.UserSecurity;
+import bg.softuni.userservice.models.enums.RoleEnum;
+import bg.softuni.userservice.repository.RoleRepository;
 import bg.softuni.userservice.utils.events.buiider.UserBuilder.UserBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -18,7 +20,9 @@ public class UserBuilderImpl implements UserBuilder {
     private UserProfile userProfile;
     private UserSecurity userSecurity;
 
+
     public UserBuilderImpl() {
+
         this.user = new User();
         this.userProfile = new UserProfile();
         this.userSecurity = new UserSecurity();
@@ -53,10 +57,12 @@ public class UserBuilderImpl implements UserBuilder {
     }
 
     @Override
-    public UserBuilder withRole(Role role) {
-        if (role == null) {
+    public UserBuilder withRole(RoleEnum roleInput) {
+        if (roleInput == null) {
             throw new IllegalArgumentException("Role cannot be null.");
         }
+        Role role = new Role(roleInput);
+
         Set<Role> roles = new HashSet<>();
         roles.add(role);
         this.user.setRoles(roles);
