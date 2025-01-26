@@ -23,7 +23,6 @@ public class TournamentServiceImpl implements TournamentService {
     private final TournamentRepository tournamentRepository;
     private final TeamRepository teamRepository;
     private  TournamentValidator tournamentValidator;
-    private final TournamentValidator tournamentValidator;
     private final TournamentDTOConverterFactory tournamentDTOConverterFactory;
 
 
