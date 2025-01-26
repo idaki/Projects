@@ -154,17 +154,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public void InitUser( String username,String password, String roleInput) {
         Optional<User> userOpt = userRepository.findByUsername(username);
-        if (userOpt.isPresent()) {
-            System.out.println("User " + username + " already exists.");
-            return;
-        }
-
+//        if (userOpt.isPresent()) {
+//            System.out.println("User " + username + " already exists.");
+//            return;
+//        }
+//
         String email = username.toLowerCase() + "@serdicagrid.com";
-        if (userRepository.findByEmail(email).isPresent()) {
-            System.out.println("Email " + email + " already exists.");
-            return;
-        }
+//        if (userRepository.findByEmail(email).isPresent()) {
+//            System.out.println("Email " + email + " already exists.");
+//            return;
+//        }
 
+        userExistenceValidator.checkIfUsernameExists(username);
+        userExistenceValidator.checkIfEmailExists(email);
         User user = getNewUser(username, email);
 
         // Create and set UserSecurity

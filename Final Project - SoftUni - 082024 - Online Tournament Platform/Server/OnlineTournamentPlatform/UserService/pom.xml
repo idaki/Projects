@@ -97,6 +97,12 @@
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
         </dependency>
+        <dependency>
+            <groupId>bg.softuni</groupId>
+            <artifactId>ExceptionHandlerService</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 

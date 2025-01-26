@@ -1,5 +1,6 @@
 package bg.softuni.initservice.service.impl;
 
+import bg.softuni.exceptionhandlerservice.UserAlreadyExistsException;
 import bg.softuni.initservice.service.InitService;
 import bg.softuni.userservice.repository.RoleRepository;
 import bg.softuni.userservice.service.UserService;
@@ -27,8 +28,16 @@ public class InitServiceImpl implements InitService {
 
     @Override
     public void initUser( String username, String password, String role ) {
+
+       try {
         userService.InitUser(username, password, role);
-        userService.InitUser(username, password , role);}
+        userService.InitUser(username, password , role);
+       } catch (UserAlreadyExistsException e) {
+           System.out.println("User already exists, skipping initialization: " + e.getMessage());
+       }
+
+
+    }
 
     @Override
     public void executeSqlScript(String databaseScriptName) {
