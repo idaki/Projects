@@ -22,8 +22,10 @@ public class TournamentServiceImpl implements TournamentService {
 
     private final TournamentRepository tournamentRepository;
     private final TeamRepository teamRepository;
+    private  TournamentValidator tournamentValidator;
     private final TournamentValidator tournamentValidator;
     private final TournamentDTOConverterFactory tournamentDTOConverterFactory;
+
 
     public TournamentServiceImpl(TournamentRepository tournamentRepository,
                                  TeamRepository teamRepository,
@@ -33,6 +35,7 @@ public class TournamentServiceImpl implements TournamentService {
         this.teamRepository = teamRepository;
         this.tournamentValidator = tournamentValidator;
         this.tournamentDTOConverterFactory = tournamentDTOConverterFactory;
+
     }
 
     @Override

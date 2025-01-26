@@ -26,16 +26,16 @@ public class InitServiceImpl implements InitService {
     }
 
     @Override
-    public void initUser(String role, String username, String password ) {
-        userService.InitUser(role,username, password);
-        userService.InitUser(role,username, password);}
+    public void initUser( String username, String password, String role ) {
+        userService.InitUser(username, password, role);
+        userService.InitUser(username, password , role);}
 
     @Override
     public void executeSqlScript(String databaseScriptName) {
           if (roleRepository.count()<3){
             Resource resource = new ClassPathResource(databaseScriptName);
-            ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator(resource);
-            databasePopulator.execute(dataSource);
+            ResourceDatabasePopulator databasePopulate = new ResourceDatabasePopulator(resource);
+            databasePopulate.execute(dataSource);
 }
 
     }

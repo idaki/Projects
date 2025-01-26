@@ -5,6 +5,7 @@ import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.PasswordRepository;
 import bg.softuni.userservice.repository.UserRepository;
 import bg.softuni.userservice.service.PasswordService;
+import bg.softuni.userservice.utils.events.buiider.UserBuilder.UserBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -22,6 +23,7 @@ public class PasswordServiceImpl implements PasswordService {
     private final PasswordEncoder passwordEncoder;
     private final JavaMailSender mailSender;
     private final PasswordRepository passwordRepository;
+
 
     @Autowired
     public PasswordServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, JavaMailSender mailSender, PasswordRepository passwordRepository) {

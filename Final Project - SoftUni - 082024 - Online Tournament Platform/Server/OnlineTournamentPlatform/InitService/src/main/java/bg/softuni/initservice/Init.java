@@ -26,8 +26,8 @@ public class Init implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        initController.initUser(ADMIN_SUPER_ROLE, ADMIN_SUPER_USERNAME, ADMIN_SUPER_PASSWORD);
-        initController.initUser(ADMIN_USER_ROLE, ADMIN_USER_USERNAME, ADMIN_USER_PASSWORD);
+        initController.initUser( ADMIN_SUPER_USERNAME, ADMIN_SUPER_PASSWORD,ADMIN_SUPER_ROLE);
+        initController.initUser( ADMIN_USER_USERNAME, ADMIN_USER_PASSWORD, ADMIN_USER_ROLE);
 
         initController.executeSqlScript(DATABASE_SCRIPT_NAME);
 

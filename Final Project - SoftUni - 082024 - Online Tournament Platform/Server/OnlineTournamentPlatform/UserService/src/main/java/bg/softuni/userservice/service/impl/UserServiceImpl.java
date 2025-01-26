@@ -11,7 +11,9 @@ import bg.softuni.userservice.models.enums.RoleEnum;
 import bg.softuni.userservice.repository.*;
 import bg.softuni.userservice.service.UserService;
 import bg.softuni.userservice.utils.events.UserDeleteEvent;
-import jakarta.validation.ConstraintViolation;
+import bg.softuni.userservice.utils.events.Validator.UserExistence.UserExistenceValidator;
+import bg.softuni.userservice.utils.events.Validator.UserRegisterDTO.UserRegisterDTOValidator;
+import bg.softuni.userservice.utils.events.buiider.UserBuilder.UserBuilder;
 import jakarta.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -33,9 +35,13 @@ public class UserServiceImpl implements UserService {
     private final UserProfileRepository userProfileRepository;
     private final Validator validator;
     private final ApplicationEventPublisher eventPublisher;
+    private final UserRegisterDTOValidator userRegisterDTOValidator;
+    private final UserExistenceValidator  userExistenceValidator;
+
+    private final UserBuilder userBuilder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository, TokenRepository tokenRepository, UserSecurityRepository userSecurityRepository, UserProfileRepository userProfileRepository, Validator validator, ApplicationEventPublisher eventPublisher) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository, TokenRepository tokenRepository, UserSecurityRepository userSecurityRepository, UserProfileRepository userProfileRepository, Validator validator, ApplicationEventPublisher eventPublisher, UserRegisterDTOValidator userRegisterDTOValidator, UserExistenceValidator userExistenceValidator, UserBuilder userBuilder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
@@ -44,6 +50,9 @@ public class UserServiceImpl implements UserService {
         this.userProfileRepository = userProfileRepository;
         this.validator = validator;
         this.eventPublisher = eventPublisher;
+        this.userRegisterDTOValidator = userRegisterDTOValidator;
+        this.userExistenceValidator = userExistenceValidator;
+        this.userBuilder = userBuilder;
     }
 
     @Override
@@ -66,74 +75,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(UserRegisterDTO registerDTO) {
-        Set<ConstraintViolation<UserRegisterDTO>> violations = validator.validate(registerDTO);
-        if (!violations.isEmpty()) {
-            String errorMessage = violations.stream()
-                    .map(ConstraintViolation::getMessage)
-                    .collect(Collectors.joining("; "));
-            throw new IllegalArgumentException("Validation failed: " + errorMessage);
-        }
+        userRegisterDTOValidator.validate(registerDTO , this );
 
-        if (isExistingUser(registerDTO.getUsername(), registerDTO.getEmail())) {
-            throw new IllegalArgumentException("User already exists with the given username or email.");
-        }
+         User user =   userBuilder.withUsername(registerDTO.getUsername())
+                    .withEmail(registerDTO.getEmail())
+                    .withProfile("","","/assets/avatars/dexter.png")
+                    .withPassword(registerDTO.getPassword(), passwordEncoder).build();
 
-        registerUser(registerDTO.getUsername(), registerDTO.getPassword(), registerDTO.getEmail());
+        userRepository.save(user);
+
     }
 
-    public User registerUser(String username, String password, String email) {
-        // Create new User
-        User user = getNewUser(username, email);
-
-        // Create and set UserProfile
-        UserProfile userProfile = new UserProfile();
-        userProfile.setFirstName("");
-        userProfile.setLastName("");
-        userProfile.setAvatar("/assets/avatars/dexter.png");
-        userProfile.setUser(user);
-        user.setUserProfile(userProfile);
-        user = userRepository.save(user);
-
-
-        // Create and set UserSecurity
-        UserSecurity userSecurity = new UserSecurity();
-        userSecurity.setUser(user);
-        user.setUserSecurity(userSecurity);
-        userSecurity = userSecurityRepository.save(userSecurity);
-
-        // Save user with updated userSecurity
-        user = userRepository.save(user);
-
-        // Assign role and hashed password
-        Role role = roleRepository.findByName(RoleEnum.ADMIN_USER);
-        if (role == null) {
-            throw new RuntimeException("Role not found");
-        }
-        setUserRole(role, user);
-        createHashedPassword(password, user);
-
-        return userRepository.save(user);
-    }
-
-    private static UserProfile createUserProfile(User user) {
-        UserProfile userProfile = new UserProfile();
-        userProfile.setFirstName("");
-        userProfile.setLastName("");
-        userProfile.setUser(user);
-        return userProfile;
-    }
 
     private static User getNewUser(String username, String email) {
         User user = new User();
         user.setUsername(username);
         user.setEmail(email);
         return user;
-    }
-
-    private static void setUserRole(Role role, User user) {
-        Set<Role> roles = new HashSet<>();
-        roles.add(role);
-        user.setRoles(roles);
     }
 
     private void createHashedPassword(String password, User user) {
@@ -194,7 +152,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void InitUser(String roleInput, String password, String username) {
+    public void InitUser( String username,String password, String roleInput) {
         Optional<User> userOpt = userRepository.findByUsername(username);
         if (userOpt.isPresent()) {
             System.out.println("User " + username + " already exists.");
@@ -243,6 +201,8 @@ public class UserServiceImpl implements UserService {
     }
 
 
+
+
     @Override
     public User findUserByToken(String jwt) {
         Optional<Token> tokenOpt = tokenRepository.findByToken(jwt);
@@ -286,7 +246,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isAdminSuper(String username) {
-User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
 
         return  user.getRoles().stream()
                 .anyMatch(role -> role.getName() == RoleEnum.ADMIN_SUPER);
