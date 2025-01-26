@@ -152,12 +152,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void InitUser(String roleInput, String password, String username) {
+    public void InitUser(String username, String password,  String roleInput) {
         String email = username.toLowerCase() + "@serdicagrid.com";
 
         // Validate if username or email already exists
-        userExistenceValidator.checkIfUsernameExists(username);
-        userExistenceValidator.checkIfEmailExists(email);
+       userExistenceValidator.checkIfUsernameExists(username);
+       userExistenceValidator.checkIfEmailExists(email);
 
         // Create the user with provided details
         User user = userBuilder

@@ -26,9 +26,9 @@ public class InitServiceImpl implements InitService {
     }
 
     @Override
-    public void initUser(String role, String username, String password ) {
-        userService.InitUser(role, username, password);
-        userService.InitUser(role,username, password);}
+    public void initUser( String username, String password, String role ) {
+        userService.InitUser(username, password, role);
+        userService.InitUser(username, password , role);}
 
     @Override
     public void executeSqlScript(String databaseScriptName) {
