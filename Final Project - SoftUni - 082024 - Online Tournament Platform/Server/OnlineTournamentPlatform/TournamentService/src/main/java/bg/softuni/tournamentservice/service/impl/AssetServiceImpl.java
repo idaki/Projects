@@ -14,4 +14,5 @@ private final AssetRepository assetRepository;
 
         this.assetRepository = assetRepository;
     }
+
 }
