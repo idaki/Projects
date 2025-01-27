@@ -1,4 +1,4 @@
-package bg.softuni.userservice.utils.events.buiider.UserBuilder;
+package bg.softuni.userservice.utils.buiider.UserBuilder;
 
 import bg.softuni.userservice.models.entity.authorisation.Role;
 import bg.softuni.userservice.models.entity.password.Password;
@@ -7,7 +7,6 @@ import bg.softuni.userservice.models.entity.user.UserProfile;
 import bg.softuni.userservice.models.entity.user.UserSecurity;
 import bg.softuni.userservice.models.enums.RoleEnum;
 import bg.softuni.userservice.repository.RoleRepository;
-import bg.softuni.userservice.utils.events.buiider.UserBuilder.UserBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -19,10 +18,13 @@ public class UserBuilderImpl implements UserBuilder {
     private final User user;
     private UserProfile userProfile;
     private UserSecurity userSecurity;
+    private final BCryptPasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
 
 
-    public UserBuilderImpl() {
-
+    public UserBuilderImpl(BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+        this.passwordEncoder = passwordEncoder;
+        this.roleRepository = roleRepository;
         this.user = new User();
         this.userProfile = new UserProfile();
         this.userSecurity = new UserSecurity();
@@ -57,11 +59,12 @@ public class UserBuilderImpl implements UserBuilder {
     }
 
     @Override
-    public UserBuilder withRole(RoleEnum roleInput) {
+    public UserBuilder withRole(String roleInput) {
         if (roleInput == null) {
-            throw new IllegalArgumentException("Role cannot be null.");
+            Role role = new Role(RoleEnum.valueOf(roleInput));
+            roleRepository.save(role);
         }
-        Role role = new Role(roleInput);
+            Role role = roleRepository.findByName(RoleEnum.valueOf(roleInput));
 
         Set<Role> roles = new HashSet<>();
         roles.add(role);
@@ -70,11 +73,10 @@ public class UserBuilderImpl implements UserBuilder {
     }
 
     @Override
-    public UserBuilder withPassword(String password, BCryptPasswordEncoder passwordEncoder) {
+    public UserBuilder withPassword(String password) {
         if (password == null || password.trim().isEmpty()) {
             throw new IllegalArgumentException("Password cannot be null or empty.");
         }
-
         Password passwordEntity = new Password();
         passwordEntity.setPasswordHash(passwordEncoder.encode(password));
 

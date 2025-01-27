@@ -12,11 +12,11 @@ import java.util.Optional;
 @Service
 public class TokenServiceImpl implements TokenService {
     private final TokenRepository tokenRepository;
-    private final UserRepository userRepository;
 
-    public TokenServiceImpl(TokenRepository tokenRepository, UserRepository userRepository) {
+
+    public TokenServiceImpl(TokenRepository tokenRepository) {
         this.tokenRepository = tokenRepository;
-        this.userRepository = userRepository;
+
     }
 
     @Override
