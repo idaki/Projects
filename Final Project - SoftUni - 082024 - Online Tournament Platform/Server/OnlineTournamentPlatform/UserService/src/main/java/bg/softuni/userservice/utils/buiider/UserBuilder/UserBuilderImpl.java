@@ -1,4 +1,4 @@
-package bg.softuni.userservice.utils.events.buiider.UserBuilder;
+package bg.softuni.userservice.utils.buiider.UserBuilder;
 
 import bg.softuni.userservice.models.entity.authorisation.Role;
 import bg.softuni.userservice.models.entity.password.Password;
@@ -7,7 +7,6 @@ import bg.softuni.userservice.models.entity.user.UserProfile;
 import bg.softuni.userservice.models.entity.user.UserSecurity;
 import bg.softuni.userservice.models.enums.RoleEnum;
 import bg.softuni.userservice.repository.RoleRepository;
-import bg.softuni.userservice.utils.events.buiider.UserBuilder.UserBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 

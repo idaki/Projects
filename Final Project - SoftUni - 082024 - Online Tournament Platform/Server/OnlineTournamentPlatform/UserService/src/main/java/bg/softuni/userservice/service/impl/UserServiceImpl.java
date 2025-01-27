@@ -3,57 +3,45 @@ package bg.softuni.userservice.service.impl;
 import bg.softuni.userservice.models.dto.UserDetailsDTO;
 import bg.softuni.userservice.models.dto.UserRegisterDTO;
 import bg.softuni.userservice.models.entity.Token;
-import bg.softuni.userservice.models.entity.authorisation.Role;
-import bg.softuni.userservice.models.entity.password.Password;
 import bg.softuni.userservice.models.entity.user.*;
 import bg.softuni.userservice.models.enums.RoleEnum;
 
 import bg.softuni.userservice.repository.*;
 import bg.softuni.userservice.service.UserService;
 import bg.softuni.userservice.utils.events.UserDeleteEvent;
-import bg.softuni.userservice.utils.events.Validator.UserExistence.UserExistenceValidator;
-import bg.softuni.userservice.utils.events.Validator.UserRegisterDTO.UserRegisterDTOValidator;
-import bg.softuni.userservice.utils.events.buiider.UserBuilder.UserBuilder;
-import jakarta.validation.Validator;
-import org.springframework.beans.factory.annotation.Autowired;
+import bg.softuni.userservice.utils.Validator.UserExistence.UserExistenceValidator;
+import bg.softuni.userservice.utils.Validator.UserRegisterDTO.UserRegisterDTOValidator;
+import bg.softuni.userservice.utils.buiider.UserBuilder.UserBuilder;
+
+import bg.softuni.userservice.utils.buiider.UserDetailsDTOBuilder.UserDetailsDTOBuilder;
+import bg.softuni.userservice.utils.utills.UserFinderUtil.UserFinderUtil;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
-    private final RoleRepository roleRepository;
     private final TokenRepository tokenRepository;
-    private final UserSecurityRepository userSecurityRepository;
-    private final UserProfileRepository userProfileRepository;
-    private final Validator validator;
     private final ApplicationEventPublisher eventPublisher;
     private final UserRegisterDTOValidator userRegisterDTOValidator;
     private final UserExistenceValidator  userExistenceValidator;
-
     private final UserBuilder userBuilder;
+    private final UserDetailsDTOBuilder userDetailsDTOBuilder;
 
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository, TokenRepository tokenRepository, UserSecurityRepository userSecurityRepository, UserProfileRepository userProfileRepository, Validator validator, ApplicationEventPublisher eventPublisher, UserRegisterDTOValidator userRegisterDTOValidator, UserExistenceValidator userExistenceValidator, UserBuilder userBuilder) {
+    public UserServiceImpl(UserRepository userRepository, TokenRepository tokenRepository, ApplicationEventPublisher eventPublisher, UserRegisterDTOValidator userRegisterDTOValidator, UserExistenceValidator userExistenceValidator, UserBuilder userBuilder, UserDetailsDTOBuilder userDetailsDTOBuilder) {
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.roleRepository = roleRepository;
         this.tokenRepository = tokenRepository;
-        this.userSecurityRepository = userSecurityRepository;
-        this.userProfileRepository = userProfileRepository;
-        this.validator = validator;
         this.eventPublisher = eventPublisher;
         this.userRegisterDTOValidator = userRegisterDTOValidator;
         this.userExistenceValidator = userExistenceValidator;
         this.userBuilder = userBuilder;
+        this.userDetailsDTOBuilder = userDetailsDTOBuilder;
     }
+
 
     @Override
     public Optional<User> findByUsername(String username) {
@@ -87,35 +75,21 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    @Override
     public UserDetailsDTO getUserDetails(String username) {
         User user = userRepository.findByUsername(username)
-                .orElse(null);
-
-        if (user == null) {
-            return null; // or handle it according to your requirements
-        }
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
         UserProfile profile = user.getUserProfile();
 
-        UserDetailsDTO dto = new UserDetailsDTO();
-        dto.setUsername(user.getUsername());
-        dto.setFirstName(profile.getFirstName());
-        dto.setLastName(profile.getLastName());
-        dto.setAvatar(profile.getAvatar());
-        dto.setId(user.getId());
-
-        return dto;
-    }
-
-    private static UserDetailsDTO getUserDetailsExportDTO(User user) {
-        UserDetailsDTO userDetails = new UserDetailsDTO();
-        userDetails.setUsername(user.getUsername());
-        userDetails.setFirstName(user.getUserProfile().getFirstName());
-        userDetails.setLastName(user.getUserProfile().getLastName());
-        userDetails.setEmail(user.getEmail());
-        userDetails.setAvatar(user.getUserProfile().getAvatar());
-        userDetails.setId(user.getId());
-        return userDetails;
+        return userDetailsDTOBuilder
+                .withUsername(user.getUsername())
+                .withFirstName(profile.getFirstName())
+                .withLastName(profile.getLastName())
+                .withEmail(user.getEmail())
+                .withAvatar(profile.getAvatar())
+                .withId(user.getId())
+                .build();
     }
 
     @Transactional
@@ -171,24 +145,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetailsDTO findUserByDetails(String username, String firstName, String lastName) {
-        Optional<User> user = Optional.empty();
+        Optional<User> userOpt = UserFinderUtil.findUser(username, firstName, lastName);
 
-        if (username != null) {
-            user = userRepository.findByUsername(username);
-        } else if (firstName != null) {
-            user = userRepository.findByUserProfile_FirstName(firstName);
-        } else if (lastName != null) {
-            user = userRepository.findByUserProfile_LastName(lastName);
-        }
-
-        if (user.isPresent()) {
-            User foundUser = user.get();
-            // Convert the found user to UserDetailsExportDTO
-            UserDetailsDTO userDetails = getUserDetailsExportDTO(foundUser);
-            return userDetails;
-        } else {
-            return null;
-        }
+        return userOpt.map(user ->
+                userDetailsDTOBuilder
+                        .withUsername(user.getUsername())
+                        .withFirstName(user.getUserProfile().getFirstName())
+                        .withLastName(user.getUserProfile().getLastName())
+                        .withEmail(user.getEmail())
+                        .withAvatar(user.getUserProfile().getAvatar())
+                        .withId(user.getId())
+                        .build()
+        ).orElse(null);
     }
 
     @Override

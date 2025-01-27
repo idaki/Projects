@@ -1,9 +1,7 @@
-package bg.softuni.userservice.utils.events.Validator.UserExistence;
+package bg.softuni.userservice.utils.Validator.UserExistence;
 
 import bg.softuni.exceptionhandlerservice.UserAlreadyExistsException;
 import bg.softuni.userservice.repository.UserRepository;
-import bg.softuni.userservice.utils.events.Validator.UserExistence.UserExistenceValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
