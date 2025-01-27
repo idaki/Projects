@@ -5,6 +5,7 @@ import bg.softuni.initservice.service.InitService;
 import bg.softuni.userservice.repository.RoleRepository;
 import bg.softuni.userservice.service.UserService;
 
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
@@ -19,6 +20,8 @@ public class InitServiceImpl implements InitService {
     private final UserService userService;
     private final DataSource dataSource;
     private final RoleRepository roleRepository;
+
+
 
     public InitServiceImpl(UserService userService, DataSource dataSource, RoleRepository roleRepository) {
         this.userService = userService;

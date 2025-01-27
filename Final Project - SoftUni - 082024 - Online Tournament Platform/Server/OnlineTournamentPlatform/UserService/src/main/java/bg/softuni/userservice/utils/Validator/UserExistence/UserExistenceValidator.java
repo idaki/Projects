@@ -1,4 +1,4 @@
-package bg.softuni.userservice.utils.events.Validator.UserExistence;
+package bg.softuni.userservice.utils.Validator.UserExistence;
 
 public interface UserExistenceValidator {
 
