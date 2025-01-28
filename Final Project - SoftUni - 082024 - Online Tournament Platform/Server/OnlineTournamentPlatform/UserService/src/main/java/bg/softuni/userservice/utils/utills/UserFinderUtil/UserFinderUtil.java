@@ -17,11 +17,6 @@ public class UserFinderUtil {
             return userRepository.findByUserProfile_FirstName(firstName);
         } else if (lastName != null) {
             return userRepository.findByUserProfile_LastName(lastName);
-        }else if (lastName != null) {
-            return userRepository.findByUserProfile_LastName(lastName);
-        }
-
-        else {
             return Optional.empty();
         }
     }
