@@ -6,5 +6,5 @@ import bg.softuni.userservice.service.UserService;
 public interface UserRegisterDTOValidator {
 
 
-    void validate(UserRegisterDTO registerDTO, UserService userService);
+    void validate(UserRegisterDTO registerDTO);
 }
