@@ -2,7 +2,7 @@ package bg.softuni.userservice.controller;
 
 
 import bg.softuni.userservice.models.dto.FriendDTO;
-import bg.softuni.userservice.service.FriendService;
+import bg.softuni.userservice.service.interfaces.friend.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

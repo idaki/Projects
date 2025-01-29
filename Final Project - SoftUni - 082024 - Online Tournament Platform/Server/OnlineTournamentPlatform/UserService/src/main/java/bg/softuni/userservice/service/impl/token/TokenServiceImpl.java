@@ -1,10 +1,9 @@
-package bg.softuni.userservice.service.impl;
+package bg.softuni.userservice.service.impl.token;
 
 import bg.softuni.userservice.models.entity.Token;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.TokenRepository;
-import bg.softuni.userservice.repository.UserRepository;
-import bg.softuni.userservice.service.TokenService;
+import bg.softuni.userservice.service.interfaces.token.TokenService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

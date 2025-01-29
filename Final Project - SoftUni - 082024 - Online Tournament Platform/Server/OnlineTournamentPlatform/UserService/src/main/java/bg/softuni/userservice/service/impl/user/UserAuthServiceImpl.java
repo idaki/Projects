@@ -1,11 +1,11 @@
-package bg.softuni.userservice.service.impl.UserService;
+package bg.softuni.userservice.service.impl.user;
 
 import bg.softuni.userservice.models.entity.Token;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.models.enums.RoleEnum;
 import bg.softuni.userservice.repository.TokenRepository;
 import bg.softuni.userservice.repository.UserRepository;
-import bg.softuni.userservice.service.UserAuthService;
+import bg.softuni.userservice.service.interfaces.user.UserAuthService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,21 +19,6 @@ public class UserAuthServiceImpl implements UserAuthService {
     public UserAuthServiceImpl(UserRepository userRepository, TokenRepository tokenRepository) {
         this.userRepository = userRepository;
         this.tokenRepository = tokenRepository;
-    }
-
-    @Override
-    public boolean isExistingUser(String username, String password) {
-        return findByUsername(username).isPresent() || findByEmail(username).isPresent();
-    }
-
-    @Override
-    public Optional<User> findByUsername(String username) {
-        return this.userRepository.findByUsername(username);
-    }
-
-    @Override
-    public Optional<User> findByEmail(String email) {
-        return this.userRepository.findByEmail(email);
     }
 
     @Override

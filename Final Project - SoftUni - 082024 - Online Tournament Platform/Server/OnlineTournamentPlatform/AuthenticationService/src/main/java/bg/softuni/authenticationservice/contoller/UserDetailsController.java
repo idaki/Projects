@@ -3,8 +3,7 @@ package bg.softuni.authenticationservice.contoller;
 import bg.softuni.authenticationservice.service.JwtService;
 
 import bg.softuni.userservice.models.dto.UserDetailsDTO;
-import bg.softuni.userservice.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import bg.softuni.userservice.service.interfaces.user.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +14,11 @@ public class UserDetailsController {
     private final UserService userService;
     private final JwtService jwtService;;
 
-@Autowired
     public UserDetailsController(UserService userService, JwtService jwtService) {
         this.userService = userService;
         this.jwtService = jwtService;
     }
+
 
     @PostMapping("/details")
     public ResponseEntity<UserDetailsDTO> getUserDetails(@RequestHeader("Authorization") String token) {

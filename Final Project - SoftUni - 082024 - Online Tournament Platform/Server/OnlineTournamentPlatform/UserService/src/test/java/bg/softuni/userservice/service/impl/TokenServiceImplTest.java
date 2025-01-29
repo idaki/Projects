@@ -5,7 +5,7 @@ import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.models.entity.user.UserSecurity;
 import bg.softuni.userservice.repository.TokenRepository;
 import bg.softuni.userservice.repository.UserRepository;
-import bg.softuni.userservice.service.TokenService;
+import bg.softuni.userservice.service.impl.token.TokenServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

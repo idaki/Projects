@@ -6,7 +6,7 @@ import bg.softuni.authenticationservice.service.LoginService;
 import bg.softuni.userservice.models.entity.password.Password;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.UserRepository;
-import bg.softuni.userservice.service.PasswordService;
+import bg.softuni.userservice.service.interfaces.password.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -1,10 +1,10 @@
-package bg.softuni.userservice.service.impl;
+package bg.softuni.userservice.service.impl.password;
 
 import bg.softuni.userservice.models.entity.password.Password;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.PasswordRepository;
 import bg.softuni.userservice.repository.UserRepository;
-import bg.softuni.userservice.service.PasswordService;
+import bg.softuni.userservice.service.interfaces.password.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;

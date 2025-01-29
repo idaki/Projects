@@ -8,7 +8,7 @@ import bg.softuni.tournamentservice.service.TeamService;
 import bg.softuni.tournamentservice.utils.Mappers.TeamMapper.TeamMapper;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.UserRepository;
-import bg.softuni.userservice.service.TokenService;
+import bg.softuni.userservice.service.interfaces.token.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

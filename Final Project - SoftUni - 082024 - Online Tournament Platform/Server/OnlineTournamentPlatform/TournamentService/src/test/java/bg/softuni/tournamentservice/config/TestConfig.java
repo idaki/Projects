@@ -1,6 +1,6 @@
 package bg.softuni.tournamentservice.config;
 
-import bg.softuni.userservice.service.UserService;
+import bg.softuni.userservice.service.interfaces.user.UserService;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

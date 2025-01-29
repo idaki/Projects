@@ -1,4 +1,4 @@
-package bg.softuni.userservice.service;
+package bg.softuni.userservice.service.interfaces.password;
 
 import bg.softuni.userservice.models.entity.password.Password;
 

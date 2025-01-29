@@ -5,6 +5,7 @@ import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.models.entity.user.UserSecurity;
 import bg.softuni.userservice.repository.PasswordRepository;
 import bg.softuni.userservice.repository.UserRepository;
+import bg.softuni.userservice.service.impl.password.PasswordServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -20,7 +21,6 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class PasswordServiceImplTest {

@@ -9,7 +9,7 @@ import bg.softuni.tournamentservice.model.dto.TournamentCreateDTO;
 import bg.softuni.tournamentservice.repository.GameRepository;
 import bg.softuni.tournamentservice.repository.TournamentRepository;
 import bg.softuni.userservice.models.entity.user.User;
-import bg.softuni.userservice.service.UserService;
+import bg.softuni.userservice.service.interfaces.user.UserService;
 import jakarta.validation.ConstraintViolation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
