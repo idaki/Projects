@@ -60,11 +60,12 @@ public class UserBuilderImpl implements UserBuilder {
 
     @Override
     public UserBuilder withRole(String roleInput) {
-        if (roleInput == null) {
-            Role role = new Role(RoleEnum.valueOf(roleInput));
+      Role role = roleRepository.findByName(RoleEnum.valueOf(roleInput));
+
+        if (role == null) {
+             role = new Role(RoleEnum.valueOf(roleInput));
             roleRepository.save(role);
         }
-            Role role = roleRepository.findByName(RoleEnum.valueOf(roleInput));
 
         Set<Role> roles = new HashSet<>();
         roles.add(role);
@@ -91,12 +92,10 @@ public class UserBuilderImpl implements UserBuilder {
     @Override
     public User build() {
         // Ensure relationships are properly set
-        if (this.userProfile != null) {
-            this.userProfile.setUser(this.user);
-        }
-        if (this.userSecurity != null) {
-            this.userSecurity.setUser(this.user);
-        }
+       User user = new User();
+       user.setUsername(this.user.getUsername());
+       user.setEmail(this.user.getEmail());
+       user.setUserProfile(this.userProfile);
         return this.user;
     }
 }
