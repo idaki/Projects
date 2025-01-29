@@ -4,7 +4,7 @@ package bg.softuni.authenticationservice.contoller;
 
 import bg.softuni.userservice.models.dto.UserDetailsDTO;
 import bg.softuni.userservice.models.entity.user.User;
-import bg.softuni.userservice.service.UserService;
+import bg.softuni.userservice.service.interfaces.user.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

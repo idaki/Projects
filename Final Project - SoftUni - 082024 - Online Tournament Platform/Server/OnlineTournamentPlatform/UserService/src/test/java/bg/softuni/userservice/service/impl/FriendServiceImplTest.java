@@ -7,7 +7,7 @@ import bg.softuni.userservice.models.entity.user.UserSecurity;
 import bg.softuni.userservice.repository.FriendRepository;
 import bg.softuni.userservice.repository.TokenRepository;
 import bg.softuni.userservice.repository.UserRepository;
-import bg.softuni.userservice.service.impl.FriendServiceImpl;
+import bg.softuni.userservice.service.impl.friend.FriendServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

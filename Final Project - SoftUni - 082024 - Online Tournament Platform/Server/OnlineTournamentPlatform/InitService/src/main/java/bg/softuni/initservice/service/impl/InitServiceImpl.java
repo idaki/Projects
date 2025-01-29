@@ -3,7 +3,7 @@ package bg.softuni.initservice.service.impl;
 import bg.softuni.exceptionhandlerservice.UserAlreadyExistsException;
 import bg.softuni.initservice.service.InitService;
 import bg.softuni.userservice.repository.RoleRepository;
-import bg.softuni.userservice.service.UserService;
+import bg.softuni.userservice.service.interfaces.user.UserService;
 
 
 import org.springframework.core.io.ClassPathResource;

@@ -1,4 +1,4 @@
-package bg.softuni.userservice.service.impl;
+package bg.softuni.userservice.service.impl.friend;
 
 import bg.softuni.userservice.models.dto.FriendDTO;
 import bg.softuni.userservice.models.entity.Friend;
@@ -7,7 +7,7 @@ import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.FriendRepository;
 import bg.softuni.userservice.repository.TokenRepository;
 import bg.softuni.userservice.repository.UserRepository;
-import bg.softuni.userservice.service.FriendService;
+import bg.softuni.userservice.service.interfaces.friend.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

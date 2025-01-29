@@ -1,14 +1,15 @@
-package bg.softuni.userservice.service.impl.UserService;
+package bg.softuni.userservice.service.impl.user;
 
 import bg.softuni.userservice.models.dto.UserRegisterDTO;
 import bg.softuni.userservice.models.entity.user.User;
+import bg.softuni.userservice.models.enums.RoleEnum;
 import bg.softuni.userservice.repository.UserRepository;
-import bg.softuni.userservice.service.UserCrudService;
-import bg.softuni.userservice.service.UserAuthService;
+import bg.softuni.userservice.service.interfaces.user.UserCrudService;
 import bg.softuni.userservice.utils.Validator.UserExistence.UserExistenceValidator;
 import bg.softuni.userservice.utils.Validator.UserRegisterDTO.UserRegisterDTOValidator;
 import bg.softuni.userservice.utils.buiider.UserBuilder.UserBuilder;
 import bg.softuni.userservice.utils.events.UserDeleteEvent;
+import bg.softuni.userservice.utils.utills.UserFinderUtil.UserFinderUtil;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,42 +24,31 @@ public class UserCrudServiceImpl implements UserCrudService {
     private final UserRepository userRepository;
     private final ApplicationEventPublisher eventPublisher;
     private final UserRegisterDTOValidator userRegisterDTOValidator;
-    private final UserExistenceValidator userExistenceValidator;
-    private final UserBuilder userBuilder;
-    private final UserAuthService userAuthService;  // Inject UserAuthService instead of UserService
+    private    UserBuilder userBuilder;
+    private final UserFinderUtil userFinderUtil;
+   private final  UserExistenceValidator userExistenceValidator;
 
-
-    public UserCrudServiceImpl(UserRepository userRepository, ApplicationEventPublisher eventPublisher,
-                               UserRegisterDTOValidator userRegisterDTOValidator, UserExistenceValidator userExistenceValidator,
-                               UserBuilder userBuilder, UserAuthService userAuthService) {
+    public UserCrudServiceImpl(UserRepository userRepository, ApplicationEventPublisher eventPublisher, UserRegisterDTOValidator userRegisterDTOValidator, UserBuilder userBuilder, UserFinderUtil userFinderUtil, UserExistenceValidator userExistenceValidator) {
         this.userRepository = userRepository;
         this.eventPublisher = eventPublisher;
         this.userRegisterDTOValidator = userRegisterDTOValidator;
-        this.userExistenceValidator = userExistenceValidator;
         this.userBuilder = userBuilder;
-        this.userAuthService = userAuthService;  // Use UserAuthService instead
+        this.userFinderUtil = userFinderUtil;
+        this.userExistenceValidator = userExistenceValidator;
     }
 
-    @Override
-    public Optional<User> findByUsername(String username) {
-        return this.userRepository.findByUsername(username);
-    }
-
-    @Override
-    public Optional<User> findByEmail(String email) {
-        return this.userRepository.findByEmail(email);
-    }
 
     @Override
     public void register(UserRegisterDTO registerDTO) {
         userRegisterDTOValidator.validate(registerDTO);
-        if (userAuthService.isExistingUser(registerDTO.getUsername(), registerDTO.getPassword())) {
+        if (userFinderUtil.isExistingUser(registerDTO.getUsername(), registerDTO.getPassword())) {
             throw new RuntimeException("User already exists!");
         }
 
         User user = userBuilder.withUsername(registerDTO.getUsername())
                 .withEmail(registerDTO.getEmail())
                 .withProfile("","","/assets/avatars/dexter.png")
+                .withRole(String.valueOf(RoleEnum.ADMIN_USER))
                 .withPassword(registerDTO.getPassword()).build();
 
         userRepository.save(user);
@@ -88,8 +78,8 @@ public class UserCrudServiceImpl implements UserCrudService {
     public void InitUser(String username, String password, String roleInput) {
         String email = username.toLowerCase() + "@serdicagrid.com";
 
-        userExistenceValidator.checkIfUsernameExists(username);
-        userExistenceValidator.checkIfEmailExists(email);
+       userExistenceValidator.checkIfEmailExists(email);userExistenceValidator.checkIfUsernameExists(username);
+
 
         User user = userBuilder
                 .withUsername(username)

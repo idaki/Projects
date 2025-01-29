@@ -1,20 +1,14 @@
 package bg.softuni.initservice.service.impl;
 
-import bg.softuni.initservice.service.InitService;
 import bg.softuni.userservice.repository.RoleRepository;
-import bg.softuni.userservice.service.UserService;
+import bg.softuni.userservice.service.interfaces.user.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 import static org.mockito.Mockito.*;
 

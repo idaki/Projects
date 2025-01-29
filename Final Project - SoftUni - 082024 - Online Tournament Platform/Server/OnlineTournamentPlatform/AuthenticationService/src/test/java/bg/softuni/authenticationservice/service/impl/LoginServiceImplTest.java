@@ -1,12 +1,11 @@
 package bg.softuni.authenticationservice.service.impl;
 
 import bg.softuni.authenticationservice.model.DTO.LoginDTO;
-import bg.softuni.authenticationservice.model.DTO.UpdatePasswordDTO;
 import bg.softuni.userservice.models.entity.password.Password;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.models.entity.user.UserSecurity;
 import bg.softuni.userservice.repository.UserRepository;
-import bg.softuni.userservice.service.PasswordService;
+import bg.softuni.userservice.service.interfaces.password.PasswordService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

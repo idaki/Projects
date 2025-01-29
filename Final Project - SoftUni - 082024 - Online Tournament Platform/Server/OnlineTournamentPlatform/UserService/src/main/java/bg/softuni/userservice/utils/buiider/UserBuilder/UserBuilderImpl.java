@@ -60,7 +60,7 @@ public class UserBuilderImpl implements UserBuilder {
 
     @Override
     public UserBuilder withRole(String roleInput) {
-      Role role = roleRepository.findByName(RoleEnum.valueOf(roleInput));
+        Role role = roleRepository.findByName(RoleEnum.valueOf(roleInput));
 
         if (role == null) {
              role = new Role(RoleEnum.valueOf(roleInput));

@@ -9,7 +9,7 @@
 //import bg.softuni.tournamentservice.model.dto.TournamentSignupDTO;
 //import bg.softuni.tournamentservice.repository.*;
 //import bg.softuni.userservice.models.entity.user.User;
-//import bg.softuni.userservice.service.UserService;
+//import bg.softuni.userservice.service.interfaces.user.UserService;
 //import jakarta.validation.ConstraintViolation;
 //import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.Test;

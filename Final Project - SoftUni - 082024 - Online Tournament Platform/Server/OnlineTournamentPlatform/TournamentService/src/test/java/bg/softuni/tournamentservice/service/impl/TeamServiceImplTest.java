@@ -5,7 +5,7 @@ import bg.softuni.tournamentservice.model.Team;
 import bg.softuni.tournamentservice.repository.TeamRepository;
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.repository.UserRepository;
-import bg.softuni.userservice.service.TokenService;
+import bg.softuni.userservice.service.interfaces.token.TokenService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

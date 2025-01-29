@@ -1,16 +1,11 @@
-package bg.softuni.userservice.service;
+package bg.softuni.userservice.service.interfaces.user;
 
 import bg.softuni.userservice.models.dto.UserRegisterDTO;
 import bg.softuni.userservice.models.entity.user.User;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserCrudService {
-
-    Optional<User> findByUsername(String username);
-
-    Optional<User> findByEmail(String email);
 
     void register(UserRegisterDTO registerDTO);
 
