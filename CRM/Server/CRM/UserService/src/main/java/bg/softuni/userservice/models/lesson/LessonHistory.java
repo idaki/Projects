@@ -22,6 +22,9 @@ public class LessonHistory {
     @OneToOne
     @JoinColumn(name = "student_id", nullable = false)
     private User student;
+    @OneToOne
+    @JoinColumn(name = "instructor_id", nullable = false)
+    private User instructor;
 
     @OneToMany(mappedBy = "lessonHistory", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Lesson> lessons;
