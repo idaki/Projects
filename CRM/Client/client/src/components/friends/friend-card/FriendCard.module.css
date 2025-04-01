@@ -1,0 +1,17 @@
+.cardContainer {
+    max-width: 540px;
+}
+
+.avatar {
+    max-height: 5em;
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dropdown-menu {
+    min-width: auto;
+}

@@ -1,0 +1,63 @@
+{
+    "header": {
+        "title": "SerdicaGrid",
+        "subtitle": "Waar elke pixel een mogelijkheid biedt. Doe mee aan de community voor epische online toernooien!"
+    },
+    "footer": {
+        "cookiePolicy": "Cookiebeleid",
+        "termsOfService": "Servicevoorwaarden",
+        "copyright": "Copyright © YourCompany 2024"
+    },
+    "modals": {
+        "cookiePolicyTitle": "Cookiebeleid",
+        "termsOfServiceTitle": "Servicevoorwaarden",
+        "loginTitle": "Inloggen",
+        "registerTitle": "Registreren",
+        "resetPasswordTitle": "Wachtwoord Resetten",
+        "updatePasswordTitle": "Wachtwoord Bijwerken"
+    },
+    "buttons": {
+        "login": "Inloggen",
+        "register": "Registreren",
+        "resetPassword": "Wachtwoord Resetten",
+        "changePassword": "Wachtwoord Veranderen"
+    },
+    "forms": {
+        "username": "Gebruikersnaam",
+        "password": "Wachtwoord",
+        "email": "Email",
+        "newPassword": "Nieuw Wachtwoord",
+        "confirmPassword": "Bevestig Nieuw Wachtwoord"
+    },
+    "errors": {
+        "allFieldsRequired": "Alle velden zijn verplicht",
+        "usernameRequired": "Gebruikersnaam is vereist",
+        "usernameMinLength": "Gebruikersnaam moet minstens 3 tekens lang zijn",
+        "passwordRequired": "Wachtwoord is vereist",
+        "passwordMinLength": "Wachtwoord moet minstens 6 tekens lang zijn",
+        "emailRequired": "Email is vereist",
+        "emailInvalid": "Ongeldig emailadres",
+        "passwordMismatch": "Wachtwoorden komen niet overeen",
+        "registrationError": "Er is een fout opgetreden tijdens de registratie. Probeer het opnieuw.",
+        "loginError": "Er is een fout opgetreden tijdens het inloggen. Probeer het opnieuw.",
+        "resetPasswordError": "Er is een fout opgetreden tijdens het resetten van het wachtwoord. Probeer het opnieuw."
+    },
+    "links": {
+        "forgotPassword": "Wachtwoord vergeten?",
+        "notAMember": "Geen lid?",
+        "register": "Registreren"
+    },
+    "nav": {
+        "tournaments": "Toernooien",
+        "ranking": "Ranglijst",
+        "news": "Nieuws",
+        "login": "Inloggen",
+        "logout": "Uitloggen"
+    },
+    "changePassword": {
+        "title": "Wachtwoord Veranderen",
+        "oldPassword": "Oud wachtwoord",
+        "newPassword": "Nieuw wachtwoord",
+        "confirmPassword": "Bevestig Wachtwoord"
+    }
+}
