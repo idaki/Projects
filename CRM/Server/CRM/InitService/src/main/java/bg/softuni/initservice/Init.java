@@ -8,13 +8,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class Init implements CommandLineRunner {
 
-    private static final String ADMIN_SUPER_USERNAME = "admin";
-    private static final String ADMIN_SUPER_PASSWORD = "admin";
+    private static final String ADMIN_SUPER_USERNAME = "super";
+    private static final String ADMIN_SUPER_PASSWORD = "super";
     private static final String ADMIN_SUPER_ROLE = "ADMIN_SUPER";
-    private static final String ADMIN_USER_USERNAME = "user";
-    private static final String ADMIN_USER_PASSWORD = "user";
-    private static final String ADMIN_USER_ROLE = "ADMIN_USER";
-    private static final String DATABASE_SCRIPT_NAME = "DataInput.txt";
+    private static final String ADMIN_ADMIN_USERNAME = "admin";
+    private static final String ADMIN_ADMIN_PASSWORD = "admin";
+    private static final String ADMIN_ADMIN_ROLE = "ADMIN_ADMIN";
+    private static final String ADMIN_INSTRUCTOR_USERNAME = "user";
+    private static final String ADMIN_INSTRUCTOR_PASSWORD = "user";
+    private static final String ADMIN_INSTRUCTOR_ROLE = "ADMIN_INSTRUCTOR";
+
+
 
     private final InitController initController;
 
@@ -25,9 +29,10 @@ public class Init implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
-//        initController.initUser( ADMIN_SUPER_USERNAME, ADMIN_SUPER_PASSWORD,ADMIN_SUPER_ROLE);
-//        initController.initUser( ADMIN_USER_USERNAME, ADMIN_USER_PASSWORD, ADMIN_USER_ROLE);
+    public void run(String... args)  {
+       initController.initUser( ADMIN_SUPER_USERNAME, ADMIN_SUPER_PASSWORD,ADMIN_SUPER_ROLE);
+        initController.initUser( ADMIN_ADMIN_USERNAME, ADMIN_ADMIN_PASSWORD, ADMIN_ADMIN_ROLE);
+        initController.initUser( ADMIN_INSTRUCTOR_USERNAME, ADMIN_INSTRUCTOR_PASSWORD, ADMIN_INSTRUCTOR_ROLE);
 //
 //        initController.executeSqlScript(DATABASE_SCRIPT_NAME);
 
