@@ -1,36 +1,17 @@
-import React from 'react';
-import styles from './SidebarModal.module.css'; // Assuming SidebarModal.module.css is in the same directory
-import { logout } from '../../services/authService';
+import { useContext } from 'react';
+import ViewContext from '../../context/viewContext';
 
-const SidebarModal = ({ isOpen, toggle, openSettings }) => {
-  if (!isOpen) return null;
+export default function Sidebar() {
+  const { setMainContent } = useContext(ViewContext);
 
   return (
-    <div className={`${styles.sidebar} ${styles.popup}`}>
-      <nav className="nav flex-column">
-        <a
-          className={`nav-link ${styles.navLink}`}
-          href="#"
-          onClick={() => {
-            toggle();
-            openSettings();
-          }}
-        >
-          <i className="bi bi-gear"></i> Settings
-        </a>
-      
-        <a
-          className={`nav-link ${styles.navLink}`}
-          href="#"
-          onClick={() => {
-            logout();
-          }}
-        >
-          <i className="bi bi-box-arrow-right"></i> Logout
-        </a>
-      </nav>
+    <div>
+      <button onClick={() => setMainContent('student')}>Student</button>
+      <button onClick={() => setMainContent('edit-users')}>Edit Users</button>
+      <button onClick={() => setMainContent('settings')}>Settings</button>
+      <button onClick={() => setMainContent('car')}>Car</button> {/* Added Car */}
+      <button onClick={() => setMainContent('lesson')}>Lesson</button> {/* Added Lesson */}
+      <button onClick={() => setMainContent('instructor')}>Instructor</button> {/* Added Instructor */}
     </div>
   );
-};
-
-export default SidebarModal;
+}
