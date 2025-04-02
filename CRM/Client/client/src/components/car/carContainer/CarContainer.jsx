@@ -17,7 +17,7 @@ export default function CarContainer() {
 
       <div className={styles.carCardsContainer}>
         {cars.map(car => (
-          <CarCard key={car.id} car={car} /> {/* Removed unnecessary braces here */}
+          <CarCard key={car.id} car={car} />
         ))}
       </div>
 

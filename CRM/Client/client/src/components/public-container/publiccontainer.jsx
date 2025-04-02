@@ -5,7 +5,7 @@ export default function PublicContainer() {
   return (
     <div>
       <HeaderContainer/>
-      <PublicTournamentsContainer />
+
 
     </div>
   );
