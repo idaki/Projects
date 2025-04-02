@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './CarContainer.module.css';
-import CarCard from '../car/CarCard';  // Ensure correct path
+import CarCard from '../carCard/CarCard';
 
 const mockCars = [
   { id: 1, make: 'Toyota', model: 'Camry', year: 2020, status: 'Available', variants: ['Base', 'Sport', 'Premium'], image: 'toyota_camry.jpg' },
@@ -15,14 +15,12 @@ export default function CarContainer() {
     <div className={styles.container}>
       <h2>Car Management</h2>
 
-      {/* Car Cards List */}
       <div className={styles.carCardsContainer}>
         {cars.map(car => (
-          <CarCard key={car.id} car={car} />
+          <CarCard key={car.id} car={car} /> {/* Removed unnecessary braces here */}
         ))}
       </div>
 
-      {/* Button to Add New Car */}
       <button className={styles.addButton}>Add New Car</button>
     </div>
   );

@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import ViewContext from '../../context/viewContext';
 import styles from './MainFeedContainer.module.css';
 
-import StudentContainer from '../sudent/StudentContainer';
+import StudentContainer from '../student/StudentContainer';
 import EditUserContainer from '../admin-panel/edit-users/EditUserModal';
 import SettingsContainer from '../settings/settings-container/SettingsModal';
-import CarContainer from '../Car/CarContainer';
+import CarContainer from '../car/carContainer/CarContainer';
 import LessonContainer from '../lesson/LessonContainer';
 import InstructorContainer from '../instructor/InstructorContainer';
 

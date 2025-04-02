@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../carCard/CarCard.module.css';  // Ensure correct path
+import styles from './CarCard.module.css';  
 
 const CarCard = ({ car }) => {
   const [selectedVariant, setSelectedVariant] = useState('');
