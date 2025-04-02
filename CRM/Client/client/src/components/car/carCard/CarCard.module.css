@@ -1,0 +1,38 @@
+.container {
+    padding: 20px;
+  }
+  
+  .addCarForm {
+    margin-bottom: 20px;
+  }
+  
+  .addCarForm input {
+    margin: 5px;
+    padding: 8px;
+  }
+  
+  .addCarForm button {
+    margin: 5px;
+  }
+  
+  .addButton {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+  }
+  
+  .saveButton {
+    background-color: blue;
+    color: white;
+  }
+  
+  .cancelButton {
+    background-color: red;
+    color: white;
+  }
+  
+  select {
+    padding: 5px;
+    margin: 5px;
+  }
