@@ -5,11 +5,12 @@ import AuthContext from '../../context/authContext';
 import ViewContext from '../../context/viewContext';
 import { getUserDetails } from '../../services/userDetailsService';
 import SidebarModal from '../sidebar/SidebarModal';
-import MainFeedModal from '../mainfeed/MainFeedModal';
+import MainFeedContainer from '../mainfeed/MainFeedContainer';
 import AuthNavigationModal from '../authNavigationModal/AuthNavigationModal';
 import {  getCsrfToken } from '../../utils/utils';
 
 import {fetchCsrfToken} from '../../utils/csrfUtils';
+
 
 
 const ProfileModal = () => {
@@ -92,7 +93,7 @@ const ProfileModal = () => {
         </div>
         <div className="col-md-9">
           <SidebarModal isOpen={sidebarOpen} toggle={toggleSidebar} openSettings={openSettings} />
-          <MainFeedModal userDetails={userDetails} />
+          <MainFeedContainer userDetails={userDetails} />
         </div>
       </div>
     </div>

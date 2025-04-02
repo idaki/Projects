@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './InstructorContainer.module.css';
+import styles from '../instructor/Instructor.module.css';
 
 const mockInstructors = [
   { id: 1, name: 'John Doe', subject: 'React' },
