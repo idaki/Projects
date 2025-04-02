@@ -21,15 +21,18 @@ const CarCard = ({ car }) => {
       <p>{car.year}</p>
 
       {/* Dropdown to select vehicle variant */}
-      <select onChange={handleVariantChange} value={selectedVariant} className={styles.dropdown}>
-        <option value="">Select Variant</option>
-        {car.variants.map((variant, index) => (
-          <option key={index} value={variant}>
-            {variant}
-          </option>
-        ))}
-      </select>
-
+      {car.variants && car.variants.length > 0 ? (
+  <select onChange={handleVariantChange} value={selectedVariant} className={styles.dropdown}>
+    <option value="">Select Variant</option>
+    {car.variants.map((variant, index) => (
+      <option key={index} value={variant}>
+        {variant}
+      </option>
+    ))}
+  </select>
+) : (
+  <p>No variants available</p> // Optional: Provide feedback if no variants
+)}
       {/* Action Buttons */}
       <div className={styles.buttons}>
         <button onClick={() => handleActionClick('View Details')}>View Details</button>
