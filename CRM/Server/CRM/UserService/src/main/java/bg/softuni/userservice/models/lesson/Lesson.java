@@ -2,6 +2,7 @@ package bg.softuni.userservice.models.lesson;
 
 import bg.softuni.userservice.models.entity.user.User;
 import bg.softuni.userservice.models.enums.LessonStatus;
+import bg.softuni.userservice.models.entity.vehicle.Car;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,7 +31,7 @@ public class Lesson {
     private User instructor;
 
     @Column(nullable = false)
-    private LocalDate date;  // Track when the lesson happens
+    private LocalDate date;
 
     @Column(nullable = false)
     private LocalTime startTime;
@@ -45,7 +46,11 @@ public class Lesson {
     @Column(nullable = false)
     private LessonStatus status;
 
-    private String subject; // Optional: Topic of the lesson
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
+
+    private String subject;
 
     @ManyToOne
     @JoinColumn(name = "lesson_history_id")
