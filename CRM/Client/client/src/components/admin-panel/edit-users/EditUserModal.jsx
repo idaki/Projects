@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SearchBar from '../../Search/SearchBar';
+import SearchBar from '../../student/search/SearchBar';
 import { getUserDetailsByProfileInfo } from '../../../services/adminService';
 import SettingsContainer from '../../settings/settings-container/SettingsModal';
 

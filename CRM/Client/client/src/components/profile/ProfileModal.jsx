@@ -7,11 +7,9 @@ import { getUserDetails } from '../../services/userDetailsService';
 import SidebarModal from '../sidebar/SidebarContainer';
 import MainFeedContainer from '../mainfeed/MainFeedContainer';
 import AuthNavigationModal from '../authNavigationModal/AuthNavigationModal';
-import {  getCsrfToken } from '../../utils/utils';
-
-import {fetchCsrfToken} from '../../utils/csrfUtils';
-
-
+import { getCsrfToken } from '../../utils/utils';
+import { fetchCsrfToken } from '../../utils/csrfUtils';
+import Sidebar from '../sidebar/SidebarContainer';
 
 const ProfileModal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -42,13 +40,10 @@ const ProfileModal = () => {
 
   const openSettings = async () => {
     try {
-
       let csrfToken = getCsrfToken();
-      console.log(csrfToken);
-   if (!csrfToken) {
-    csrfToken = await fetchCsrfToken();
-    
-  }
+      if (!csrfToken) {
+        csrfToken = await fetchCsrfToken();
+      }
       const details = await getUserDetails();
       setUserDetails(details);
       setMainContent('settings');
@@ -69,31 +64,14 @@ const ProfileModal = () => {
 
   return (
     <div className="container-fluid">
-      <div className={`row align-items-center ${styles.profileHeader}`}>
-        <div className="col text-center">
-          <img
-            src={userProfile ? userProfile.avatar : "https://static.wikia.nocookie.net/felixthecat/images/4/49/Poindexter.gif/revision/latest?cb=20100428191852"}
-            alt="Profile"
-            className="rounded-circle"
-            height="100"
-            style={{ cursor: 'pointer' }}
-            onClick={openSettings}
-          />
-          {userProfile ? (
-            <h2>{userProfile.username}</h2>
-          ) : (
-            <p>Loading...</p>
-          )}
-          {error && <p style={{ color: 'red' }}>{error}</p>}
-        </div>
-      </div>
+      
+
       <div className="row">
-        <div className="col-md-3 bg-light">
-          <AuthNavigationModal />
-        </div>
-        <div className="col-md-9">
+    
+          <Sidebar/>
+       
           <MainFeedContainer userDetails={userDetails} />
-        </div>
+      
       </div>
     </div>
   );
