@@ -122,7 +122,7 @@
 
     <modules>
         <module>WebService</module>
-        <module>UserService</module>
+        <module>PersistenceService</module>
         <module>AuthenticationService</module>
         <module>CommunicationService</module>
         <module>InitService</module>
