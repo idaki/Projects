@@ -13,7 +13,7 @@ export default function AuthenticatedContainer() {
 
   return (
     <ViewProvider>
-     <ProfileModal/>
+    <ProfileModal/>
     </ViewProvider>
   );
 }
