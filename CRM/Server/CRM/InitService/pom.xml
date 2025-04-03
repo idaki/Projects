@@ -32,7 +32,7 @@
     <dependencies>
         <dependency>
             <groupId>bg.softuni</groupId>
-            <artifactId>UserService</artifactId>
+            <artifactId>PersistenceService</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
