@@ -6,12 +6,24 @@ export default function Sidebar() {
   const { setMainContent } = useContext(ViewContext);
 
   return (
-    <div className={styles.sidebar}>
-      <a onClick={() => setMainContent('student')}>Student</a>
-      <a onClick={() => setMainContent('settings')}>Settings</a>
-      <a onClick={() => setMainContent('car')}>Car</a> {/* Added Car */}
-      <a onClick={() => setMainContent('lesson')}>Lesson</a> {/* Added Lesson */}
-      <a onClick={() => setMainContent('instructor')}>Instructor</a> {/* Added Instructor */}
+    <div className={`col-12 col-md-3 col-lg-2 ${styles.sidebar}`}>
+      <div className="list-group">
+        <button className="list-group-item list-group-item-action" onClick={() => setMainContent('student')}>
+          Student
+        </button>
+        <button className="list-group-item list-group-item-action" onClick={() => setMainContent('settings')}>
+          Settings
+        </button>
+        <button className="list-group-item list-group-item-action" onClick={() => setMainContent('car')}>
+          Car
+        </button>
+        <button className="list-group-item list-group-item-action" onClick={() => setMainContent('lesson')}>
+          Lesson
+        </button>
+        <button className="list-group-item list-group-item-action" onClick={() => setMainContent('instructor')}>
+          Instructor
+        </button>
+      </div>
     </div>
   );
 }
